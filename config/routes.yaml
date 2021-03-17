@@ -2,6 +2,7 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-adept_home: 
- path: /
- controller: App\Controller\GeneralController::home
+adept_home:
+  path: /
+  controller: App\Controller\GeneralController::home
+

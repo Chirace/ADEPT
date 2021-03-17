@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}NOMADe ADEPT{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             <link href="{{ asset('css/custom.css') }}" type="text/css" rel="stylesheet">
         {% endblock %}
+        <link rel="icon" type="image/png" href="/images/logo_ADEPT.png" />
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
@@ -14,21 +15,21 @@
     </head>
     <body>
         <nav class="navbar navbar-light bg-light">
-                <li>
-                    <a id="logos" class="navbar-brand" href="/">
-                        <img src="/images/logo_projet_NOMADe.png" alt="logo projet NOMADe">
-                    </a>
-                </li>
-                <li>
-                    <a id="logos" class="navbar-brand" href="/">
-                        <img src="/images/logo_NOMADe.jpg" alt="logo NOMADe">
-                    </a>
-                </li>
-                <li>
-                    <a id="logos" class="navbar-brand" href="/">
-                        <img src="/images/logo_ADEPT.png" alt="logo ADEPT">
-                    </a>
-                </li>
+            <li>
+                <a id="logos" class="navbar-brand" href="/">
+                    <img src="/images/logo_projet_NOMADe.png" alt="logo projet NOMADe">
+                </a>
+            </li>
+            <li>
+                <a id="logos" class="navbar-brand" href="/">
+                    <img src="/images/logo_NOMADe.png" alt="logo NOMADe">
+                </a>
+            </li>
+            <li>
+                <a id="logos" class="navbar-brand" href="/">
+                    <img src="/images/logo_ADEPT.png" alt="logo ADEPT">
+                </a>
+            </li>
         </nav>
         {% block body %}{% endblock %}
     </body>
