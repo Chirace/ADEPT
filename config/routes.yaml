@@ -6,3 +6,22 @@ adept_home:
   path: /
   controller: App\Controller\GeneralController::home
 
+adept_menu:
+  path: /menu
+  controller: App\Controller\GeneralController::menu
+
+adept_formations:
+  path: /formations
+  controller: App\Controller\GeneralController::formations
+
+adept_ergonomics_tools_list:
+  path: /tools
+  controller: App\Controller\GeneralController::tools
+
+adept_company_balance_sheet:
+  path: /company
+  controller: App\Controller\GeneralController::company
+
+adept_settings:
+  path: /settings
+  controller: App\Controller\GeneralController::settings

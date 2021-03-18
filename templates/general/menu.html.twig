@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div>
+        <p>L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques professionnels dûs aux lombalgies</p>
+
+        <div>
+            <a class="button" href="{{ path('adept_formations') }}" >Se former aux outils</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_ergonomics_tools_list') }}" >Outils de cotation ergonomique</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_company_balance_sheet') }}" >Réaliser/Voir un bilan d'entreprise</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_settings') }}" >Paramètres</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_home') }}" >Quitter/Se déconnecter</a>
+        </div>
+    </div>
+{% endblock %}

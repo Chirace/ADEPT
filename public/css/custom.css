@@ -19,7 +19,7 @@ body {
     background-color: #2f3350;
 }
 
-button {
+.button {
     margin-top: 45px;
     width: 60%;
     height: 40px;
@@ -29,13 +29,16 @@ button {
     border-radius: 5px;
     font-size: 1.2em;
     margin-left: 20%;
+
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
 }
 
 form {
     margin: 0 auto;
     margin-top: 100px;
     width: 400px;
-    height: 500px;
     padding: 1em;
 }
 
@@ -57,13 +60,30 @@ input {
     border-radius: 25px;
 }
 
-nav {
-    display: block;
-    align-items: center;   
-}
-
 li {
     list-style-type: none;
     margin:0;
     padding:0;
+}
+
+nav {
+    display: block;
+    align-items: center;
+}
+
+p {
+    color: white;
+}
+
+html > body > div {
+    display: block;
+    width: 900px;
+    margin: 0 auto;
+    padding: 3em;
+}
+
+html > body > div > div > a:hover {
+    background-color: #D3A87D;
+    color: #474747;
+    text-decoration: none;
 }
