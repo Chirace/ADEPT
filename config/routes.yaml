@@ -25,3 +25,11 @@ adept_company_balance_sheet:
 adept_settings:
   path: /settings
   controller: App\Controller\GeneralController::settings
+
+adept_tool_NFX35109:
+  path: /NFX35109
+  controller: App\Controller\NFX35109Controller::NFX35109
+
+adept_tool_NIOSH:
+  path: /NIOSH
+  controller: App\Controller\GeneralController::NIOSH

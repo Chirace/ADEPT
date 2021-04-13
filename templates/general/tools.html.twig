@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <p>Outils</p>
+        <div>
+            <a class="button" href="{{ path('adept_tool_NFX35109') }}" >NF X35-109</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_tool_NIOSH') }}" >Équation du NIOSH</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_menu') }}" >Retourner au menu principal</a>
+        </div>
     </div>
 {% endblock %}

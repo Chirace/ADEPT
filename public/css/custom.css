@@ -6,6 +6,7 @@
 
 h1 {
     margin: 0;
+    color: white;
 }
 
 html {
@@ -75,11 +76,27 @@ p {
     color: white;
 }
 
+#container {
+    display: flex;
+}
+
 html > body > div {
     display: block;
     width: 900px;
     margin: 0 auto;
     padding: 3em;
+}
+
+html > body > div > ul > li > a:hover {
+    background-color: #D3A87D;
+    color: #474747;
+    text-decoration: none;
+}
+
+html > body > div > a:hover {
+    background-color: #D3A87D;
+    color: #474747;
+    text-decoration: none;
 }
 
 html > body > div > div > a:hover {

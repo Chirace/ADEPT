@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div>
+        <div>
+            <h1>Objectifs</h1>
+            <p>Cette application permet d'analyser les déplacements de charges sous différents formes et dans tous 
+            les secteurs d'activité. Elle est un support à l'évaluation des risques pour les populations amenées à 
+            réaliser des tâches de manutention du fait des contraintes immédiates (accident du travail) et à long 
+            terme (maladie professionnelle) que ces tâches imposent.</p>
+        </div>
+        <div>
+            <h1>Conditions</h1>
+            <p>S'applique : <br>
+              - A l'activité de manutention de charges (lever, transporter, pousser/tirer, avec déplacement de la 
+                charge) dans un cadre professionnel, avec ou sans utilisation d'aide à la manutention, 
+                pour une personne. <br>
+                - Pour une population adulte (18 à 65 ans) sans restriction d'aptitude.<br>
+                - Aux engins équipés de roues pour les forces de pousser/tirer.<br>
+                Ne s'applique pas :<br>
+                - Lorsque la manutention manuelle s'effectue en empruntant un escalier ou une pente.<br>
+                - Aux manutentions répétitives de charges inférieures à 3kg.<br>
+            </p>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_ergonomics_tools_list') }}" >Retourner au menu principal</a>
+        </div>
+    </div>
+{% endblock %}
