@@ -5,7 +5,7 @@
         <title>{% block title %}NOMADe ADEPT{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <link href="{{ asset('css/custom.css') }}" type="text/css" rel="stylesheet">
+            <link href="{{ asset('css/custom.css?version=5') }}" type="text/css" rel="stylesheet">
         {% endblock %}
         <link rel="icon" type="image/png" href="/images/logo_ADEPT.png" />
         {% block javascripts %}
@@ -13,23 +13,24 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar">
             <li>
-                <a id="logos" class="navbar-brand" href="/">
-                    <img src="/images/logo_Interreg.jpg" alt="logo projet NOMADe">
+                <a class="navbar-brand" href="https://www.interreg-fwvl.eu/fr/nomade">
+                    <img src="/images/logo_Interreg.jpg" alt="logo projet NOMADe" id="logo_interreg">
                 </a>
             </li>
             <li>
-                <a id="logos" class="navbar-brand" href="/">
-                    <img src="/images/logo_NOMADe.png" alt="logo NOMADe">
+                <a class="navbar-brand" href="https://nomadeproject.eu/">
+                    <img src="/images/logo_NOMADe.png" alt="logo NOMADe" class="logo">
                 </a>
             </li>
             <li>
-                <a id="logos" class="navbar-brand" href="/">
-                    <img src="/images/logo_ADEPT.png" alt="logo ADEPT">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo_ADEPT.png" alt="logo ADEPT" class="logo">
                 </a>
             </li>
         </nav>
+
         {% block body %}{% endblock %}
     </body>
 </html>
