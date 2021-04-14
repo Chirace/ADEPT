@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <form action="/authentification" method="post" class="text-align left">
+    <form action="{{ path('security_login') }}" method="post" class="text-align left">
         <div>
-            <input type="text" id="login" name="user_login" placeholder="Login">
+            <input type="text" name="_username" placeholder="Adresse mail" required>
         </div>
         <div>
-            <input type="password" id="password" name="user_password" placeholder="Mot de passe">
+            <input type="password" name="_password" placeholder="Mot de passe" required>
         </div>
         <div>
             <button type="submit" class="button">Se connecter</button> 
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_registration') }}" >Se créer un compte</a>
         </div>
     </form>
 {% endblock %}

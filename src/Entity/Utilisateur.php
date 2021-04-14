@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UtilisateurRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @UniqueEntity(
+ *  fields={"mail"},
+ *  message="L'adresse mail que vous avez renseignée est déjà utilisée !"
+ * )
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id
@@ -19,18 +26,25 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $login;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe sont différents")
+     */
+    private $confirm_password;
 
     public function getId(): ?int
     {
@@ -49,14 +63,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getLogin(): ?string
+    public function getUsername(): ?string
     {
-        return $this->login;
+        return $this->username;
     }
 
-    public function setLogin(string $login): self
+    public function setUsername(string $username): self
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
@@ -71,5 +85,25 @@ class Utilisateur
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirm_password;
+    }
+
+    public function setConfirmPassword(string $confirm_password): self
+    {
+        $this->confirm_password = $confirm_password;
+
+        return $this;
+    }
+
+    public function eraseCredentials() {}
+
+    public function getSalt() {}
+
+    public function getRoles() {
+        return ['ROLE_USER'];
     }
 }

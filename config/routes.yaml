@@ -6,6 +6,14 @@ adept_home:
   path: /
   controller: App\Controller\GeneralController::home
 
+adept_registration:
+  path: /inscription
+  controller: App\Controller\SecurityController::registration
+
+adept_logout:
+  path: /deconnexion
+  controller: App\Controller\SecurityController::logout
+
 adept_menu:
   path: /menu
   controller: App\Controller\GeneralController::menu
