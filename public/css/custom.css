@@ -37,6 +37,13 @@ body {
     padding-top: 5px;
 }
 
+#button_p {
+    margin-top: 0%;
+    margin-bottom: 4%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .button2 {
     margin-top: 2%;
     width: 90%;
@@ -69,7 +76,6 @@ body {
 
 form {
     margin: 0 auto;
-    margin-top: 2%;
     width: 60%;
     padding: 1em;
 }
@@ -93,6 +99,7 @@ li {
     list-style-type: none;
     margin:0;
     padding:0;
+    color: #D3A87D;
 }
 
 .login {
@@ -180,8 +187,17 @@ p {
     color: white;
 }
 
+#p_button {
+    width: 100%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.4rem;
+}
+
 #container {
     display: flex;
+    justify-content: space-between;
 }
 
 html > body > div {
@@ -194,20 +210,24 @@ html > body > div {
 html > body > div > ul > li > a:hover {
     background-color: #D3A87D;
     color: #474747;
+    cursor: pointer;
     text-decoration: none;
 }
 
 html > body > div > a:hover {
     background-color: #D3A87D;
     color: #474747;
+    cursor: pointer;
     text-decoration: none;
 }
 
 html > body > div > div > a:hover {
     background-color: #D3A87D;
     color: #474747;
+    cursor: pointer;
     text-decoration: none;
 }
+
 
 html > body > form > div > a:hover, button:hover {
     background-color: #D3A87D;

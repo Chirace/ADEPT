@@ -22,6 +22,14 @@ adept_formations:
   path: /formations
   controller: App\Controller\GeneralController::formations
 
+adept_analyze_choice:
+  path: /analyze_choice
+  controller: App\Controller\GeneralController::analyzeChoice
+
+adept_tool_survey:
+  path: /survey
+  controller: App\Controller\GeneralController::survey
+
 adept_ergonomics_tools_list:
   path: /tools
   controller: App\Controller\GeneralController::tools

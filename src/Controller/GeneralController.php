@@ -5,6 +5,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GeneralController extends AbstractController {
 
+    public function analyzeChoice(){
+        return $this->render('general/analyseChoice.html.twig');
+    }
+
     public function home(){
         return $this->render('general/home.html.twig');
     }
@@ -27,5 +31,9 @@ class GeneralController extends AbstractController {
 
     public function settings(){
         return $this->render('general/settings.html.twig');
+    }
+
+    public function survey(){
+        return $this->render('general/survey.html.twig');
     }
 }

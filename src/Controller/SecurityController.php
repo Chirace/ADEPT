@@ -43,7 +43,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connexion", name="security_login")
      */
-    public function login(){
+    public function login() {
         return $this->render('general/home.html.twig');
     }
 
