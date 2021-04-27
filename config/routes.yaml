@@ -46,6 +46,26 @@ adept_tool_NFX35109:
   path: /NFX35109
   controller: App\Controller\NFX35109Controller::NFX35109
 
+adept_NFX35109_picture:
+  path: /NFX35109/picture
+  controller: App\Controller\NFX35109Controller::picture
+
+adept_NFX35109_execution_conditions:
+  path: /NFX35109/execution
+  controller: App\Controller\NFX35109Controller::execution
+
+adept_NFX35109_references_conditions:
+  path: /NFX35109/references
+  controller: App\Controller\NFX35109Controller::references
+
+adept_NFX35109_constraints:
+  path: /NFX35109/constraints
+  controller: App\Controller\NFX35109Controller::constraints
+
+adept_NFX35109_results:
+  path: /NFX35109/results
+  controller: App\Controller\NFX35109Controller::results
+
 adept_tool_NIOSH:
   path: /NIOSH
   controller: App\Controller\GeneralController::NIOSH

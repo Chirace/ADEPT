@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <p>Bilan d'entreprise</p>
+        <p>{% trans %}Bilan d'entreprise{% endtrans %}</p>
     </div>
     <div>
-        <a class="button" href="{{ path('adept_menu') }}" >Retourner au menu principal</a>
+        <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
     </div>
 {% endblock %}

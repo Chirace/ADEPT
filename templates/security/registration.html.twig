@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="center">Création d'un compte ADEPT</h1>
+    <h1 class="center">{% trans %}Création d'un compte ADEPT{% endtrans %}</h1>
 
     {{ form_start(form) }}
 
@@ -30,8 +30,8 @@
     </div>
 
     <div class="group_button">
-        <button type="submit" class="button2">Valider</button>
-        <a class="button2" href="{{ path('adept_home') }}" >J'ai déjà un compte</a>
+        <button type="submit" class="button2">{% trans %}Valider{% endtrans %}</button>
+        <a class="button2" href="{{ path('adept_home') }}" >{% trans %}J'ai déjà un compte{% endtrans %}</a>
     </div>
     {{ form_end(form) }}
 {% endblock %}

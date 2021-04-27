@@ -7,9 +7,21 @@
         <div>
             <input type="password" name="_password" placeholder="Mot de passe" required>
         </div>
+        <div class="container" id="flex-center">
+            <p>Choix de la langue :</p>
+            <select class="custom-select">
+                            <option selected><img src="/images/drapeau_fr.png" alt="fr" class="flag"></option>
+                            <option value="1"><img src="/images/drapeau_be.png" alt="be" class="flag"></option>
+                            <option value="2"><img src="/images/drapeau_fr.png" alt="fr" class="flag"></option>
+                            <option value="3"><img src="/images/drapeau_fr.png" alt="fr" class="flag"></option>
+                        </select>
+            <!--<a class="nav-link" href="#">
+                <img src="/images/drapeau_fr.png" alt="fr" class="flag">
+            </a>-->
+        </div>
         <div class="group_button">
-            <button type="submit" class="button2" id="button2">Se connecter</button>
-            <a class="button2" href="{{ path('adept_registration') }}" >S'inscrire</a>
+            <button type="submit" class="button2" id="button2">{% trans %}Se connecter{% endtrans %}</button>
+            <a class="button2" href="{{ path('adept_registration') }}" >{% trans %}S'inscrire{% endtrans %}</a>
         </div>
     </form>
 {% endblock %}

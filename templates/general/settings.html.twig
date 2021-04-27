@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <p>Paramètres</p>
+        <p>{% trans %}Paramètres{% endtrans %}</p>
     </div>
     <div>
-        <a class="button" href="{{ path('adept_menu') }}" >Retourner au menu principal</a>
+        <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
     </div>
 {% endblock %}

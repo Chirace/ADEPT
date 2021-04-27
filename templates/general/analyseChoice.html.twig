@@ -2,15 +2,15 @@
 {% block body %}
     <div>
         <div class="center">
-            <p id="p_button">Laissez-vous guider par un questionnaire :</p>
-            <a class="button" id="button_p" href="{{ path('adept_tool_survey') }}" >Répondre au questionnaire</a>
+            <p id="p_button">{% trans %}Laissez-vous guider par un questionnaire{% endtrans %} :</p>
+            <a class="button" id="button_p" href="{{ path('adept_tool_survey') }}" >{% trans %}Répondre au questionnaire{% endtrans %}</a>
         </div>
         <div class="center">
-            <p id="p_button">Ou choisissez votre outil de cotation :</p>
-            <a class="button" id="button_p" href="{{ path('adept_ergonomics_tools_list') }}" >Choisir l'outil de cotation</a>
+            <p id="p_button">{% trans %}Ou choisissez votre outil de cotation{% endtrans %} :</p>
+            <a class="button" id="button_p" href="{{ path('adept_ergonomics_tools_list') }}" >{% trans %}Choisir l'outil de cotation{% endtrans %}</a>
         </div>
         <div>
-            <a class="button" href="{{ path('adept_menu') }}" >Retourner au menu principal</a>
+            <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <p>L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
-        pour réduire les risques professionnels dûs aux lombalgies</p>
+        <p>{% trans %}L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques professionnels dûs aux lombalgies{% endtrans %}</p>
 
         <div>
-            <a class="button" href="{{ path('adept_formations') }}" >Se former aux outils</a>
+            <a class="button" href="{{ path('adept_formations') }}" >{% trans %}Se former aux outils{% endtrans %}</a>
         </div>
         <div>
-            <a class="button" href="{{ path('adept_analyze_choice') }}" >Analyser une activité terrain</a>
+            <a class="button" href="{{ path('adept_analyze_choice') }}" >{% trans %}Analyser une activité terrain{% endtrans %}</a>
         </div>
         <div>
-            <a class="button" href="{{ path('adept_company_balance_sheet') }}" >Réaliser/Voir un bilan d'entreprise</a>
+            <a class="button" href="{{ path('adept_company_balance_sheet') }}" >{% trans %}Réaliser/Voir un bilan d'entreprise{% endtrans %}</a>
         </div>
         <div>
-            <a class="button" href="{{ path('adept_settings') }}" >Paramètres</a>
+            <a class="button" href="{{ path('adept_settings') }}" >{% trans %}Paramètres{% endtrans %}</a>
         </div>
         <div>
-            <a class="button" href="{{ path('security_logout') }}" >Quitter/Se déconnecter</a>
+            <a class="button" href="{{ path('security_logout') }}" >{% trans %}Quitter/Se déconnecter{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

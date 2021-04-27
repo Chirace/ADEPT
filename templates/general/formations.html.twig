@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <p>Nous vous invitons à vous former aux outils de cotation ergonomique en consultant les modules de 
-        formation disponible sur la plateforme suivante :</p>
+        <p>{% trans %}Nous vous invitons à vous former aux outils de cotation ergonomique en consultant les modules de 
+        formation disponible sur la plateforme suivante{% endtrans %} :</p>
         <div id="container">
             <p>NF X35-109</p>
-            <a id="button_p" class="button">Voir la formation</a>
+            <a id="button_p" class="button">{% trans %}Voir la formation{% endtrans %}</a>
         </div>
         <div id="container">
             <p>NIOSH</p>
-            <a id="button_p" class="button">Voir la formation</a>
+            <a id="button_p" class="button">{% trans %}Voir la formation{% endtrans %}</a>
         </div>
-        <a class="button" href="{{ path('adept_menu') }}" >Retourner au menu principal</a>
+        <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
     </div>
 {% endblock %}

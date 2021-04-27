@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div>
+        <div>
+            <h1>NF X35-109</h1>
+
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.nom_fichier, 'Importer un Fichier', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.nom_fichier, {'attr': {'class': 'button'}} ) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.valider, {'attr': {'class': 'button'}} ) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+        <div class="group_button">
+            <a class="button2" href="{{ path('adept_ergonomics_tools_list') }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button2" href="{{ path('adept_tool_NFX35109') }}" >Poursuivre</a>
+        </div>
+    </div>
+{% endblock %}

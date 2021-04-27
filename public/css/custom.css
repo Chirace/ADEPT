@@ -74,6 +74,17 @@ body {
     margin-top:1%;
 }
 
+.custom-select{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+}
+
+.flag {
+    width:50px;
+    height:auto;
+}
+
 form {
     margin: 0 auto;
     width: 60%;
@@ -198,6 +209,11 @@ p {
 #container {
     display: flex;
     justify-content: space-between;
+}
+
+#flex-center {
+    display: flex;
+    justify-content: center;
 }
 
 html > body > div {

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="nl" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="gA.UGxM" resname="Laissez-vous guider par un questionnaire">
+        <source>Laissez-vous guider par un questionnaire</source>
+        <target>Laat u leiden door een vragenlijst</target>
+      </trans-unit>
+      <trans-unit id="wAGuGDW" resname="Répondre au questionnaire">
+        <source>Répondre au questionnaire</source>
+        <target>Beantwoord de vragenlijst</target>
+      </trans-unit>
+      <trans-unit id="SPjC3Yj" resname="Ou choisissez votre outil de cotation">
+        <source>Ou choisissez votre outil de cotation</source>
+        <target>Of kies uw beoordelingsinstrument</target>
+      </trans-unit>
+      <trans-unit id="dHucVYk" resname="Choisir l'outil de cotation">
+        <source>Choisir l'outil de cotation</source>
+        <target>Kies het afmetingsgereedschap</target>
+      </trans-unit>
+      <trans-unit id="WoQ.11B" resname="Retourner au menu principal">
+        <source>Retourner au menu principal</source>
+        <target>Keer terug naar het hoofdmenu</target>
+      </trans-unit>
+      <trans-unit id="Hn8EZSC" resname="Bilan d'entreprise">
+        <source>Bilan d'entreprise</source>
+        <target>Vennootschappelijke balans</target>
+      </trans-unit>
+      <trans-unit id="PufN7FT" resname="Nous vous invitons à vous former aux outils de cotation ergonomique en consultant les modules de &#10;        formation disponible sur la plateforme suivante">
+        <source>Nous vous invitons à vous former aux outils de cotation ergonomique en consultant les modules de 
+        formation disponible sur la plateforme suivante</source>
+        <target>We nodigen je uit om jezelf te trainen in ergonomische scoretools door de modules van te raadplegen
+        training beschikbaar op het volgende platform</target>
+      </trans-unit>
+      <trans-unit id="X8s7N0T" resname="Voir la formation">
+        <source>Voir la formation</source>
+        <target>Bekijk training</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Inloggen</target>
+      </trans-unit>
+      <trans-unit id="PCX0_17" resname="S'inscrire">
+        <source>S'inscrire</source>
+        <target>Registreer nu</target>
+      </trans-unit>
+      <trans-unit id="xsZkcJL" resname="L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) &#10;        pour réduire les risques professionnels dûs aux lombalgies">
+        <source>L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques professionnels dûs aux lombalgies</source>
+        <target>Het doel van deze applicatie is om de preventie van neuro-musculoskeletale aandoeningen (TNMS) te verbeteren
+        om beroepsrisico's als gevolg van lage rugpijn te verminderen</target>
+      </trans-unit>
+      <trans-unit id="X9frAQb" resname="Se former aux outils">
+        <source>Se former aux outils</source>
+        <target>Training in tools</target>
+      </trans-unit>
+      <trans-unit id="I30t2qC" resname="Analyser une activité terrain">
+        <source>Analyser une activité terrain</source>
+        <target>Analyseer een veldactiviteit</target>
+      </trans-unit>
+      <trans-unit id="ZK9lmtn" resname="Réaliser/Voir un bilan d'entreprise">
+        <source>Réaliser/Voir un bilan d'entreprise</source>
+        <target>Een zakelijk rapport uitvoeren / bekijken</target>
+      </trans-unit>
+      <trans-unit id="AZI996R" resname="Paramètres">
+        <source>Paramètres</source>
+        <target>Instellingen</target>
+      </trans-unit>
+      <trans-unit id="VRosoGt" resname="Quitter/Se déconnecter">
+        <source>Quitter/Se déconnecter</source>
+        <target>Afsluiten / uitloggen</target>
+      </trans-unit>
+      <trans-unit id="66niyCt" resname="Questionnaire">
+        <source>Questionnaire</source>
+        <target>Enquête</target>
+      </trans-unit>
+      <trans-unit id="7yOllAJ" resname="Retour">
+        <source>Retour</source>
+        <target>Keer terug</target>
+      </trans-unit>
+      <trans-unit id="n9G67_t" resname="Équation du NIOSH">
+        <source>Équation du NIOSH</source>
+        <target>NIOSH-vergelijking</target>
+      </trans-unit>
+      <trans-unit id="HYL.k1N" resname="Création d'un compte ADEPT">
+        <source>Création d'un compte ADEPT</source>
+        <target>Aanmaken van een ADEPT-account</target>
+      </trans-unit>
+      <trans-unit id="YmunqJ." resname="Valider">
+        <source>Valider</source>
+        <target>bevestigen</target>
+      </trans-unit>
+      <trans-unit id="NM1ev5T" resname="J'ai déjà un compte">
+        <source>J'ai déjà un compte</source>
+        <target>ik heb al een account</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
