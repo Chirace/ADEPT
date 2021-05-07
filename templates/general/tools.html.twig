@@ -1,12 +1,43 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        <div>
+        <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+        </script>
+        <!--<div>
             <a class="button" href="{{ path('adept_NFX35109_picture') }}" >NF X35-109</a>
-        </div>
+        </div>-->
+
+        <!-- Button trigger modal -->
         <div>
-            <a class="button" href="{{ path('adept_tool_NIOSH') }}" >{% trans %}Équation du NIOSH{% endtrans %}</a>
+            <button type="button" class="button" data-toggle="modal" data-target="#exampleModalCenter">NF X35-109</button>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Avant NF X35-109</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Veuillez cocher la case qui correspond à votre situation :
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Valider</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!--<div>
+            <a class="button" href="{{ path('adept_tool_NIOSH') }}" >{% trans %}Équation du NIOSH{% endtrans %}</a>
+        </div>-->
         <div>
             <a class="button" href="{{ path('adept_analyze_choice') }}" >{% trans %}Retour{% endtrans %}</a>
         </div>

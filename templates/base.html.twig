@@ -5,14 +5,20 @@
         <title>{% block title %}NOMADe ADEPT{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <link href="{{ asset('css/custom.css?version=10') }}" type="text/css" rel="stylesheet">
+            <link href="{{ asset('css/custom.css?version=15') }}" type="text/css" rel="stylesheet">
         {% endblock %}
         <link rel="icon" type="image/png" href="/images/logo_ADEPT.png" />
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
     <body>
+        {% block javascripts %}
+            
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+            {#{{ asset('js/custom.js?version=12') }}#}
+            <!--<script src="{{ asset('js/custom.js') }}"></script>-->
+        {% endblock %}
+        <!--<script src="js/custom.js"></script>-->
         <nav class="navbar">
             <li>
                  <a class="navbar-brand" href="https://www.interreg-fwvl.eu/fr/nomade">

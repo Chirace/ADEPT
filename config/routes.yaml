@@ -26,9 +26,9 @@ adept_analyze_choice:
   path: /analyze_choice
   controller: App\Controller\GeneralController::analyzeChoice
 
-adept_tool_survey:
-  path: /survey
-  controller: App\Controller\GeneralController::survey
+adept_tool_guide:
+  path: /guide
+  controller: App\Controller\GeneralController::guide
 
 adept_ergonomics_tools_list:
   path: /tools
