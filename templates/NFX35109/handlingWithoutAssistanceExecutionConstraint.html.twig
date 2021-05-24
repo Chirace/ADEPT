@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Contraintes</h1>
+
+            <hr>
+
+            
+            <h3 class="h_margin_bottom">Conditions d'exécution de la tâche</h3>
+                
+            
+            <div class="row_block">
+                <select class="custom_select form_control_40 no_margin_right" id="input_contraintes" name="select_contraintes">
+                    <option selected>Ajouter une contrainte</option>
+                    <option value="1">Sans poignées ou inadaptées</option>
+                    <option value="2">Torsion du tronc</option>
+                    <option value="3">Profondeur de prise > 0,40 m</option>
+                    <option value="4">Hors zone d'atteinte</option>
+                    <option value="5">Posture/position du corps</option>
+                    <option value="6">Charge instable</option>
+                    <option value="7">Visibilité limitée</option>
+                    <option value="8">Roulettes inadéquates</option>
+                    <option value="9">Absence de frein</option>
+                </select>
+                <button class="button4 form_control_2" onclick="addConstraint()">+</button>
+                <button class="button4 form_control_2" onclick="removeConstraint()">-</button>
+            </div>
+            <p id="constraint_1">Sans poignées ou inadaptées</p>
+            <p id="constraint_2">Torsion du tronc</p>
+            <p id="constraint_3">Profondeur de prise sup 0,40 m</p>
+            <p id="constraint_4">Hors zone d'atteinte</p>
+            <p id="constraint_5">Posture/position du corps</p>
+            <p id="constraint_6">Charge instable</p>
+            <p id="constraint_7">Visibilité limitée</p>
+            <p id="constraint_8">Roulettes inadéquates</p>
+            <p id="constraint_9">Absence de frein</p>
+        </div>
+
+        <!-- Ajouter et retirer une contrainte d'exécution -->
+        <script>
+            document.getElementById("constraint_1").style.display = "none";
+            document.getElementById("constraint_2").style.display = "block";
+            document.getElementById("constraint_3").style.display = "none";
+            document.getElementById("constraint_4").style.display = "none";
+            document.getElementById("constraint_5").style.display = "none";
+            document.getElementById("constraint_6").style.display = "none";
+            document.getElementById("constraint_7").style.display = "none";
+            document.getElementById("constraint_8").style.display = "none";
+            document.getElementById("constraint_9").style.display = "none";
+
+            function addConstraint() {
+                var id = document.getElementById("input_contraintes").options[document.getElementById("input_contraintes").selectedIndex].id;
+                var id2 = document.getElementById("constraint_8").id;
+
+                select = document.getElementById("input_contraintes");
+                choice = select.selectedIndex;
+                contrainte = select.options[choice].id;
+
+                document.getElementById(id2).style.display = "block";
+            }
+
+            function removeConstraint() {
+                var id = document.select_contraintes.options[document.select_contraintes.selectedIndex].id;
+                var id3 = document.getElementById("constraint_2").id;
+
+                document.getElementById(id3).style.display = "none";
+            }
+        </script>
+
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance') }}" >Continuer</a>
+        </div>
+    </div>
+{% endblock %}

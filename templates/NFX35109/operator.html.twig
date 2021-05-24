@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Opérateur</h1>
+            <div class="container_input">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <h2>Opérateur :</h2>
+                        <div class="row">
+                            <p class="text_margin_right">Âge :</p>
+                            <input type="text" class="form_control_60" aria-label="age" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Sexe :</p>
+                            <select class="custom_select form_control_60" id="input_sexe">
+                                <option value="1">Masculin</option>
+                                <option value="2">Féminin</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Enceinte :</p>
+                            <div class="switch">
+                                <input type="checkbox" id="check_enceinte">
+                                <label for="check_enceinte" data-off="Non" data-on="Oui"></label>
+                            </div>
+                        </div>
+                        <script> 
+                            function AlertePregnant(){
+                                if (this.value === 'Oui'){
+                                    alert("La femme est enceinte !");
+                                }
+                            }
+                            document.getElementById('check_enceinte').addEventListener('change', AlerteWoman);
+                        </script>
+                        <!--<script> 
+                            function AlerteWoman(){
+                                if (this.value === '2'){
+                                    alert("C'est une femme !");
+                                }
+                            }
+                            document.getElementById('input_sexe').addEventListener('change', AlerteWoman);
+                        </script>-->
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left">
+                        <div class="row">
+                            <p class="text_margin_right">Droitier/Gaucher :</p>
+                            <select class="custom_select form_control_60" id="input_main">
+                                <option value="1">Droitier</option>
+                                <option value="2">Gaucher</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Formation :</p>
+                            <input type="text" class="form_control_60" aria-label="Formation" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Ancienneté au poste :</p>
+                            <input type="text" class="form_control_60" aria-label="exp_poste" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Ancienneté en entreprise :</p>
+                            <input type="text" class="form_control_60" aria-label="exp_entreprise" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
+                </div>
+                <p class="text_margin_right">Description :</p>
+                <textarea class="text_area_80" aria-label="Description"></textarea>
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_picture') }}" >Annuler</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_activity_detail') }}" >Continuer</a>
+        </div>
+    </div>
+{% endblock %}

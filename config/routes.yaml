@@ -46,9 +46,41 @@ adept_tool_NFX35109:
   path: /NFX35109
   controller: App\Controller\NFX35109Controller::NFX35109
 
+adept_NFX35109_activity:
+  path: /NFX35109/activity
+  controller: App\Controller\NFX35109Controller::activity
+
 adept_NFX35109_picture:
   path: /NFX35109/picture
   controller: App\Controller\NFX35109Controller::picture
+
+adept_NFX35109_operator:
+  path: /NFX35109/operator
+  controller: App\Controller\NFX35109Controller::operator
+
+adept_NFX35109_activity_detail:
+  path: /NFX35109/activity/detail
+  controller: App\Controller\NFX35109Controller::activityDetail
+
+adept_NFX35109_manutention_type:
+    path: /NFX35109/handling_type
+    controller: App\Controller\NFX35109Controller::handlingType
+
+adept_NFX35109_handling_without_assistance:
+    path: /NFX35109/handling_without_assistance
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistance
+
+adept_NFX35109_handling_without_assistance_charge_informations:
+    path: /NFX35109/handling_without_assistance/new_charge
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewCharge
+
+adept_NFX35109_handling_without_assistance_execution_constraint:
+    path: /NFX35109/handling_without_assistance/new_charge/execution_constraint
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewChargeConstraint
+
+adept_NFX35109_handling_with_assistance:
+    path: /NFX35109/handling_with_assistance
+    controller: App\Controller\NFX35109Controller::handlingWithAssistance
 
 adept_NFX35109_execution_conditions:
   path: /NFX35109/execution

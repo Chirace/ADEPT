@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div>
+    <div class="fixe_largeur_90">
         <h1>{% trans %}Guide{% endtrans %}</h1>
         <p>Veuillez répondre aux questions suivantes :</p>
         <p> - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</p>
@@ -11,8 +11,8 @@
         </div>
 
         <div class="group_button">
-            <a class="button2" href="{{ path('adept_analyze_choice') }}" >{% trans %}Retour{% endtrans %}</a>
-            <button type="submit" class="button2">Continuer</button>
+            <a class="button3_left" href="{{ path('adept_analyze_choice') }}" >{% trans %}Retour{% endtrans %}</a>
+            <button type="submit" class="button3_right">Continuer</button>
         </div>
     </div>
 {% endblock %}

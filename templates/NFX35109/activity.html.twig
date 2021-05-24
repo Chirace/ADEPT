@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Activité</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <p class="text_margin_right">Nom du secteur :</p>
+                        <input type="text" class="form_control_60" aria-label="Nom secteur" aria-describedby="basic-addon2">
+                        <p class="text_margin_right">Situation de travail :</p>
+                        <input type="text" class="form_control_60" aria-label="Situation de travail" aria-describedby="basic-addon2">
+                        <p class="text_margin_right">Nom de l'activité réalisée :</p>
+                        <input type="text" class="form_control_60" aria-label="Activité réalisée" aria-describedby="basic-addon2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_tool_NFX35109') }}" >Annuler</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_picture') }}" >Continuer</a>
+        </div>
+    </div>
+{% endblock %}

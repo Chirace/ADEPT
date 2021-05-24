@@ -18,3 +18,9 @@ $(document).ready(function() {
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 });
+
+/*let modal_radio_redirection
+if($('#id_bouton_radio').is(':checked'))
+{
+    modal_radio_redirection = 
+}*/

@@ -1,33 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
-
-    <h1 class="h1_margin_top">{% trans %}Bilan d'entreprise{% endtrans %}</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Rechercher..." aria-label="Mot-cle" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">Rechercher</span>
+    <div class="fixe_largeur_90">
+        <h1>{% trans %}Bilan d'entreprise{% endtrans %}</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Rechercher..." aria-label="Mot-cle" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Rechercher</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <p>Sélectionner l'entreprise :</p>
-                <div class="input-group mb-3">
-                    <p class="text_margin_right">Nouvelle entreprise :</p>
-                    <input type="text" class="form-control" aria-label="Nouvelle entreprise" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">Ajouter</span>
+                <hr>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <p>Sélectionner l'entreprise :</p>
+                    <div class="input-group mb-3">
+                        <p class="text_margin_right">Nouvelle entreprise :</p>
+                        <input type="text" class="form-control" aria-label="Nouvelle entreprise" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Ajouter</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+        <div>
+            <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+        </div>
     </div>
 {% endblock %}

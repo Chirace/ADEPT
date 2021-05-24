@@ -11,6 +11,38 @@ class NFX35109Controller extends AbstractController {
     public function NFX35109(){
         return $this->render('NFX35109/home.html.twig');
     }
+    
+    public function activity(){
+        return $this->render('NFX35109/activity.html.twig');
+    }
+
+    public function operator(){
+        return $this->render('NFX35109/operator.html.twig');
+    }
+
+    public function activityDetail(){
+        return $this->render('NFX35109/activityDetail.html.twig');
+    }
+
+    public function handlingType(){
+        return $this->render('NFX35109/handlingType.html.twig');
+    }
+
+    public function handlingWithoutAssistance(){
+        return $this->render('NFX35109/handlingWithoutAssistance.html.twig');
+    }
+
+    public function handlingWithoutAssistanceNewCharge(){
+        return $this->render('NFX35109/handlingWithoutAssistanceChargeInformations.html.twig');
+    }
+    
+    public function handlingWithoutAssistanceNewChargeConstraint(){
+        return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig');
+    }
+
+    public function handlingWithAssistance(){
+        return $this->render('NFX35109/handlingWithAssistance.html.twig');
+    }
 
     public function execution(){
         return $this->render('NFX35109/execution.html.twig');

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Type de manutention</h1>
+            <p class="mauve">À quel type de manutention votre situation correspond t-elle ?</p>
+            <div class="icon_container">
+                <!-- Aperçu du fichier exporté et les icônes MM sans aide à la M et MM avec aide à la M-->
+                <div class="row">
+                    <!--<a href="{{ path('adept_NFX35109_handling_without_assistance') }}">
+                        <img class="icon_navigation" src="/images/icon_MM_sans_aide.png" alt="icon MM sans aide à la manutention" id="icon_handling_without_assistance">
+                    </a>
+                    <a href="{{ path('adept_NFX35109_handling_with_assistance') }}">
+                        <img class="icon_navigation" src="/images/icon_MM_avec_aide.png" alt="icon MM avec aide à la manutention" id="icon_handling_with_assistance">
+                    </a>-->
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_without_assistance') }}">
+                                <img class="card-img-top icon_manutention_type" src="/images/icon_MM_sans_aide2.png" alt="icon MM sans aide à la manutention" id="icon_handling_without_assistance">
+                             </a>
+                            <div class="card-body center">
+                                <p class="p_black">Manutention manuelle de charge sans aide à la manutention.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance') }}">
+                                <img class="card-img-top icon_manutention_type" src="/images/icon_MM_avec_aide2.png" alt="icon MM avec aide à la manutention" id="icon_handling_with_assistance">
+                            </a>
+                            <div class="card-body center">
+                                <p class="p_black">Manutention manuelle de charge avec aide à la manutention.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a class="button2_left text_margin_top" href="{{ path('adept_NFX35109_activity_detail') }}" >Revenir en arrière</a>
+        </div>
+    </div>
+{% endblock %}

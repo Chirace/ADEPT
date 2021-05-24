@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Activité</h1>
+            <div class="container_input">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <h2>Activité :</h2>
+                        <div class="row">
+                            <p class="text_margin_right">Quoi ?</p>
+                            <input type="text" class="form_control_60" aria-label="Quoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Pourquoi ?</p>
+                            <input type="text" class="form_control_60" aria-label="Pourquoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Comment ?</p>
+                            <input type="text" class="form_control_60" aria-label="Comment" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left">
+                        <div class="row">
+                            <p class="text_margin_right">Avec qui ?</p>
+                            <input type="text" class="form_control_60" aria-label="Avec_qui" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Avec quoi ?</p>
+                            <input type="text" class="form_control_60" aria-label="Avec_quoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                        <div class="row">
+                            <p class="text_margin_right">Organisation du travail</p>
+                            <input type="text" class="form_control_60" aria-label="orga_travail" aria-describedby="basic-addon2" placeholder="Préciser...">
+                        </div>
+                    </div>
+                </div>
+                <p class="text_margin_right">Autre :</p>
+                <textarea class="text_area_80" aria-label="Autre"></textarea>
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_operator') }}" >Annuler</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_manutention_type') }}" >Continuer</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Manutention manuelle sans aide à la manutention</h1>
+            <p>Tableau récapitulatif des charges :</p>
+            <table class="table table-striped table-hover table-light">
+                <thead>
+                    <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Masse (kg)</th>
+                    <th scope="col">Hauteur prise (m)</th>
+                    <th scope="col">Profondeur prise (m)</th>
+                    <th scope="col">Distance (m)</th>
+                    <th scope="col">Transport de charge</th>
+                    <th scope="col">Hauteur dépose (m)</th>
+                    <th scope="col">Profondeur dépose (m)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="8"><a class="a_adept" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Ajouter une charge</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type') }}" >Revenir en arrière</a>
+            <a class="button_adept_inactif" href="{{ path('adept_NFX35109_activity_detail') }}" >Fin d'activité</a>
+        </div>
+    </div>
+{% endblock %}
