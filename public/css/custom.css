@@ -349,6 +349,22 @@ form {
     border-radius: 5px;
 }
 
+.form_control_4 {
+    width: 4%;
+    margin-left: 0;
+    margin-right: 0;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.form_control_20 {
+    width: 20%;
+    margin-left: auto;
+    margin-right: 60%;
+    height: 40px;
+    border-radius: 5px;
+}
+
 .form_control_40 {
     width: 40%;
     margin-left: auto;
@@ -406,6 +422,11 @@ form {
     height: 10%;
     display: inline-block;
     margin-right: 2%;
+}
+
+.icon_click {
+    height: 30px;
+    width: auto;
 }
 
 .icon_container {
@@ -583,6 +604,16 @@ p {
 .prise_charge {
     float:right;
     position: relative;
+}
+
+.resume_green {
+    color:black;
+    background-color: green;
+}
+
+.resume_red {
+    color:black;
+    background-color: red;
 }
 
 .return_image {

@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Saisie contraintes d'environnement et d'organisation</h1>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <h5>Conditions d'environnement de la tâche</h5>
+                <div class="row_block">
+                    <select class="custom_select form_control_60 no_margin_right" id="input_environmental">
+                        <option value="1">Contraintes thermiques</option>
+                        <option value="2">Contraintes acoustiques</option>
+                        <option value="3">Contraintes lumineuses</option>
+                        <option value="4">Vibrations</option>
+                        <option value="5">Poussières</option>
+                        <option value="6">Sols dégradés</option>
+                        <option value="7">Encombrement</option>
+                        <option value="8">Obstacles</option>
+                        <option value="9">Manoeuvre impossible</option>
+                        <option value="10">État du chariot</option>
+                    </select>
+                    <button id="button_add_environmental" class="button4 form_control_4" onclick="addEnvironmentalConstraint()">+</button>
+                    <button id="button_remove_environmental" class="button4 form_control_4" onclick="removeEnvironmentalConstraint()">-</button>
+                </div>
+                <p id="environmental_constraint_1">Contraintes thermiques</p>
+                <p id="environmental_constraint_2">Contraintes acoustiques</dpv>
+                <p id="environmental_constraint_3">Contraintes lumineuses</p>
+                <p id="environmental_constraint_4">Vibrations</p>
+                <p id="environmental_constraint_5">Poussières</p>
+                <p id="environmental_constraint_6">Sols dégradés</p>
+                <p id="environmental_constraint_7">Encombrement</p>
+                <p id="environmental_constraint_8">Obstacles</p>
+                <p id="environmental_constraint_9">Manoeuvre impossible</p>
+                <p id="environmental_constraint_10">État du chariot</p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <h5>Conditions d'organisation de la tâche</h5>
+                <div class="row_block">
+                    <select class="custom_select form_control_60 no_margin_right" id="input_organizational">
+                        <option value="1">Contraintes de temps</option>
+                        <option value="2">Marge de manoeuvre réduite</option>
+                        <option value="3">Multiplicité des tâches</option>
+                        <option value="4">Exigences qualité</option>
+                    </select>
+                    <button id="button_add_organizational" class="button4 form_control_4" onclick="addOrganizationalConstraint()">+</button>
+                    <button id="button_remove_organizational" class="button4 form_control_4" onclick="removeOrganizationalConstraint()">-</button>
+                </div>
+                <p id="organizational_constraint_1">Contraintes de temps</p>
+                <p id="organizational_constraint_2">Marge de manoeuvre réduite</dpv>
+                <p id="organizational_constraint_3">Multiplicité des tâches</p>
+                <p id="organizational_constraint_4">Exigences qualité</p>
+            </div>
+        </div>
+        <!-- Ajouter et retirer une contrainte d'environnement ou d'organisation -->
+        <script>
+            document.getElementById("environmental_constraint_1").style.display = 'none';
+            document.getElementById("environmental_constraint_2").style.display = 'none';
+            document.getElementById("environmental_constraint_3").style.display = 'none';
+            document.getElementById("environmental_constraint_4").style.display = 'none';
+            document.getElementById("environmental_constraint_5").style.display = 'none';
+            document.getElementById("environmental_constraint_6").style.display = 'none';
+            document.getElementById("environmental_constraint_7").style.display = 'none';
+            document.getElementById("environmental_constraint_8").style.display = 'none';
+            document.getElementById("environmental_constraint_9").style.display = 'none';
+            document.getElementById("environmental_constraint_10").style.display = 'none';
+
+            document.getElementById("organizational_constraint_1").style.display = 'none';
+            document.getElementById("organizational_constraint_2").style.display = 'none';
+            document.getElementById("organizational_constraint_3").style.display = 'none';
+            document.getElementById("organizational_constraint_4").style.display = 'none';
+
+            function addEnvironmentalConstraint() {
+                /* Ajouter une contrainte d'environnement */
+                var add_select = document.getElementById('input_environmental');
+                var add_choice = add_select.selectedIndex;
+                var add_value = add_select.options[add_choice].value;
+                var add_id = "environmental_constraint_" + add_value;
+
+                document.getElementById(add_id).style.display = 'block';
+            }
+            document.getElementById('button_add_environmental').addEventListener("click", addEnvironmentalConstraint);
+
+            function removeEnvironmentalConstraint() {
+                /* Retirer une contrainte d'environnement */
+                var rem_select = document.getElementById('input_environmental');
+                var rem_choice = rem_select.selectedIndex;
+                var rem_value = rem_select.options[rem_choice].value;
+                var rem_id = "environmental_constraint_" + rem_value;
+
+                document.getElementById(rem_id).style.display = 'none';
+            }
+            document.getElementById('button_remove_environmental').addEventListener("click", removeEnvironmentalConstraint);
+
+            function addOrganizationalConstraint() {
+                /* Ajouter une contrainte d'organisation */
+                var add_select = document.getElementById('input_organizational');
+                var add_choice = add_select.selectedIndex;
+                var add_value = add_select.options[add_choice].value;
+                var add_id = "organizational_constraint_" + add_value;
+
+                document.getElementById(add_id).style.display = 'block';
+            }
+            document.getElementById('button_add_organizational').addEventListener("click", addOrganizationalConstraint);
+
+            function removeOrganizationalConstraint() {
+                /* Retirer une contrainte d'organisation */
+                var rem_select = document.getElementById('input_organizational');
+                var rem_choice = rem_select.selectedIndex;
+                var rem_value = rem_select.options[rem_choice].value;
+                var rem_id = "organizational_constraint_" + rem_value;
+
+                document.getElementById(rem_id).style.display = 'none';
+            }
+            document.getElementById('button_remove_organizational').addEventListener("click", removeOrganizationalConstraint);
+        </script>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence') }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Continuer</a>
+        </div>
+    </div>
+{% endblock %}

@@ -39,6 +39,22 @@ class NFX35109Controller extends AbstractController {
     public function handlingWithoutAssistanceNewChargeConstraint(){
         return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig');
     }
+    
+    public function handlingWithoutAssistanceTonnageFrequency(){
+        return $this->render('NFX35109/handlingWithoutAssistanceTonnageFrequency.html.twig');
+    }
+    
+    public function handlingWithoutAssistanceNewConstraints(){
+        return $this->render('NFX35109/handlingWithoutAssistanceNewConstraints.html.twig');
+    }
+    
+    public function handlingWithoutAssistanceResume(){
+        return $this->render('NFX35109/handlingWithoutAssistanceResume.html.twig');
+    }
+    
+    public function handlingWithoutAssistanceResumeCharge(){
+        return $this->render('NFX35109/handlingWithoutAssistanceResumeCharge.html.twig');
+    }
 
     public function handlingWithAssistance(){
         return $this->render('NFX35109/handlingWithAssistance.html.twig');

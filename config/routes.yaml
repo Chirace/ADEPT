@@ -78,6 +78,24 @@ adept_NFX35109_handling_without_assistance_execution_constraint:
     path: /NFX35109/handling_without_assistance/new_charge/execution_constraint
     controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewChargeConstraint
 
+adept_NFX35109_handling_without_assistance_tonnage_frequence:
+    path: /NFX35109/handling_without_assistance/tonnage_frequency
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceTonnageFrequency
+
+adept_NFX35109_handling_without_assistance_constraints:
+    path: /NFX35109/handling_without_assistance/constraints
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewConstraints
+
+adept_NFX35109_handling_without_assistance_resume:
+    path: /NFX35109/handling_without_assistance/resume
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResume
+
+#Résumé de la charge dans une activité de manutention manuelle sans aide à la manutention.
+#Ajouter l'id de la charge par la suite.
+adept_NFX35109_handling_without_assistance_resume_charge:
+    path: /NFX35109/handling_without_assistance/resume/charge
+    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResumeCharge
+
 adept_NFX35109_handling_with_assistance:
     path: /NFX35109/handling_with_assistance
     controller: App\Controller\NFX35109Controller::handlingWithAssistance

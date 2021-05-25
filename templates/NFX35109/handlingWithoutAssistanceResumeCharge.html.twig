@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Résumé de la charge</h1>
+
+            <hr>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <h5>Les conditions favorables</h5>
+                    <table class="table table-striped table-hover table-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">Intitulé</th>
+                                <th scope="col">Valeur</th>
+                                <th scope="col">Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col">Poids de la charge</th>
+                                <th scope="col">10 kg</th>
+                                <th scope="col" class="resume_green">Le poids de la charge est acceptable</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Transport de la charge</th>
+                                <th scope="col">2 m</th>
+                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Profondeur de prise</th>
+                                <th scope="col">0,4 m</th>
+                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Profondeur de dépose</th>
+                                <th scope="col">0,4 m</th>
+                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Contraintes d'exécution</th>
+                                <th scope="col">0</th>
+                                <th scope="col" class="resume_green">Aucune contrainte d'exécution de la tâche</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Contraintes d'environnement</th>
+                                <th scope="col">0</th>
+                                <th scope="col" class="resume_green">Aucune contrainte d'environnement de la tâche</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Contraintes d'organisation</th>
+                                <th scope="col">0</th>
+                                <th scope="col" class="resume_green">Aucune contrainte d'organisation de la tâche</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <h5>Les points à améliorer</h5>
+                    <table class="table table-striped table-hover table-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">Intitulé</th>
+                                <th scope="col">Valeur</th>
+                                <th scope="col">Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col">Hauteur de prise</th>
+                                <th scope="col">1,20 m</th>
+                                <th scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Hauteur de dépose</th>
+                                <th scope="col">0,65 m</th>
+                                <th scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Les facteurs qui vous pénalisent le plus sont :</p>
+                    <p class="mauve"> - Hauteur de prise</p>
+                    <p class="mauve"> - Hauteur de dépose</p>
+                </div>
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Modifier</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Supprimer</a>
+        </div>
+    </div>
+{% endblock %}

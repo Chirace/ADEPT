@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_900">
-        <!--<div>
-            <a class="button" href="{{ path('adept_NFX35109_picture') }}" >NF X35-109</a>
-        </div>-->
-
         <!-- Button trigger modal -->
         <div>
             <button type="button" class="button" data-toggle="modal" data-target="#exampleModalCenter">NF X35-109</button>
@@ -16,9 +12,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title h_dark" id="exampleModalLongTitle">Avant NF X35-109</h5>
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>-->
                     </div>
                     <div class="modal-body">
                         <h5 class="h_dark">Veuillez cocher la case qui correspond à votre situation :</h5>
@@ -30,18 +23,37 @@
                         <div class="modal_radio_container">
                             <input type="radio" id="new_NFX35109" class="modal_radio" name="ask4_ED6161" value="new_NFX35109">
                             <label class="modal_label" for="new_NFX35109">Vous souhaitez utiliser directement NF X35-109</label>
-                            <!--<label class="modal_label" for="new_NFX35109">Vous souhaitez utiliser directement NF X35-109 sans hiérarchiser les situations de travail par l'intermédiaire de l'ED6161</label>-->
                         </div>
                         <div class="modal_radio_container">
                             <input type="radio" id="load_ED6161" class="modal_radio" name="ask4_ED6161" value="load_ED6161">
                             <label class="modal_label" for="load_ED6161">Vous souhaitez reprendre les différentes situations déjà hiérarchisées avec l'ED6161</label>
                         </div>
                     </div>
-                    
+
+                    <script>
+                        function ModifyConfirmLink(){
+                            /* On mofidie le lien du bouton valider en fonction de la case cochée */
+                            if (document.getElementById('new_ED6161').checked) {
+                                /*document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109') }}";*/
+                            } else {
+                                if (document.getElementById('new_NFX35109').checked) {
+                                    document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109') }}";
+                                } else {
+                                    if (document.getElementById('load_ED6161').checked) {
+                                        /*document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109') }}";*/
+                                    }
+                                }
+                            }
+                        }
+
+                        document.getElementById('new_ED6161').addEventListener('change', ModifyConfirmLink);
+                        document.getElementById('new_NFX35109').addEventListener('change', ModifyConfirmLink);
+                        document.getElementById('load_ED6161').addEventListener('change', ModifyConfirmLink);
+                    </script>
+
                     <div class="modal-footer group_button">
                         <button type="button" class="modal_button" data-dismiss="modal">Annuler</button>
-                        <!--<button type="button" class="modal_button">Valider</button>-->
-                        <a class="button_adept" href="{{ path('adept_tool_NFX35109') }}" >Valider</a>
+                        <a class="button_adept" id="button_confirm_choice" href="{{ path('adept_ergonomics_tools_list') }}" >Valider</a>
                     </div>
                 </div>
             </div>

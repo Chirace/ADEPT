@@ -18,20 +18,38 @@
                                 <option value="2">Féminin</option>
                             </select>
                         </div>
-                        <div class="row">
+                        <div class="row" id="row_enceinte">
                             <p class="text_margin_right">Enceinte :</p>
                             <div class="switch">
-                                <input type="checkbox" id="check_enceinte">
+                                <input type="checkbox" id="check_enceinte" value="enceinte">
                                 <label for="check_enceinte" data-off="Non" data-on="Oui"></label>
                             </div>
                         </div>
-                        <script> 
+                        <script>
+                            document.getElementById("row_enceinte").style.display = "none";
+
                             function AlertePregnant(){
-                                if (this.value === 'Oui'){
-                                    alert("La femme est enceinte !");
+                                /* Si c'est une femme et qu'elle est enceinte */
+                                if (document.getElementById('input_sexe').value === '2'){
+                                    if (document.getElementById('check_enceinte').checked) {
+                                        alert("Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !");
+                                    }
                                 }
                             }
-                            document.getElementById('check_enceinte').addEventListener('change', AlerteWoman);
+
+                            document.getElementById('check_enceinte').addEventListener('change', AlertePregnant);
+
+                            function displayEnceinte(){
+                                if (document.getElementById('input_sexe').value === '2'){
+                                    /* Afficher la checkbox enceinte */
+                                    document.getElementById('row_enceinte').style.display = 'block';
+                                } else {
+                                    /* Masquer la checkbox enceinte */
+                                    document.getElementById('row_enceinte').style.display = 'none';
+                                    document.getElementById('check_enceinte').checked = false;
+                                }
+                            }
+                            document.getElementById('input_sexe').addEventListener('change', displayEnceinte);
                         </script>
                         <!--<script> 
                             function AlerteWoman(){

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <h1>NF X35-109 - Bilan de la Manutention Manuelle sans aide à la manutention</h1>
+            <hr>
+            <table class="table table-striped table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">N°</th>
+                        <th scope="col">Masse (kg)</th>
+                        <th scope="col">Coefficient 1</th>
+                        <th scope="col">Coefficient 2</th>
+                        <th scope="col">Masse corrigée (en kg)</th>
+                        <th scope="col">Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- <td colspan="8"></td> -->
+                        <th scope="col">1</th>
+                        <th scope="col">12</th>
+                        <th scope="col">Distance Déplacement : 0.8</th>
+                        <th scope="col">1</th>
+                        <th scope="col">12.0</th>
+                        <th scope="col">
+                            <a href="{{ path('adept_NFX35109_handling_without_assistance_resume_charge') }}">
+                                <img src="/images/icon_loupe.png" class="icon_click" alt="icon loupe" id="icon_loupe_1">
+                            </a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_constraints') }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_menu') }}" >Retour au menu principal</a>
+        </div>
+    </div>
+{% endblock %}
