@@ -23,44 +23,9 @@ class EvaluationNFX
     private $date_evaluation;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
-    private $poids_charge;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prise_hauteur;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prise_profondeur;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $depose_hauteur;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $depose_profondeur;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $force_initiale;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $force_maintien;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $distance_transport_charge;
+    private $type_manutention;
 
     /**
      * @ORM\Column(type="float")
@@ -73,29 +38,19 @@ class EvaluationNFX
     private $tonnage;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $transport_charge;
-
-    /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $frequence_charge;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $PT_action;
+    private $contraintes_environnement;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $PT_distance;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $PT_hauteur_poignee;
+    private $contraintes_organisation;
 
     public function getId(): ?int
     {
@@ -114,98 +69,14 @@ class EvaluationNFX
         return $this;
     }
 
-    public function getPoidsCharge(): ?float
+    public function getTypeManutention(): ?string
     {
-        return $this->poids_charge;
+        return $this->type_manutention;
     }
 
-    public function setPoidsCharge(float $poids_charge): self
+    public function setTypeManutention(string $type_manutention): self
     {
-        $this->poids_charge = $poids_charge;
-
-        return $this;
-    }
-
-    public function getPriseHauteur(): ?float
-    {
-        return $this->prise_hauteur;
-    }
-
-    public function setPriseHauteur(float $prise_hauteur): self
-    {
-        $this->prise_hauteur = $prise_hauteur;
-
-        return $this;
-    }
-
-    public function getPriseProfondeur(): ?float
-    {
-        return $this->prise_profondeur;
-    }
-
-    public function setPriseProfondeur(float $prise_profondeur): self
-    {
-        $this->prise_profondeur = $prise_profondeur;
-
-        return $this;
-    }
-
-    public function getDeposeHauteur(): ?float
-    {
-        return $this->depose_hauteur;
-    }
-
-    public function setDeposeHauteur(float $depose_hauteur): self
-    {
-        $this->depose_hauteur = $depose_hauteur;
-
-        return $this;
-    }
-
-    public function getDeposeProfondeur(): ?float
-    {
-        return $this->depose_profondeur;
-    }
-
-    public function setDeposeProfondeur(float $depose_profondeur): self
-    {
-        $this->depose_profondeur = $depose_profondeur;
-
-        return $this;
-    }
-
-    public function getForceInitiale(): ?float
-    {
-        return $this->force_initiale;
-    }
-
-    public function setForceInitiale(float $force_initiale): self
-    {
-        $this->force_initiale = $force_initiale;
-
-        return $this;
-    }
-
-    public function getForceMaintien(): ?float
-    {
-        return $this->force_maintien;
-    }
-
-    public function setForceMaintien(?float $force_maintien): self
-    {
-        $this->force_maintien = $force_maintien;
-
-        return $this;
-    }
-
-    public function getDistanceTransportCharge(): ?float
-    {
-        return $this->distance_transport_charge;
-    }
-
-    public function setDistanceTransportCharge(float $distance_transport_charge): self
-    {
-        $this->distance_transport_charge = $distance_transport_charge;
+        $this->type_manutention = $type_manutention;
 
         return $this;
     }
@@ -234,18 +105,6 @@ class EvaluationNFX
         return $this;
     }
 
-    public function getTransportCharge(): ?string
-    {
-        return $this->transport_charge;
-    }
-
-    public function setTransportCharge(string $transport_charge): self
-    {
-        $this->transport_charge = $transport_charge;
-
-        return $this;
-    }
-
     public function getFrequenceCharge(): ?float
     {
         return $this->frequence_charge;
@@ -258,38 +117,26 @@ class EvaluationNFX
         return $this;
     }
 
-    public function getPTAction(): ?string
+    public function getContraintesEnvironnement(): ?string
     {
-        return $this->PT_action;
+        return $this->contraintes_environnement;
     }
 
-    public function setPTAction(?string $PT_action): self
+    public function setContraintesEnvironnement(string $contraintes_environnement): self
     {
-        $this->PT_action = $PT_action;
+        $this->contraintes_environnement = $contraintes_environnement;
 
         return $this;
     }
 
-    public function getPTDistance(): ?float
+    public function getContraintesOrganisation(): ?string
     {
-        return $this->PT_distance;
+        return $this->contraintes_organisation;
     }
 
-    public function setPTDistance(?float $PT_distance): self
+    public function setContraintesOrganisation(string $contraintes_organisation): self
     {
-        $this->PT_distance = $PT_distance;
-
-        return $this;
-    }
-
-    public function getPTHauteurPoignee(): ?float
-    {
-        return $this->PT_hauteur_poignee;
-    }
-
-    public function setPTHauteurPoignee(?float $PT_hauteur_poignee): self
-    {
-        $this->PT_hauteur_poignee = $PT_hauteur_poignee;
+        $this->contraintes_organisation = $contraintes_organisation;
 
         return $this;
     }

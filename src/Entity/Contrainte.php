@@ -22,6 +22,12 @@ class Contrainte
      */
     private $intitule;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieContrainte::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie_contrainte;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Contrainte
     public function setIntitule(string $intitule): self
     {
         $this->intitule = $intitule;
+
+        return $this;
+    }
+
+    public function getCategorieContrainte(): ?CategorieContrainte
+    {
+        return $this->categorie_contrainte;
+    }
+
+    public function setCategorieContrainte(?CategorieContrainte $categorie_contrainte): self
+    {
+        $this->categorie_contrainte = $categorie_contrainte;
 
         return $this;
     }
