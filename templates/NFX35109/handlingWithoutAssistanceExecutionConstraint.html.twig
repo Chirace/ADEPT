@@ -8,9 +8,8 @@
 
             
             <h3 class="h_margin_bottom">Conditions d'exécution de la tâche</h3>
-                
-            
-            <div class="row_block">
+
+            <!-- <div class="row_block">
                 <select class="custom_select form_control_40 no_margin_right" id="input_contraintes" name="select_contraintes">
                     <option value="1">Sans poignées ou inadaptées</option>
                     <option value="2">Torsion du tronc</option>
@@ -24,7 +23,29 @@
                 </select>
                 <button id="button_add" class="button4 form_control_2" onclick="addConstraint()">+</button>
                 <button id="button_remove" class="button4 form_control_2" onclick="removeConstraint()">-</button>
+            </div> -->
+            
+
+            <div class="row_block">
+                <select class="custom_select form_control_40 no_margin_right" id="input_contraintes" name="select_contraintes">
+                    {% for contrainte in listeContraintes %}
+                        <option value={{ contrainte.id }}>{{ contrainte.intitule }}</option>
+                    {% endfor %}
+                    <!--<option value="1">Sans poignées ou inadaptées</option>
+                    <option value="2">Torsion du tronc</option>
+                    <option value="3">Profondeur de prise > 0,40 m</option>
+                    <option value="4">Hors zone d'atteinte</option>
+                    <option value="5">Posture/position du corps</option>
+                    <option value="6">Charge instable</option>
+                    <option value="7">Visibilité limitée</option>
+                    <option value="8">Roulettes inadéquates</option>
+                    <option value="9">Absence de frein</option>-->
+                </select>
+                <button id="button_add" class="button4 form_control_2" onclick="addConstraint()">+</button>
+                <button id="button_remove" class="button4 form_control_2" onclick="removeConstraint()">-</button>
             </div>
+
+
             <p id="constraint_1">Sans poignées ou inadaptées</p>
             <p id="constraint_2">Torsion du tronc</dpv>
             <p id="constraint_3">Profondeur de prise sup 0,40 m</p>

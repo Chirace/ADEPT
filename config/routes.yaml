@@ -76,7 +76,8 @@ adept_NFX35109_handling_without_assistance_charge_informations:
 
 adept_NFX35109_handling_without_assistance_execution_constraint:
     path: /NFX35109/handling_without_assistance/new_charge/execution_constraint
-    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewChargeConstraint
+    #controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewChargeConstraint
+    controller: App\Controller\NFX35109Controller::listerContraintesExecution
 
 adept_NFX35109_handling_without_assistance_tonnage_frequence:
     path: /NFX35109/handling_without_assistance/tonnage_frequency
@@ -84,7 +85,8 @@ adept_NFX35109_handling_without_assistance_tonnage_frequence:
 
 adept_NFX35109_handling_without_assistance_constraints:
     path: /NFX35109/handling_without_assistance/constraints
-    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewConstraints
+    #controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewConstraints
+    controller: App\Controller\NFX35109Controller::listerContraintes
 
 adept_NFX35109_handling_without_assistance_resume:
     path: /NFX35109/handling_without_assistance/resume

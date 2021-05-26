@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Fichier;
 use App\Form\FichierType;
+use App\Entity\Contrainte;
+use App\Form\ContrainteExecutionType;
 
 class NFX35109Controller extends AbstractController {
 
@@ -74,6 +76,54 @@ class NFX35109Controller extends AbstractController {
 
     public function results(){
         return $this->render('NFX35109/results.html.twig');
+    }
+
+    public function listerContraintesExecution2(Request $request) {
+        $contrainteExecution = new Contrainte();
+        $form = $this->createForm(ContrainteExecutionType::class, $contrainteExecution);
+
+        $form->handleRequest($request);
+        /*if ($form->isValid()) {
+            return $this->redirectToRoute('adept_NFX35109_handling_without_assistance_execution_constraint');
+        }*/
+
+        return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function listerContraintesExecution(Request $request) {
+        $listeContraintes = $this->getDoctrine()
+                   ->getRepository(Contrainte::Class);
+        
+        $listeContraintesExecution = $listeContraintes->findBy(array('categorie_contrainte' => '1'),
+                                                            null,
+                                                            null,
+                                                            null);
+
+        return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig', array(
+            'listeContraintes' => $listeContraintesExecution
+        ));
+    }
+
+    public function listerContraintes(Request $request) {
+        $listeContraintes = $this->getDoctrine()
+                   ->getRepository(Contrainte::Class);
+        
+        $listeContraintesEnvironnement = $listeContraintes->findBy(array('categorie_contrainte' => '2'),
+                                                            null,
+                                                            null,
+                                                            null);
+        
+        $listeContraintesOrganisation = $listeContraintes->findBy(array('categorie_contrainte' => '3'),
+                                                            null,
+                                                            null,
+                                                            null);
+
+        return $this->render('NFX35109/handlingWithoutAssistanceNewConstraints.html.twig', array(
+            'listeContraintesEnvironnement' => $listeContraintesEnvironnement,
+            'listeContraintesOrganisation' => $listeContraintesOrganisation
+        ));
     }
 
     public function picture(Request $request){
