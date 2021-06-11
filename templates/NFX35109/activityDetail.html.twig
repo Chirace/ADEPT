@@ -1,47 +1,63 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
+    {{ form_start(form) }}
         <div>
             <h1>Manutention Manuelle de charge - Situation</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                         <h2>Situation :</h2>
+                        <div class="row" id="situation_nom">
+                            <p class="text_margin_right">Nom</p>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                        </div>
                         <div class="row">
                             <p class="text_margin_right">Quoi ?</p>
-                            <input type="text" class="form_control_60" aria-label="Quoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.quoi, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="Quoi" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Pourquoi ?</p>
-                            <input type="text" class="form_control_60" aria-label="Pourquoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.pourquoi, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="Pourquoi" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Comment ?</p>
-                            <input type="text" class="form_control_60" aria-label="Comment" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.comment, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="Comment" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left">
                         <div class="row">
                             <p class="text_margin_right">Avec qui ?</p>
-                            <input type="text" class="form_control_60" aria-label="Avec_qui" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.avec_qui, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="Avec_qui" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Avec quoi ?</p>
-                            <input type="text" class="form_control_60" aria-label="Avec_quoi" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.avec_quoi, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="Avec_quoi" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Organisation du travail</p>
-                            <input type="text" class="form_control_60" aria-label="orga_travail" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            {{ form_widget(form.organisation_travail, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
+                            <!--<input type="text" class="form_control_60" aria-label="orga_travail" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                     </div>
                 </div>
                 <p class="text_margin_right">Autre :</p>
-                <textarea class="text_area_80" aria-label="Autre"></textarea>
+                {{ form_widget(form.autre, {'attr': {'class': 'text_area_80'}} ) }}
+                <!--<textarea class="text_area_80" aria-label="Autre"></textarea>-->
             </div>
         </div>
+        <script>
+            document.getElementById("situation_nom").style.display = "none";
+        </script>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Annuler</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}" >Annuler</a>
+            <button type="submit" class="button3_right" >Continuer</button>
         </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}

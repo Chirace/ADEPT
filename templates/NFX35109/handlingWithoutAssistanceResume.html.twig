@@ -16,24 +16,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for charge in charges %}
                     <tr>
-                        <!-- <td colspan="8"></td> -->
-                        <th scope="col">1</th>
-                        <th scope="col">12</th>
-                        <th scope="col">Distance Déplacement : 0.8</th>
-                        <th scope="col">1</th>
-                        <th scope="col">12.0</th>
-                        <th scope="col">
-                            <a href="{{ path('adept_NFX35109_handling_without_assistance_resume_charge') }}">
+                        <th scope="row"></th>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        <td scope="col">
+                            <a href="{{ path('adept_NFX35109_handling_without_assistance_resume_charge',  { 'id': idEvaluation, 'id2': charge.id }) }}">
                                 <img src="/images/icon_loupe.png" class="icon_click" alt="icon loupe" id="icon_loupe_1">
                             </a>
-                        </th>
+                        </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_constraints') }}" >Revenir en arrière</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_constraints',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
             <a class="button3_right" href="{{ path('adept_menu') }}" >Retour au menu principal</a>
         </div>
     </div>

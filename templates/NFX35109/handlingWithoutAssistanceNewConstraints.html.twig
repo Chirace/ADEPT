@@ -122,8 +122,8 @@
             document.getElementById('button_remove_organizational').addEventListener("click", removeOrganizationalConstraint);
         </script>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence') }}" >Revenir en arrière</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume',  { 'id': idEvaluation }) }}" >Continuer</a>
         </div>
     </div>
 {% endblock %}

@@ -17,40 +17,50 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="col">Poids de la charge</th>
-                                <th scope="col">10 kg</th>
-                                <th scope="col" class="resume_green">Le poids de la charge est acceptable</th>
+                            <tr id="positif_poids" colspan="3">
+                                <td>Poids de la charge</td>
+                                <td>{{ charge.poidsCharge }} kg</td>
+                                <td class="resume_green">Le poids de la charge est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Transport de la charge</th>
-                                <th scope="col">2 m</th>
-                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            <tr id="positif_distance">
+                                <td scope="col">Transport de la charge</td>
+                                <td scope="col">{{ charge.distanceTransportCharge }} m</td>
+                                <td scope="col" class="resume_green">La distance est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Profondeur de prise</th>
-                                <th scope="col">0,4 m</th>
-                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            <tr id="positif_hauteur_prise">
+                                <td scope="col">Hauteur de prise</td>
+                                <td scope="col">{{ charge.priseHauteur }} m</td>
+                                <td scope="col" class="resume_green">La hauteur est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Profondeur de dépose</th>
-                                <th scope="col">0,4 m</th>
-                                <th scope="col" class="resume_green">La distance est acceptable</th>
+                            <tr id="positif_profondeur_prise">
+                                <td scope="col">Profondeur de prise</td>
+                                <td scope="col">{{ charge.priseProfondeur }} m</td>
+                                <td scope="col" class="resume_green">La distance est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Contraintes d'exécution</th>
-                                <th scope="col">0</th>
-                                <th scope="col" class="resume_green">Aucune contrainte d'exécution de la tâche</th>
+                            <tr id="positif_hauteur_depose">
+                                <td scope="col">Hauteur de dépose</td>
+                                <td scope="col">{{ charge.deposeHauteur }} m</td>
+                                <td scope="col" class="resume_green">La hauteur est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Contraintes d'environnement</th>
-                                <th scope="col">0</th>
-                                <th scope="col" class="resume_green">Aucune contrainte d'environnement de la tâche</th>
+                            <tr id="positif_profondeur_depose">
+                                <td scope="col">Profondeur de dépose</td>
+                                <td scope="col">{{ charge.deposeProfondeur }} m</td>
+                                <td scope="col" class="resume_green">La distance est acceptable</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Contraintes d'organisation</th>
-                                <th scope="col">0</th>
-                                <th scope="col" class="resume_green">Aucune contrainte d'organisation de la tâche</th>
+                            <tr id="positif_contraintes_execution">
+                                <td scope="col">Contraintes d'exécution</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_green">Aucune contrainte d'exécution de la tâche</td>
+                            </tr>
+                            <tr id="positif_contraintes_environnement">
+                                <td scope="col">Contraintes d'environnement</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_green">Aucune contrainte d'environnement de la tâche</td>
+                            </tr>
+                            <tr id="positif_contraintes_organisation">
+                                <td scope="col">Contraintes d'organisation</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_green">Aucune contrainte d'organisation de la tâche</td>
                             </tr>
                         </tbody>
                     </table>
@@ -66,28 +76,125 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="col">Hauteur de prise</th>
-                                <th scope="col">1,20 m</th>
-                                <th scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</th>
+                            <tr id="negatif_poids">
+                                <td scope="col">Poids de la charge</td>
+                                <td scope="col">{{ charge.poidsCharge }} kg</td>
+                                <td scope="col" class="resume_red">Le poids de la charge n'est pas acceptable, elle devrait être inférieur à ..kg.</td>
                             </tr>
-                            <tr>
-                                <th scope="col">Hauteur de dépose</th>
-                                <th scope="col">0,65 m</th>
-                                <th scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</th>
+                            <tr id="negatif_distance">
+                                <td scope="col">Transport de la charge</td>
+                                <td scope="col">{{ charge.distanceTransportCharge }} m</td>
+                                <td scope="col" class="resume_red">La distance n'est pas acceptable, elle devrait être inférieur à 10m.</td>
+                            </tr>
+                            <tr id="negatif_hauteur_prise">
+                                <td scope="col">Hauteur de prise</td>
+                                <td scope="col">{{ charge.priseHauteur }}</td>
+                                <td scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</td>
+                            </tr>
+                            <tr id="negatif_profondeur_prise">
+                                <td scope="col">Profondeur de prise</td>
+                                <td scope="col">{{ charge.priseProfondeur }} m</td>
+                                <td scope="col" class="resume_red">La distance n'est acceptable, elle devrait être inférieure à 0,40 cm.</td>
+                            </tr>
+                            <tr id="negatif_hauteur_depose">
+                                <td scope="col">Hauteur de dépose</td>
+                                <td scope="col">{{ charge.deposeHauteur }}</td>
+                                <td scope="col" class="resume_red">La hauteur n'est pas acceptable, il faudrait qu'elle soit comprise entre 0,75m et 1,10m.</td>
+                            </tr>
+                            <tr id="negatif_profondeur_depose">
+                                <td scope="col">Profondeur de dépose</td>
+                                <td scope="col">{{ charge.deposeProfondeur }} m</td>
+                                <td scope="col" class="resume_red">La distance n'est acceptable, elle devrait être inférieure à 0,40 cm.</td>
+                            </tr>
+                            <tr id="negatif_contraintes_execution">
+                                <td scope="col">Contraintes d'exécution</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_red">Les contraintes d'exécution de la tâche sont nombreuses</td>
+                            </tr>
+                            <tr id="negatif_contraintes_environnement">
+                                <td scope="col">Contraintes d'environnement</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_red">Les contraintes d'environnement de la tâche sont nombreuses</td>
+                            </tr>
+                            <tr id="negatif_contraintes_organisation">
+                                <td scope="col">Contraintes d'organisation</td>
+                                <td scope="col">0</td>
+                                <td scope="col" class="resume_red">Les contraintes d'organisation de la tâche sont nombreuses</td>
                             </tr>
                         </tbody>
                     </table>
-                    <p>Les facteurs qui vous pénalisent le plus sont :</p>
-                    <p class="mauve"> - Hauteur de prise</p>
-                    <p class="mauve"> - Hauteur de dépose</p>
+                    <p id="texte_penalisant">Les facteurs qui vous pénalisent le plus sont :</p>
+                    <p class="mauve" id="texte_hauteur_prise"> - Hauteur de prise</p>
+                    <p class="mauve" id="texte_hauteur_depose"> - Hauteur de dépose</p>
                 </div>
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Revenir en arrière</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Modifier</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume') }}" >Supprimer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_resume',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluation }) }}" >Modifier</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume',  { 'id': idEvaluation }) }}" >Supprimer</a>
         </div>
+
+        <script>
+            document.getElementById("positif_poids").style.display = "none";
+            document.getElementById("positif_distance").style.display = "none";
+            document.getElementById("positif_hauteur_prise").style.display = "none";
+            document.getElementById("positif_profondeur_prise").style.display = "none";
+            document.getElementById("positif_hauteur_depose").style.display = "none";
+            document.getElementById("positif_profondeur_depose").style.display = "none";
+            document.getElementById("positif_contraintes_execution").style.display = "none";
+            document.getElementById("positif_contraintes_environnement").style.display = "none";
+            document.getElementById("positif_contraintes_organisation").style.display = "none";
+
+            document.getElementById("negatif_poids").style.display = "none";
+            document.getElementById("negatif_distance").style.display = "none";
+            document.getElementById("negatif_hauteur_prise").style.display = "none";
+            document.getElementById("negatif_profondeur_prise").style.display = "none";
+            document.getElementById("negatif_hauteur_depose").style.display = "none";
+            document.getElementById("negatif_profondeur_depose").style.display = "none";
+            document.getElementById("negatif_contraintes_execution").style.display = "none";
+            document.getElementById("negatif_contraintes_environnement").style.display = "none";
+            document.getElementById("negatif_contraintes_organisation").style.display = "none";
+
+            document.getElementById("texte_penalisant").style.display = "none";
+            document.getElementById("texte_hauteur_prise").style.display = "none";
+            document.getElementById("texte_hauteur_depose").style.display = "none";
+
+            if({{ charge.poidsCharge }} <= 15){
+                document.getElementById("positif_poids").style.display = "block";
+            } else {
+                document.getElementById("negatif_poids").style.display = "block";
+            }
+
+            if({{ charge.distanceTransportCharge }} <= 10){
+                document.getElementById("positif_distance").style.display = "block";
+            } else {
+                document.getElementById("negatif_distance").style.display = "block";
+            }
+
+            if({{ charge.priseHauteur }} <= 1.1){
+                document.getElementById("positif_hauteur_prise").style.display = "block";
+            } else {
+                document.getElementById("negatif_hauteur_prise").style.display = "block";
+            }
+
+            if({{ charge.priseProfondeur }} <= 0.4){
+                document.getElementById("positif_profondeur_prise").style.display = "block";
+            } else {
+                document.getElementById("negatif_profondeur_prise").style.display = "block";
+            }
+
+            if({{ charge.deposeHauteur }} <= 1.1){
+                document.getElementById("positif_hauteur_depose").style.display = "block";
+            } else {
+                document.getElementById("negatif_hauteur_depose").style.display = "block";
+            }
+
+            if({{ charge.deposeProfondeur }} <= 0.4){
+                document.getElementById("positif_profondeur_depose").style.display = "block";
+            } else {
+                document.getElementById("negatif_profondeur_depose").style.display = "block";
+            }
+        </script>
     </div>
 {% endblock %}

@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                         <div class="card" style="width: 18rem;">
-                            <a class="center" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluation }) }}">
                                 <img class="card-img-top icon_manutention_type" src="/images/icon_MM_sans_aide2.png" alt="icon MM sans aide à la manutention" id="icon_handling_without_assistance">
                              </a>
                             <div class="card-body center">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                         <div class="card" style="width: 18rem;">
-                            <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">
                                 <img class="card-img-top icon_manutention_type" src="/images/icon_MM_avec_aide2.png" alt="icon MM avec aide à la manutention" id="icon_handling_with_assistance">
                             </a>
                             <div class="card-body center">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div>
-            <a class="button2_left text_margin_top" href="{{ path('adept_NFX35109_activity_detail',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Revenir en arrière</a>
+            <a class="button2_left text_margin_top" href="{{ path('adept_NFX35109_activity_detail',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
         </div>
     </div>
 {% endblock %}

@@ -20,8 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{ for charge in charges }}
+                    {% for charge in charges %}
                     <tr>
+                        <th scope="row"></th>
                         <td>
                             {{ charge.poidsCharge }}
                         </td>
@@ -47,18 +48,18 @@
                             {{ charge.nombreChargeIdentique }}
                         </td>
                     </tr>
-                    {{ endfor }}
+                    {% endfor %}
                     <tr>
                         <td colspan="10">
-                            <a class="a_adept" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Ajouter une charge</a>
+                            <a class="a_adept" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluation }) }}" >Ajouter une charge</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Revenir en arrière</a>
-            <a class="button_adept_inactif" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button_adept_inactif" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Continuer</a>
         </div>
     </div>
 {% endblock %}

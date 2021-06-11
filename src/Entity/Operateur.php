@@ -33,9 +33,9 @@ class Operateur
     private $Flag_Enceinte;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=10)
      */
-    private $Flag_Droitier;
+    private $lateralite;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -98,14 +98,14 @@ class Operateur
         return $this;
     }
 
-    public function getFlagDroitier(): ?string
+    public function getLateralite(): ?string
     {
-        return $this->Flag_Droitier;
+        return $this->lateralite;
     }
 
-    public function setFlagDroitier(string $Flag_Droitier): self
+    public function setLateralite(string $lateralite): self
     {
-        $this->Flag_Droitier = $Flag_Droitier;
+        $this->lateralite = $lateralite;
 
         return $this;
     }

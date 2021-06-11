@@ -16,19 +16,19 @@ class OperateurType extends AbstractType
     {
         $builder
             ->add('age')
-            /*->add('sexe', ChoiceType::class, array(
+            ->add('sexe', ChoiceType::class, array(
                 'choices'  => array(
                     'Masculin' => 'Masculin', 
                     'Feminin' => 'Feminin'
                 ),
-            ))*/
+            ))
             /*->add('Flag_Enceinte', ChoiceType::class, array(
                 'choices'  => array(
                     'Oui' => 'Oui', 
                     'Non' => 'Non'
                 ),
             ))*/
-            ->add('Flag_Droitier', ChoiceType::class, array(
+            ->add('lateralite', ChoiceType::class, array(
                 'choices'  => array(
                     'Droitier' => 'Droitier', 
                     'Gaucher' => 'Gaucher'

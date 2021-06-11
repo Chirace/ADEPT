@@ -62,81 +62,94 @@ adept_NFX35109_activity:
     id:  \d+
 
 adept_NFX35109_picture:
-  path: /NFX35109/picture/{id}/{id2}
+  path: /NFX35109/picture/{id}
+  #path: /NFX35109/picture/{id}/{id2}
   controller: App\Controller\NFX35109Controller::picture
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_operator:
-  path: /NFX35109/operator/{id}/{id2}
+  path: /NFX35109/operator/{id}
+  #path: /NFX35109/operator/{id}/{id2}
   #controller: App\Controller\NFX35109Controller::operator
   controller: App\Controller\NFX35109Controller::nouvelOperateur
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_activity_detail:
-  path: /NFX35109/activity/detail/{id}/{id2}
+  path: /NFX35109/activity/detail/{id}
+  #path: /NFX35109/activity/detail/{id}/{id2}
   controller: App\Controller\NFX35109Controller::activityDetail
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_manutention_type:
-  path: /NFX35109/handling_type/{id}/{id2}
+  path: /NFX35109/handling_type/{id}
+  #path: /NFX35109/handling_type/{id}/{id2}
   controller: App\Controller\NFX35109Controller::handlingType
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_handling_without_assistance:
-  path: /NFX35109/handling_without_assistance/{id}/{id2}
+  path: /NFX35109/handling_without_assistance/{id}
+  #path: /NFX35109/handling_without_assistance/{id}/{id2}
   controller: App\Controller\NFX35109Controller::handlingWithoutAssistance
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_handling_without_assistance_charge_informations:
-  path: /NFX35109/handling_without_assistance/new_charge/{id}/{id2}
+  path: /NFX35109/handling_without_assistance/new_charge/{id}
+  #path: /NFX35109/handling_without_assistance/new_charge/{id}/{id2}
   controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewCharge
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_handling_without_assistance_execution_constraint:
-  path: /NFX35109/handling_without_assistance/new_charge/execution_constraint/{id}/{id2}/{id3}
+  path: /NFX35109/handling_without_assistance/new_charge/execution_constraint/{id}/{id2}
+  #path: /NFX35109/handling_without_assistance/new_charge/execution_constraint/{id}/{id2}/{id3}
   #controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewChargeConstraint
   controller: App\Controller\NFX35109Controller::listerContraintesExecution
   requirements:
     id:  \d+
     id2: \d+
-    id3: \d+
+    #id3: \d+
 
 adept_NFX35109_handling_without_assistance_tonnage_frequence:
-  path: /NFX35109/handling_without_assistance/tonnage_frequency/{id}/{id2}
+  path: /NFX35109/handling_without_assistance/tonnage_frequency/{id}
+  #path: /NFX35109/handling_without_assistance/tonnage_frequency/{id}/{id2}
   controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceTonnageFrequency
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_handling_without_assistance_constraints:
-  path: /NFX35109/handling_without_assistance/constraints/{id}/{id2}
+  path: /NFX35109/handling_without_assistance/constraints/{id}
+  #path: /NFX35109/handling_without_assistance/constraints/{id}/{id2}
   #controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceNewConstraints
   controller: App\Controller\NFX35109Controller::listerContraintes
   requirements:
     id:  \d+
-    id2: \d+
+    #id2: \d+
 
 adept_NFX35109_handling_without_assistance_resume:
-    path: /NFX35109/handling_without_assistance/resume
-    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResume
+  path: /NFX35109/handling_without_assistance/resume/{id}
+  controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResume
+  requirements:
+    id:  \d+
 
 #Résumé de la charge dans une activité de manutention manuelle sans aide à la manutention.
-#Ajouter l'id de la charge par la suite.
 adept_NFX35109_handling_without_assistance_resume_charge:
-    path: /NFX35109/handling_without_assistance/resume/charge
-    controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResumeCharge
+  path: /NFX35109/handling_without_assistance/resume/charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceResumeCharge
+  requirements:
+    id:  \d+
+    id2: \d+
 
 adept_NFX35109_handling_with_assistance:
     path: /NFX35109/handling_with_assistance

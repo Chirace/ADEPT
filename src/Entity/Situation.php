@@ -91,6 +91,18 @@ class Situation
         return $this;
     }
 
+    public function getQuoi(): ?string
+    {
+        return $this->quoi;
+    }
+
+    public function setQuoi(string $quoi): self
+    {
+        $this->quoi = $quoi;
+
+        return $this;
+    }
+
     public function getPourquoi(): ?string
     {
         return $this->pourquoi;

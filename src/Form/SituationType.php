@@ -13,13 +13,13 @@ class SituationType extends AbstractType
     {
         $builder
             ->add('nom')
-            #->add('quoi')
-            #->add('pourquoi')
-            #->add('comment')
-            #->add('avec_qui')
-            #->add('avec_quoi')
-            #->add('organisation_travail')
-            #->add('autre')
+            ->add('quoi')
+            ->add('pourquoi')
+            ->add('comment')
+            ->add('avec_qui')
+            ->add('avec_quoi')
+            ->add('organisation_travail')
+            ->add('autre')
         ;
     }
 
