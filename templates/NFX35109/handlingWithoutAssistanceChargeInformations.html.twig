@@ -2,7 +2,8 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div>
-            <h1>NF X35-109 - Manutention manuelle sans aide à la manutention</h1>
+            {{ form_start(form) }}
+            <h1>Manutention Manuelle de charge - Manutention manuelle sans aide à la manutention</h1>
             <p id="label_prise_charge" class="mauve">Prise de la charge</p>
             <p id="label_deplacement_charge" class="mauve">Déplacement de la charge</p>
             <p id="label_depose_charge" class="mauve">Dépose de la charge</p>
@@ -16,25 +17,26 @@
                     <div class="card-body">
                         <div class="row">
                             <p class="text_margin_right p_black">Masse (en kg)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.poids_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'En kilogramme...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right p_black">Hauteur prise (en m)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.prise_hauteur, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right p_black">Profondeur prise (en m)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.prise_profondeur, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right p_black">Transport de charge</p>
-                            <select class="custom_select form_control_40" id="input_sexe">
+                            {{ form_widget(form.transport_charge, {'attr': {'class': 'custom_select form_control_40'}} ) }}
+                            <!--<select class="custom_select form_control_40" id="input_sexe">
                                 <option value="1">Une main</option>
                                 <option value="2">Deux mains</option>
-                            </select>
+                            </select>-->
                         </div>
                         <div class="group_button">
-                            <a href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" class="button3_left button_adept_ocre">Annuler</a>
+                            <a href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}" class="button3_left button_adept_ocre">Annuler</a>
                             <button class="button3_right button_adept_ocre" onclick="myMove()">Valider</button>
                         </div>
                     </div>
@@ -48,7 +50,7 @@
                     <div class="card-body">
                         <div class="row">
                             <p class="text_margin_right p_black">Déplacement (en m)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.distance_transport_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="group_button">
                             <button class="button3_right button_adept_ocre" onclick="restart()">Annuler</button>
@@ -65,15 +67,15 @@
                     <div class="card-body">
                         <div class="row">
                             <p class="text_margin_right p_black">Hauteur dépose (en m)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.depose_hauteur, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right p_black">Profondeur dépose (en m)</p>
-                            <input type="text" class="form_control_40" aria-label="Formation" aria-describedby="basic-addon2">
+                            {{ form_widget(form.depose_profondeur, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="group_button">
                             <button class="button3_left button_adept_ocre" onclick="myMove()">Annuler</button>
-                            <a href="{{ path('adept_NFX35109_handling_without_assistance_execution_constraint') }}" class="button3_right button_adept_ocre">Valider</a>
+                            {{ form_widget(form.valider, {'attr': {'class': 'button_picture'}} ) }}
                         </div>
                     </div>
                 </div>
@@ -83,6 +85,8 @@
                     <img src="/images/icon_MM_sans_aide3.png" alt="icon MM sans aide" id="Icon_MMSA_anim_1">
                 </div>
             </div>
+
+            {{ form_end(form) }}
 
             <!-- Animation icon MM sans aide à la manutention - Nouvelle Charge - Etape 1 -->
             <script>

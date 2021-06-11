@@ -1,8 +1,13 @@
 <?php 
 namespace App\Controller; 
+use App\Entity\Evaluateur;
+use App\Entity\Utilisateur;
+use App\Form\EvaluateurType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GeneralController extends AbstractController {
@@ -47,7 +52,32 @@ class GeneralController extends AbstractController {
         return $this->render('general/settings.html.twig');
     }
 
-    public function guide(){
-        return $this->render('general/guide.html.twig');
+    public function guide($id){
+        return $this->render('general/guide.html.twig', array(
+            'idEvaluateur' => $id));
+        //return $this->redirectToRoute('adept_tool_guide', ['id' => $id]);
+    }
+
+    public function evaluator(Request $request, EntityManagerInterface $manager, UserInterface $user){
+        $utilisateur = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)
+                        ->findOneByUsername($user->getUsername());
+
+        $evaluateur = new Evaluateur();
+        $form = $this->createForm(EvaluateurType::class, $evaluateur);
+        
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $evaluateur->setUtilisateur($utilisateur);
+
+            $manager->persist($evaluateur);
+            $manager->flush();
+
+            return $this->redirectToRoute('adept_tool_guide', ['id' => $evaluateur->getId()]);
+        }
+
+        return $this->render('general/evaluator.html.twig', array(
+            'form' => $form->createView())
+        );
     }
 }

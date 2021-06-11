@@ -32,6 +32,11 @@ class Fichier
      */
     private $date_fichier;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Situation::class, cascade={"persist", "remove"})
+     */
+    private $situation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Fichier
     public function setDateFichier(\DateTimeInterface $date_fichier): self
     {
         $this->date_fichier = $date_fichier;
+
+        return $this;
+    }
+
+    public function getSituation(): ?Situation
+    {
+        return $this->situation;
+    }
+
+    public function setSituation(?Situation $situation): self
+    {
+        $this->situation = $situation;
 
         return $this;
     }

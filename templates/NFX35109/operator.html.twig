@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
+        {{ form_start(form) }}
         <div>
-            <h1>NF X35-109 - Opérateur</h1>
+            <h1>Manutention Manuelle de charge - Opérateur</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                         <h2>Opérateur :</h2>
+                        
                         <div class="row">
                             <p class="text_margin_right">Âge :</p>
-                            <input type="text" class="form_control_60" aria-label="age" aria-describedby="basic-addon2" placeholder="Préciser...">
+                            <!--<input type="text" class="form_control_60" aria-label="age" aria-describedby="basic-addon2" placeholder="Préciser...">-->
+                            {{ form_widget(form.age, {'attr': {'class': 'form_control_60', 'placeholder': 'Préciser...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Sexe :</p>
+                            
+                            
                             <select class="custom_select form_control_60" id="input_sexe">
                                 <option value="1">Masculin</option>
                                 <option value="2">Féminin</option>
@@ -54,33 +59,39 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left">
                         <div class="row">
-                            <p class="text_margin_right">Droitier/Gaucher :</p>
-                            <select class="custom_select form_control_60" id="input_main">
+                            <p class="text_margin_right">Latéralité :</p>
+                            {{ form_widget(form.Flag_Droitier, {'attr': {'class': 'custom_select form_control_60', 'id': 'input_main'}} ) }}
+                            <!--<select class="custom_select form_control_60" id="input_main">
                                 <option value="1">Droitier</option>
                                 <option value="2">Gaucher</option>
-                            </select>
+                            </select>-->
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Formation :</p>
-                            <input type="text" class="form_control_60" aria-label="Formation" aria-describedby="basic-addon2" placeholder="Intitulé du poste...">
+                            <!--<input type="text" class="form_control_60" aria-label="Formation" aria-describedby="basic-addon2" placeholder="Intitulé du poste...">-->
+                            {{ form_widget(form.Formation, {'attr': {'class': 'form_control_60', 'placeholder': 'Intitulé du poste...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Ancienneté au poste :</p>
-                            <input type="text" class="form_control_60" aria-label="exp_poste" aria-describedby="basic-addon2" placeholder="En année...">
+                            <!--<input type="text" class="form_control_60" aria-label="exp_poste" aria-describedby="basic-addon2" placeholder="En année...">-->
+                            {{ form_widget(form.Anciennete_poste, {'attr': {'class': 'form_control_60', 'placeholder': 'En année...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Ancienneté en entreprise :</p>
-                            <input type="text" class="form_control_60" aria-label="exp_entreprise" aria-describedby="basic-addon2" placeholder="En année...">
+                            <!--<input type="text" class="form_control_60" aria-label="exp_entreprise" aria-describedby="basic-addon2" placeholder="En année...">-->
+                            {{ form_widget(form.Anciennete_entreprise, {'attr': {'class': 'form_control_60', 'placeholder': 'En année...'}} ) }}
                         </div>
                     </div>
                 </div>
                 <p class="text_margin_right">Description :</p>
-                <textarea class="text_area_80" aria-label="Description"></textarea>
+                <!--<textarea class="text_area_80" aria-label="Description"></textarea>-->
+                {{ form_widget(form.Description,{ 'attr': {'cols': '170'} }) }}
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_picture') }}" >Annuler</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_activity_detail') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_picture', { 'id': idEvaluateur, 'id2': idSituation }) }}" >Annuler</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_activity_detail', { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
         </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}

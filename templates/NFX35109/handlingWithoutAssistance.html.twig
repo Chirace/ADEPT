@@ -2,7 +2,7 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div>
-            <h1>NF X35-109 - Manutention manuelle sans aide à la manutention</h1>
+            <h1>Manutention Manuelle de charge - Manutention manuelle sans aide à la manutention</h1>
             <p>Tableau récapitulatif des charges :</p>
             <table class="table table-striped table-hover table-light">
                 <thead>
@@ -20,17 +20,45 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{ for charge in charges }}
+                    <tr>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        <td>
+                            {{ charge.priseHauteur }}
+                        </td>
+                        <td>
+                            {{ charge.priseProfondeur }}
+                        </td>
+                        <td>
+                            {{ charge.distanceTransportCharge }}
+                        </td>
+                        <td>
+                            {{ charge.transportCharge }}
+                        </td>
+                        <td>
+                            {{ charge.deposeHauteur }}
+                        </td>
+                        <td>
+                            {{ charge.deposeProfondeur }}
+                        </td>
+                        <td>
+                            {{ charge.nombreChargeIdentique }}
+                        </td>
+                    </tr>
+                    {{ endfor }}
                     <tr>
                         <td colspan="10">
-                            <a class="a_adept" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Ajouter une charge</a>
+                            <a class="a_adept" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Ajouter une charge</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type') }}" >Revenir en arrière</a>
-            <a class="button_adept_inactif" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Revenir en arrière</a>
+            <a class="button_adept_inactif" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
         </div>
     </div>
 {% endblock %}

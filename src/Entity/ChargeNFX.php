@@ -83,9 +83,14 @@ class ChargeNFX
     private $nombre_charge_identique;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $contraintes_execution;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=EvaluationNFX::class, inversedBy="chargeNFXes")
+     */
+    private $evaluation_nfx;
 
     public function getId(): ?int
     {
@@ -256,6 +261,18 @@ class ChargeNFX
     public function setContraintesExecution(string $contraintes_execution): self
     {
         $this->contraintes_execution = $contraintes_execution;
+
+        return $this;
+    }
+
+    public function getEvaluationNfx(): ?EvaluationNFX
+    {
+        return $this->evaluation_nfx;
+    }
+
+    public function setEvaluationNfx(?EvaluationNFX $evaluation_nfx): self
+    {
+        $this->evaluation_nfx = $evaluation_nfx;
 
         return $this;
     }

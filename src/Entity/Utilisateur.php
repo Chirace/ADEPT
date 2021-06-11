@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UtilisateurRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -45,6 +47,22 @@ class Utilisateur implements UserInterface
      * @Assert\EqualTo(propertyPath="password", message="Les mots de passe sont différents")
      */
     private $confirm_password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluateur::class, mappedBy="utilisateur")
+     */
+    private $evaluateurs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BilanEntreprise::class, mappedBy="Utilisateur")
+     */
+    private $bilanEntreprises;
+
+    public function __construct()
+    {
+        $this->evaluateurs = new ArrayCollection();
+        $this->bilanEntreprises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,5 +123,65 @@ class Utilisateur implements UserInterface
 
     public function getRoles() {
         return ['ROLE_USER'];
+    }
+
+    /**
+     * @return Collection|Evaluateur[]
+     */
+    public function getEvaluateurs(): Collection
+    {
+        return $this->evaluateurs;
+    }
+
+    public function addEvaluateur(Evaluateur $evaluateur): self
+    {
+        if (!$this->evaluateurs->contains($evaluateur)) {
+            $this->evaluateurs[] = $evaluateur;
+            $evaluateur->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluateur(Evaluateur $evaluateur): self
+    {
+        if ($this->evaluateurs->removeElement($evaluateur)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluateur->getUtilisateur() === $this) {
+                $evaluateur->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BilanEntreprise[]
+     */
+    public function getBilanEntreprises(): Collection
+    {
+        return $this->bilanEntreprises;
+    }
+
+    public function addBilanEntreprise(BilanEntreprise $bilanEntreprise): self
+    {
+        if (!$this->bilanEntreprises->contains($bilanEntreprise)) {
+            $this->bilanEntreprises[] = $bilanEntreprise;
+            $bilanEntreprise->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBilanEntreprise(BilanEntreprise $bilanEntreprise): self
+    {
+        if ($this->bilanEntreprises->removeElement($bilanEntreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($bilanEntreprise->getUtilisateur() === $this) {
+                $bilanEntreprise->setUtilisateur(null);
+            }
+        }
+
+        return $this;
     }
 }

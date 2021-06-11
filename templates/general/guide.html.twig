@@ -1,18 +1,88 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
-        <h1>{% trans %}Guide{% endtrans %}</h1>
         <p>Veuillez répondre aux questions suivantes :</p>
-        <p> - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</p>
+        <!--<p> - Avez-vous des postes de travail présentant des problématiques de manutention de charges ?</p>-->
 
-        <div class="switch">
-            <input type="checkbox" id="check">
-            <label for="check" data-off="Non" data-on="Oui"></label>
+        <div class="switch" id="switch_Q1">
+            <p> - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</p>
+            <input type="checkbox" id="check_Q1" value="non">
+            <label for="check_Q1" data-off="Non" data-on="Oui"></label>
         </div>
 
+        <div class="switch" id="switch_Q2">
+            <p> - Ces charges sont-elles supérieures ou égales à 3 kg ?</p>
+            <input type="checkbox" id="check_Q2" value="non">
+            <label for="check_Q2" data-off="Non" data-on="Oui"></label>
+        </div>
+
+        <div class="switch" id="switch_Q3">
+            <p> - Avez-vous identifié et hiérarchisé les postes de travail présentant ces problématiques ?</p>
+            <input type="checkbox" id="check_Q3" value="non">
+            <label for="check_Q3" data-off="Non" data-on="Oui"></label>
+        </div>
+
+        <p class="mauve" id="flag_ED6161"> -> Cet outil va permettre de hiérarchiser les postes de travail.</p>
+        <p class="mauve" id="flag_NFX35109"> -> Cet outil va permettre de coter un poste de travail.</p>
+
+        <script>
+            document.getElementById("switch_Q2").style.display = 'none';
+            document.getElementById("switch_Q3").style.display = 'none';
+            document.getElementById("flag_ED6161").style.display = 'none';
+            document.getElementById("flag_NFX35109").style.display = 'none';
+
+            function displayQ2(){
+                if (document.getElementById('check_Q1').checked){
+                    /* Afficher la question 2 */
+                    document.getElementById('switch_Q2').style.display = 'block';
+                } else {
+                    /* Masquer la question 2 */
+                    document.getElementById('switch_Q2').style.display = 'none';
+                    document.getElementById('check_Q2').checked = false;
+                    displayQ3();
+                }
+            }
+
+            function displayQ3(){
+                if (document.getElementById('check_Q2').checked){
+                    /* Afficher la question 3 */
+                    document.getElementById('switch_Q3').style.display = 'block';
+                    document.getElementById('flag_ED6161').style.display = 'block';
+                } else {
+                    /* Masquer la question 3 */
+                    document.getElementById('switch_Q3').style.display = 'none';
+                    document.getElementById('check_Q3').checked = false;
+                    updateResult();
+                }
+            }
+
+            function updateResult(){
+                if (document.getElementById('check_Q2').checked){
+                    if (document.getElementById('check_Q3').checked){
+                        /* NFX 35-109 */
+                        document.getElementById('flag_ED6161').style.display = 'none';
+                        document.getElementById('flag_NFX35109').style.display = 'block';
+                        document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': idEvaluateur } ) }}";
+                    } else {
+                        /* ED6161 */
+                        document.getElementById('flag_NFX35109').style.display = 'none';
+                        document.getElementById('flag_ED6161').style.display = 'block';
+                        /*document.getElementById('button_confirm_choice').href="{{ path('adept_tool_ED6161') }}";*/
+                    }
+                } else {
+                    document.getElementById('flag_NFX35109').style.display = 'none';
+                    document.getElementById('flag_ED6161').style.display = 'none';
+                }
+            }
+
+            document.getElementById('check_Q1').addEventListener('change', displayQ2);
+            document.getElementById('check_Q2').addEventListener('change', displayQ3);
+            document.getElementById('check_Q3').addEventListener('change', updateResult);
+        </script>
+
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_analyze_choice') }}" >{% trans %}Retour{% endtrans %}</a>
-            <button type="submit" class="button3_right">Continuer</button>
+            <a class="button3_left" href="{{ path('adept_evaluator') }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" id="button_confirm_choice" >Continuer</a>
         </div>
     </div>
 {% endblock %}

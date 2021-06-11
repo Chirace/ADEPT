@@ -2,7 +2,7 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div>
-            <h1>NF X35-109 - Contraintes</h1>
+            <h1>Manutention Manuelle de charge - Contraintes</h1>
 
             <hr>
 
@@ -93,8 +93,8 @@
         </script>
 
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations') }}" >Revenir en arrière</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Revenir en arrière</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
         </div>
     </div>
 {% endblock %}

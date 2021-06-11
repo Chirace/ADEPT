@@ -1,24 +1,51 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
+
+    {{ form_start(formEntreprise) }}
+    {{ form_start(formSite) }}
+    {{ form_start(formSecteur) }}
+    {{ form_start(formPosteDeTravail) }}
+    {{ form_start(formSituation) }}
+
         <div>
-            <h1>NF X35-109 - Activité</h1>
+            <h1>Manutention Manuelle de charge - Situation</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <p class="text_margin_right">Nom Évaluateur :</p>
+                        <p>{{ evaluateur.prenom }} {{ evaluateur.nom }}</p>
+
+                        <p class="text_margin_right">Entreprise :</p>
+                        {{ form_widget(formEntreprise.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amazon...'}} ) }}
+                        
+                        <p class="text_margin_right">Site :</p>
+                        {{ form_widget(formSite.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amiens...'}} ) }}
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left2">
                         <p class="text_margin_right">Nom du secteur :</p>
-                        <input type="text" class="form_control_60" aria-label="Nom secteur" aria-describedby="basic-addon2" placeholder="Ex: Amiens...">
-                        <p class="text_margin_right">Situation de travail :</p>
-                        <input type="text" class="form_control_60" aria-label="Situation de travail" aria-describedby="basic-addon2" placeholder="Ex: Fin de chaîne...">
-                        <p class="text_margin_right">Nom de l'activité réalisée :</p>
-                        <input type="text" class="form_control_60" aria-label="Activité réalisée" aria-describedby="basic-addon2" placeholder="Ex: Dépalettisation...">
+                        {{ form_widget(formSecteur.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Production...'}} ) }}
+                        
+                        <p class="text_margin_right">Poste de travail :</p>
+                        {{ form_widget(formPosteDeTravail.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Fin de chaîne...'}} ) }}
+                        
+                        <p class="text_margin_right">Nom de la situation réalisée :</p>
+                        {{ form_widget(formSituation.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Dépalettisation...'}} ) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_tool_NFX35109') }}" >Annuler</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_picture') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_tool_NFX35109',  { 'id': evaluateur.id }) }}" >Annuler</a>
+            <button type="submit" class="button3_right" >Continuer</button>
         </div>
+
+        {{ form_end(formSituation) }}
+        {{ form_end(formEntreprise) }}
+        {{ form_end(formSite) }}
+        {{ form_end(formSecteur) }}
+        {{ form_end(formPosteDeTravail) }}
+        
+
     </div>
 {% endblock %}

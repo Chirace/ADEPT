@@ -27,6 +27,16 @@ class BilanEntreprise
      */
     private $date_bilan;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="bilanEntreprises")
+     */
+    private $Utilisateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="bilanEntreprises")
+     */
+    private $entreprise;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class BilanEntreprise
     public function setDateBilan(\DateTimeInterface $date_bilan): self
     {
         $this->date_bilan = $date_bilan;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->Utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $Utilisateur): self
+    {
+        $this->Utilisateur = $Utilisateur;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
 
         return $this;
     }

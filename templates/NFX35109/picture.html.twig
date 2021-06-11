@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
-        <h1>NF X35-109 - Importer une photo</h1>
+        <h1>Manutention Manuelle de charge - Importer une photo</h1>
 
         {{ form_start(form) }}
         <div class="form-group">
@@ -10,12 +10,12 @@
         </div>
         <div class="form-group">
             {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
-            {{ form_widget(form.valider, {'attr': {'class': 'button'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button_picture'}} ) }}
         </div>
         {{ form_end(form) }}
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_activity') }}" >{% trans %}Retour{% endtrans %}</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_operator') }}" >Poursuivre</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': id }) }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': id, 'id2': id2 }) }}" >Poursuivre</a>
         </div>
     </div>
 {% endblock %}

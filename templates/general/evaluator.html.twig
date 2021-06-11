@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        {{ form_start(form) }}
+        <div>
+            <h1>Manutention Manuelle de charge - Opérateur</h1>
+            <div class="container_input">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <h2>Évaluateur & Entreprise</h2>
+
+                        <div class="top_container" id="nom">
+                            {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom évaluateur...'} }) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+
+                        <div class="top_container" id="prenom">
+                            {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom évaluateur...'} }) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+
+                        <div class="top_container" id="fonction">
+                            {{ form_label(form.fonction, 'Fonction', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.fonction, {'attr': {'class': 'form-control', 'placeholder': 'Fonction évaluateur...'} }) }}
+                            {{ form_errors(form.fonction) }}
+                        </div>
+
+                        <div class="switch" id="switch_entreprise">
+                            <input type="checkbox" id="check_entreprise" value="non">
+                            <label for="check_entreprise" data-off="Non" data-on="Oui"></label>
+                        </div>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" id="entreprise_externe">
+                        <h2>Entreprise où se déroule la cotation :</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("entreprise_externe").style.display = 'none';
+
+            function displayEntreprise(){
+                if (document.getElementById('check_entreprise').checked){
+                    /* Afficher la partie entreprise externe */
+                    document.getElementById('entreprise_externe').style.display = 'block';
+                } else {
+                    /* Masquer la la partie entreprise externe */
+                    document.getElementById('entreprise_externe').style.display = 'none';
+                }
+            }
+            document.getElementById('check_entreprise').addEventListener('change', displayEntreprise);
+        </script>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_menu') }}" >Annuler</a>
+            {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

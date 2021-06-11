@@ -2,11 +2,11 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div>
-            <h1>NF X35-109 - Activité</h1>
+            <h1>Manutention Manuelle de charge - Situation</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <h2>Activité :</h2>
+                        <h2>Situation :</h2>
                         <div class="row">
                             <p class="text_margin_right">Quoi ?</p>
                             <input type="text" class="form_control_60" aria-label="Quoi" aria-describedby="basic-addon2" placeholder="Préciser...">
@@ -40,8 +40,8 @@
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_operator') }}" >Annuler</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_manutention_type') }}" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Annuler</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>
         </div>
     </div>
 {% endblock %}

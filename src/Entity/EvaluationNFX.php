@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvaluationNFXRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,17 +25,17 @@ class EvaluationNFX
     private $date_evaluation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type_manutention;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $temps_tonnage;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $tonnage;
 
@@ -43,14 +45,24 @@ class EvaluationNFX
     private $frequence_charge;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $contraintes_environnement;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $contraintes_organisation;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ChargeNFX::class, mappedBy="evaluation_nfx")
+     */
+    private $chargeNFXes;
+
+    public function __construct()
+    {
+        $this->chargeNFXes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +149,36 @@ class EvaluationNFX
     public function setContraintesOrganisation(string $contraintes_organisation): self
     {
         $this->contraintes_organisation = $contraintes_organisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ChargeNFX[]
+     */
+    public function getChargeNFXes(): Collection
+    {
+        return $this->chargeNFXes;
+    }
+
+    public function addChargeNFX(ChargeNFX $chargeNFX): self
+    {
+        if (!$this->chargeNFXes->contains($chargeNFX)) {
+            $this->chargeNFXes[] = $chargeNFX;
+            $chargeNFX->setEvaluationNfx($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChargeNFX(ChargeNFX $chargeNFX): self
+    {
+        if ($this->chargeNFXes->removeElement($chargeNFX)) {
+            // set the owning side to null (unless already changed)
+            if ($chargeNFX->getEvaluationNfx() === $this) {
+                $chargeNFX->setEvaluationNfx(null);
+            }
+        }
 
         return $this;
     }

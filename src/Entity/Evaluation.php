@@ -27,6 +27,21 @@ class Evaluation
      */
     private $date_evaluation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Evaluateur::class, inversedBy="evaluations")
+     */
+    private $evaluateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Situation::class, inversedBy="evaluations")
+     */
+    private $situation;
+
+    /**
+     * @ORM\OneToOne(targetEntity=EvaluationNFX::class, cascade={"persist", "remove"})
+     */
+    private $evaluation_nfx;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +67,42 @@ class Evaluation
     public function setDateEvaluation(\DateTimeInterface $date_evaluation): self
     {
         $this->date_evaluation = $date_evaluation;
+
+        return $this;
+    }
+
+    public function getEvaluateur(): ?Evaluateur
+    {
+        return $this->evaluateur;
+    }
+
+    public function setEvaluateur(?Evaluateur $evaluateur): self
+    {
+        $this->evaluateur = $evaluateur;
+
+        return $this;
+    }
+
+    public function getSituation(): ?Situation
+    {
+        return $this->situation;
+    }
+
+    public function setSituation(?Situation $situation): self
+    {
+        $this->situation = $situation;
+
+        return $this;
+    }
+
+    public function getEvaluationNfx(): ?EvaluationNFX
+    {
+        return $this->evaluation_nfx;
+    }
+
+    public function setEvaluationNfx(?EvaluationNFX $evaluation_nfx): self
+    {
+        $this->evaluation_nfx = $evaluation_nfx;
 
         return $this;
     }

@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ActiviteRepository;
+use App\Repository\SituationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ActiviteRepository::class)
+ * @ORM\Entity(repositoryClass=SituationRepository::class)
  */
-class Activite
+class Situation
 {
     /**
      * @ORM\Id
@@ -56,6 +58,21 @@ class Activite
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $autre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PosteDeTravail::class, inversedBy="situations")
+     */
+    private $posteDeTravail;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="situation")
+     */
+    private $evaluations;
+
+    public function __construct()
+    {
+        $this->evaluations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -142,6 +159,48 @@ class Activite
     public function setAutre(string $autre): self
     {
         $this->autre = $autre;
+
+        return $this;
+    }
+
+    public function getPosteDeTravail(): ?PosteDeTravail
+    {
+        return $this->posteDeTravail;
+    }
+
+    public function setPosteDeTravail(?PosteDeTravail $posteDeTravail): self
+    {
+        $this->posteDeTravail = $posteDeTravail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setSituation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getSituation() === $this) {
+                $evaluation->setSituation(null);
+            }
+        }
 
         return $this;
     }
