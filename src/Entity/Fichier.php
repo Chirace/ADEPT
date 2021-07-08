@@ -28,7 +28,7 @@ class Fichier
     private $type_fichier;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
     private $date_fichier;
 
@@ -66,12 +66,12 @@ class Fichier
         return $this;
     }
 
-    public function getDateFichier(): ?\DateTimeInterface
+    public function getDateFichier(): ?String
     {
         return $this->date_fichier;
     }
 
-    public function setDateFichier(\DateTimeInterface $date_fichier): self
+    public function setDateFichier(?string $date_fichier): self
     {
         $this->date_fichier = $date_fichier;
 

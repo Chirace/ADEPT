@@ -39,6 +39,8 @@ class OperateurType extends AbstractType
             ->add('Anciennete_entreprise')
             ->add('Description', TextareaType::class, [
                 'attr' => ['class' => 'tinymce'],
+                'required' => false,
+                'empty_data' => '',
             ]);
             #->add('valider', SubmitType::class)
         ;

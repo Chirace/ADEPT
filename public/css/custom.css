@@ -470,6 +470,12 @@ form {
     width: auto;
 }
 
+.icon_click_margin_right{
+    height: 25px;
+    width: auto;
+    margin-right: 2%;
+}
+
 .icon_container {
     width: 100%;
 }
@@ -648,12 +654,12 @@ p {
 }
 
 .resume_green {
-    color:black;
+    color:white;
     background-color: green;
 }
 
 .resume_red {
-    color:black;
+    color:white;
     background-color: red;
 }
 

@@ -26,7 +26,11 @@ use App\Form\ContrainteExecutionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NFX35109Controller extends AbstractController {
@@ -55,11 +59,11 @@ class NFX35109Controller extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $situation->setQuoi($form->get('quoi')->getData());
-            $situation->setPourquoi($form->get('pourquoi')->getData());
+            //$situation->setPourquoi($form->get('pourquoi')->getData());
             $situation->setComment($form->get('comment')->getData());
             $situation->setAvecQui($form->get('avec_qui')->getData());
             $situation->setAvecQuoi($form->get('avec_quoi')->getData());
-            $situation->setOrganisationTravail($form->get('organisation_travail')->getData());
+            $situation->setDimensionTemporelle($form->get('dimension_temporelle')->getData());
             $situation->setAutre($form->get('autre')->getData());
 
             $manager->persist($situation);
@@ -80,14 +84,21 @@ class NFX35109Controller extends AbstractController {
         ));
     }
 
-    public function handlingWithoutAssistance($id){
+    public function handlingWithoutAssistance(EntityManagerInterface $manager, $id){
         $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
             ->findOneById($id);
         /*$evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
             ->findOneBySituation($id2);*/
-        $evaluationNFX = $evaluation->getEvaluationNFX();
+        //$evaluationNFX = $evaluation->getEvaluationNFX();
         /*$evaluationNFX = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
             ->findOneByEvaluation($evaluation);*/
+        $evaluationNFX = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
+            ->findOneById($evaluation->getEvaluationNFX());
+
+        $evaluationNFX->setTypeManutention('Sans aide à la manutention');
+
+        $manager->persist($evaluationNFX);
+        $manager->flush($evaluationNFX);
 
         $listeCharges = $this->getDoctrine()->getRepository(ChargeNFX::Class);
  
@@ -140,6 +151,34 @@ class NFX35109Controller extends AbstractController {
             'idSituation' => $id2*/
             ));
     }
+
+    public function handlingWithoutAssistanceEditCharge(Request $request, EntityManagerInterface $manager, $id){
+        $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
+            ->findOneById($id);
+
+        $evaluationNFX = $charge->getEvaluationNFX();
+    }
+
+    public function handlingWithoutAssistanceDeleteCharge(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
+            ->findOneById($id2);
+
+        $evaluationNFX = $charge->getEvaluationNfx();
+
+        $manager->remove($charge);
+        $manager->flush($charge);
+
+        $listeCharges = $this->getDoctrine()->getRepository(ChargeNFX::Class);
+        $charges = $listeCharges->findBy(array('evaluation_nfx' => $evaluationNFX->getId()),
+                                                     null,
+                                                     null,
+                                                     null);
+        
+        return $this->render('NFX35109/handlingWithoutAssistance.html.twig', array(
+            'idEvaluation' => $id,
+            'charges' => $charges)
+        );
+    }
     
     public function handlingWithoutAssistanceNewChargeConstraint($id){
         return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig', array(
@@ -149,12 +188,31 @@ class NFX35109Controller extends AbstractController {
             ));
     }
     
-    public function handlingWithoutAssistanceTonnageFrequency($id){
+    public function handlingWithoutAssistanceTonnageFrequency(Request $request, EntityManagerInterface $manager, $id){
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id);
+        
+        $evaluationNFX = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
+            ->findOneById($evaluation->getEvaluationNfx());
+
+        $form = $this->createFormBuilder($evaluationNFX)
+            ->add('temps_tonnage')
+            ->add('tonnage')
+            ->add('valider', SubmitType::class, array('label'=> 'continuer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($evaluationNFX);
+            $manager->flush();
+
+            return $this->redirectToRoute('adept_NFX35109_handling_without_assistance_constraints', ['id' => $id]);
+        }
+
         return $this->render('NFX35109/handlingWithoutAssistanceTonnageFrequency.html.twig', array(
-            'idEvaluation' => $id
-            /*'idEvaluateur' => $id,
-            'idSituation' => $id2*/
-            ));
+            'idEvaluation' => $id,
+            'form' => $form->createView()
+        ));
     }
     
     public function handlingWithoutAssistanceNewConstraints(Request $request, EntityManagerInterface $manager, $id){
@@ -238,7 +296,7 @@ class NFX35109Controller extends AbstractController {
         ));
     }*/
 
-    public function listerContraintesExecution(Request $request, $id, $id2) {
+    public function listerContraintesExecution(Request $request, EntityManagerInterface $manager, $id, $id2) {
         $listeContraintes = $this->getDoctrine()
                    ->getRepository(Contrainte::Class);
         
@@ -246,11 +304,35 @@ class NFX35109Controller extends AbstractController {
                                                             null,
                                                             null,
                                                             null);
+        
+        unset($listeContraintesExecution[8]);
+        unset($listeContraintesExecution[7]);
+
+        //$charge = new ChargeNFX();
+
+        $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
+            ->findOneById($id2);
+
+        $form = $this->createFormBuilder($charge)
+            //->setAction($this->generateUrl('tutor_comment',array('id' => $id)))
+            ->add('contraintes_execution')
+            ->add('valider', SubmitType::class, array('label'=> 'continuer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($charge);
+            $manager->flush();
+
+            //return $this->redirectToRoute('adept_NFX35109_handling_without_assistance');
+            return $this->redirectToRoute('adept_NFX35109_handling_without_assistance', ['id' => $id, 'id2' => $id2]);
+        }
 
         return $this->render('NFX35109/handlingWithoutAssistanceExecutionConstraint.html.twig', array(
             'listeContraintes' => $listeContraintesExecution,
             'idEvaluateur' => $id,
-            'idSituation' => $id2
+            'idSituation' => $id2,
+            'form' => $form->createView()
         ));
     }
 
@@ -416,32 +498,101 @@ class NFX35109Controller extends AbstractController {
     }
 
     public function picture(Request $request, EntityManagerInterface $manager, $id){
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id);
+        
+        $idEvaluateur = $evaluation->getEvaluateur()->getId();
+
         $fichier = new Fichier();
         $form = $this->createForm(FichierType::class, $fichier);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $fichier->getNomFichier();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            //$fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            
+            /*$extension = explode('.', $fileName);
+            $fichier->setTypeFichier($extension[$extension]);
+            $fichier->setDateFichier(new \DateTime('now'));*/
+
+            $fileName = "photo_".'.'.$file->guessExtension();
+            $fileType = "photo";
+            $date = date('Y-m-d H:i:s');
 
             $file->move($this->getParameter('upload_directory'), $fileName);
 
             $fichier->setNomFichier($fileName);
-            /*$extension = explode('.', $fileName);
-            $fichier->setTypeFichier($extension[$extension]);
-            $fichier->setDateFichier(new \DateTime('now'));
+            $fichier->setTypeFichier($fileType);
+            $fichier->setDateFichier($date);
+            //$fichier->setSituation($evaluation);
 
             $manager->persist($fichier);
-            $manager->flush();*/
+            $manager->flush();
 
-            return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $id]);
+            $id2 = $fichier->getId();
+
+            return $this->redirectToRoute('adept_NFX35109_picture_added', ['id' => $id, 'id2' => $id2]);
             //return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $id, 'id2' => $id2]);
         }
 
         return $this->render('NFX35109/picture.html.twig', array(
             'form' => $form->createView(),
-            'id' => $id/*,
+            'id' => $id,
+            'idEvaluateur' => $idEvaluateur/*,
             'id2' => $id2*/
         ));
+    }
+
+    public function picture2 (Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id);
+
+        $fichier2 = $this->getDoctrine()->getManager()->getRepository(Fichier::class)
+            ->findOneById($id2);
+
+        $fichier = new Fichier();
+        $form = $this->createForm(FichierType::class, $fichier);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $fichier->getNomFichier();
+
+            $fileName = "photo_".'.'.$file->guessExtension();
+            $fileType = "photo";
+            $date = date('Y-m-d H:i:s');
+
+            $file->move($this->getParameter('upload_directory'), $fileName);
+
+            $fichier->setNomFichier($fileName);
+            $fichier->setTypeFichier($fileType);
+            $fichier->setDateFichier($date);
+
+            $manager->persist($fichier);
+            $manager->flush();
+
+            $id2 = $fichier->getId();
+
+            return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $id, 'id2' => $id2]);
+        }
+
+        return $this->render('NFX35109/picture2.html.twig', array(
+            'form' => $form->createView(),
+            'fichier' => $fichier2,
+            'id' => $id
+        ));
+    }
+
+    public function seePicture (Request $request, EntityManagerInterface $manager, $id){
+        $fichier = $this->getDoctrine ()->getRepository (Fichier::class)->find($id);
+
+        $fileName = $fichier->getNomFichier();
+        $file_with_path = $this->getParameter('upload_directory')."/".$fileName;
+        $response = new BinaryFileResponse($file_with_path);
+        return $response;
+        
+        /*return $this->render('NFX35109/seePicture.html.twig', array(
+            'fichier' => $fichier
+        ));*/
     }
 }

@@ -6,6 +6,8 @@ use App\Entity\Situation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class SituationType extends AbstractType
 {
@@ -13,13 +15,31 @@ class SituationType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('quoi')
-            ->add('pourquoi')
-            ->add('comment')
-            ->add('avec_qui')
-            ->add('avec_quoi')
-            ->add('organisation_travail')
-            ->add('autre')
+            ->add('quoi', TextType::class, [
+                'required' => false,
+                'empty_data' => '',
+            ])
+            ->add('comment', TextType::class, [
+                'required' => false,
+                'empty_data' => '',
+            ])
+            ->add('avec_qui', TextType::class, [
+                'required' => false,
+                'empty_data' => '',
+            ])
+            ->add('avec_quoi', TextType::class, [
+                'required' => false,
+                'empty_data' => '',
+            ])
+            ->add('dimension_temporelle', TextType::class, [
+                'required' => false,
+                'empty_data' => '',
+            ])
+            ->add('autre', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+                'required' => false,
+                'empty_data' => '',
+            ]);
         ;
     }
 

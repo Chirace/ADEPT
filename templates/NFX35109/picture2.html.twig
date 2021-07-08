@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <h1>Manutention Manuelle de charge - Importer une photo</h1>
+
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.nom_fichier, 'Vous pouvez importer une photo ou vidéo de l\'activité à évaluer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.nom_fichier, {'attr': {'class': 'button_import'}} ) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button_picture'}} ) }}
+        </div>
+        <h3>Liste des éléments :</h3> 
+        <a class="navbar-brand" href="{{ path('adept_NFX35109_picture_download', { 'id': fichier.id }) }}">
+            {{ fichier.nomFichier }}
+            <!--<img src="/images/help2.png" alt="icon télécharger" id="icon_download" class="icon_click">-->
+        </a>
+        {{ form_end(form) }}
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': id }) }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': id }) }}" >Poursuivre</a>
+        </div>
+    </div>
+{% endblock %}

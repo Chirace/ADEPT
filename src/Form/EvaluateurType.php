@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Evaluateur;
+use App\Form\EntrepriseType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -16,7 +18,7 @@ class EvaluateurType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('fonction')
-            //->add('entreprise')
+            //->add('entreprise', EntrepriseType::class)
             ->add('valider', SubmitType::class)
         ;
     }

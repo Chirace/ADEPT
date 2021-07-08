@@ -9,23 +9,25 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                         <h2>Évaluateur & Entreprise</h2>
 
-                        <div class="top_container" id="nom">
+                        <div class="top_container row" id="nom">
                             {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'p'}} ) }}
-                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom évaluateur...'} }) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom évaluateur...'} }) }}
                             {{ form_errors(form.nom) }}
                         </div>
 
-                        <div class="top_container" id="prenom">
+                        <div class="top_container row" id="prenom">
                             {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'p'}} ) }}
-                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom évaluateur...'} }) }}
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form_control_60', 'placeholder': 'Prénom évaluateur...'} }) }}
                             {{ form_errors(form.prenom) }}
                         </div>
 
-                        <div class="top_container" id="fonction">
+                        <div class="top_container row" id="fonction">
                             {{ form_label(form.fonction, 'Fonction', {'label_attr': {'class': 'p'}} ) }}
-                            {{ form_widget(form.fonction, {'attr': {'class': 'form-control', 'placeholder': 'Fonction évaluateur...'} }) }}
+                            {{ form_widget(form.fonction, {'attr': {'class': 'form_control_60', 'placeholder': 'Fonction évaluateur...'} }) }}
                             {{ form_errors(form.fonction) }}
                         </div>
+
+                        <p>L'évaluateur intervient dans une entreprise extérieure ?</p>
 
                         <div class="switch" id="switch_entreprise">
                             <input type="checkbox" id="check_entreprise" value="non">

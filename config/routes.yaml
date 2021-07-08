@@ -63,11 +63,22 @@ adept_NFX35109_activity:
 
 adept_NFX35109_picture:
   path: /NFX35109/picture/{id}
-  #path: /NFX35109/picture/{id}/{id2}
   controller: App\Controller\NFX35109Controller::picture
   requirements:
     id:  \d+
-    #id2: \d+
+
+adept_NFX35109_picture_added:
+  path: /NFX35109/picture/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::picture2
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_NFX35109_picture_download:
+  path: /NFX35109/picture/see/{id}
+  controller: App\Controller\NFX35109Controller::seePicture
+  requirements:
+    id:  \d+
 
 adept_NFX35109_operator:
   path: /NFX35109/operator/{id}
@@ -109,6 +120,20 @@ adept_NFX35109_handling_without_assistance_charge_informations:
   requirements:
     id:  \d+
     #id2: \d+
+
+adept_NFX35109_handling_without_assistance_edit_charge:
+  path: /NFX35109/handling_without_assistance/edit_charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceEditCharge
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_NFX35109_handling_without_assistance_delete_charge:
+  path: /NFX35109/handling_without_assistance/delete_charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithoutAssistanceDeleteCharge
+  requirements:
+    id:  \d+
+    id2: \d+
 
 adept_NFX35109_handling_without_assistance_execution_constraint:
   path: /NFX35109/handling_without_assistance/new_charge/execution_constraint/{id}/{id2}

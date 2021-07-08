@@ -16,18 +16,31 @@
             <label for="check_Q2" data-off="Non" data-on="Oui"></label>
         </div>
 
-        <div class="switch" id="switch_Q3">
+        <!--<div class="switch" id="switch_Q3">
             <p> - Avez-vous identifié et hiérarchisé les postes de travail présentant ces problématiques ?</p>
+            <input type="checkbox" id="check_Q3" value="non">
+            <label for="check_Q3" data-off="Non" data-on="Oui"></label>
+        </div>-->
+
+        <div class="switch" id="switch_Q3">
+            <p> - Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?</p>
             <input type="checkbox" id="check_Q3" value="non">
             <label for="check_Q3" data-off="Non" data-on="Oui"></label>
         </div>
 
+        <div class="switch" id="switch_Q4">
+            <p> - Voulez-vous évaluer une situation de travail présentant ces problématiques ?</p>
+            <input type="checkbox" id="check_Q4" value="non">
+            <label for="check_Q4" data-off="Non" data-on="Oui"></label>
+        </div>
+
         <p class="mauve" id="flag_ED6161"> -> Cet outil va permettre de hiérarchiser les postes de travail.</p>
-        <p class="mauve" id="flag_NFX35109"> -> Cet outil va permettre de coter un poste de travail.</p>
+        <p class="mauve" id="flag_NFX35109"> -> Cet outil va permettre d'évaluer une situation de travail.</p>
 
         <script>
             document.getElementById("switch_Q2").style.display = 'none';
             document.getElementById("switch_Q3").style.display = 'none';
+            document.getElementById("switch_Q4").style.display = 'none';
             document.getElementById("flag_ED6161").style.display = 'none';
             document.getElementById("flag_NFX35109").style.display = 'none';
 
@@ -45,24 +58,35 @@
 
             function displayQ3(){
                 if (document.getElementById('check_Q2').checked){
-                    /* Afficher la question 3 */
+                    /* Afficher la question 3 et 4 */
                     document.getElementById('switch_Q3').style.display = 'block';
-                    document.getElementById('flag_ED6161').style.display = 'block';
+                    document.getElementById('switch_Q4').style.display = 'block';
+                    //document.getElementById('flag_NFX35109').style.display = 'block';
                 } else {
-                    /* Masquer la question 3 */
+                    /* Masquer la question 3 et 4 */
                     document.getElementById('switch_Q3').style.display = 'none';
+                    document.getElementById('switch_Q4').style.display = 'none';
                     document.getElementById('check_Q3').checked = false;
+                    document.getElementById('check_Q4').checked = false;
                     updateResult();
                 }
             }
 
             function updateResult(){
                 if (document.getElementById('check_Q2').checked){
-                    if (document.getElementById('check_Q3').checked){
-                        /* NFX 35-109 */
-                        document.getElementById('flag_ED6161').style.display = 'none';
-                        document.getElementById('flag_NFX35109').style.display = 'block';
-                        document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': idEvaluateur } ) }}";
+                    if (!document.getElementById('check_Q3').checked){
+                        if(document.getElementById('check_Q4').checked) {
+                            /* NFX 35-109 */
+                            document.getElementById('flag_ED6161').style.display = 'none';
+                            document.getElementById('flag_NFX35109').style.display = 'block';
+                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': idEvaluateur } ) }}";
+                        } else {
+                            /* Rien - Guide */
+                            document.getElementById('flag_ED6161').style.display = 'none';
+                            document.getElementById('flag_NFX35109').style.display = 'none';
+                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";
+                        }
+                        
                     } else {
                         /* ED6161 */
                         document.getElementById('flag_NFX35109').style.display = 'none';
@@ -70,14 +94,17 @@
                         /*document.getElementById('button_confirm_choice').href="{{ path('adept_tool_ED6161') }}";*/
                     }
                 } else {
+                    /* Rien - Guide */
                     document.getElementById('flag_NFX35109').style.display = 'none';
                     document.getElementById('flag_ED6161').style.display = 'none';
+                    document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";
                 }
             }
 
             document.getElementById('check_Q1').addEventListener('change', displayQ2);
             document.getElementById('check_Q2').addEventListener('change', displayQ3);
             document.getElementById('check_Q3').addEventListener('change', updateResult);
+            document.getElementById('check_Q4').addEventListener('change', updateResult);
         </script>
 
         <div class="group_button">

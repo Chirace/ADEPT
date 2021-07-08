@@ -32,11 +32,6 @@ class Situation
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $pourquoi;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $comment;
 
     /**
@@ -52,7 +47,7 @@ class Situation
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $organisation_travail;
+    private $dimension_temporelle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -103,18 +98,6 @@ class Situation
         return $this;
     }
 
-    public function getPourquoi(): ?string
-    {
-        return $this->pourquoi;
-    }
-
-    public function setPourquoi(string $pourquoi): self
-    {
-        $this->pourquoi = $pourquoi;
-
-        return $this;
-    }
-
     public function getComment(): ?string
     {
         return $this->comment;
@@ -151,14 +134,14 @@ class Situation
         return $this;
     }
 
-    public function getOrganisationTravail(): ?string
+    public function getDimensionTemporelle(): ?string
     {
-        return $this->organisation_travail;
+        return $this->dimension_temporelle;
     }
 
-    public function setOrganisationTravail(string $organisation_travail): self
+    public function setDimensionTemporelle(string $dimension_temporelle): self
     {
-        $this->organisation_travail = $organisation_travail;
+        $this->dimension_temporelle = $dimension_temporelle;
 
         return $this;
     }

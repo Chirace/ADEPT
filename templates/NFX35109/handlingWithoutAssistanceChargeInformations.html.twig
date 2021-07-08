@@ -53,7 +53,7 @@
                             {{ form_widget(form.distance_transport_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="group_button">
-                            <button class="button3_right button_adept_ocre" onclick="restart()">Annuler</button>
+                            <button class="button3_left button_adept_ocre" onclick="restart()">Annuler</button>
                             <button class="button3_right button_adept_ocre" onclick="myMove2()">Valider</button>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="group_button">
                             <button class="button3_left button_adept_ocre" onclick="myMove()">Annuler</button>
-                            {{ form_widget(form.valider, {'attr': {'class': 'button_picture'}} ) }}
+                            {{ form_widget(form.valider, {'attr': {'class': 'button3_right button_adept_ocre'}} ) }}
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,8 @@
 
             <!-- Animation icon MM sans aide à la manutention - Nouvelle Charge - Etape 1 -->
             <script>
+                var elem = document.getElementById("animation_MM_sans_aide_new_charge");
+                //elem.style.top = -400 + 'px';
                 document.getElementById("label_deplacement_charge").style.display = "none";
                 document.getElementById("deplacement_charge").style.display = "none";
                 document.getElementById("label_depose_charge").style.display = "none";
@@ -104,6 +106,10 @@
                     document.getElementById("deplacement_charge").style.display = "block";
                     document.getElementById("label_depose_charge").style.display = "none";
                     document.getElementById("depose_charge").style.display = "none";
+
+                    /*var cadre = document.getElementById("deplacement_charge");
+                    cadre.style.left = 100 + 'px';*/
+
                     var pos = 0;
                     clearInterval(id);
                     id = setInterval(frame, 10);
@@ -123,6 +129,10 @@
                     document.getElementById("deplacement_charge").style.display = "none";
                     document.getElementById("label_depose_charge").style.display = "block";
                     document.getElementById("depose_charge").style.display = "block";
+                    
+                    /*var cadre = document.getElementById("depose_charge");
+                    cadre.style.left = -200 + 'px';*/
+
                     var pos = 300;
                     clearInterval(id);
                     id = setInterval(frame, 10);
