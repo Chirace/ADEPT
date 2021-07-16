@@ -3,6 +3,13 @@
     <div class="fixe_largeur_90">
         {{ form_start(form) }}
         <div>
+            <div class="row">
+                <h1>Réperer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
             <h1>Manutention Manuelle de charge - Opérateur</h1>
             <div class="container_input">
                 <div class="row">
@@ -70,7 +77,7 @@
                         <div class="row">
                             <p class="text_margin_right">Formation :</p>
                             <!--<input type="text" class="form_control_60" aria-label="Formation" aria-describedby="basic-addon2" placeholder="Intitulé du poste...">-->
-                            {{ form_widget(form.Formation, {'attr': {'class': 'form_control_60', 'placeholder': 'Intitulé du poste...'}} ) }}
+                            {{ form_widget(form.Formation, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom de la formation...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Ancienneté au poste :</p>

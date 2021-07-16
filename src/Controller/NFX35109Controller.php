@@ -315,7 +315,7 @@ class NFX35109Controller extends AbstractController {
 
         $form = $this->createFormBuilder($charge)
             //->setAction($this->generateUrl('tutor_comment',array('id' => $id)))
-            ->add('contraintes_execution')
+            //->add('contraintes_execution')
             ->add('valider', SubmitType::class, array('label'=> 'continuer'))
             ->getForm();
 
@@ -344,6 +344,8 @@ class NFX35109Controller extends AbstractController {
                                                             null,
                                                             null,
                                                             null);
+        //On retire la contrainte concernant l'état du chariot
+        unset($listeContraintesEnvironnement[9]);
         
         $listeContraintesOrganisation = $listeContraintes->findBy(array('categorie_contrainte' => '3'),
                                                             null,
@@ -476,6 +478,90 @@ class NFX35109Controller extends AbstractController {
         ));
     }
 
+    public function nouvelEvaluateur2(Request $request, EntityManagerInterface $manager, UserInterface $user, $id, $id2) {
+        $utilisateur = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)
+            ->findOneByUsername($user->getUsername());
+        $evaluateur = $this->getDoctrine()->getManager()->getRepository(Evaluateur::class)
+            ->findOneById($id);
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id2);
+
+        $situation = $evaluation->getSituation();
+        $posteDeTravail = $situation->getPosteDeTravail();
+        $secteur = $posteDeTravail->getSecteur();
+        $site = $secteur->getSite();
+        $entreprise = $site->getEntreprise();
+        
+        $formEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
+        $formSite = $this->createForm(SiteType::class, $site);
+        $formSecteur = $this->createForm(SecteurType::class, $secteur);
+        $formPosteDeTravail = $this->createForm(PosteDeTravailType::class, $posteDeTravail);
+        $formSituation = $this->createForm(SituationType::class, $situation);
+        $formSituation = $this->createFormBuilder($situation)
+            ->add('nom')
+            ->getForm();
+
+        $formEntreprise->handleRequest($request);
+        $formSite->handleRequest($request);
+        $formSecteur->handleRequest($request);
+        $formPosteDeTravail->handleRequest($request);
+        $formSituation->handleRequest($request);
+
+        if ($formSituation->isSubmitted() && $formSituation->isValid()) {
+            $manager->persist($evaluateur);
+            $manager->flush();
+
+            $entreprise->setEvaluateur($evaluateur);
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            $site->setEntreprise($entreprise);
+            $manager->persist($site);
+            $manager->flush();
+
+            $secteur->setSite($site);
+            $manager->persist($secteur);
+            $manager->flush();
+
+            $posteDeTravail->setSecteur($secteur);
+            $manager->persist($posteDeTravail);
+            $manager->flush();
+
+            $situation->setPosteDeTravail($posteDeTravail);
+            $manager->persist($situation);
+            $manager->flush();
+
+            $evaluation = new Evaluation();
+            $evaluationNFX = new EvaluationNFX();
+
+            $date = new \DateTime();
+
+            $evaluationNFX->setDateEvaluation($date);
+            $manager->persist($evaluationNFX);
+            $manager->flush();
+
+            $evaluation->setDateEvaluation($date);
+
+            $evaluation->setEvaluateur($evaluateur);
+            $evaluation->setSituation($situation);
+            $evaluation->setTypeEvaluation('NF X35-109');
+            $evaluation->setEvaluationNFX($evaluationNFX);
+            $manager->persist($evaluation);
+            $manager->flush();
+            
+            return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $evaluation->getId()]);
+        }
+
+        return $this->render('NFX35109/activity.html.twig', array(
+            'evaluateur' => $evaluateur,
+            'formEntreprise' => $formEntreprise->createView(),
+            'formSite' => $formSite->createView(),
+            'formSecteur' => $formSecteur->createView(),
+            'formPosteDeTravail' => $formPosteDeTravail->createView(),
+            'formSituation' => $formSituation->createView(),
+        ));
+    }
+
     public function nouvelOperateur(Request $request, EntityManagerInterface $manager, $id) {
         $operateur = new Operateur();
         $form = $this->createForm(OperateurType::class, $operateur);
@@ -509,15 +595,22 @@ class NFX35109Controller extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $fichier->getNomFichier();
-            //$fileName = md5(uniqid()).'.'.$file->guessExtension();
 
+            if($file->guessExtension() == 'mp4') {
+                $nomFichier = "video_";
+                $fileType = "video";
+            } elseif($file->guessExtension() == 'png' || $file->guessExtension() == 'jpg' || $file->guessExtension() == 'jpeg') {
+                $nomFichier = "photo_";
+                $fileType = "photo";
+            } else {
+                $nomFichier = "fichier_";
+                $fileType = "fichier";
+            }
+
+            $fileName = $nomFichier.'.'.$file->guessExtension();
+
+            //$fileName = "photo_".'.'.$file->guessExtension();
             
-            /*$extension = explode('.', $fileName);
-            $fichier->setTypeFichier($extension[$extension]);
-            $fichier->setDateFichier(new \DateTime('now'));*/
-
-            $fileName = "photo_".'.'.$file->guessExtension();
-            $fileType = "photo";
             $date = date('Y-m-d H:i:s');
 
             $file->move($this->getParameter('upload_directory'), $fileName);
@@ -538,7 +631,7 @@ class NFX35109Controller extends AbstractController {
 
         return $this->render('NFX35109/picture.html.twig', array(
             'form' => $form->createView(),
-            'id' => $id,
+            'idEvaluation' => $id,
             'idEvaluateur' => $idEvaluateur/*,
             'id2' => $id2*/
         ));
@@ -558,8 +651,21 @@ class NFX35109Controller extends AbstractController {
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $fichier->getNomFichier();
 
-            $fileName = "photo_".'.'.$file->guessExtension();
-            $fileType = "photo";
+            if($file->guessExtension() == 'mp4') {
+                $nomFichier = "video_";
+                $fileType = "video";
+            } elseif($file->guessExtension() == 'png') {
+                $nomFichier = "photo_";
+                $fileType = "photo";
+            } else {
+                $nomFichier = "fichier_";
+                $fileType = "fichier";
+            }
+
+            $fileName = $nomFichier.'.'.$file->guessExtension();
+
+            //$fileName = "photo_".'.'.$file->guessExtension();
+            
             $date = date('Y-m-d H:i:s');
 
             $file->move($this->getParameter('upload_directory'), $fileName);

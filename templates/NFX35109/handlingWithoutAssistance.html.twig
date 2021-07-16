@@ -2,6 +2,13 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div>
+            <div class="row">
+                <h1>Réperer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
             <h1>Manutention manuelle sans aide à la manutention</h1>
             <p>Tableau récapitulatif des charges :</p>
             <table class="table table-striped table-hover table-light">
@@ -15,7 +22,7 @@
                         <th scope="col">Transport de charge</th>
                         <th scope="col">Hauteur dépose (m)</th>
                         <th scope="col">Profondeur dépose (m)</th>
-                        <th scope="col">Nb charge similaire</th>
+                        <!--<th scope="col">Nb charge similaire</th>-->
                         <th scope="col" colspan="2">Actions</th>
                     </tr>
                 </thead>
@@ -43,9 +50,6 @@
                         </td>
                         <td>
                             {{ charge.deposeProfondeur }}
-                        </td>
-                        <td>
-                            {{ charge.nombreChargeIdentique }}
                         </td>
                         <td>
                         <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_without_assistance_edit_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">

@@ -1,12 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Réperer</h1>
+            <h1>></h1>
+            <h1>Hiérarchiser</h1>
+            <h1>></h1>
+            <h1 class="mauve">Évaluer</h1>
+        </div>
 
-    {{ form_start(formEntreprise) }}
-    {{ form_start(formSite) }}
-    {{ form_start(formSecteur) }}
-    {{ form_start(formPosteDeTravail) }}
-    {{ form_start(formSituation) }}
+        {{ form_start(formEntreprise) }}
+        {{ form_start(formSite) }}
+        {{ form_start(formSecteur) }}
+        {{ form_start(formPosteDeTravail) }}
+        {{ form_start(formSituation) }}
 
         <div>
             <h1>Manutention Manuelle de charge - Situation</h1>

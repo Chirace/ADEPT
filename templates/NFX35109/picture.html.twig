@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Réperer</h1>
+            <h1>></h1>
+            <h1>Hiérarchiser</h1>
+            <h1>></h1>
+            <h1 class="mauve">Évaluer</h1>
+        </div>
         <h1>Manutention Manuelle de charge - Importer une photo</h1>
 
         {{ form_start(form) }}
@@ -14,8 +21,8 @@
         </div>
         {{ form_end(form) }}
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': idEvaluateur }) }}" >{% trans %}Retour{% endtrans %}</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': id }) }}" >Poursuivre</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': idEvaluateur, 'id2' : idEvaluation }) }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}" >Poursuivre</a>
         </div>
     </div>
 {% endblock %}

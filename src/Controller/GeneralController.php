@@ -2,12 +2,15 @@
 namespace App\Controller; 
 use App\Entity\Evaluateur;
 use App\Entity\Utilisateur;
+use App\Form\EntrepriseType;
 use App\Form\EvaluateurType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GeneralController extends AbstractController {
@@ -64,13 +67,35 @@ class GeneralController extends AbstractController {
 
         $evaluateur = new Evaluateur();
         $form = $this->createForm(EvaluateurType::class, $evaluateur);
+
+        /*$form = $this->createFormBuilder($evaluateur)
+            ->add('nom')
+            ->add('prenom')
+            ->add('fonction')
+            //->add('entreprise', TextType::class, array('label' => false))
+            //->add('entreprise', EntrepriseType::class, array('label' => false))
+            //->add('site')
+            //->add('entreprise_exterieure')
+            ->add('site_exterieur')
+            ->add('secteur_activite')
+            ->add('effectif')
+            ->add('valider', SubmitType::class, array('label'=> 'continuer'))
+            ->getForm();*/
         
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            $evaluateur->setUtilisateur($utilisateur);
+            /*$entreprise = new Entreprise();
+            $entreprise->setNom($form->get('entreprise')->getData());
+            $manager->persist($entreprise);*/
 
+            $evaluateur->setUtilisateur($utilisateur);
+            //$evaluateur->setEntreprise($entreprise);
             $manager->persist($evaluateur);
+
+            //$entreprise->setEvaluateur($evaluateur);
+            //$manager->persist($entreprise);
+
             $manager->flush();
 
             return $this->redirectToRoute('adept_tool_guide', ['id' => $evaluateur->getId()]);

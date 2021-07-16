@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        {{ form_start(form) }}
+        <div>
+            <h1>Manutention Manuelle de charge - Évaluateur</h1>
+            <div class="container_input">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                        <h2>Évaluateur & Entreprise</h2>
+
+                        <div class="top_container row" id="nom">
+                            {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom évaluateur...'} }) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+
+                        <div class="top_container row" id="prenom">
+                            {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form_control_60', 'placeholder': 'Prénom évaluateur...'} }) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+
+                        <div class="top_container row" id="fonction">
+                            {{ form_label(form.fonction, 'Fonction', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.fonction, {'attr': {'class': 'form_control_60', 'placeholder': 'Fonction évaluateur...'} }) }}
+                            {{ form_errors(form.fonction) }}
+                        </div>
+
+                        <div class="top_container row" id="entreprise">
+                            {{ form_label(form.entreprise, 'Entreprise', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.entreprise, {'attr': {'class': 'form_control_60', 'placeholder': 'Entreprise de l évaluateur...'} }) }}
+                            {{ form_errors(form.entreprise) }}
+                        </div>
+
+                        <div class="top_container row" id="site">
+                            {{ form_label(form.site, 'Site', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.site, {'attr': {'class': 'form_control_60', 'placeholder': 'Site de l entreprise...'} }) }}
+                            {{ form_errors(form.site) }}
+                        </div>
+
+                        <p>L'évaluateur intervient dans une entreprise extérieure ?</p>
+
+                        <div class="switch" id="switch_entreprise">
+                            <input type="checkbox" id="check_entreprise" value="non">
+                            <label for="check_entreprise" data-off="Non" data-on="Oui"></label>
+                        </div>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" id="entreprise_externe">
+                        <h2>Entreprise où se déroule la cotation :</h2>
+
+                        <div class="top_container row" id="entreprise_exterieure">
+                            {{ form_label(form.entreprise_exterieure, 'Entreprise', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.entreprise_exterieure, {'attr': {'class': 'form_control_60', 'placeholder': 'Entreprise...'} }) }}
+                            {{ form_errors(form.entreprise_exterieure) }}
+                        </div>
+
+                        <div class="top_container row" id="site_exterieur">
+                            {{ form_label(form.site_exterieur, 'Site', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.site_exterieur, {'attr': {'class': 'form_control_60', 'placeholder': 'Site de l entreprise...'} }) }}
+                            {{ form_errors(form.site_exterieur) }}
+                        </div>
+
+                        <div class="top_container row" id="secteur_activite">
+                            {{ form_label(form.secteur_activite, 'Secteur activite', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.secteur_activite, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur d activite...'} }) }}
+                            {{ form_errors(form.secteur_activite) }}
+                        </div>
+
+                        <div class="top_container row" id="effectif">
+                            {{ form_label(form.effectif, 'Effectif', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.effectif, {'attr': {'class': 'form_control_60', 'placeholder': 'Effectif...'} }) }}
+                            {{ form_errors(form.effectif) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("entreprise_externe").style.display = 'none';
+
+            function displayEntreprise(){
+                if (document.getElementById('check_entreprise').checked){
+                    /* Afficher la partie entreprise externe */
+                    document.getElementById('entreprise_externe').style.display = 'block';
+                } else {
+                    /* Masquer la la partie entreprise externe */
+                    document.getElementById('entreprise_externe').style.display = 'none';
+                }
+            }
+            document.getElementById('check_entreprise').addEventListener('change', displayEntreprise);
+        </script>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_menu') }}" >Annuler</a>
+            {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

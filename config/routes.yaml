@@ -61,6 +61,13 @@ adept_NFX35109_activity:
   requirements:
     id:  \d+
 
+adept_NFX35109_activity_added:
+  path: /NFX35109/activity/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::nouvelEvaluateur2
+  requirements:
+    id:  \d+
+    id2: \d+
+
 adept_NFX35109_picture:
   path: /NFX35109/picture/{id}
   controller: App\Controller\NFX35109Controller::picture

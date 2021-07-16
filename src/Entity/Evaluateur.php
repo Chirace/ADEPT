@@ -55,6 +55,16 @@ class Evaluateur
      */
     private $entreprise;
 
+    //private $site;
+
+    //private $entreprise_exterieure;
+
+    /*private $site_exterieur;
+
+    private $secteur_activite;
+
+    private $effectif;*/
+
     public function __construct()
     {
         $this->entreprises = new ArrayCollection();
@@ -174,7 +184,7 @@ class Evaluateur
         return $this;
     }
 
-    public function getEntreprise(): ?Entreprise
+    /*public function getEntreprise(): ?Entreprise
     {
         return $this->entreprise;
     }
@@ -185,4 +195,64 @@ class Evaluateur
 
         return $this;
     }
+
+    public function getSite(): ?string
+    {
+        return $this->site;
+    }
+
+    public function setSite(string $site): self
+    {
+        $this->site = $site;
+
+        return $this;
+    }*/
+
+    /*public function getEntrepriseExterieure(): ?string
+    {
+        return $this->entreprise_exterieure;
+    }
+
+    public function setEntrepriseExterieure(string $entreprise_exterieure): self
+    {
+        $this->entreprise_exterieure = $entreprise_exterieure;
+
+        return $this;
+    }*/
+
+    /*public function getSiteExterieur(): ?string
+    {
+        return $this->site_exterieur;
+    }
+
+    public function setSiteExterieur(string $site_exterieur): self
+    {
+        $this->site_exterieur = $site_exterieur;
+
+        return $this;
+    }*/
+
+    /*public function getSecteurActivite(): ?string
+    {
+        return $this->secteur_activite;
+    }
+
+    public function setSecteurActivite(string $secteur_activite): self
+    {
+        $this->secteur_activite = $secteur_activite;
+
+        return $this;
+    }*/
+
+    /*public function getEffectif(): ?int
+    {
+        return $this->effectif;
+    }
+
+    public function setEffectif(int $effectif): self
+    {
+        $this->effectif = $effectif;
+
+        return $this;
+    }*/
 }
