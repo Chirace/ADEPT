@@ -496,7 +496,7 @@ class NFX35109Controller extends AbstractController {
         $formSite = $this->createForm(SiteType::class, $site);
         $formSecteur = $this->createForm(SecteurType::class, $secteur);
         $formPosteDeTravail = $this->createForm(PosteDeTravailType::class, $posteDeTravail);
-        $formSituation = $this->createForm(SituationType::class, $situation);
+        //$formSituation = $this->createForm(SituationType::class, $situation);
         $formSituation = $this->createFormBuilder($situation)
             ->add('nom')
             ->getForm();
