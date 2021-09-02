@@ -1,20 +1,17 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello SecurityController!{% endblock %}
-
+{% extends 'baseInconnu.html.twig' %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="fixe_largeur_1000">
+        <p class="text_justify">Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :</p>
+        <p class="margin_left">- Repérer et hiérarchiser des postes de travail</p>
+        <p class="margin_left">- Évaluer des situations de travail</p>
+        <p class="text_justify">ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.</p>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <p class="text_justify">Cette application se base sur :</p>
+        <p class="margin_left text_justify">- La méthode d'analyse de la charge physique de travail (INRS - ED6161)</p>
+        <p class="margin_left text_justify">- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/utilisateur/Desktop/ADEPT/src/Controller/SecurityController.php'|file_link(0) }}">src/Controller/SecurityController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/utilisateur/Desktop/ADEPT/templates/security/index.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div>
+            <a class="button" href="{{ path('adept_home') }}" >{% trans %}Se connecter{% endtrans %}</a>
+        </div>
+    </div>
 {% endblock %}

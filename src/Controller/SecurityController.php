@@ -40,6 +40,10 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    public function index() {
+        return $this->render('security/index.html.twig');
+    }
+
     /**
      * @Route("/connexion", name="security_login")
      */

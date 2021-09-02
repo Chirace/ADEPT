@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <div class="row">
+                <h1>Repérer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
+            <h1>Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation</h1>
+        </div>
+        <hr>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <h5 class="constraints">Conditions d'environnement de la tâche</h5>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_thermiques, form.contraintes_thermiques.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_thermiques, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_thermiques) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_acoustiques, form.contraintes_acoustiques.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_acoustiques, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_acoustiques) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_lumineuses, form.contraintes_lumineuses.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_lumineuses, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_lumineuses) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_vibrations, form.contrainte_vibrations.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_vibrations, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_vibrations) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_poussieres, form.contrainte_poussieres.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_poussieres, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_poussieres) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_sols_degrades, form.contrainte_sols_degrades.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_sols_degrades, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_sols_degrades) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_encombrement, form.contrainte_encombrement.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_encombrement, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_encombrement) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_obstacles, form.contrainte_obstacles.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_obstacles, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_obstacles) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_espaces_inadequats, form.contrainte_espaces_inadequats.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_espaces_inadequats, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_espaces_inadequats) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_etat_chariot, form.contrainte_etat_chariot.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_etat_chariot, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_etat_chariot) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <h5 class="constraints">Conditions d'organisation de la tâche</h5>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_temps, form.contrainte_temps.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_temps, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_temps) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_marge_manoeuvre_reduite, form.contrainte_marge_manoeuvre_reduite.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_marge_manoeuvre_reduite, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_marge_manoeuvre_reduite) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_multiplicite_taches, form.contrainte_multiplicite_taches.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_multiplicite_taches, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_multiplicite_taches) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_exigences_qualite, form.contrainte_exigences_qualite.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_exigences_qualite, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_exigences_qualite) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

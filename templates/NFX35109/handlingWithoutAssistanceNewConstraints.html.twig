@@ -3,7 +3,7 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Réperer</h1>
+                <h1>Repérer</h1>
                 <h1>></h1>
                 <h1>Hiérarchiser</h1>
                 <h1>></h1>
@@ -12,125 +12,143 @@
             <h1>Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation</h1>
         </div>
         <hr>
+        {{ form_start(form) }}
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <h5>Conditions d'environnement de la tâche</h5>
-                <div class="row_block">
-                    <select class="custom_select form_control_60 no_margin_right" id="input_environmental">
-                        {% for contrainte in listeContraintesEnvironnement %}
-                            <option value={{ contrainte.id }}>{{ contrainte.intitule }}</option>
-                        {% endfor %}
-                        <!--<option value="1">Contraintes thermiques</option>
-                        <option value="2">Contraintes acoustiques</option>
-                        <option value="3">Contraintes lumineuses</option>
-                        <option value="4">Vibrations</option>
-                        <option value="5">Poussières</option>
-                        <option value="6">Sols dégradés</option>
-                        <option value="7">Encombrement</option>
-                        <option value="8">Obstacles</option>
-                        <option value="9">Manoeuvre impossible</option>
-                        <option value="10">État du chariot</option>-->
-                    </select>
-                    <button id="button_add_environmental" class="button4 form_control_4" onclick="addEnvironmentalConstraint()">+</button>
-                    <button id="button_remove_environmental" class="button4 form_control_4" onclick="removeEnvironmentalConstraint()">-</button>
+                
+                <div class="row h_margin_bottom">
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Est considéré comme contrainte d'environnement, toute ambiance ou paramètre physique perçu comme gênant ou inconfortable pour l'opérateur ou nuisant à la bonne réalisation de la tâche.">
+                        <img src="/images/help2.png" alt="icon help dimension temporelle" id="icon_help_dimension_temporelle" class="icon_click_margin_right">
+                    </span>
+                    <h3 class="constraints">Conditions d'environnement de la tâche</h3>
                 </div>
-                <p id="environmental_constraint_10">Contraintes thermiques</p>
-                <p id="environmental_constraint_11">Contraintes acoustiques</dpv>
-                <p id="environmental_constraint_12">Contraintes lumineuses</p>
-                <p id="environmental_constraint_13">Vibrations</p>
-                <p id="environmental_constraint_14">Poussières</p>
-                <p id="environmental_constraint_15">Sols dégradés</p>
-                <p id="environmental_constraint_16">Encombrement</p>
-                <p id="environmental_constraint_17">Obstacles</p>
-                <p id="environmental_constraint_18">Espaces inadéquats pour manœuvrer</p>
-                <p id="environmental_constraint_19">État du chariot</p>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_thermiques, form.contraintes_thermiques.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_thermiques, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_thermiques) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_acoustiques, form.contraintes_acoustiques.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_acoustiques, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_acoustiques) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contraintes_lumineuses, form.contraintes_lumineuses.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contraintes_lumineuses, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contraintes_lumineuses) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_vibrations, form.contrainte_vibrations.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_vibrations, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_vibrations) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_poussieres, form.contrainte_poussieres.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_poussieres, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_poussieres) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_sols_degrades, form.contrainte_sols_degrades.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_sols_degrades, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_sols_degrades) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_encombrement, form.contrainte_encombrement.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_encombrement, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_encombrement) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_obstacles, form.contrainte_obstacles.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_obstacles, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_obstacles) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_espaces_inadequats, form.contrainte_espaces_inadequats.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_espaces_inadequats, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_espaces_inadequats) }}
+                    </div>
+                </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <h5>Conditions d'organisation de la tâche</h5>
-                <div class="row_block">
-                    <select class="custom_select form_control_60 no_margin_right" id="input_organizational">
-                        {% for contrainte in listeContraintesOrganisation %}
-                            <option value={{ contrainte.id }}>{{ contrainte.intitule }}</option>
-                        {% endfor %}
-                        <!--<option value="1">Contraintes de temps</option>
-                        <option value="2">Marge de manoeuvre réduite</option>
-                        <option value="3">Multiplicité des tâches</option>
-                        <option value="4">Exigences qualité</option>-->
-                    </select>
-                    <button id="button_add_organizational" class="button4 form_control_4" onclick="addOrganizationalConstraint()">+</button>
-                    <button id="button_remove_organizational" class="button4 form_control_4" onclick="removeOrganizationalConstraint()">-</button>
+                <h5 class="constraints">Conditions d'organisation de la tâche</h5>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_temps, form.contrainte_temps.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_temps, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_temps) }}
+                    </div>
                 </div>
-                <p id="organizational_constraint_20">Contraintes de temps</p>
-                <p id="organizational_constraint_21">Marge de manoeuvre réduite</dpv>
-                <p id="organizational_constraint_22">Multiplicité des tâches</p>
-                <p id="organizational_constraint_23">Exigences qualité</p>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_marge_manoeuvre_reduite, form.contrainte_marge_manoeuvre_reduite.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_marge_manoeuvre_reduite, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_marge_manoeuvre_reduite) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_multiplicite_taches, form.contrainte_multiplicite_taches.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_multiplicite_taches, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_multiplicite_taches) }}
+                    </div>
+                </div>
+                <div class="row constraints">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                        {{ form_label(form.contrainte_exigences_qualite, form.contrainte_exigences_qualite.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        {{ form_widget(form.contrainte_exigences_qualite, {'attr': {'class': 'switch2'} }) }}
+                        {{ form_errors(form.contrainte_exigences_qualite) }}
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Ajouter et retirer une contrainte d'environnement ou d'organisation -->
-        <script>
-            document.getElementById("environmental_constraint_10").style.display = 'none';
-            document.getElementById("environmental_constraint_11").style.display = 'none';
-            document.getElementById("environmental_constraint_12").style.display = 'none';
-            document.getElementById("environmental_constraint_13").style.display = 'none';
-            document.getElementById("environmental_constraint_14").style.display = 'none';
-            document.getElementById("environmental_constraint_15").style.display = 'none';
-            document.getElementById("environmental_constraint_16").style.display = 'none';
-            document.getElementById("environmental_constraint_17").style.display = 'none';
-            document.getElementById("environmental_constraint_18").style.display = 'none';
-            document.getElementById("environmental_constraint_19").style.display = 'none';
-
-            document.getElementById("organizational_constraint_20").style.display = 'none';
-            document.getElementById("organizational_constraint_21").style.display = 'none';
-            document.getElementById("organizational_constraint_22").style.display = 'none';
-            document.getElementById("organizational_constraint_23").style.display = 'none';
-
-            function addEnvironmentalConstraint() {
-                /* Ajouter une contrainte d'environnement */
-                var add_select = document.getElementById('input_environmental');
-                var add_choice = add_select.selectedIndex;
-                var add_value = add_select.options[add_choice].value;
-                var add_id = "environmental_constraint_" + add_value;
-
-                document.getElementById(add_id).style.display = 'block';
-            }
-            document.getElementById('button_add_environmental').addEventListener("click", addEnvironmentalConstraint);
-
-            function removeEnvironmentalConstraint() {
-                /* Retirer une contrainte d'environnement */
-                var rem_select = document.getElementById('input_environmental');
-                var rem_choice = rem_select.selectedIndex;
-                var rem_value = rem_select.options[rem_choice].value;
-                var rem_id = "environmental_constraint_" + rem_value;
-
-                document.getElementById(rem_id).style.display = 'none';
-            }
-            document.getElementById('button_remove_environmental').addEventListener("click", removeEnvironmentalConstraint);
-
-            function addOrganizationalConstraint() {
-                /* Ajouter une contrainte d'organisation */
-                var add_select = document.getElementById('input_organizational');
-                var add_choice = add_select.selectedIndex;
-                var add_value = add_select.options[add_choice].value;
-                var add_id = "organizational_constraint_" + add_value;
-
-                document.getElementById(add_id).style.display = 'block';
-            }
-            document.getElementById('button_add_organizational').addEventListener("click", addOrganizationalConstraint);
-
-            function removeOrganizationalConstraint() {
-                /* Retirer une contrainte d'organisation */
-                var rem_select = document.getElementById('input_organizational');
-                var rem_choice = rem_select.selectedIndex;
-                var rem_value = rem_select.options[rem_choice].value;
-                var rem_id = "organizational_constraint_" + rem_value;
-
-                document.getElementById(rem_id).style.display = 'none';
-            }
-            document.getElementById('button_remove_organizational').addEventListener("click", removeOrganizationalConstraint);
-        </script>
+        
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_resume',  { 'id': idEvaluation }) }}" >Continuer</a>
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}

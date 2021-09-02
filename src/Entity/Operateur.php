@@ -18,37 +18,37 @@ class Operateur
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $age;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $sexe;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $Flag_Enceinte;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $lateralite;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Formation;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $Anciennete_poste;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $Anciennete_entreprise;
 
@@ -56,6 +56,11 @@ class Operateur
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Description;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Situation::class, mappedBy="operateur", cascade={"persist", "remove"})
+     */
+    private $situation;
 
     public function getId(): ?int
     {
@@ -154,6 +159,28 @@ class Operateur
     public function setDescription(?string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getSituation(): ?Situation
+    {
+        return $this->situation;
+    }
+
+    public function setSituation(?Situation $situation): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($situation === null && $this->situation !== null) {
+            $this->situation->setOperateur(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($situation !== null && $situation->getOperateur() !== $this) {
+            $situation->setOperateur($this);
+        }
+
+        $this->situation = $situation;
 
         return $this;
     }

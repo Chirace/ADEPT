@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Repérer</h1>
+            <h1>></h1>
+            <h1 class="mauve">Hiérarchiser</h1>
+        </div>
+        <h1>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser</h1>
+        <p class="mauve">Voici les résultats de la hiérarchisation des postes de travail</p>
+        <p>Tableau récapitulatif des postes et des situations :</p>
+
+        <table class="table table-striped table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col" class="mauve_cell" style="text-align:center">Ordre</th>
+                        <th scope="col" class="mauve_cell" style="text-align:center">Secteur</th>
+                        <th scope="col" class="mauve_cell" style="text-align:center">Poste de travail</th>
+                        <th scope="col" class="resume_green" style="text-align:center">Non</th>
+                        <th scope="col" class="resume_yellow" style="text-align:center">Oui, mais non critique</th>
+                        <th scope="col" class="resume_red" style="text-align:center">Oui et critique</th>
+                        <th scope="col" class="mauve_cell" style="text-align:center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set nombreEvaluationHierarchisable = 0 %}
+                    {% for evaluation in evaluations %}
+                        {% if evaluation.Q2Non != null %}
+                            {% set nombreEvaluationHierarchisable = nombreEvaluationHierarchisable + 1 %}
+                        {% endif %}
+                    <tr>
+                        <th scope="row" style="text-align:center">{{ loop.index }}</th>
+                        <td style="text-align:center">{{ evaluation.secteur.nom }}</td>
+                        <td style="text-align:center">{{ evaluation.posteDeTravail.nom }}</td>
+                        <td style="text-align:center">{{ evaluation.Q2Non }}</td>
+                        <td style="text-align:center">{{ evaluation.Q2OuiNonCritique }}</td>
+                        <td style="text-align:center">{{ evaluation.Q2OuiCritique }}</td>
+                        {% if (evaluation.Q2Non == null) and (evaluation.Q2OuiNonCritique == null) and (evaluation.Q2OuiCritique == null) %}
+                            <td class="gray_cell" style="text-align:center">
+                                <a class="text_white" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': evaluation.id }) }}">
+                                    Coter le poste de travail
+                                </a>
+                            </td>
+                        {% else %}
+                            <td style="text-align:center">
+                                <a class="navbar-brand" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': evaluation.id }) }}">
+                                    <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="7" class="mauve_cell" style="text-align:center">
+                            <a class="a_adept_ocre"  href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">Nouvelle situation</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        {{ form_start(form) }}
+        <div class="modal fade" id="ModalCenterTerminer" tabindex="-1" role="dialog" aria-labelledby="Enregistrer l'analyse" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Enregistrer l'analyse</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Nom :</p>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">Annuler</a>
+            <button id="button_Terminer" type="button" class="button3_center" data-toggle="modal" data-target="#ModalCenterTerminer">Terminer</button>
+            {% if nombreEvaluationHierarchisable < 2 %}
+                <a class="button3_right button_adept_inactif">Suggestion de hiérarchisation</a>
+            {% else %}
+                <a class="button3_right">Suggestion de hiérarchisation</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

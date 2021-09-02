@@ -34,6 +34,7 @@
             <label for="check_Q4" data-off="Non" data-on="Oui"></label>
         </div>
 
+        <p class="mauve" id="flag_inadaptee"> -> Cette situation n'est pas adaptée à l'application.</p>
         <p class="mauve" id="flag_ED6161"> -> Cet outil va permettre de hiérarchiser les postes de travail.</p>
         <p class="mauve" id="flag_NFX35109"> -> Cet outil va permettre d'évaluer une situation de travail.</p>
 
@@ -41,6 +42,7 @@
             document.getElementById("switch_Q2").style.display = 'none';
             document.getElementById("switch_Q3").style.display = 'none';
             document.getElementById("switch_Q4").style.display = 'none';
+            document.getElementById("flag_inadaptee").style.display = 'block';
             document.getElementById("flag_ED6161").style.display = 'none';
             document.getElementById("flag_NFX35109").style.display = 'none';
 
@@ -77,11 +79,13 @@
                     if (!document.getElementById('check_Q3').checked){
                         if(document.getElementById('check_Q4').checked) {
                             /* NFX 35-109 */
+                            document.getElementById('flag_inadaptee').style.display = 'none';
                             document.getElementById('flag_ED6161').style.display = 'none';
                             document.getElementById('flag_NFX35109').style.display = 'block';
                             document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': idEvaluateur } ) }}";
                         } else {
                             /* Rien - Guide */
+                            document.getElementById("flag_inadaptee").style.display = 'block';
                             document.getElementById('flag_ED6161').style.display = 'none';
                             document.getElementById('flag_NFX35109').style.display = 'none';
                             document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";
@@ -89,12 +93,14 @@
                         
                     } else {
                         /* ED6161 */
+                        document.getElementById('flag_inadaptee').style.display = 'none';
                         document.getElementById('flag_NFX35109').style.display = 'none';
                         document.getElementById('flag_ED6161').style.display = 'block';
-                        /*document.getElementById('button_confirm_choice').href="{{ path('adept_tool_ED6161') }}";*/
+                        document.getElementById('button_confirm_choice').href="{{ path('adept_tool_new_ED6161',  { 'id': idEvaluateur } ) }}";
                     }
                 } else {
                     /* Rien - Guide */
+                    document.getElementById("flag_inadaptee").style.display = 'block';
                     document.getElementById('flag_NFX35109').style.display = 'none';
                     document.getElementById('flag_ED6161').style.display = 'none';
                     document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";

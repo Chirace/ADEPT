@@ -59,6 +59,34 @@ class EvaluationNFX
      */
     private $chargeNFXes;
 
+    private $contraintes_thermiques;
+
+    private $contraintes_acoustiques;
+
+    private $contraintes_lumineuses;
+
+    private $contrainte_vibrations;
+
+    private $contrainte_poussieres;
+
+    private $contrainte_sols_degrades;
+
+    private $contrainte_encombrement;
+
+    private $contrainte_obstacles;
+
+    private $contrainte_espaces_inadequats;
+
+    private $contrainte_etat_chariot;
+
+    private $contrainte_temps;
+
+    private $contrainte_marge_manoeuvre_reduite;
+
+    private $contrainte_multiplicite_taches;
+
+    private $contrainte_exigences_qualite;
+
     public function __construct()
     {
         $this->chargeNFXes = new ArrayCollection();
@@ -179,6 +207,174 @@ class EvaluationNFX
                 $chargeNFX->setEvaluationNfx(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContraintesThermiques(): ?bool
+    {
+        return $this->contraintes_thermiques;
+    }
+
+    public function setContraintesThermiques(bool $contraintes_thermiques): self
+    {
+        $this->contraintes_thermiques = $contraintes_thermiques;
+
+        return $this;
+    }
+
+    public function getContraintesAcoustiques(): ?bool
+    {
+        return $this->contraintes_acoustiques;
+    }
+
+    public function setContraintesAcoustiques(bool $contraintes_acoustiques): self
+    {
+        $this->contraintes_acoustiques = $contraintes_acoustiques;
+
+        return $this;
+    }
+
+    public function getContraintesLumineuses(): ?bool
+    {
+        return $this->contraintes_lumineuses;
+    }
+
+    public function setContraintesLumineuses(bool $contraintes_lumineuses): self
+    {
+        $this->contraintes_lumineuses = $contraintes_lumineuses;
+
+        return $this;
+    }
+
+    public function getContrainteVibrations(): ?bool
+    {
+        return $this->contrainte_vibrations;
+    }
+
+    public function setContrainteVibrations(bool $contrainte_vibrations): self
+    {
+        $this->contrainte_vibrations = $contrainte_vibrations;
+
+        return $this;
+    }
+
+    public function getContraintePoussieres(): ?bool
+    {
+        return $this->contrainte_poussieres;
+    }
+
+    public function setContraintePoussieres(bool $contrainte_poussieres): self
+    {
+        $this->contrainte_poussieres = $contrainte_poussieres;
+
+        return $this;
+    }
+
+    public function getContrainteSolsDegrades(): ?bool
+    {
+        return $this->contrainte_sols_degrades;
+    }
+
+    public function setContrainteSolsDegrades(bool $contrainte_sols_degrades): self
+    {
+        $this->contrainte_sols_degrades = $contrainte_sols_degrades;
+
+        return $this;
+    }
+
+    public function getContrainteEncombrement(): ?bool
+    {
+        return $this->contrainte_encombrement;
+    }
+
+    public function setContrainteEncombrement(bool $contrainte_encombrement): self
+    {
+        $this->contrainte_encombrement = $contrainte_encombrement;
+
+        return $this;
+    }
+
+    public function getContrainteObstacles(): ?bool
+    {
+        return $this->contrainte_obstacles;
+    }
+
+    public function setContrainteObstacles(bool $contrainte_obstacles): self
+    {
+        $this->contrainte_obstacles = $contrainte_obstacles;
+
+        return $this;
+    }
+
+    public function getContrainteEspacesInadequats(): ?bool
+    {
+        return $this->contrainte_espaces_inadequats;
+    }
+
+    public function setContrainteEspacesInadequats(bool $contrainte_espaces_inadequats): self
+    {
+        $this->contrainte_espaces_inadequats = $contrainte_espaces_inadequats;
+
+        return $this;
+    }
+
+    public function getContrainteEtatChariot(): ?bool
+    {
+        return $this->contrainte_etat_chariot;
+    }
+
+    public function setContrainteEtatChariot(bool $contrainte_etat_chariot): self
+    {
+        $this->contrainte_etat_chariot = $contrainte_etat_chariot;
+
+        return $this;
+    }
+
+    public function getContrainteTemps(): ?bool
+    {
+        return $this->contrainte_temps;
+    }
+
+    public function setContrainteTemps(bool $contrainte_temps): self
+    {
+        $this->contrainte_temps = $contrainte_temps;
+
+        return $this;
+    }
+
+    public function getContrainteMargeManoeuvreReduite(): ?bool
+    {
+        return $this->contrainte_marge_manoeuvre_reduite;
+    }
+
+    public function setContrainteMargeManoeuvreReduite(bool $contrainte_marge_manoeuvre_reduite): self
+    {
+        $this->contrainte_marge_manoeuvre_reduite = $contrainte_marge_manoeuvre_reduite;
+
+        return $this;
+    }
+
+    public function getContrainteMultipliciteTaches(): ?bool
+    {
+        return $this->contrainte_multiplicite_taches;
+    }
+
+    public function setContrainteMultipliciteTaches(bool $contrainte_multiplicite_taches): self
+    {
+        $this->contrainte_multiplicite_taches = $contrainte_multiplicite_taches;
+
+        return $this;
+    }
+
+    public function getContrainteExigencesQualite(): ?bool
+    {
+        return $this->contrainte_exigences_qualite;
+    }
+
+    public function setContrainteExigencesQualite(bool $contrainte_exigences_qualite): self
+    {
+        $this->contrainte_exigences_qualite = $contrainte_exigences_qualite;
 
         return $this;
     }

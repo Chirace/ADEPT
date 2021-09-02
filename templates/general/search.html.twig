@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <h1>Rechercher une évaluation</h1>
+        {{ form_start(form) }}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
+                    {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped table-hover table-light">
+            <thead>
+                <tr>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Ordre</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Évaluateur</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Type évaluation</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Intitulé</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Date</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Voir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evaluation in listeEvaluations %}
+                <tr>
+                    <th scope="row" style="text-align:center">{{ loop.index }}</th>
+                    <td style="text-align:center">{{ evaluation.evaluateur.nom }} {{ evaluation.evaluateur.prenom }}</td>
+                    <td style="text-align:center">{{ evaluation.typeEvaluation }}</td>
+                    <td style="text-align:center">{{ evaluation.Nom }}</td>
+                    <td style="text-align:center">{{ evaluation.dateEvaluation |date("m/d/Y") }}</td>
+                    {% if evaluation.typeEvaluation == "ED6161" %}
+                        <td style="text-align:center">
+                            <a href="{{ path('adept_ED6161_resume', {'id':evaluation.id} ) }}">
+                                <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                            </a>
+                        </td>
+                    {% elseif evaluation.typeEvaluation == "NF X35-109" %}
+                        {% if evaluation.evaluationNfx.typeManutention == "Sans aide à la manutention" %}
+                            <td style="text-align:center">
+                                <a href="{{ path('adept_NFX35109_handling_without_assistance_resume', {'id':evaluation.id} ) }}">
+                                    <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                                </a>
+                            </td>
+                        {% elseif evaluation.evaluationNfx.typeManutention == "Avec aide à la manutention" %}
+                            <td style="text-align:center">
+                                <a href="{{ path('adept_NFX35109_handling_with_assistance_resume', {'id':evaluation.id} ) }}">
+                                    <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                                </a>
+                            </td>
+                        {% else %}
+                            <td style="text-align:center">
+                                <a href="{{ path('adept_tool_NFX35109', {'id':evaluation.id} ) }}">
+                                    <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                                </a>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {{ form_end(form) }}
+
+        <div>
+            <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+        </div>
+    </div>
+{% endblock %}

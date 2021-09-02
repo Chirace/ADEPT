@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvaluationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,48 @@ class Evaluation
      * @ORM\OneToOne(targetEntity=EvaluationNFX::class, cascade={"persist", "remove"})
      */
     private $evaluation_nfx;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PosteDeTravail::class, inversedBy="evaluations")
+     */
+    private $posteDeTravail;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Secteur::class, inversedBy="evaluations")
+     */
+    private $secteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="evaluations")
+     */
+    private $site;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="evaluations")
+     */
+    private $entreprise;
+
+    private $situation_nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity=EvaluationED6161::class, mappedBy="evaluation")
+     */
+    private $evaluationED6161s;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=EvaluationED6161::class, inversedBy="evaluations")
+     */
+    private $evaluationED6161;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    public function __construct()
+    {
+        $this->evaluationED6161s = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +147,120 @@ class Evaluation
     public function setEvaluationNfx(?EvaluationNFX $evaluation_nfx): self
     {
         $this->evaluation_nfx = $evaluation_nfx;
+
+        return $this;
+    }
+
+    public function getPosteDeTravail(): ?PosteDeTravail
+    {
+        return $this->posteDeTravail;
+    }
+
+    public function setPosteDeTravail(?PosteDeTravail $posteDeTravail): self
+    {
+        $this->posteDeTravail = $posteDeTravail;
+
+        return $this;
+    }
+
+    public function getSecteur(): ?Secteur
+    {
+        return $this->secteur;
+    }
+
+    public function setSecteur(?Secteur $secteur): self
+    {
+        $this->secteur = $secteur;
+
+        return $this;
+    }
+
+    public function getSite(): ?Site
+    {
+        return $this->site;
+    }
+
+    public function setSite(?Site $site): self
+    {
+        $this->site = $site;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getSituationNom(): ?string
+    {
+        return $this->situation_nom;
+    }
+
+    public function setSituationNom(?string $situation_nom): self
+    {
+        $this->situation_nom = $situation_nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EvaluationED6161[]
+     */
+    public function getEvaluationED6161s(): Collection
+    {
+        return $this->evaluationED6161s;
+    }
+
+    public function addEvaluationED6161(EvaluationED6161 $evaluationED6161): self
+    {
+        if (!$this->evaluationED6161s->contains($evaluationED6161)) {
+            $this->evaluationED6161s[] = $evaluationED6161;
+            $evaluationED6161->setEvaluation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluationED6161(EvaluationED6161 $evaluationED6161): self
+    {
+        if ($this->evaluationED6161s->removeElement($evaluationED6161)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluationED6161->getEvaluation() === $this) {
+                $evaluationED6161->setEvaluation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEvaluationED6161(): ?EvaluationED6161
+    {
+        return $this->evaluationED6161;
+    }
+
+    public function setEvaluationED6161(?EvaluationED6161 $evaluationED6161): self
+    {
+        $this->evaluationED6161 = $evaluationED6161;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }

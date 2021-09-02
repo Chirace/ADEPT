@@ -2,8 +2,12 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-adept_home:
+adept_index:
   path: /
+  controller: App\Controller\SecurityController::index
+
+adept_home:
+  path: /home
   controller: App\Controller\GeneralController::home
 
 adept_registration:
@@ -21,6 +25,10 @@ adept_menu:
 adept_formations:
   path: /formations
   controller: App\Controller\GeneralController::formations
+
+adept_search:
+  path: /search
+  controller: App\Controller\GeneralController::recherche
 
 adept_analyze_choice:
   path: /analyze_choice
@@ -184,8 +192,70 @@ adept_NFX35109_handling_without_assistance_resume_charge:
     id2: \d+
 
 adept_NFX35109_handling_with_assistance:
-    path: /NFX35109/handling_with_assistance
-    controller: App\Controller\NFX35109Controller::handlingWithAssistance
+  path: /NFX35109/handling_with_assistance/{id}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistance
+  requirements:
+      id:  \d+
+
+adept_NFX35109_handling_with_assistance_charge_type:
+  path: /NFX35109/handling_with_assistance/type_charge/{id}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceType
+  requirements:
+    id:  \d+
+
+adept_NFX35109_handling_with_assistance_charge_informations:
+  path: /NFX35109/handling_with_assistance/new_charge/{id}/{type}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceNewCharge
+  requirements:
+    id:  \d+
+    type: \d+
+
+adept_NFX35109_handling_with_assistance_execution_constraint:
+  path: /NFX35109/handling_with_assistance/new_charge/execution_constraint/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::listerContraintesExecution2
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_NFX35109_handling_with_assistance_edit_charge:
+  path: /NFX35109/handling_with_assistance/edit_charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceEditCharge
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_NFX35109_handling_with_assistance_delete_charge:
+  path: /NFX35109/handling_with_assistance/delete_charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceDeleteCharge
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_NFX35109_handling_with_assistance_tonnage_frequence:
+  path: /NFX35109/handling_with_assistance/tonnage_frequency/{id}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceTonnageFrequency
+  requirements:
+    id:  \d+
+
+adept_NFX35109_handling_with_assistance_constraints:
+  path: /NFX35109/handling_with_assistance/constraints/{id}
+  controller: App\Controller\NFX35109Controller::listerContraintes2
+  requirements:
+    id:  \d+
+
+adept_NFX35109_handling_with_assistance_resume:
+  path: /NFX35109/handling_with_assistance/resume/{id}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceResume
+  requirements:
+    id:  \d+
+
+#Résumé de la charge dans une activité de manutention manuelle avec aide à la manutention.
+adept_NFX35109_handling_with_assistance_resume_charge:
+  path: /NFX35109/handling_with_assistance/resume/charge/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::handlingWithAssistanceResumeCharge
+  requirements:
+    id:  \d+
+    id2: \d+
 
 adept_NFX35109_execution_conditions:
   path: /NFX35109/execution
@@ -203,9 +273,37 @@ adept_NFX35109_results:
   path: /NFX35109/results
   controller: App\Controller\NFX35109Controller::results
 
+adept_tool_new_ED6161:
+  path: /newED6161/{id}
+  controller: App\Controller\ED6161Controller::newED6161
+  requirements:
+    id:  \d+
+
 adept_tool_ED6161:
-  path: /ED6161
-  controller: App\Controller\GeneralController::ED6161
+  path: /ED6161/{id}
+  controller: App\Controller\ED6161Controller::ED6161
+  requirements:
+    id:  \d+
+
+adept_ED6161_resume:
+  path: /ED6161/{id}/resume
+  controller: App\Controller\ED6161Controller::ED6161Resume
+  requirements:
+    id:  \d+
+
+adept_ED6161_grille_1:
+  path: /ED6161/{id}/grille1/{id2}
+  controller: App\Controller\ED6161Controller::ED6161Grille1
+  requirements:
+    id:  \d+
+    id2:  \d+
+
+adept_ED6161_grille_2:
+  path: /ED6161/{id}/grille2/{id2}
+  controller: App\Controller\ED6161Controller::ED6161Grille2
+  requirements:
+    id:  \d+
+    id2:  \d+
 
 adept_tool_NIOSH:
   path: /NIOSH

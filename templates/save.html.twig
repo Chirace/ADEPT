@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <div class="row">
+                <h1>Réperer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
+            <h1>Manutention Manuelle de charge - Contraintes</h1>
+
+            <hr>
+            <div>
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Est considérée comme une contrainte d'exécution toute caractéristique de la réalisation de la tâche perçue ou ressentie par l'opérateur comme gênante, inconfortable ou nuisant à la bonne réalisation de celle-ci.">
+                    <img src="/images/help2.png" alt="icon help dimension temporelle" id="icon_help_dimension_temporelle" class="icon_click_margin_right">
+                </span>
+                <h3 class="h_margin_bottom">Conditions d'exécution de la tâche</h3>
+            <div>
+            
+            <div class="row_block">
+                <select class="custom_select form_control_40 no_margin_right" id="input_contraintes" name="select_contraintes">
+                    {% for contrainte in listeContraintes %}
+                        <option value={{ contrainte.id }}>{{ contrainte.intitule }}</option>
+                    {% endfor %}
+                    <!--<option value="1">Sans poignées ou inadaptées</option>
+                    <option value="2">Torsion du tronc</option>
+                    <option value="3">Profondeur de prise > 0,40 m</option>
+                    <option value="4">Hors zone d'atteinte</option>
+                    <option value="5">Posture/position du corps</option>
+                    <option value="6">Charge instable</option>
+                    <option value="7">Visibilité limitée</option>
+                    <option value="8">Roulettes inadéquates</option>
+                    <option value="9">Absence de frein</option>-->
+                </select>
+                <button id="button_add" class="button4 form_control_2" onclick="addConstraint()">+</button>
+                <button id="button_remove" class="button4 form_control_2" onclick="removeConstraint()">-</button>
+            </div>
+
+            {{ form_start(form) }}
+            
+            <!--<p type="text" id="constraints_execution"></p>-->
+            
+            <p id="constraint_1">Sans poignées ou inadaptées</p>
+            <p id="constraint_2">Torsion du tronc</dpv>
+            <p id="constraint_3">Profondeur de prise sup 0,40 m</p>
+            <p id="constraint_4">Hors zone d'atteinte</p>
+            <p id="constraint_5">Une ou plusieurs contraintes concernant la posture/position du corps</p>
+            <p id="constraint_6">Charge instable</p>
+            <p id="constraint_7">Visibilité limitée</p>
+            <p id="constraint_8">Roulettes inadéquates</p>
+            <p id="constraint_9">Absence de frein</p>
+        </div>
+
+        <!-- Ajouter et retirer une contrainte d'exécution -->
+        <script>
+            document.getElementById("constraint_1").style.display = 'none';
+            document.getElementById("constraint_2").style.display = 'none';
+            document.getElementById("constraint_3").style.display = 'none';
+            document.getElementById("constraint_4").style.display = 'none';
+            document.getElementById("constraint_5").style.display = 'none';
+            document.getElementById("constraint_6").style.display = 'none';
+            document.getElementById("constraint_7").style.display = 'none';
+            document.getElementById("constraint_8").style.display = 'none';
+            document.getElementById("constraint_9").style.display = 'none';
+
+            var contraintes = [];
+
+            function addConstraint() {
+                /* Ajouter une contrainte */
+                var add_select = document.getElementById('input_contraintes');
+                var add_choice = add_select.selectedIndex;
+                var add_value = add_select.options[add_choice].value;
+                var add_id = "constraint_" + add_value;
+
+                document.getElementById(add_id).style.display = 'block';
+
+                if(contraintes.length == 0){
+                    contraintes.push(add_value);
+                    document.getElementById('constraints_execution').innerText = add_value;
+                } else {
+                    contraintes.push(add_value);
+                    document.getElementById('constraints_execution').innerText += "," + add_value;
+                }
+                
+                
+
+
+                //document.getElementById('label_contraintes_execution').innerText = document.getElementById('constraints_execution').value;
+
+                /*var elem = document.getElementById('label_contraintes_execution').value;
+                elem += "test_";*/
+            }
+            //document.getElementById('button_add').addEventListener('click', addConstraint);
+
+            function removeConstraint() {
+                /* Retirer une contrainte */
+                var rem_select = document.getElementById('input_contraintes');
+                var rem_choice = rem_select.selectedIndex;
+                var rem_value = rem_select.options[rem_choice].value;
+                var rem_id = "constraint_" + rem_value;
+
+                if(contraintes.length == 0){
+                    /* Aucune contrainte */
+                } else {
+                    var pos = contraintes.indexOf(rem_value);
+                    contraintesfruits.splice(pos, 1)
+                }
+
+                document.getElementById(rem_id).style.display = 'none';
+            }
+            //document.getElementById('button_remove').addEventListener("click", removeConstraint);
+
+            function display(){
+                
+            }
+        </script>
+
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Revenir en arrière</a>
+            <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>-->
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+
+<div class="row" id="second_choice">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluation }) }}">
+                                <img class="card-img-top icon_manutention_type" src="/images/icon_MM_lit.png" alt="icon MM lit hôpital simple">
+                             </a>
+                            <div class="card-body center">
+                                <p class="p_black">Manutention manuelle de lit d'hôpital simple (50 kg à vide)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">
+                                <img class="card-img-top icon_manutention_type" src="/images/icon_MM_transpalette.png" alt="icon MM transpalette">
+                            </a>
+                            <div class="card-body center">
+                                <p class="p_black">Manutention manuelle de transpalette</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="card" style="width: 18rem;">
+                            <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">
+                                <img class="card-img-top icon_manutention_type" src="/images/icon_MM_chariot.png" alt="icon MM chariot 4 roues">
+                            </a>
+                            <div class="card-body center">
+                                <p class="p_black">Manutention manuelle de chariot à 4 roues</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

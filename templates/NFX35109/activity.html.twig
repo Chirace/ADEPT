@@ -2,18 +2,14 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Réperer</h1>
+            <h1>Repérer</h1>
             <h1>></h1>
             <h1>Hiérarchiser</h1>
             <h1>></h1>
             <h1 class="mauve">Évaluer</h1>
         </div>
 
-        {{ form_start(formEntreprise) }}
-        {{ form_start(formSite) }}
-        {{ form_start(formSecteur) }}
-        {{ form_start(formPosteDeTravail) }}
-        {{ form_start(formSituation) }}
+        {{ form_start(form) }}
 
         <div>
             <h1>Manutention Manuelle de charge - Situation</h1>
@@ -24,35 +20,29 @@
                         <p>{{ evaluateur.prenom }} {{ evaluateur.nom }}</p>
 
                         <p class="text_margin_right">Entreprise :</p>
-                        {{ form_widget(formEntreprise.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amazon...'}} ) }}
+                        {{ form_widget(form.entreprise.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amazon...'}} ) }}
                         
                         <p class="text_margin_right">Site :</p>
-                        {{ form_widget(formSite.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amiens...'}} ) }}
+                        {{ form_widget(form.site.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amiens...'}} ) }}
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left2">
                         <p class="text_margin_right">Nom du secteur :</p>
-                        {{ form_widget(formSecteur.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Production...'}} ) }}
+                        {{ form_widget(form.secteur.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Production...'}} ) }}
                         
                         <p class="text_margin_right">Poste de travail :</p>
-                        {{ form_widget(formPosteDeTravail.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Fin de chaîne...'}} ) }}
+                        {{ form_widget(form.posteDeTravail.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Fin de chaîne...'}} ) }}
                         
                         <p class="text_margin_right">Nom de la situation :</p>
-                        {{ form_widget(formSituation.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Dépalettisation...'}} ) }}
+                        {{ form_widget(form.situation_nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Dépalettisation...'}} ) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_tool_NFX35109',  { 'id': evaluateur.id }) }}" >Annuler</a>
-            <button type="submit" class="button3_right" >Continuer</button>
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
 
-        {{ form_end(formSituation) }}
-        {{ form_end(formEntreprise) }}
-        {{ form_end(formSite) }}
-        {{ form_end(formSecteur) }}
-        {{ form_end(formPosteDeTravail) }}
-        
-
+        {{ form_end(form) }}
     </div>
 {% endblock %}

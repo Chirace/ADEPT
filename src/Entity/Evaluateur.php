@@ -55,15 +55,35 @@ class Evaluateur
      */
     private $entreprise;
 
-    //private $site;
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="evaluateurs")
+     */
+    private $site;
 
-    //private $entreprise_exterieure;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $evaluation_interne;
 
-    /*private $site_exterieur;
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="evaluateursExterne")
+     */
+    private $entreprise_exterieure;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="evaluateursExterne")
+     */
+    private $site_exterieur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=DivisionNAF::class, inversedBy="evaluateursExterne")
+     */
     private $secteur_activite;
 
-    private $effectif;*/
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $effectif;
 
     public function __construct()
     {
@@ -184,7 +204,7 @@ class Evaluateur
         return $this;
     }
 
-    /*public function getEntreprise(): ?Entreprise
+    public function getEntreprise(): ?Entreprise
     {
         return $this->entreprise;
     }
@@ -196,63 +216,75 @@ class Evaluateur
         return $this;
     }
 
-    public function getSite(): ?string
+    public function getSite(): ?Site
     {
         return $this->site;
     }
 
-    public function setSite(string $site): self
+    public function setSite(?Site $site): self
     {
         $this->site = $site;
 
         return $this;
-    }*/
+    }
 
-    /*public function getEntrepriseExterieure(): ?string
+    public function getEvaluationInterne(): ?bool
+    {
+        return $this->evaluation_interne;
+    }
+
+    public function setEvaluationInterne(bool $evaluation_interne): self
+    {
+        $this->evaluation_interne = $evaluation_interne;
+
+        return $this;
+    }
+
+    public function getEntrepriseExterieure(): ?Entreprise
     {
         return $this->entreprise_exterieure;
     }
 
-    public function setEntrepriseExterieure(string $entreprise_exterieure): self
+    public function setEntrepriseExterieure(?Entreprise $entreprise_exterieure): self
     {
         $this->entreprise_exterieure = $entreprise_exterieure;
 
         return $this;
-    }*/
+    }
 
-    /*public function getSiteExterieur(): ?string
+    public function getSiteExterieur(): ?Site
     {
         return $this->site_exterieur;
     }
 
-    public function setSiteExterieur(string $site_exterieur): self
+    public function setSiteExterieur(?Site $site_exterieur): self
     {
         $this->site_exterieur = $site_exterieur;
 
         return $this;
-    }*/
+    }
 
-    /*public function getSecteurActivite(): ?string
+    public function getSecteurActivite(): ?DivisionNAF
     {
         return $this->secteur_activite;
     }
 
-    public function setSecteurActivite(string $secteur_activite): self
+    public function setSecteurActivite(?DivisionNAF $secteur_activite): self
     {
         $this->secteur_activite = $secteur_activite;
 
         return $this;
-    }*/
+    }
 
-    /*public function getEffectif(): ?int
+    public function getEffectif(): ?int
     {
         return $this->effectif;
     }
 
-    public function setEffectif(int $effectif): self
+    public function setEffectif(?int $effectif): self
     {
         $this->effectif = $effectif;
 
         return $this;
-    }*/
+    }
 }

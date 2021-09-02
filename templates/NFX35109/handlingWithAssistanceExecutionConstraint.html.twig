@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Repérer</h1>
+            <h1>></h1>
+            <h1>Hiérarchiser</h1>
+            <h1>></h1>
+            <h1 class="mauve">Évaluer</h1>
+        </div>
+        <h1>Manutention Manuelle de charge - Contraintes</h1>
+
+        <hr>
+        <div class="row h_margin_bottom">
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Est considérée comme une contrainte d'exécution toute caractéristique de la réalisation de la tâche perçue ou ressentie par l'opérateur comme gênante, inconfortable ou nuisant à la bonne réalisation de celle-ci.">
+                <img src="/images/help2.png" alt="icon help dimension temporelle" id="icon_help_dimension_temporelle" class="icon_click_margin_right">
+            </span>
+            <h3>Conditions d'exécution de la tâche</h3>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_poignees_inadaptees, form.contrainte_poignees_inadaptees.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                    {{ form_widget(form.contrainte_poignees_inadaptees, {'attr': {'class': 'switch2'} }) }}
+                    {{ form_errors(form.contrainte_poignees_inadaptees) }}
+                </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div id="button_help" class="button5" onclick="helpConstraint()">Définir</div>
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_torsion_tronc, form.contrainte_torsion_tronc.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_torsion_tronc, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_torsion_tronc) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_profondeur_prise, form.contrainte_profondeur_prise.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_profondeur_prise, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_profondeur_prise) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_hors_zone_atteinte, form.contrainte_hors_zone_atteinte.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_hors_zone_atteinte, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_hors_zone_atteinte) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_posture, form.contrainte_posture.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_posture, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_posture) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_charge_instable, form.contrainte_charge_instable.vars.label , {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_charge_instable, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_charge_instable) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_visibilite_limitee, form.contrainte_visibilite_limitee.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_visibilite_limitee, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_visibilite_limitee) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_roulettes_inadequates, form.contrainte_roulettes_inadequates.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_roulettes_inadequates, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_roulettes_inadequates) }}
+            </div>
+        </div>
+
+        <div class="row constraints margin_left_10">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_label(form.contrainte_absence_frein, form.contrainte_absence_frein.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                {{ form_widget(form.contrainte_absence_frein, {'attr': {'class': 'switch2'} }) }}
+                {{ form_errors(form.contrainte_absence_frein) }}
+            </div>
+        </div>
+
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluateur, 'type': type }) }}" >Revenir en arrière</a>
+            <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>-->
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

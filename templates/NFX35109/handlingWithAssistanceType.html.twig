@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Repérer</h1>
+            <h1>></h1>
+            <h1>Hiérarchiser</h1>
+            <h1>></h1>
+            <h1 class="mauve">Évaluer</h1>
+        </div>
+        <h1>Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention</h1>
+        <div class="row">
+            <p id="label_type_assistance" class="mauve">Type d'aide à la manutention</p>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': 1 }) }}">
+                        <img class="card-img-top icon_manutention_type" src="/images/icon_MM_lit.png" alt="icon MM lit hôpital simple">
+                    </a>
+                    <div class="card-body center">
+                         <p class="p_black">Manutention manuelle de lit d'hôpital simple (50 kg à vide)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': 2 }) }}">
+                        <img class="card-img-top icon_manutention_type" src="/images/icon_MM_transpalette.png" alt="icon MM transpalette">
+                    </a>
+                    <div class="card-body center">
+                        <p class="p_black">Manutention manuelle de transpalette</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <a class="center" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': 3 }) }}">
+                        <img class="card-img-top icon_manutention_type" src="/images/icon_MM_chariot.png" alt="icon MM chariot 4 roues">
+                    </a>
+                    <div class="card-body center">
+                        <p class="p_black">Manutention manuelle de chariot à 4 roues</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <a class="button3_left text_margin_top" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+        </div>
+    </div>
+{% endblock %}

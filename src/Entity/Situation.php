@@ -64,6 +64,11 @@ class Situation
      */
     private $evaluations;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Operateur::class, inversedBy="situation", cascade={"persist", "remove"})
+     */
+    private $operateur;
+
     public function __construct()
     {
         $this->evaluations = new ArrayCollection();
@@ -196,6 +201,18 @@ class Situation
                 $evaluation->setSituation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOperateur(): ?Operateur
+    {
+        return $this->operateur;
+    }
+
+    public function setOperateur(?Operateur $operateur): self
+    {
+        $this->operateur = $operateur;
 
         return $this;
     }

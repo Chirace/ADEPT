@@ -44,11 +44,23 @@ class Entreprise
      */
     private $evaluateurs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="entreprise")
+     */
+    private $evaluations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluateur::class, mappedBy="entreprise_exterieure")
+     */
+    private $evaluateursExterne;
+
     public function __construct()
     {
         $this->sites = new ArrayCollection();
         $this->bilanEntreprises = new ArrayCollection();
         $this->evaluateurs = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
+        $this->evaluateursExterne = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +176,66 @@ class Entreprise
             // set the owning side to null (unless already changed)
             if ($evaluateur->getEntreprise() === $this) {
                 $evaluateur->setEntreprise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getEntreprise() === $this) {
+                $evaluation->setEntreprise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaluateur[]
+     */
+    public function getEvaluateursExterne(): Collection
+    {
+        return $this->evaluateursExterne;
+    }
+
+    public function addEvaluateursExterne(Evaluateur $evaluateursExterne): self
+    {
+        if (!$this->evaluateursExterne->contains($evaluateursExterne)) {
+            $this->evaluateursExterne[] = $evaluateursExterne;
+            $evaluateursExterne->setEntrepriseExterieure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluateursExterne(Evaluateur $evaluateursExterne): self
+    {
+        if ($this->evaluateursExterne->removeElement($evaluateursExterne)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluateursExterne->getEntrepriseExterieure() === $this) {
+                $evaluateursExterne->setEntrepriseExterieure(null);
             }
         }
 

@@ -3,7 +3,7 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Réperer</h1>
+                <h1>Repérer</h1>
                 <h1>></h1>
                 <h1>Hiérarchiser</h1>
                 <h1>></h1>
@@ -24,28 +24,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="pos_poids">
-                                <td>
-                                    Poids de la charge
-                                </td>
-                                <td>
-                                    {{ charge.poidsCharge }} kg
-                                </td>
-                                <td class="resume_green">
-                                    Le poids de la charge est acceptable
-                                </td>
-                            </tr>
-                            <tr id="positif_poids">
-                                <td>
-                                    Poids de la charge
-                                </td>
-                                <td>
-                                    {{ charge.poidsCharge }} kg
-                                </td>
-                                <td class="resume_green">
-                                    Le poids de la charge est acceptable
-                                </td>
-                            </tr>
+                            {% if charge.poidsCharge <= charge.masseCorrigee %}
+                                <tr id="positif_poids">
+                                    <td>Poids de la charge</td>
+                                    <td>{{ charge.poidsCharge }} kg</td>
+                                    <td class="resume_green">Le poids de la charge est acceptable</td>
+                                </tr>
+                            {% endif %}
                             <tr id="positif_distance">
                                 <td>
                                     Transport de la charge
@@ -148,11 +133,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="negatif_poids">
-                                <td>Poids de la charge</td>
-                                <td>{{ charge.poidsCharge }} kg</td>
-                                <td class="resume_red">Le poids de la charge devrait être inférieure ou égale à 7.3kg.</td>
-                            </tr>
+                            {% if charge.poidsCharge > charge.masseCorrigee %}
+                                <tr id="negatif_poids">
+                                    <td>Poids de la charge</td>
+                                    <td>{{ charge.poidsCharge }} kg</td>
+                                    <td class="resume_red">Le poids de la charge devrait être inférieure ou égale à {{ charge.masseCorrigee }}kg.</td>
+                                </tr>
+                            {% endif %}
+                            
                             <tr id="negatif_distance">
                                 <td>Transport de la charge</td>
                                 <td>{{ charge.distanceTransportCharge }} m</td>
@@ -180,32 +168,101 @@
                             </tr>
                             <tr id="negatif_contraintes_execution">
                                 <td>Contraintes d'exécution</td>
-                                <td>5</td>
-                                <td class="resume_red">Sans poignées ou poignées inadaptées.
-                                <br>
-                                profondeur de prise > 0.40m <br>
-                                hors zone d'atteinte <br>
-                                une ou plusieurs contraintes concernant la posture/position du corps <br>
-                                charge instable
+                                <td>{{ nbContraintesExecution }}</td>
+                                <td class="resume_red">
+                                    {% if charge.contraintePoigneesInadaptees == true %}
+                                        Sans poignées ou poignées inadaptées.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteTorsionTronc == true %}
+                                        Torsion du tronc.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteProfondeurPrise == true %}
+                                        Profondeur de prise > 0.40m.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteHorsZoneAtteinte == true %}
+                                        Hors zone d'atteinte.<br>
+                                    {% endif %}
+                                    {% if charge.contraintePosture == true %}
+                                        Une ou plusieurs contraintes concernant la posture/position du corps.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteChargeInstable == true %}
+                                        Charge instable.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteVisibiliteLimitee == true %}
+                                        Visibilité limitée.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteRoulettesInadequates == true %}
+                                        Roulettes inadéquates.<br>
+                                    {% endif %}
+                                    {% if charge.contrainteAbsenceFrein == true %}
+                                        Absence de frein.<br>
+                                    {% endif %}
                                  </td>
                             </tr>
                             <tr id="negatif_contraintes_environnement">
                                 <td>Contraintes d'environnement</td>
-                                <td>3</td>
-                                <td class="resume_red">Contraintes thermiques <br>
-                                Contraintes acoustiques <br>
-                                Espaces inadéquats pour manoeuvrer</td>
+                                <td>{{ nbContraintesEnvironnement }}</td>
+                                <td class="resume_red">
+                                    {% if evaluationNFX.contraintesThermiques == true %}
+                                        Contraintes thermiques.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contraintesAcoustiques == true %}
+                                        Contraintes acoustiques.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contraintesLumineuses == true %}
+                                        Contraintes lumineuses.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteVibrations == true %}
+                                        Vibrations.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contraintePoussieres == true %}
+                                        Poussières.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteSolsDegrades == true %}
+                                        Sols dégradés.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteEncombrement == true %}
+                                        Encombrement.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteObstacles == true %}
+                                        Obstacles.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteEspacesInadequats == true %}
+                                        Espaces inadequats.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteEtatChariot == true %}
+                                        État du chariot.<br>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr id="negatif_contraintes_organisation">
                                 <td>Contraintes d'organisation</td>
-                                <td>1</td>
-                                <td class="resume_red">Contraintes de temps</td>
+                                <td>{{ nbContraintesOrganisation }}</td>
+                                <td class="resume_red">
+                                    {% if evaluationNFX.contrainteTemps == true %}
+                                        Contraintes de temps.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteMargeManoeuvreReduite == true %}
+                                        Marge de Manoeuvre réduite.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteMultipliciteTaches == true %}
+                                        Multiplicité des tâches.<br>
+                                    {% endif %}
+                                    {% if evaluationNFX.contrainteExigencesQualite == true %}
+                                        Exigences qualité.<br>
+                                    {% endif %}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <p id="texte_penalisant">Les facteurs qui vous pénalisent le plus sont :</p>
-                    <p class="mauve" id="texte_hauteur_prise"> - Hauteur de prise</p>
-                    <p class="mauve" id="texte_hauteur_depose"> - Hauteur de dépose</p>
+                    {% if charge.coefficientCorrection2 != 1 %}
+                        <p>Les facteurs qui vous pénalisent le plus sont :</p>
+                        <p class="mauve"> - {{ charge.intituleCoefficientCorrection1 }} : {{ charge.coefficientCorrection1 }}</p>
+                        <p class="mauve"> - {{ charge.intituleCoefficientCorrection2 }} : {{ charge.coefficientCorrection2 }}</p>
+                    {% elseif charge.coefficientCorrection1 != 1%}
+                        <p>Le facteur qui vous pénalise le plus est :</p>
+                        <p class="mauve"> - {{ charge.intituleCoefficientCorrection1 }} : {{ charge.coefficientCorrection1 }}</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -216,8 +273,6 @@
         </div>
 
         <script>
-            document.getElementById("pos_poids").style.visibility = "collapse";
-            document.getElementById("positif_poids").style.visibility = "collapse";
             document.getElementById("positif_distance").style.visibility = "collapse";
             document.getElementById("positif_hauteur_prise").style.visibility = "collapse";
             document.getElementById("positif_profondeur_prise").style.visibility = "collapse";
@@ -227,7 +282,6 @@
             document.getElementById("positif_contraintes_environnement").style.visibility = "collapse";
             document.getElementById("positif_contraintes_organisation").style.visibility = "collapse";
 
-            document.getElementById("negatif_poids").style.visibility = "collapse";
             document.getElementById("negatif_distance").style.visibility = "collapse";
             document.getElementById("negatif_hauteur_prise").style.visibility = "collapse";
             document.getElementById("negatif_profondeur_prise").style.visibility = "collapse";
@@ -236,16 +290,6 @@
             document.getElementById("negatif_contraintes_execution").style.visibility = "collapse";
             document.getElementById("negatif_contraintes_environnement").style.visibility = "collapse";
             document.getElementById("negatif_contraintes_organisation").style.visibility = "collapse";
-
-            document.getElementById("texte_penalisant").style.visibility = "collapse";
-            document.getElementById("texte_hauteur_prise").style.visibility = "collapse";
-            document.getElementById("texte_hauteur_depose").style.visibility = "collapse";
-
-            if({{ charge.poidsCharge }} <= 6.37){
-                document.getElementById("positif_poids").style.visibility = "visible";
-            } else {
-                document.getElementById("negatif_poids").style.visibility = "visible";
-            }
 
             if({{ charge.distanceTransportCharge }} <= 2){
                 document.getElementById("positif_distance").style.visibility = "visible";
@@ -277,9 +321,23 @@
                 document.getElementById("negatif_profondeur_depose").style.visibility = "visible";
             }
 
-            document.getElementById("negatif_contraintes_execution").style.visibility = "visible";
-            document.getElementById("negatif_contraintes_environnement").style.visibility = "visible";
-            document.getElementById("negatif_contraintes_organisation").style.visibility = "visible";
+            if({{ charge.contraintesExecution|length }} == 0 ){
+                document.getElementById("positif_contraintes_execution").style.visibility = "visible";
+            } else {
+                document.getElementById("negatif_contraintes_execution").style.visibility = "visible";
+            }
+
+            if({{ evaluationNFX.contraintesEnvironnement|length }} == 0){
+                document.getElementById("positif_contraintes_environnement").style.visibility = "visible";
+            } else {
+                document.getElementById("negatif_contraintes_environnement").style.visibility = "visible";
+            }
+
+            if({{ evaluationNFX.contraintesOrganisation|length }} == 0){
+                document.getElementById("positif_contraintes_organisation").style.visibility = "visible";
+            } else {
+                document.getElementById("negatif_contraintes_organisation").style.visibility = "visible";
+            }
 
             //document.getElementById("pos_poids").style.visibility = "visible";
         </script>

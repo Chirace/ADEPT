@@ -1,0 +1,252 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div class="row">
+            <h1 class="mauve">Réperer</h1>
+        </div>
+        <h1>Analyse de la charge physique de travail - Phase 1 - Repérage</h1>
+        <p class="mauve">Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :</p>
+        <p>Y a-t-il des secteurs dans l'entreprise qui présentent :</p>
+            
+        <p class="question_ed6161"> - De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?</p>
+        <div class="switch2 row h_margin_bottom" id="switch_Q1">
+            {% if listeMotClefQ1 | length == 0 %}
+                <input type="checkbox" id="check_Q1" value="non">
+                <label for="check_Q1" data-off="Non" data-on="Oui"></label>
+            {% else %}
+                <input type="checkbox" id="check_Q1" value="oui" checked>
+                <label for="check_Q1" data-off="Non" data-on="Oui"></label>
+            {% endif %}
+            {% for motClefQ1 in listeMotClefQ1 %}
+                <div class="ED6161_bulle">
+                    {{ motClefQ1.secteur.nom }} - {{ motClefQ1.posteDeTravail.nom }}
+                </div>
+            {% endfor %}
+            <button id="button_Q1" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ1">Préciser</button>
+        </div>
+
+        <p class="question_ed6161"> - Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?</p>
+        <div class="switch2 row h_margin_bottom" id="switch_Q2">
+            {% if listeMotClefQ2 | length == 0 %}
+                <input type="checkbox" id="check_Q2" value="non">
+                <label for="check_Q2" data-off="Non" data-on="Oui"></label>
+            {% else %}
+                <input type="checkbox" id="check_Q2" value="oui" checked>
+                <label for="check_Q2" data-off="Non" data-on="Oui"></label>
+            {% endif %}
+            {% for motClefQ2 in listeMotClefQ2 %}
+                <div class="ED6161_bulle">
+                    {{ motClefQ2.secteur.nom }} - {{ motClefQ2.posteDeTravail.nom }}
+                </div>
+            {% endfor %}
+            <button id="button_Q2" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ2">Préciser</button>
+        </div>
+
+        <p class="question_ed6161"> - Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?</p>
+        <div class="switch2 row h_margin_bottom" id="switch_Q3">
+            {% if listeMotClefQ3 | length == 0 %}
+                <input type="checkbox" id="check_Q3" value="non">
+                <label for="check_Q3" data-off="Non" data-on="Oui"></label>
+            {% else %}
+                <input type="checkbox" id="check_Q3" value="oui" checked>
+                <label for="check_Q3" data-off="Non" data-on="Oui"></label>
+            {% endif %}
+            {% for motClefQ3 in listeMotClefQ3 %}
+                <div class="ED6161_bulle">
+                    {{ motClefQ3.secteur.nom }} - {{ motClefQ3.posteDeTravail.nom }}
+                </div>
+            {% endfor %}
+            <button id="button_Q3" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ3">Préciser</button>
+        </div>
+
+        <p class="question_ed6161"> - Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?</p>
+        <div class="switch2 row h_margin_bottom" id="switch_Q4">
+            {% if listeMotClefQ4 | length == 0 %}
+                <input type="checkbox" id="check_Q4" value="non">
+                <label for="check_Q4" data-off="Non" data-on="Oui"></label>
+            {% else %}
+                <input type="checkbox" id="check_Q4" value="oui" checked>
+                <label for="check_Q4" data-off="Non" data-on="Oui"></label>
+            {% endif %}
+            {% for motClefQ4 in listeMotClefQ4 %}
+                <div class="ED6161_bulle">
+                    {{ motClefQ4.secteur.nom }} - {{ motClefQ4.posteDeTravail.nom }}
+                </div>
+            {% endfor %}
+            <button id="button_Q4" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ4">Préciser</button>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="modal fade" id="ModalCenterQ1" tabindex="-1" role="dialog" aria-labelledby="Question1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Question 1 - Nouveau mot-clé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Secteur :</p>
+                            {{ form_widget(form.secteur1.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
+                        </div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            {{ form_widget(form.posteDeTravail1.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalCenterQ2" tabindex="-1" role="dialog" aria-labelledby="Question2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Question 2 - Nouveau mot-clé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Secteur :</p>
+                            {{ form_widget(form.secteur2.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
+                        </div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            {{ form_widget(form.posteDeTravail2.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        {{ form_widget(form.valider2, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalCenterQ3" tabindex="-1" role="dialog" aria-labelledby="Question3" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Question 3 - Nouveau mot-clé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Secteur :</p>
+                            {{ form_widget(form.secteur3.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
+                        </div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            {{ form_widget(form.posteDeTravail3.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        {{ form_widget(form.valider3, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalCenterQ4" tabindex="-1" role="dialog" aria-labelledby="Question4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Question 4 - Nouveau mot-clé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Secteur :</p>
+                            {{ form_widget(form.secteur4.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
+                        </div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            {{ form_widget(form.posteDeTravail4.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        {{ form_widget(form.valider4, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="group_button question_ed6161">
+            <a class="button3_left" href="{{ path('adept_evaluator') }}" >{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}" >Continuer</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById("button_Q1").style.display = 'none';
+        document.getElementById("button_Q2").style.display = 'none';
+        document.getElementById("button_Q3").style.display = 'none';
+        document.getElementById("button_Q4").style.display = 'none';
+
+        if (check_Q1.checked){
+            displayQ1();
+        }
+
+        function displayQ1(){
+            if (document.getElementById('check_Q1').checked){
+                /* Afficher le bouton ajouter Q1 */
+                document.getElementById('button_Q1').style.display = 'block';
+            } else {
+                /* Masquer le bouton ajouter Q1 */
+                document.getElementById('button_Q1').style.display = 'none';
+                document.getElementById('check_Q1').checked = false;
+            }
+        }
+
+        function displayQ2(){
+            if (document.getElementById('check_Q2').checked){
+                /* Afficher le bouton ajouter Q2 */
+                document.getElementById('button_Q2').style.display = 'block';
+            } else {
+                /* Masquer le bouton ajouter Q2 */
+                document.getElementById('button_Q2').style.display = 'none';
+                document.getElementById('check_Q2').checked = false;
+            }
+        }
+
+        function displayQ3(){
+            if (document.getElementById('check_Q3').checked){
+                /* Afficher le bouton ajouter Q3 */
+                document.getElementById('button_Q3').style.display = 'block';
+            } else {
+                /* Masquer le bouton ajouter Q3 */
+                document.getElementById('button_Q3').style.display = 'none';
+                document.getElementById('check_Q3').checked = false;
+            }
+        }
+
+        function displayQ4(){
+            if (document.getElementById('check_Q4').checked){
+                /* Afficher le bouton ajouter Q4 */
+                document.getElementById('button_Q4').style.display = 'block';
+            } else {
+                /* Masquer le bouton ajouter Q4 */
+                document.getElementById('button_Q4').style.display = 'none';
+                document.getElementById('check_Q4').checked = false;
+            }
+        }
+        document.getElementById('check_Q1').addEventListener('change', displayQ1);
+        document.getElementById('check_Q2').addEventListener('change', displayQ2);
+        document.getElementById('check_Q3').addEventListener('change', displayQ3);
+        document.getElementById('check_Q4').addEventListener('change', displayQ4);
+    </script>
+{% endblock %}

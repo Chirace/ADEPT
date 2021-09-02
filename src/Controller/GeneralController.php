@@ -1,6 +1,9 @@
 <?php 
 namespace App\Controller; 
+use App\Entity\Site;
+use App\Entity\Entreprise;
 use App\Entity\Evaluateur;
+use App\Entity\Evaluation;
 use App\Entity\Utilisateur;
 use App\Form\EntrepriseType;
 use App\Form\EvaluateurType;
@@ -67,35 +70,60 @@ class GeneralController extends AbstractController {
 
         $evaluateur = new Evaluateur();
         $form = $this->createForm(EvaluateurType::class, $evaluateur);
-
-        /*$form = $this->createFormBuilder($evaluateur)
-            ->add('nom')
-            ->add('prenom')
-            ->add('fonction')
-            //->add('entreprise', TextType::class, array('label' => false))
-            //->add('entreprise', EntrepriseType::class, array('label' => false))
-            //->add('site')
-            //->add('entreprise_exterieure')
-            ->add('site_exterieur')
-            ->add('secteur_activite')
-            ->add('effectif')
-            ->add('valider', SubmitType::class, array('label'=> 'continuer'))
-            ->getForm();*/
         
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            /*$entreprise = new Entreprise();
-            $entreprise->setNom($form->get('entreprise')->getData());
-            $manager->persist($entreprise);*/
-
             $evaluateur->setUtilisateur($utilisateur);
-            //$evaluateur->setEntreprise($entreprise);
+
+            $entreprise = $form->get('entreprise')->getData();
+            //$entreprise->setNom($form->get('entreprise')->getData());
+            $manager->persist($entreprise);
+            
+            $evaluateur->setEntreprise($entreprise);
+            
+            $entreprise->setEvaluateur($evaluateur);
+            $manager->persist($entreprise);
+
+            $evaluateur->setNom($form->get('nom')->getData());
+            $evaluateur->setPrenom($form->get('prenom')->getData());
+            $evaluateur->setFonction($form->get('fonction')->getData());
+
+            $site = $form->get('site')->getData();
+            $site->setEntreprise($entreprise);
+            //$site->setNom($form->get('site')->getData());
+            $manager->persist($site);
+
+            if($form->get('entreprise_exterieure')->getData() != null) {
+                $evaluateur->setEvaluationInterne(false);
+
+                $entrepriseExterieure = $form->get('entreprise_exterieure')->getData();
+                //$entrepriseExterieure->setNom($form->get('entreprise_exterieure')->getData());
+                $manager->persist($entrepriseExterieure);
+                
+                $evaluateur->setEntreprise($entrepriseExterieure);
+                
+                $entrepriseExterieure->setEvaluateur($evaluateur);
+                $manager->persist($entrepriseExterieure);
+
+                $siteExterieur = $form->get('site_exterieur')->getData();
+                $siteExterieur->setEntreprise($entreprise);
+                //$siteExterieur->setNom($form->get('site_exterieur')->getData());
+                $manager->persist($siteExterieur);
+
+                $divisionNAFselect = $form->get('secteur_activite')->getData();
+
+                /*$divisionNAF = $this->getDoctrine()->getManager()->getRepository(DivisionNAF::class)
+                    ->findOneByCode($divisionNAFselect);*/
+
+                $evaluateur->setSecteurActivite($divisionNAFselect);
+                
+                $evaluateur->setEffectif($form->get('effectif')->getData());
+            } else {
+                $evaluateur->setEvaluationInterne(true);
+            }
+
             $manager->persist($evaluateur);
-
-            //$entreprise->setEvaluateur($evaluateur);
-            //$manager->persist($entreprise);
-
             $manager->flush();
 
             return $this->redirectToRoute('adept_tool_guide', ['id' => $evaluateur->getId()]);
@@ -104,5 +132,58 @@ class GeneralController extends AbstractController {
         return $this->render('general/evaluator.html.twig', array(
             'form' => $form->createView())
         );
+    }
+
+    public function recherche(Request $request, EntityManagerInterface $manager, UserInterface $user){
+        $utilisateur = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)
+            ->findOneByUsername($user->getUsername());
+        $evaluateurs = $this->getDoctrine()->getManager()->getRepository(Evaluateur::class)
+            ->findByUtilisateur($utilisateur);
+        $evaluations = null;
+        $listeEvaluations = array();
+
+        foreach($evaluateurs as $evaluateur){
+            $evaluations = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+                ->findByEvaluateur($evaluateur);
+                foreach($evaluations as $evaluation){
+                    array_push($listeEvaluations, $evaluation);
+                }
+        }
+
+        $evaluation = new Evaluation();
+
+        $form = $this->createFormBuilder($evaluation)
+            ->add('nom')
+            ->add('valider', SubmitType::class, array('label'=> 'Rechercher'))
+            ->getForm();
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $form->get('nom')->getData();
+
+            $listeEvaluations = array();
+            foreach($evaluateurs as $evaluateur){
+                $evaluations = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+                    ->findByEvaluateur($evaluateur);
+                foreach($evaluations as $evaluation){
+                    if((strtolower(trim($evaluation->getNom()))) == (strtolower(trim($nom)))){
+                        array_push($listeEvaluations, $evaluation);
+                    }
+                }
+            }
+
+            //return $this->redirectToRoute('adept_search');
+            return $this->render('general/search.html.twig', array(
+                'form' => $form->createView(),
+                'evaluations' => $evaluations,
+                'listeEvaluations' => $listeEvaluations
+            ));
+        }
+
+        return $this->render('general/search.html.twig', array(
+            'form' => $form->createView(),
+            'evaluations' => $evaluations,
+            'listeEvaluations' => $listeEvaluations
+        ));
     }
 }

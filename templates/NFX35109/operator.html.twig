@@ -4,7 +4,7 @@
         {{ form_start(form) }}
         <div>
             <div class="row">
-                <h1>Réperer</h1>
+                <h1>Repérer</h1>
                 <h1>></h1>
                 <h1>Hiérarchiser</h1>
                 <h1>></h1>
@@ -18,21 +18,14 @@
                         
                         <div class="row">
                             <p class="text_margin_right">Âge :</p>
-                            <!--<input type="text" class="form_control_60" aria-label="age" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                             {{ form_widget(form.age, {'attr': {'class': 'form_control_60', 'placeholder': 'Préciser...'}} ) }}
                         </div>
                         <div class="row">
                             <p class="text_margin_right">Sexe :</p>
                             {{ form_widget(form.sexe, {'attr': {'class': 'custom_select form_control_60', 'id': 'input_sexe'}} ) }}
-                            
-                            <!--<select class="custom_select form_control_60" id="input_sexe">
-                                <option value="1">Masculin</option>
-                                <option value="2">Féminin</option>
-                            </select>-->
                         </div>
                         <div class="row" id="row_enceinte">
                             <p class="text_margin_right">Enceinte :</p>
-
                             <div class="switch">
                                 <input type="checkbox" id="check_enceinte" value="enceinte">
                                 <label for="check_enceinte" data-off="Non" data-on="Oui"></label>
@@ -53,7 +46,7 @@
                             document.getElementById('check_enceinte').addEventListener('change', AlertePregnant);
 
                             function displayEnceinte(){
-                                if (document.getElementById('input_sexe').value === '2'){
+                                if (document.getElementById('input_sexe').value === 'Feminin'){
                                     /* Afficher la checkbox enceinte */
                                     document.getElementById('row_enceinte').style.display = 'block';
                                 } else {

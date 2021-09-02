@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
-        <div>
+        <div class="row">
             {{ form_start(form) }}
             <div class="row">
-                <h1>Réperer</h1>
+                <h1>Repérer</h1>
                 <h1>></h1>
                 <h1>Hiérarchiser</h1>
                 <h1>></h1>
@@ -22,6 +22,8 @@
                         <h5>Prise de la charge</h5>
                     </div>
                     <div class="card-body">
+                        <p class="text_margin_right p_red" id="alert_hauteur">La hauteur de prise est inacceptable</p>
+                        <p class="text_margin_right p_red" id="alert_transport">La charge est transportée a une main</p>
                         <div class="row">
                             <p class="text_margin_right p_black">Masse (en kg)</p>
                             {{ form_widget(form.poids_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'En kilogramme...'}} ) }}
@@ -36,15 +38,11 @@
                         </div>
                         <div class="row">
                             <p class="text_margin_right p_black">Transport de charge</p>
-                            {{ form_widget(form.transport_charge, {'attr': {'class': 'custom_select form_control_40'}} ) }}
-                            <!--<select class="custom_select form_control_40" id="input_sexe">
-                                <option value="1">Une main</option>
-                                <option value="2">Deux mains</option>
-                            </select>-->
+                            {{ form_widget(form.transport_charge, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_transport_charge'}} ) }}
                         </div>
                         <div class="group_button">
                             <a href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluation }) }}" class="button3_left button_adept_ocre">Annuler</a>
-                            <button class="button3_right button_adept_ocre" onclick="myMove()">Valider</button>
+                            <div class="button3_right button_adept_ocre" onclick="myMove()">Poursuivre</div>
                         </div>
                     </div>
                 </div>
@@ -60,8 +58,8 @@
                             {{ form_widget(form.distance_transport_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="group_button">
-                            <button class="button3_left button_adept_ocre" onclick="restart()">Annuler</button>
-                            <button class="button3_right button_adept_ocre" onclick="myMove2()">Valider</button>
+                            <div class="button3_left button_adept_ocre" onclick="restart()">Annuler</div>
+                            <div class="button3_right button_adept_ocre" onclick="myMove2()">Valider</div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +79,7 @@
                             {{ form_widget(form.depose_profondeur, {'attr': {'class': 'form_control_40', 'placeholder': 'En métre...'}} ) }}
                         </div>
                         <div class="group_button">
-                            <button class="button3_left button_adept_ocre" onclick="myMove()">Annuler</button>
+                            <div class="button3_left button_adept_ocre" onclick="myMove()">Annuler</div>
                             {{ form_widget(form.valider, {'attr': {'class': 'button3_right button_adept_ocre'}} ) }}
                         </div>
                     </div>
@@ -104,6 +102,19 @@
                 document.getElementById("label_depose_charge").style.display = "none";
                 document.getElementById("depose_charge").style.display = "none";
                 var id = null;
+
+                document.getElementById("alert_hauteur").style.display = "none";
+                document.getElementById("alert_transport").style.display = "none";
+
+                function checkTransport(){
+                    {% if form.transport_charge == "Une main" %}
+                        document.getElementById("alert_transport").style.display = "block";
+                    {% else %}
+                        document.getElementById("alert_transport").style.display = "none";
+                    {% endif %}
+                }
+                document.getElementById('input_transport_charge').addEventListener('change', checkTransport);
+
                 function myMove() {
                     var elem = document.getElementById("animation_MM_sans_aide_new_charge");
                     document.getElementById("animation_MM_sans_aide_new_charge").classList.add("return_image");
@@ -165,7 +176,6 @@
                     elem.style.left = 0 + 'px';
                 }
             </script>
-            
         </div>
     </div>
 {% endblock %}

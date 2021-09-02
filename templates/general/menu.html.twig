@@ -2,7 +2,7 @@
 {% block body %}
     <div class="fixe_largeur_900">
         <p>{% trans %}L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
-        pour réduire les risques professionnels dûs aux lombalgies{% endtrans %}</p>
+        pour réduire les risques de lombalgies liés à la charge physique de travail.{% endtrans %}</p>
 
         <div>
             <a class="button" href="{{ path('adept_formations') }}" >Tutoriel</a>
@@ -15,6 +15,9 @@
         </div>-->
         <div>
             <a class="button" href="{{ path('adept_company_balance_sheet') }}" >{% trans %}Réaliser un bilan d'entreprise{% endtrans %}</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_search') }}" >Rechercher une évaluation</a>
         </div>
         <!--<div>
             <a class="button" href="{{ path('adept_settings') }}" >{% trans %}Paramètres{% endtrans %}</a>

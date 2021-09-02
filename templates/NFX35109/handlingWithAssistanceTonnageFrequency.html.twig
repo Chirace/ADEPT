@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        {{ form_start(form) }}
+        <div>
+            <div class="row">
+                <h1>Repérer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
+            <h1>Manutention Manuelle de charge - Tonnage journalier et fréquence</h1>
+            <p class="mauve">Vérification des valeurs de Tonnage et Fréquence :</p>
+            <p>Veuillez renseigner la durée de manutention, la valeur de Tonnage est calculée en fonction du tableau récapitulatif des charges vu précédemment.</p>
+
+            <div class="row">
+                {{ form_label(form.temps_tonnage, 'Durée manutention (en h/j) :', {'label_attr': {'class': 'p text_margin_right'}} ) }}
+                {{ form_widget(form.temps_tonnage, {'attr': {'class': 'form_control_20'}} ) }}
+            </div>
+
+            <div class="row">
+                {{ form_label(form.tonnage, 'Tonnage (en T) :', {'label_attr': {'class': 'p text_margin_right'}} ) }}
+                {{ form_widget(form.tonnage, {'attr': {'class': 'form_control_20'}} ) }}
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            
+            {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

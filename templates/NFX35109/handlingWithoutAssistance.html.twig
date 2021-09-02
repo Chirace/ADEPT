@@ -3,7 +3,7 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Réperer</h1>
+                <h1>Repérer</h1>
                 <h1>></h1>
                 <h1>Hiérarchiser</h1>
                 <h1>></h1>
@@ -29,7 +29,7 @@
                 <tbody>
                     {% for charge in charges %}
                     <tr>
-                        <th scope="row"></th>
+                        <th scope="row">{{ loop.index }}</th>
                         <td>
                             {{ charge.poidsCharge }}
                         </td>
@@ -52,15 +52,15 @@
                             {{ charge.deposeProfondeur }}
                         </td>
                         <td>
-                        <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_without_assistance_edit_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">
-                            <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
-                        </a>
-                    </td>
-                    <td>
-                        <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_without_assistance_delete_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">
-                            <img src="/images/delete.png" alt="icon supprimer" id="icon_delete" class="icon_click">
-                        </a>
-                    </td>
+                            <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_without_assistance_edit_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">
+                                <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_without_assistance_delete_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">
+                                <img src="/images/delete.png" alt="icon supprimer" id="icon_delete" class="icon_click">
+                            </a>
+                        </td>
                     </tr>
                     {% endfor %}
                     <tr>
@@ -73,7 +73,11 @@
         </div>
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
-            <a id="button_continue" class="button_adept_inactif" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Continuer</a>
+            {% if charges | length == 0 %}
+                <a id="button_continue" class="button_adept_inactif">Continuer</a>
+            {% else %}
+                <a id="button_continue" class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Continuer</a>
+            {% endif %}
         </div>
 
         <script>

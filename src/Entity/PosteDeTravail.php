@@ -34,9 +34,21 @@ class PosteDeTravail
      */
     private $situations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="posteDeTravail")
+     */
+    private $evaluations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=EvaluationED6161::class, mappedBy="posteDeTravail")
+     */
+    private $evaluationED6161s;
+
     public function __construct()
     {
         $this->situations = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
+        $this->evaluationED6161s = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,5 +108,69 @@ class PosteDeTravail
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setPosteDeTravail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getPosteDeTravail() === $this) {
+                $evaluation->setPosteDeTravail(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EvaluationED6161[]
+     */
+    public function getEvaluationED6161s(): Collection
+    {
+        return $this->evaluationED6161s;
+    }
+
+    public function addEvaluationED6161(EvaluationED6161 $evaluationED6161): self
+    {
+        if (!$this->evaluationED6161s->contains($evaluationED6161)) {
+            $this->evaluationED6161s[] = $evaluationED6161;
+            $evaluationED6161->setPosteDeTravail($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluationED6161(EvaluationED6161 $evaluationED6161): self
+    {
+        if ($this->evaluationED6161s->removeElement($evaluationED6161)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluationED6161->getPosteDeTravail() === $this) {
+                $evaluationED6161->setPosteDeTravail(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function __toString(){
+        return $this->nom;
     }
 }

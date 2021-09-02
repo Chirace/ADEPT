@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div>
+            <div class="row">
+                <h1>Repérer</h1>
+                <h1>></h1>
+                <h1>Hiérarchiser</h1>
+                <h1>></h1>
+                <h1 class="mauve">Évaluer</h1>
+            </div>
+            <h1>Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention</h1>
+            <hr>
+            <div class="row constraints">
+                <h4>Bilan :</h4>
+                <h4 class="icon_green">+</h4>
+                <h4>Conditions favorables</h4>
+                <h4 class="icon_yellow">-</h4>
+                <h4>Les points à améliorer</h4>
+                <h4 class="icon_red">-</h4>
+                <h4>Les facteurs les plus pénalisants</h4>
+            </div>
+            <table class="table table-striped table-hover table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">N°</th>
+                        <th scope="col">Type manutention</th>
+                        <th scope="col">Masse (kg)</th>
+                        <th scope="col">Force initiale (en daN)</th>
+                        <th scope="col">Force de maintien(en daN)</th>
+                        <th scope="col">Fréquence</th>
+                        <th scope="col">Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for charge in charges %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>
+                            {{ charge.PTManutentionType | capitalize  }}
+                        </td>
+                        <td>
+                            {{ charge.poidsCharge }}
+                        </td>
+                        {% if charge.forceInitiale >= charge.forceInitialeReference %}
+                            <td class="resume_green">
+                                {{ charge.forceInitiale }}
+                            </td>
+                        {% else %}
+                            <td class="resume_red">
+                                {{ charge.forceInitiale }}
+                            </td>
+                        {% endif %}
+                        {% if charge.forceMaintien >= charge.forceMaintienReference %}
+                            <td class="resume_green">
+                                {{ charge.forceMaintien }}
+                            </td>
+                        {% else %}
+                            <td class="resume_red">
+                                {{ charge.forceMaintien }}
+                            </td>
+                        {% endif %}
+                        <td>
+                            {{ charge.PTFrequence }}
+                        </td>
+                        <td scope="col">
+                            <a href="{{ path('adept_NFX35109_handling_with_assistance_resume_charge',  { 'id': idEvaluation, 'id2': charge.id }) }}">
+                                <img src="/images/icon_loupe.png" class="icon_click" alt="icon loupe" id="icon_loupe_1">
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="modal fade" id="ModalCenterTerminer" tabindex="-1" role="dialog" aria-labelledby="Enregistrer l'analyse" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header card_header_animation">
+                        <h5 class="modal-title ">Enregistrer l'analyse</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">Nom :</p>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
+                        </div>
+                    </div>
+                    <div class="group_button modal_margin">
+                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="group_button">
+            <a class="button4_left" href="{{ path('adept_NFX35109_handling_with_assistance_constraints',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button4_center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Ajouter une charge</a>
+            <button id="button_Terminer" type="button" class="button4_center" data-toggle="modal" data-target="#ModalCenterTerminer">Terminer</button>
+            <a class="button4_right" href="{{ path('adept_menu') }}" >Retour au menu principal</a>
+        </div>
+    </div>
+{% endblock %}

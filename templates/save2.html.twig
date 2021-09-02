@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <div class="row">
+            <h1>Repérer</h1>
+            <h1>></h1>
+            <h1 class="mauve">Hiérarchiser</h1>
+        </div>
+        <h1>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail</h1>
+        <p>Pour cette situation de travail, avez-vous déjà observé :</p>
+        <p class="mauve">À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.</p>
+
+        <table class="table table-striped table-hover table-light">
+            <thead>
+                <tr>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Domaines</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">Questions</th>
+                    <th scope="col" class="resume_green" style="text-align:center">Non</th>
+                    <th scope="col" class="resume_red" style="text-align:center">Oui</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="5" colspan="1" style="text-align:center; vertical-align:middle"><h3 class="p_black">{{ domaine1ED6161.intitule }}</h3></td>
+                </tr>
+                {% for questionGrille1ED6161 in questionsGrille1ED6161 %}
+                    {% if questionGrille1ED6161.domaineED6161.id == 1 %}
+                        <tr>
+                            <td>{{ questionGrille1ED6161.intitule }}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                <tr>
+                    <td rowspan="4" colspan="1" style="text-align:center; vertical-align:middle"><h3 class="p_black">{{ domaine2ED6161.intitule }}</h3></td>
+                </tr>
+                {% for questionGrille1ED6161 in questionsGrille1ED6161 %}
+                    {% if questionGrille1ED6161.domaineED6161.id == 2 %}
+                        <tr>
+                            <td>{{ questionGrille1ED6161.intitule }}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}">Annuler</a>
+            <a class="button3_right" href="{{ path('adept_ED6161_grille_2',  { 'id': id, 'id2': id2 }) }}">Continuer</a>
+        </div>
+    </div>
+{% endblock %}
