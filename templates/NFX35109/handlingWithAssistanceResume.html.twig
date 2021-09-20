@@ -3,33 +3,33 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention{% endtrans %}</h1>
             <hr>
             <div class="row constraints">
-                <h4>Bilan :</h4>
+                <h4>{% trans %}Bilan :{% endtrans %}</h4>
                 <h4 class="icon_green">+</h4>
-                <h4>Conditions favorables</h4>
+                <h4>{% trans %}Conditions favorables{% endtrans %}</h4>
                 <h4 class="icon_yellow">-</h4>
-                <h4>Les points à améliorer</h4>
+                <h4>{% trans %}Les points à améliorer{% endtrans %}</h4>
                 <h4 class="icon_red">-</h4>
-                <h4>Les facteurs les plus pénalisants</h4>
+                <h4>{% trans %}Les facteurs les plus pénalisants{% endtrans %}</h4>
             </div>
             <table class="table table-striped table-hover table-light">
                 <thead>
                     <tr>
                         <th scope="col">N°</th>
-                        <th scope="col">Type manutention</th>
-                        <th scope="col">Masse (kg)</th>
-                        <th scope="col">Force initiale (en daN)</th>
-                        <th scope="col">Force de maintien(en daN)</th>
-                        <th scope="col">Fréquence</th>
-                        <th scope="col">Détails</th>
+                        <th scope="col">{% trans %}Type manutention{% endtrans %}</th>
+                        <th scope="col">{% trans %}Masse (kg){% endtrans %}</th>
+                        <th scope="col">{% trans %}Force initiale (en daN){% endtrans %}</th>
+                        <th scope="col">{% trans %}Force de maintien(en daN){% endtrans %}</th>
+                        <th scope="col">{% trans %}Fréquence{% endtrans %}</th>
+                        <th scope="col">{% trans %}Détails{% endtrans %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,19 +79,19 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header card_header_animation">
-                        <h5 class="modal-title ">Enregistrer l'analyse</h5>
+                        <h5 class="modal-title">{% trans %}Enregistrer l'analyse{% endtrans %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Nom :</p>
+                            <p class="text_margin_right p_black">{% trans %}Nom :{% endtrans %}</p>
                             {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
                         </div>
                     </div>
                     <div class="group_button modal_margin">
-                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="button3_left" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
                         {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
                     </div>
                 </div>
@@ -100,10 +100,14 @@
         {{ form_end(form) }}
 
         <div class="group_button">
-            <a class="button4_left" href="{{ path('adept_NFX35109_handling_with_assistance_constraints',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
-            <a class="button4_center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Ajouter une charge</a>
-            <button id="button_Terminer" type="button" class="button4_center" data-toggle="modal" data-target="#ModalCenterTerminer">Terminer</button>
-            <a class="button4_right" href="{{ path('adept_menu') }}" >Retour au menu principal</a>
+            <a class="button4_left" href="{{ path('adept_NFX35109_handling_with_assistance_constraints',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
+            <a class="button4_center" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">{% trans %}Ajouter une charge{% endtrans %}</a>
+            <button id="button_Terminer" type="button" class="button4_center" data-toggle="modal" data-target="#ModalCenterTerminer">{% trans %}Terminer{% endtrans %}</button>
+            {% if evaluation.evaluationEd6161 != null %}
+                <a class="button4_right" href="{{ path('adept_ED6161_resume', { 'id': evaluation.evaluationEd6161.evaluation.id }) }}">{% trans %}Retour à la hiérarchisation{% endtrans %}</a>
+            {% else %}
+                <a class="button4_right" href="{{ path('adept_menu') }}">{% trans %}Retour au menu principal{% endtrans %}</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

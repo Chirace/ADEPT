@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Secteur;
+use App\Entity\Situation;
 use App\Form\SecteurType;
 use App\Entity\Evaluateur;
 use App\Entity\Evaluation;
@@ -36,22 +37,20 @@ class ED6161Controller extends AbstractController
     }
 
     public function newED6161(Request $request, EntityManagerInterface $manager, $id) {
-        $evaluateur = $this->getDoctrine()->getManager()->getRepository(Evaluateur::class)
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
             ->findOneById($id);
 
-        $evaluation = new Evaluation();
-        $date = new \DateTime();
+        $evaluateur = $evaluation->getEvaluateur();
 
-        $evaluation->setEvaluateur($evaluateur);
+        $date = $evaluation->getDateEvaluation();
+
         $evaluation->setTypeEvaluation("ED6161");
-        $evaluation->setDateEvaluation($date);
+        $evaluation->setNom($evaluateur->getNom().'_'.$date->format('d/m/Y'));
 
         $manager->persist($evaluation);
         $manager->flush();
 
-        $id2 = $evaluation->getId();
-
-        return $this->redirectToRoute('adept_tool_ED6161', ['id' => $id2]);
+        return $this->redirectToRoute('adept_tool_ED6161', ['id' => $id]);
     }
 
     public function ED6161(Request $request, EntityManagerInterface $manager, $id) {
@@ -174,6 +173,18 @@ class ED6161Controller extends AbstractController
             array('evaluation' => $evaluation->getId())
         );
 
+        $situations = null;
+        $listeSituations = array();
+
+        foreach($evaluationsED6161 as $evaluationED6161) {
+            $posteDeTravail = $evaluationED6161->getPosteDeTravail();
+            $situations = $this->getDoctrine()->getRepository(Situation::class)
+                ->findByPosteDeTravail($posteDeTravail);
+            foreach($situations as $situation){
+                array_push($listeSituations, $situation);
+            }
+        }
+
         $form = $this->createFormBuilder($evaluation)
             ->add('nom')
             ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
@@ -193,6 +204,7 @@ class ED6161Controller extends AbstractController
         return $this->render('ed6161/resume.html.twig', array(
             'id' => $id,
             'evaluations' => $evaluationsED6161,
+            'situations' => $listeSituations,
             'form' => $form->createView()
         ));
     }
@@ -471,6 +483,7 @@ class ED6161Controller extends AbstractController
 
     public function ED6161Grille2(Request $request, EntityManagerInterface $manager, $id, $id2) {
         $evaluationED6161 = $this->getDoctrine()->getRepository(EvaluationED6161::class)->findOneById($id2);
+        $posteDeTravail = $evaluationED6161->getPosteDeTravail();
 
         $domaine3ED6161 = $this->getDoctrine()->getRepository(DomaineED6161::Class)->findOneById(3);
         $domaine4ED6161 = $this->getDoctrine()->getRepository(DomaineED6161::Class)->findOneById(4);
@@ -494,6 +507,31 @@ class ED6161Controller extends AbstractController
             $valeursDefault = explode(",",$grille2->getValeurs(), 25);
         }
         $form = $this->createFormBuilder($grille2)
+            ->add('situation_Q1')
+            ->add('situation_Q2')
+            ->add('situation_Q3')
+            ->add('situation_Q4')
+            ->add('situation_Q5')
+            ->add('situation_Q6')
+            ->add('situation_Q7')
+            ->add('situation_Q8')
+            ->add('situation_Q9')
+            ->add('situation_Q10')
+            ->add('situation_Q11')
+            ->add('situation_Q12')
+            ->add('situation_Q13')
+            ->add('situation_Q14')
+            ->add('situation_Q15')
+            ->add('situation_Q16')
+            ->add('situation_Q17')
+            ->add('situation_Q18')
+            ->add('situation_Q19')
+            ->add('situation_Q20')
+            ->add('situation_Q21')
+            ->add('situation_Q22')
+            ->add('situation_Q23')
+            ->add('situation_Q24')
+            ->add('situation_Q25')
             ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
             ->getForm();
         
@@ -1643,6 +1681,182 @@ class ED6161Controller extends AbstractController
             $evaluationED6161->setQ2Non($NbNon);
             $evaluationED6161->setQ2OuiNonCritique($NbOuiMais);
             $evaluationED6161->setQ2OuiCritique($NbOui);
+
+            /* Ajout de nouvelle situation de travail */
+            if($form->get('situation_Q1')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q1')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q2')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q2')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q3')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q3')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q4')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q4')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q5')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q5')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q6')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q6')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q7')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q7')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q8')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q8')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q9')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q9')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q10')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q10')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q11')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q11')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q12')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q12')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q13')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q13')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q14')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q14')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q15')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q15')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q16')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q16')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q17')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q17')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q18')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q18')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q19')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q19')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q20')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q20')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q21')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q21')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q22')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q22')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q23')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q23')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q24')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q24')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
+
+            if($form->get('situation_Q25')->getData() != null) {
+                $situation = new Situation();
+                $situation->setNom($form->get('situation_Q25')->getData());
+                $situation->setPosteDeTravail($posteDeTravail);
+                $manager->persist($situation);
+            }
 
             $manager->persist($grille2);
             $manager->persist($evaluationED6161);

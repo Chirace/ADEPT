@@ -4,28 +4,28 @@
         {{ form_start(form) }}
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Opérateur</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Opérateur{% endtrans %}</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <h2>Opérateur :</h2>
+                        <h2>{% trans %}Opérateur :{% endtrans %}</h2>
                         
                         <div class="row">
-                            <p class="text_margin_right">Âge :</p>
+                            <p class="text_margin_right">{% trans %}Âge :{% endtrans %}</p>
                             {{ form_widget(form.age, {'attr': {'class': 'form_control_60', 'placeholder': 'Préciser...'}} ) }}
                         </div>
                         <div class="row">
-                            <p class="text_margin_right">Sexe :</p>
+                            <p class="text_margin_right">{% trans %}Sexe :{% endtrans %}</p>
                             {{ form_widget(form.sexe, {'attr': {'class': 'custom_select form_control_60', 'id': 'input_sexe'}} ) }}
                         </div>
                         <div class="row" id="row_enceinte">
-                            <p class="text_margin_right">Enceinte :</p>
+                            <p class="text_margin_right">{% trans %}Enceinte :{% endtrans %}</p>
                             <div class="switch">
                                 <input type="checkbox" id="check_enceinte" value="enceinte">
                                 <label for="check_enceinte" data-off="Non" data-on="Oui"></label>
@@ -38,7 +38,7 @@
                                 /* Si c'est une femme et qu'elle est enceinte */
                                 if (document.getElementById('input_sexe').value === '2'){
                                     if (document.getElementById('check_enceinte').checked) {
-                                        alert("Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !");
+                                        alert("{% trans %}Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !{% endtrans %}");
                                     }
                                 }
                             }
@@ -63,35 +63,35 @@
                             <p class="text_margin_right">Latéralité :</p>
                             {{ form_widget(form.lateralite, {'attr': {'class': 'custom_select form_control_60', 'id': 'input_main'}} ) }}
                             <!--<select class="custom_select form_control_60" id="input_main">
-                                <option value="1">Droitier</option>
-                                <option value="2">Gaucher</option>
+                                <option value="1">{% trans %}Droitier{% endtrans %}</option>
+                                <option value="2">{% trans %}Gaucher{% endtrans %}</option>
                             </select>-->
                         </div>
                         <div class="row">
-                            <p class="text_margin_right">Formation :</p>
+                            <p class="text_margin_right">{% trans %}Formation :{% endtrans %}</p>
                             <!--<input type="text" class="form_control_60" aria-label="Formation" aria-describedby="basic-addon2" placeholder="Intitulé du poste...">-->
                             {{ form_widget(form.Formation, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom de la formation...'}} ) }}
                         </div>
                         <div class="row">
-                            <p class="text_margin_right">Ancienneté au poste :</p>
+                            <p class="text_margin_right">{% trans %}Ancienneté au poste :{% endtrans %}</p>
                             <!--<input type="text" class="form_control_60" aria-label="exp_poste" aria-describedby="basic-addon2" placeholder="En année...">-->
                             {{ form_widget(form.Anciennete_poste, {'attr': {'class': 'form_control_60', 'placeholder': 'En année...'}} ) }}
                         </div>
                         <div class="row">
-                            <p class="text_margin_right">Ancienneté en entreprise :</p>
+                            <p class="text_margin_right">{% trans %}Ancienneté en entreprise :{% endtrans %}</p>
                             <!--<input type="text" class="form_control_60" aria-label="exp_entreprise" aria-describedby="basic-addon2" placeholder="En année...">-->
                             {{ form_widget(form.Anciennete_entreprise, {'attr': {'class': 'form_control_60', 'placeholder': 'En année...'}} ) }}
                         </div>
                     </div>
                 </div>
-                <p class="text_margin_right">Description :</p>
+                <p class="text_margin_right">{% trans %}Description :{% endtrans %}</p>
                 <!--<textarea class="text_area_80" aria-label="Description"></textarea>-->
                 {{ form_widget(form.Description,{ 'attr': {'cols': '170'} }) }}
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_picture', { 'id': idEvaluation }) }}" >Annuler</a>
-             <button type="submit" class="button3_right" >Continuer</button>
+            <a class="button3_left" href="{{ path('adept_NFX35109_picture', { 'id': idEvaluation }) }}">{% trans %}Annuler{% endtrans %}</a>
+             <button type="submit" class="button3_right">{% trans %}Continuer{% endtrans %}</button>
         </div>
         {{ form_end(form) }}
     </div>

@@ -3,27 +3,27 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention manuelle sans aide à la manutention</h1>
-            <p>Tableau récapitulatif des charges :</p>
+            <h1>{% trans %}Manutention manuelle sans aide à la manutention{% endtrans %}</h1>
+            <p>{% trans %}Tableau récapitulatif des charges :{% endtrans %}</p>
             <table class="table table-striped table-hover table-light">
                 <thead>
                     <tr>
                         <th scope="col">N°</th>
-                        <th scope="col">Masse (kg)</th>
-                        <th scope="col">Hauteur prise (m)</th>
-                        <th scope="col">Profondeur prise (m)</th>
-                        <th scope="col">Distance (m)</th>
-                        <th scope="col">Transport de charge</th>
-                        <th scope="col">Hauteur dépose (m)</th>
-                        <th scope="col">Profondeur dépose (m)</th>
+                        <th scope="col">{% trans %}Masse (kg){% endtrans %}</th>
+                        <th scope="col">{% trans %}Hauteur prise (m){% endtrans %}</th>
+                        <th scope="col">{% trans %}Profondeur prise (m){% endtrans %}</th>
+                        <th scope="col">{% trans %}Distance (m){% endtrans %}</th>
+                        <th scope="col">{% trans %}Transport de charge{% endtrans %}</th>
+                        <th scope="col">{% trans %}Hauteur dépose (m){% endtrans %}</th>
+                        <th scope="col">{% trans %}Profondeur dépose (m){% endtrans %}</th>
                         <!--<th scope="col">Nb charge similaire</th>-->
-                        <th scope="col" colspan="2">Actions</th>
+                        <th scope="col" colspan="2">{% trans %}Actions{% endtrans %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,18 +65,18 @@
                     {% endfor %}
                     <tr>
                         <td colspan="11">
-                            <a class="a_adept center" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluation }) }}" >Ajouter une charge</a>
+                            <a class="a_adept center" href="{{ path('adept_NFX35109_handling_without_assistance_charge_informations',  { 'id': idEvaluation }) }}">{% trans %}Ajouter une charge{% endtrans %}</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_manutention_type',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
             {% if charges | length == 0 %}
                 <a id="button_continue" class="button_adept_inactif">Continuer</a>
             {% else %}
-                <a id="button_continue" class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}" >Continuer</a>
+                <a id="button_continue" class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_tonnage_frequence',  { 'id': idEvaluation }) }}">{% trans %}Continuer{% endtrans %}</a>
             {% endif %}
         </div>
 

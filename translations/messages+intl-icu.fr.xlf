@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="nl" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -103,7 +103,1025 @@
       </trans-unit>
       <trans-unit id="jdZdCVL" resname="Guide">
         <source>Guide</source>
-        <target>__Guide</target>
+        <target>Guide</target>
+      </trans-unit>
+      <trans-unit id="8d9n7Pz" resname="L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) &#10;        pour réduire les risques de lombalgies liés à la charge physique de travail.">
+        <source>L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques de lombalgies liés à la charge physique de travail.</source>
+        <target>L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques de lombalgies liés à la charge physique de travail.</target>
+      </trans-unit>
+      <trans-unit id="ky0zTi5" resname="Tutoriel">
+        <source>Tutoriel</source>
+        <target>Tutoriel</target>
+      </trans-unit>
+      <trans-unit id="d_SqpbF" resname="Repérer, Hiérarchiser, Évaluer">
+        <source>Repérer, Hiérarchiser, Évaluer</source>
+        <target>Repérer, Hiérarchiser, Évaluer</target>
+      </trans-unit>
+      <trans-unit id="xVUf2sr" resname="Réaliser un bilan d'entreprise">
+        <source>Réaliser un bilan d'entreprise</source>
+        <target>Réaliser un bilan d'entreprise</target>
+      </trans-unit>
+      <trans-unit id="8_J4tPO" resname="Rechercher une évaluation">
+        <source>Rechercher une évaluation</source>
+        <target>Rechercher une évaluation</target>
+      </trans-unit>
+      <trans-unit id="sYru0ag" resname="Se déconnecter">
+        <source>Se déconnecter</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="MeIcWgP" resname="Retour au menu principal">
+        <source>Retour au menu principal</source>
+        <target>Retour au menu principal</target>
+      </trans-unit>
+      <trans-unit id="cz0cdCZ" resname="Rechercher">
+        <source>Rechercher</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="Jre7ted" resname="Sélectionner l'entreprise :">
+        <source>Sélectionner l'entreprise :</source>
+        <target>Sélectionner l'entreprise :</target>
+      </trans-unit>
+      <trans-unit id="KH7JbVx" resname="Nouvelle entreprise :">
+        <source>Nouvelle entreprise :</source>
+        <target>Nouvelle entreprise :</target>
+      </trans-unit>
+      <trans-unit id="APnFM0V" resname="Ajouter">
+        <source>Ajouter</source>
+        <target>Ajouter</target>
+      </trans-unit>
+      <trans-unit id="F_0.QTg" resname="Manutention Manuelle de charge - Évaluateur">
+        <source>Manutention Manuelle de charge - Évaluateur</source>
+        <target>Manutention Manuelle de charge - Évaluateur</target>
+      </trans-unit>
+      <trans-unit id="Ms5xT_A" resname="Évaluateur &amp; Entreprise">
+        <source>Évaluateur &amp; Entreprise</source>
+        <target><![CDATA[Évaluateur & Entreprise]]></target>
+      </trans-unit>
+      <trans-unit id="6nTKd_T" resname="L'évaluateur intervient dans une entreprise extérieure ?">
+        <source>L'évaluateur intervient dans une entreprise extérieure ?</source>
+        <target>L'évaluateur intervient dans une entreprise extérieure ?</target>
+      </trans-unit>
+      <trans-unit id="fvQrJst" resname="Entreprise où se déroule la cotation :">
+        <source>Entreprise où se déroule la cotation :</source>
+        <target>Entreprise où se déroule la cotation :</target>
+      </trans-unit>
+      <trans-unit id="l1xhiJV" resname="Nous vous invitons à visualiser les vidéos ci-dessous afin de vous former aux différents outils proposés dans cette application :">
+        <source>Nous vous invitons à visualiser les vidéos ci-dessous afin de vous former aux différents outils proposés dans cette application :</source>
+        <target>Nous vous invitons à visualiser les vidéos ci-dessous afin de vous former aux différents outils proposés dans cette application :</target>
+      </trans-unit>
+      <trans-unit id="FpDay2i" resname="Évaluation d'une situation de travail - NF X35-109, manutention manuelle de charge pour soulever, déplacer et pousser/tirer">
+        <source>Évaluation d'une situation de travail - NF X35-109, manutention manuelle de charge pour soulever, déplacer et pousser/tirer</source>
+        <target>Évaluation d'une situation de travail - NF X35-109, manutention manuelle de charge pour soulever, déplacer et pousser/tirer</target>
+      </trans-unit>
+      <trans-unit id="KIrCa4y" resname="Partie 1 - Manutention manuelle de charge sans aide à la manutention">
+        <source>Partie 1 - Manutention manuelle de charge sans aide à la manutention</source>
+        <target>Partie 1 - Manutention manuelle de charge sans aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="wVETHVe" resname="Désolé, votre navigateur ne supporte pas les vidéos embarquées, vous pouvez essayer avec Google Chrome sur ordinateur.">
+        <source>Désolé, votre navigateur ne supporte pas les vidéos embarquées, vous pouvez essayer avec Google Chrome sur ordinateur.</source>
+        <target>Désolé, votre navigateur ne supporte pas les vidéos embarquées, vous pouvez essayer avec Google Chrome sur ordinateur.</target>
+      </trans-unit>
+      <trans-unit id="ywr1.nD" resname="Repérer">
+        <source>Repérer</source>
+        <target>Repérer</target>
+      </trans-unit>
+      <trans-unit id="_Liiaeh" resname="Hiérarchiser">
+        <source>Hiérarchiser</source>
+        <target>Hiérarchiser</target>
+      </trans-unit>
+      <trans-unit id="6R__48G" resname="Évaluer">
+        <source>Évaluer</source>
+        <target>Évaluer</target>
+      </trans-unit>
+      <trans-unit id="pqOMiwU" resname="Manutention Manuelle de charge - Situation">
+        <source>Manutention Manuelle de charge - Situation</source>
+        <target>Manutention Manuelle de charge - Situation</target>
+      </trans-unit>
+      <trans-unit id="BSI2fdC" resname="Nom Évaluateur :">
+        <source>Nom Évaluateur :</source>
+        <target>Nom Évaluateur :</target>
+      </trans-unit>
+      <trans-unit id="gHFuGJ3" resname="Entreprise :">
+        <source>Entreprise :</source>
+        <target>Entreprise :</target>
+      </trans-unit>
+      <trans-unit id="ilW7aNc" resname="Site :">
+        <source>Site :</source>
+        <target>Site :</target>
+      </trans-unit>
+      <trans-unit id="r2AkIAi" resname="Nom du secteur :">
+        <source>Nom du secteur :</source>
+        <target>Nom du secteur :</target>
+      </trans-unit>
+      <trans-unit id="dczI0Pk" resname="Poste de travail :">
+        <source>Poste de travail :</source>
+        <target>Poste de travail :</target>
+      </trans-unit>
+      <trans-unit id="06pwjUe" resname="Nom de la situation :">
+        <source>Nom de la situation :</source>
+        <target>Nom de la situation :</target>
+      </trans-unit>
+      <trans-unit id="wOvbe8t" resname="Situation :">
+        <source>Situation :</source>
+        <target>Situation :</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="uxk7hi3" resname="Quoi ?">
+        <source>Quoi ?</source>
+        <target>Quoi ?</target>
+      </trans-unit>
+      <trans-unit id="g9UFknY" resname="Comment ?">
+        <source>Comment ?</source>
+        <target>Comment ?</target>
+      </trans-unit>
+      <trans-unit id="YC8Tfbb" resname="Avec qui ?">
+        <source>Avec qui ?</source>
+        <target>Avec qui ?</target>
+      </trans-unit>
+      <trans-unit id="XPQ9znY" resname="Avec quoi ?">
+        <source>Avec quoi ?</source>
+        <target>Avec quoi ?</target>
+      </trans-unit>
+      <trans-unit id="QGlCZQd" resname="Dimension temporelle">
+        <source>Dimension temporelle</source>
+        <target>Dimension temporelle</target>
+      </trans-unit>
+      <trans-unit id="AZDdxWQ" resname="Autre :">
+        <source>Autre :</source>
+        <target>Autre :</target>
+      </trans-unit>
+      <trans-unit id="Rq05Fva" resname="Annuler">
+        <source>Annuler</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="O8OAfyJ" resname="Continuer">
+        <source>Continuer</source>
+        <target>Continuer</target>
+      </trans-unit>
+      <trans-unit id="DdprYqV" resname="Manutention Manuelle de charge - Type de manutention">
+        <source>Manutention Manuelle de charge - Type de manutention</source>
+        <target>Manutention Manuelle de charge - Type de manutention</target>
+      </trans-unit>
+      <trans-unit id="hjbTc_J" resname="À quel type de manutention votre situation correspond t-elle ?">
+        <source>À quel type de manutention votre situation correspond t-elle ?</source>
+        <target>À quel type de manutention votre situation correspond t-elle ?</target>
+      </trans-unit>
+      <trans-unit id="rh4JXLL" resname="Manutention manuelle de charge sans aide à la manutention.">
+        <source>Manutention manuelle de charge sans aide à la manutention.</source>
+        <target>Manutention manuelle de charge sans aide à la manutention.</target>
+      </trans-unit>
+      <trans-unit id="C0IVLjX" resname="Pousser/Tirer">
+        <source>Pousser/Tirer</source>
+        <target>Pousser/Tirer</target>
+      </trans-unit>
+      <trans-unit id="Xp4F.mX" resname="Revenir en arrière">
+        <source>Revenir en arrière</source>
+        <target>Revenir en arrière</target>
+      </trans-unit>
+      <trans-unit id="DW.97OV" resname="Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention">
+        <source>Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention</source>
+        <target>Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="bK9zPgd" resname="Tableau récapitulatif des charges :">
+        <source>Tableau récapitulatif des charges :</source>
+        <target>Tableau récapitulatif des charges :</target>
+      </trans-unit>
+      <trans-unit id=".qeI.Qn" resname="N°">
+        <source>N°</source>
+        <target>N°</target>
+      </trans-unit>
+      <trans-unit id="bDntIUd" resname="Type manutention">
+        <source>Type manutention</source>
+        <target>Type manutention</target>
+      </trans-unit>
+      <trans-unit id="3_jkLmk" resname="Masse (kg)">
+        <source>Masse (kg)</source>
+        <target>Masse (kg)</target>
+      </trans-unit>
+      <trans-unit id="yHDuxzB" resname="Force initiale (en daN)">
+        <source>Force initiale (en daN)</source>
+        <target>Force initiale (en daN)</target>
+      </trans-unit>
+      <trans-unit id="5xTbTe6" resname="Force de maintien(en daN)">
+        <source>Force de maintien(en daN)</source>
+        <target>Force de maintien(en daN)</target>
+      </trans-unit>
+      <trans-unit id="EqWDJvh" resname="Fréquence">
+        <source>Fréquence</source>
+        <target>Fréquence</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="OxjRxXC" resname="Type d'aide à la manutention">
+        <source>Type d'aide à la manutention</source>
+        <target>Type d'aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id=".gMXrup" resname=": Lit hôpital">
+        <source>: Lit hôpital</source>
+        <target>: Lit hôpital</target>
+      </trans-unit>
+      <trans-unit id="Pcdpbbf" resname=": Transpalette">
+        <source>: Transpalette</source>
+        <target>: Transpalette</target>
+      </trans-unit>
+      <trans-unit id="WKm28BU" resname=": Chariot à 4 roues">
+        <source>: Chariot à 4 roues</source>
+        <target>: Chariot à 4 roues</target>
+      </trans-unit>
+      <trans-unit id="RyceYHj" resname="Manutention du lit">
+        <source>Manutention du lit</source>
+        <target>Manutention du lit</target>
+      </trans-unit>
+      <trans-unit id="8pI6ons" resname="Manutention du transpalette">
+        <source>Manutention du transpalette</source>
+        <target>Manutention du transpalette</target>
+      </trans-unit>
+      <trans-unit id="CFEqeKq" resname="Manutention du chariot">
+        <source>Manutention du chariot</source>
+        <target>Manutention du chariot</target>
+      </trans-unit>
+      <trans-unit id="W1vj2nX" resname="Masse (en kg)">
+        <source>Masse (en kg)</source>
+        <target>Masse (en kg)</target>
+      </trans-unit>
+      <trans-unit id="pnO9Tv_" resname="Transport de charge">
+        <source>Transport de charge</source>
+        <target>Transport de charge</target>
+      </trans-unit>
+      <trans-unit id="ZM.xMZ0" resname="Action">
+        <source>Action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="CEK0.8o" resname="Distance (en m)">
+        <source>Distance (en m)</source>
+        <target>Distance (en m)</target>
+      </trans-unit>
+      <trans-unit id="IL64wnd" resname="Hauteur des poignées (en m)">
+        <source>Hauteur des poignées (en m)</source>
+        <target>Hauteur des poignées (en m)</target>
+      </trans-unit>
+      <trans-unit id="TachwPZ" resname="Fréquence du Pousser/Tirer">
+        <source>Fréquence du Pousser/Tirer</source>
+        <target>Fréquence du Pousser/Tirer</target>
+      </trans-unit>
+      <trans-unit id="W0_k1_a" resname="Manutention Manuelle de charge - Contraintes">
+        <source>Manutention Manuelle de charge - Contraintes</source>
+        <target>Manutention Manuelle de charge - Contraintes</target>
+      </trans-unit>
+      <trans-unit id="wGGKFqY" resname="Conditions d'exécution de la tâche">
+        <source>Conditions d'exécution de la tâche</source>
+        <target>Conditions d'exécution de la tâche</target>
+      </trans-unit>
+      <trans-unit id="njMe0d7" resname="Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation">
+        <source>Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation</source>
+        <target>Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation</target>
+      </trans-unit>
+      <trans-unit id="ayrDm1r" resname="Conditions d'environnement de la tâche&lt;">
+        <source>Conditions d'environnement de la tâche&lt;</source>
+        <target>Conditions d'environnement de la tâche</target>
+      </trans-unit>
+      <trans-unit id="wdw8TR7" resname="Conditions d'organisation de la tâche">
+        <source>Conditions d'organisation de la tâche</source>
+        <target>Conditions d'organisation de la tâche</target>
+      </trans-unit>
+      <trans-unit id="f90fP5O" resname="Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention">
+        <source>Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention</source>
+        <target>Manutention Manuelle de charge - Bilan de la Manutention Manuelle avec aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="fYl5aCe" resname="Bilan :">
+        <source>Bilan :</source>
+        <target>Bilan :</target>
+      </trans-unit>
+      <trans-unit id="l3MWIFp" resname="Conditions favorables">
+        <source>Conditions favorables</source>
+        <target>Conditions favorables</target>
+      </trans-unit>
+      <trans-unit id="IBQYdbX" resname="Les points à améliorer">
+        <source>Les points à améliorer</source>
+        <target>Les points à améliorer</target>
+      </trans-unit>
+      <trans-unit id="cxzzVSS" resname="Les facteurs les plus pénalisants">
+        <source>Les facteurs les plus pénalisants</source>
+        <target>Les facteurs les plus pénalisants</target>
+      </trans-unit>
+      <trans-unit id="F_ruSJs" resname="Détails">
+        <source>Détails</source>
+        <target>Détails</target>
+      </trans-unit>
+      <trans-unit id="Ue97Mm_" resname="Enregistrer l'analyse">
+        <source>Enregistrer l'analyse</source>
+        <target>Enregistrer l'analyse</target>
+      </trans-unit>
+      <trans-unit id="gsEYSi1" resname="Nom :">
+        <source>Nom :</source>
+        <target>Nom :</target>
+      </trans-unit>
+      <trans-unit id="Ze78huc" resname="Ajouter une charge">
+        <source>Ajouter une charge</source>
+        <target>Ajouter une charge</target>
+      </trans-unit>
+      <trans-unit id="tNklKPh" resname="Terminer">
+        <source>Terminer</source>
+        <target>Terminer</target>
+      </trans-unit>
+      <trans-unit id=".7e_nRC" resname="Manutention Manuelle de charge - Tonnage journalier et fréquence">
+        <source>Manutention Manuelle de charge - Tonnage journalier et fréquence</source>
+        <target>Manutention Manuelle de charge - Tonnage journalier et fréquence</target>
+      </trans-unit>
+      <trans-unit id="OmrHZGx" resname="Vérification des valeurs de Tonnage et Fréquence :">
+        <source>Vérification des valeurs de Tonnage et Fréquence :</source>
+        <target>Vérification des valeurs de Tonnage et Fréquence :</target>
+      </trans-unit>
+      <trans-unit id="H2gkVNR" resname="Veuillez renseigner la durée de manutention, la valeur de Tonnage est calculée en fonction du tableau récapitulatif des charges vu précédemment.">
+        <source>Veuillez renseigner la durée de manutention, la valeur de Tonnage est calculée en fonction du tableau récapitulatif des charges vu précédemment.</source>
+        <target>Veuillez renseigner la durée de manutention, la valeur de Tonnage est calculée en fonction du tableau récapitulatif des charges vu précédemment.</target>
+      </trans-unit>
+      <trans-unit id="WTQx9Tc" resname="Manutention manuelle de lit d'hôpital simple (50 kg à vide)">
+        <source>Manutention manuelle de lit d'hôpital simple (50 kg à vide)</source>
+        <target>Manutention manuelle de lit d'hôpital simple (50 kg à vide)</target>
+      </trans-unit>
+      <trans-unit id="qrj9Xai" resname="Manutention manuelle de transpalette">
+        <source>Manutention manuelle de transpalette</source>
+        <target>Manutention manuelle de transpalette</target>
+      </trans-unit>
+      <trans-unit id="S_eOLG8" resname="Manutention manuelle de chariot à 4 roues">
+        <source>Manutention manuelle de chariot à 4 roues</source>
+        <target>Manutention manuelle de chariot à 4 roues</target>
+      </trans-unit>
+      <trans-unit id="RRESUjH" resname="Manutention manuelle sans aide à la manutention">
+        <source>Manutention manuelle sans aide à la manutention</source>
+        <target>Manutention manuelle sans aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="fG0RSre" resname="Hauteur prise (m)">
+        <source>Hauteur prise (m)</source>
+        <target>Hauteur prise (m)</target>
+      </trans-unit>
+      <trans-unit id="h8RRy9j" resname="Profondeur prise (m)">
+        <source>Profondeur prise (m)</source>
+        <target>Profondeur prise (m)</target>
+      </trans-unit>
+      <trans-unit id="PpZPq3A" resname="Distance (m)">
+        <source>Distance (m)</source>
+        <target>Distance (m)</target>
+      </trans-unit>
+      <trans-unit id="AhWyRc0" resname="Hauteur dépose (m)">
+        <source>Hauteur dépose (m)</source>
+        <target>Hauteur dépose (m)</target>
+      </trans-unit>
+      <trans-unit id="xnKaXrs" resname="Profondeur dépose (m)">
+        <source>Profondeur dépose (m)</source>
+        <target>Profondeur dépose (m)</target>
+      </trans-unit>
+      <trans-unit id="sRVT4P5" resname="Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail">
+        <source>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail</source>
+        <target>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail</target>
+      </trans-unit>
+      <trans-unit id="mlX1DVv" resname="Pour cette situation de travail, avez-vous déjà observé :">
+        <source>Pour cette situation de travail, avez-vous déjà observé :</source>
+        <target>Pour cette situation de travail, avez-vous déjà observé :</target>
+      </trans-unit>
+      <trans-unit id="4LvBh1W" resname="À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.">
+        <source>À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.</source>
+        <target>À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.</target>
+      </trans-unit>
+      <trans-unit id="IbF0hMQ" resname="Domaines">
+        <source>Domaines</source>
+        <target>Domaines</target>
+      </trans-unit>
+      <trans-unit id="mnIiGid" resname="Questions">
+        <source>Questions</source>
+        <target>Questions</target>
+      </trans-unit>
+      <trans-unit id="f2JJawy" resname="Non">
+        <source>Non</source>
+        <target>Non</target>
+      </trans-unit>
+      <trans-unit id="CpBAdjn" resname="Oui">
+        <source>Oui</source>
+        <target>Oui</target>
+      </trans-unit>
+      <trans-unit id="rVSKT6H" resname="Pour cette situation de travail, y a-t-il des difficulés liées à :">
+        <source>Pour cette situation de travail, y a-t-il des difficulés liées à :</source>
+        <target>Pour cette situation de travail, y a-t-il des difficulés liées à :</target>
+      </trans-unit>
+      <trans-unit id="PBbBe4X" resname="À remplir à partir d'observations et du ressenti des salariés.">
+        <source>À remplir à partir d'observations et du ressenti des salariés.</source>
+        <target>À remplir à partir d'observations et du ressenti des salariés.</target>
+      </trans-unit>
+      <trans-unit id="nbce1oT" resname="Oui mais non critiques">
+        <source>Oui mais non critiques</source>
+        <target>Oui mais non critiques</target>
+      </trans-unit>
+      <trans-unit id="s67rMqD" resname="Situation">
+        <source>Situation</source>
+        <target>Situation</target>
+      </trans-unit>
+      <trans-unit id="Ea2wLrx" resname="Réperer">
+        <source>Réperer</source>
+        <target>Réperer</target>
+      </trans-unit>
+      <trans-unit id="eXbGYqH" resname="Analyse de la charge physique de travail - Phase 1 - Repérage">
+        <source>Analyse de la charge physique de travail - Phase 1 - Repérage</source>
+        <target>Analyse de la charge physique de travail - Phase 1 - Repérage</target>
+      </trans-unit>
+      <trans-unit id="MGVUbw2" resname="Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :">
+        <source>Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :</source>
+        <target>Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :</target>
+      </trans-unit>
+      <trans-unit id="RlO8Qap" resname="Y a-t-il des secteurs dans l'entreprise qui présentent :">
+        <source>Y a-t-il des secteurs dans l'entreprise qui présentent :</source>
+        <target>Y a-t-il des secteurs dans l'entreprise qui présentent :</target>
+      </trans-unit>
+      <trans-unit id="RWwoIF9" resname="- De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?">
+        <source>- De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?</source>
+        <target>- De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?</target>
+      </trans-unit>
+      <trans-unit id="xE_EjIM" resname="Préciser">
+        <source>Préciser</source>
+        <target>Préciser</target>
+      </trans-unit>
+      <trans-unit id="R91JEzO" resname="- Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?">
+        <source>- Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?</source>
+        <target>- Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?</target>
+      </trans-unit>
+      <trans-unit id="d6aa1sP" resname="- Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?">
+        <source>- Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?</source>
+        <target>- Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?</target>
+      </trans-unit>
+      <trans-unit id="u15GB3M" resname="- Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?">
+        <source>- Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?</source>
+        <target>- Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?</target>
+      </trans-unit>
+      <trans-unit id="NPoHLSR" resname="Question 1 - Nouveau mot-clé">
+        <source>Question 1 - Nouveau mot-clé</source>
+        <target>Question 1 - Nouveau mot-clé</target>
+      </trans-unit>
+      <trans-unit id="bfJM2FC" resname="Secteur :">
+        <source>Secteur :</source>
+        <target>Secteur :</target>
+      </trans-unit>
+      <trans-unit id="X0QXJIk" resname="Poste de Travail :">
+        <source>Poste de Travail :</source>
+        <target>Poste de Travail :</target>
+      </trans-unit>
+      <trans-unit id="R5um3mt" resname="Question 2 - Nouveau mot-clé">
+        <source>Question 2 - Nouveau mot-clé</source>
+        <target>Question 2 - Nouveau mot-clé</target>
+      </trans-unit>
+      <trans-unit id="Mr0g78D" resname="Question 3 - Nouveau mot-clé">
+        <source>Question 3 - Nouveau mot-clé</source>
+        <target>Question 3 - Nouveau mot-clé</target>
+      </trans-unit>
+      <trans-unit id="Hz9dLvn" resname="Question 4 - Nouveau mot-clé">
+        <source>Question 4 - Nouveau mot-clé</source>
+        <target>Question 4 - Nouveau mot-clé</target>
+      </trans-unit>
+      <trans-unit id="KVClvew" resname="Analyse de la charge physique de travail - Phase 1 - Hiérarchiser">
+        <source>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser</source>
+        <target>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser</target>
+      </trans-unit>
+      <trans-unit id="oOh_dTG" resname="Voici les résultats de la hiérarchisation des postes de travail">
+        <source>Voici les résultats de la hiérarchisation des postes de travail</source>
+        <target>Voici les résultats de la hiérarchisation des postes de travail</target>
+      </trans-unit>
+      <trans-unit id="LOA7HAO" resname="Tableau récapitulatif des postes et des situations :">
+        <source>Tableau récapitulatif des postes et des situations :</source>
+        <target>Tableau récapitulatif des postes et des situations :</target>
+      </trans-unit>
+      <trans-unit id="suuRjjV" resname="Ordre">
+        <source>Ordre</source>
+        <target>Ordre</target>
+      </trans-unit>
+      <trans-unit id="UhKqTTF" resname="Secteur">
+        <source>Secteur</source>
+        <target>Secteur</target>
+      </trans-unit>
+      <trans-unit id="HwwNN.g" resname="Poste de travail">
+        <source>Poste de travail</source>
+        <target>Poste de travail</target>
+      </trans-unit>
+      <trans-unit id="dyuK12r" resname="Oui, mais non critique">
+        <source>Oui, mais non critique</source>
+        <target>Oui, mais non critique</target>
+      </trans-unit>
+      <trans-unit id="7Sas2Gl" resname="Oui et critique">
+        <source>Oui et critique</source>
+        <target>Oui et critique</target>
+      </trans-unit>
+      <trans-unit id="vzYA6WT" resname="Afficher les situations du poste :">
+        <source>Afficher les situations du poste :</source>
+        <target>Afficher les situations du poste :</target>
+      </trans-unit>
+      <trans-unit id="9X4MSs1" resname="Nouvelle situation">
+        <source>Nouvelle situation</source>
+        <target>Nouvelle situation</target>
+      </trans-unit>
+      <trans-unit id="9F22hck" resname="Suggestion de hiérarchisation">
+        <source>Suggestion de hiérarchisation</source>
+        <target>Suggestion de hiérarchisation</target>
+      </trans-unit>
+      <trans-unit id="6gw4ctN" resname="Veuillez répondre aux questions suivantes :">
+        <source>Veuillez répondre aux questions suivantes :</source>
+        <target>Veuillez répondre aux questions suivantes :</target>
+      </trans-unit>
+      <trans-unit id="ziK7ZHt" resname="- Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?">
+        <source>- Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</source>
+        <target>- Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</target>
+      </trans-unit>
+      <trans-unit id="J2UK1Gg" resname="- Ces charges sont-elles supérieures ou égales à 3 kg ?">
+        <source>- Ces charges sont-elles supérieures ou égales à 3 kg ?</source>
+        <target>- Ces charges sont-elles supérieures ou égales à 3 kg ?</target>
+      </trans-unit>
+      <trans-unit id=".mc.VbA" resname="- Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?">
+        <source>- Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?</source>
+        <target>- Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?</target>
+      </trans-unit>
+      <trans-unit id="TJNMtu2" resname="- Voulez-vous évaluer une situation de travail présentant ces problématiques ?">
+        <source>- Voulez-vous évaluer une situation de travail présentant ces problématiques ?</source>
+        <target>- Voulez-vous évaluer une situation de travail présentant ces problématiques ?</target>
+      </trans-unit>
+      <trans-unit id="uZvZcHp" resname="-&gt; Cette situation n'est pas adaptée à l'application.">
+        <source>-&gt; Cette situation n'est pas adaptée à l'application.</source>
+        <target>Cette situation n'est pas adaptée à l'application.</target>
+      </trans-unit>
+      <trans-unit id="zpbb2HT" resname="-&gt; Cet outil va permettre de hiérarchiser les postes de travail.">
+        <source>-&gt; Cet outil va permettre de hiérarchiser les postes de travail.</source>
+        <target>Cet outil va permettre de hiérarchiser les postes de travail.</target>
+      </trans-unit>
+      <trans-unit id="EomnDvW" resname="-&gt; Cet outil va permettre d'évaluer une situation de travail.">
+        <source>-&gt; Cet outil va permettre d'évaluer une situation de travail.</source>
+        <target>Cet outil va permettre d'évaluer une situation de travail.</target>
+      </trans-unit>
+      <trans-unit id="XDKv9uU" resname="Évaluateur">
+        <source>Évaluateur</source>
+        <target>Évaluateur</target>
+      </trans-unit>
+      <trans-unit id="fOQ9xCl" resname="Type évaluation">
+        <source>Type évaluation</source>
+        <target>Type évaluation</target>
+      </trans-unit>
+      <trans-unit id="CKIcKfY" resname="Intitulé">
+        <source>Intitulé</source>
+        <target>Intitulé</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="Sh6EfsR" resname="Voir">
+        <source>Voir</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="wW1x7xR" resname="Ajouter un pousser/tirer">
+        <source>Ajouter un pousser/tirer</source>
+        <target>Ajouter un pousser/tirer</target>
+      </trans-unit>
+      <trans-unit id="n2Ogx6b" resname="Conditions d'environnement de la tâche">
+        <source>Conditions d'environnement de la tâche</source>
+        <target>Conditions d'environnement de la tâche</target>
+      </trans-unit>
+      <trans-unit id="aKR.61E" resname="Manutention Manuelle de charge - Manutention manuelle sans aide à la manutention">
+        <source>Manutention Manuelle de charge - Manutention manuelle sans aide à la manutention</source>
+        <target>Manutention Manuelle de charge - Manutention manuelle sans aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="avFr3gU" resname="Prise de la charge">
+        <source>Prise de la charge</source>
+        <target>Prise de la charge</target>
+      </trans-unit>
+      <trans-unit id="e0U7yX5" resname="Déplacement de la charge">
+        <source>Déplacement de la charge</source>
+        <target>Déplacement de la charge</target>
+      </trans-unit>
+      <trans-unit id="mCtNWhD" resname="Dépose de la charge">
+        <source>Dépose de la charge</source>
+        <target>Dépose de la charge</target>
+      </trans-unit>
+      <trans-unit id="_WUqVmw" resname="La hauteur de prise est inacceptable">
+        <source>La hauteur de prise est inacceptable</source>
+        <target>La hauteur de prise est inacceptable</target>
+      </trans-unit>
+      <trans-unit id="n1GLTXK" resname="La charge est transportée a une main">
+        <source>La charge est transportée a une main</source>
+        <target>La charge est transportée a une main</target>
+      </trans-unit>
+      <trans-unit id="Dsp8tMF" resname="Hauteur prise (en m)">
+        <source>Hauteur prise (en m)</source>
+        <target>Hauteur prise (en m)</target>
+      </trans-unit>
+      <trans-unit id=".bxDy2." resname="Profondeur prise (en m)">
+        <source>Profondeur prise (en m)</source>
+        <target>Profondeur prise (en m)</target>
+      </trans-unit>
+      <trans-unit id="RjzYBqX" resname="Poursuivre">
+        <source>Poursuivre</source>
+        <target>Poursuivre</target>
+      </trans-unit>
+      <trans-unit id="TM9pAKC" resname="Déplacement (en m)">
+        <source>Déplacement (en m)</source>
+        <target>Déplacement (en m)</target>
+      </trans-unit>
+      <trans-unit id="iXnL_IO" resname="Hauteur dépose (en m)">
+        <source>Hauteur dépose (en m)</source>
+        <target>Hauteur dépose (en m)</target>
+      </trans-unit>
+      <trans-unit id="v_sYwpw" resname="Profondeur dépose (en m)">
+        <source>Profondeur dépose (en m)</source>
+        <target>Profondeur dépose (en m)</target>
+      </trans-unit>
+      <trans-unit id="OQeNBEO" resname="Définir">
+        <source>Définir</source>
+        <target>Définir</target>
+      </trans-unit>
+      <trans-unit id="i_tkyhG" resname="Manutention Manuelle de charge - Bilan de la Manutention Manuelle sans aide à la manutention">
+        <source>Manutention Manuelle de charge - Bilan de la Manutention Manuelle sans aide à la manutention</source>
+        <target>Manutention Manuelle de charge - Bilan de la Manutention Manuelle sans aide à la manutention</target>
+      </trans-unit>
+      <trans-unit id="eJ_Glxc" resname="Coefficient 1">
+        <source>Coefficient 1</source>
+        <target>Coefficient 1</target>
+      </trans-unit>
+      <trans-unit id="RsxjxcZ" resname="Coefficient 2">
+        <source>Coefficient 2</source>
+        <target>Coefficient 2</target>
+      </trans-unit>
+      <trans-unit id="i0eiI9_" resname="Masse corrigée (en kg)">
+        <source>Masse corrigée (en kg)</source>
+        <target>Masse corrigée (en kg)</target>
+      </trans-unit>
+      <trans-unit id="jQJAhyT" resname="Saisie des valeurs de Tonnage et Fréquence :">
+        <source>Saisie des valeurs de Tonnage et Fréquence :</source>
+        <target>Saisie des valeurs de Tonnage et Fréquence :</target>
+      </trans-unit>
+      <trans-unit id="1577HCD" resname="Veuillez renseigner la durée de manutention et la valeur de Tonnage">
+        <source>Veuillez renseigner la durée de manutention et la valeur de Tonnage</source>
+        <target>Veuillez renseigner la durée de manutention et la valeur de Tonnage</target>
+      </trans-unit>
+      <trans-unit id="EHkQpVB" resname="Durée manutention (en h/j) :">
+        <source>Durée manutention (en h/j) :</source>
+        <target>Durée manutention (en h/j) :</target>
+      </trans-unit>
+      <trans-unit id="95JBACX" resname="Tonnage (en T) :">
+        <source>Tonnage (en T) :</source>
+        <target>Tonnage (en T) :</target>
+      </trans-unit>
+      <trans-unit id="M20Wmv7" resname="Objectifs">
+        <source>Objectifs</source>
+        <target>Objectifs</target>
+      </trans-unit>
+      <trans-unit id="8Ts4oM_" resname="NF X35-109 est un outil d'évaluation des manutentions manuelles, basé sur des principes ergonomiques. L'objectif de cet&#10;            outil est d'améliorer la prévention des risques liés aux tâches impliquant de la manutention manuelle de charge.">
+        <source>NF X35-109 est un outil d'évaluation des manutentions manuelles, basé sur des principes ergonomiques. L'objectif de cet
+            outil est d'améliorer la prévention des risques liés aux tâches impliquant de la manutention manuelle de charge.</source>
+        <target>NF X35-109 est un outil d'évaluation des manutentions manuelles, basé sur des principes ergonomiques. L'objectif de cet
+            outil est d'améliorer la prévention des risques liés aux tâches impliquant de la manutention manuelle de charge.</target>
+      </trans-unit>
+      <trans-unit id="5AbVQwr" resname="Conditions d'applications">
+        <source>Conditions d'applications</source>
+        <target>Conditions d'applications</target>
+      </trans-unit>
+      <trans-unit id="dIvxDwo" resname="S'applique :">
+        <source>S'applique :</source>
+        <target>S'applique :</target>
+      </trans-unit>
+      <trans-unit id="uWJd6Hd" resname="- A l'activité de manutention de charges (soulever, transporter, pousser/tirer, avec déplacement de la &#10;                        charge) avec ou sans utilisation d'aide à la manutention, par une personne.">
+        <source>- A l'activité de manutention de charges (soulever, transporter, pousser/tirer, avec déplacement de la 
+                        charge) avec ou sans utilisation d'aide à la manutention, par une personne.</source>
+        <target>- A l'activité de manutention de charges (soulever, transporter, pousser/tirer, avec déplacement de la 
+                        charge) avec ou sans utilisation d'aide à la manutention, par une personne.</target>
+      </trans-unit>
+      <trans-unit id="B9iRYnJ" resname="- Pour une population adulte (18 à 65 ans) sans restriction d'aptitude.">
+        <source>- Pour une population adulte (18 à 65 ans) sans restriction d'aptitude.</source>
+        <target>- Pour une population adulte (18 à 65 ans) sans restriction d'aptitude.</target>
+      </trans-unit>
+      <trans-unit id="HjCd1vS" resname="- Aux engins équipés de roues pour les forces de pousser/tirer.">
+        <source>- Aux engins équipés de roues pour les forces de pousser/tirer.</source>
+        <target>- Aux engins équipés de roues pour les forces de pousser/tirer.</target>
+      </trans-unit>
+      <trans-unit id="jY0RyBO" resname="Ne s'applique pas :">
+        <source>Ne s'applique pas :</source>
+        <target>Ne s'applique pas :</target>
+      </trans-unit>
+      <trans-unit id="7ZubsXs" resname="- Lors du déplacement dans un escalier ou une pente.">
+        <source>- Lors du déplacement dans un escalier ou une pente.</source>
+        <target>- Lors du déplacement dans un escalier ou une pente.</target>
+      </trans-unit>
+      <trans-unit id="Rcgi.CA" resname="- Aux manutentions répétitives de charges inférieures à 3kg.">
+        <source>- Aux manutentions répétitives de charges inférieures à 3kg.</source>
+        <target>- Aux manutentions répétitives de charges inférieures à 3kg.</target>
+      </trans-unit>
+      <trans-unit id="JLYMCB6" resname="Bibliographie">
+        <source>Bibliographie</source>
+        <target>Bibliographie</target>
+      </trans-unit>
+      <trans-unit id="CaT3Swq" resname="- NF X35-109 (2011), Ergonomie - Manutention manuelle de charge pour soulever, déplacer et pousser/tirer. Méthodologie d'analyse et valeurs seuils.">
+        <source>- NF X35-109 (2011), Ergonomie - Manutention manuelle de charge pour soulever, déplacer et pousser/tirer. Méthodologie d'analyse et valeurs seuils.</source>
+        <target>- NF X35-109 (2011), Ergonomie - Manutention manuelle de charge pour soulever, déplacer et pousser/tirer. Méthodologie d'analyse et valeurs seuils.</target>
+      </trans-unit>
+      <trans-unit id="CXjUFHA" resname="Manutention Manuelle de charge - Opérateur">
+        <source>Manutention Manuelle de charge - Opérateur</source>
+        <target>Manutention Manuelle de charge - Opérateur</target>
+      </trans-unit>
+      <trans-unit id="XtcScAl" resname="Opérateur :">
+        <source>Opérateur :</source>
+        <target>Opérateur :</target>
+      </trans-unit>
+      <trans-unit id="f4xjyxn" resname="Âge :">
+        <source>Âge :</source>
+        <target>Âge :</target>
+      </trans-unit>
+      <trans-unit id="m1QB2di" resname="Sexe :">
+        <source>Sexe :</source>
+        <target>Sexe :</target>
+      </trans-unit>
+      <trans-unit id="OAokF5T" resname="Enceinte :">
+        <source>Enceinte :</source>
+        <target>Enceinte :</target>
+      </trans-unit>
+      <trans-unit id="6bugRNq" resname="Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !">
+        <source>Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !</source>
+        <target>Pour les femmes enceintes effectuant des levages réguliers, une valeur supérieure à 5kg est déconseillée !</target>
+      </trans-unit>
+      <trans-unit id="HH7dT9l" resname="Droitier">
+        <source>Droitier</source>
+        <target>Droitier</target>
+      </trans-unit>
+      <trans-unit id="KzvvrI3" resname="Gaucher">
+        <source>Gaucher</source>
+        <target>Gaucher</target>
+      </trans-unit>
+      <trans-unit id="1kOLaSG" resname="Formation :">
+        <source>Formation :</source>
+        <target>Formation :</target>
+      </trans-unit>
+      <trans-unit id="hUAHp76" resname="Ancienneté au poste :">
+        <source>Ancienneté au poste :</source>
+        <target>Ancienneté au poste :</target>
+      </trans-unit>
+      <trans-unit id="AtxBlzh" resname="Ancienneté en entreprise :">
+        <source>Ancienneté en entreprise :</source>
+        <target>Ancienneté en entreprise :</target>
+      </trans-unit>
+      <trans-unit id="Lc07R5s" resname="Description :">
+        <source>Description :</source>
+        <target>Description :</target>
+      </trans-unit>
+      <trans-unit id="u_sTSEe" resname="Manutention Manuelle de charge - Importer une photo">
+        <source>Manutention Manuelle de charge - Importer une photo</source>
+        <target>Manutention Manuelle de charge - Importer une photo</target>
+      </trans-unit>
+      <trans-unit id="Howj4JM" resname="Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :">
+        <source>Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :</source>
+        <target>Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :</target>
+      </trans-unit>
+      <trans-unit id="u8ctKNw" resname="- Repérer et hiérarchiser des postes de travail">
+        <source>- Repérer et hiérarchiser des postes de travail</source>
+        <target>- Repérer et hiérarchiser des postes de travail</target>
+      </trans-unit>
+      <trans-unit id="TnlYBNI" resname="- Évaluer des situations de travail">
+        <source>- Évaluer des situations de travail</source>
+        <target>- Évaluer des situations de travail</target>
+      </trans-unit>
+      <trans-unit id="KNbvZOg" resname="ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.">
+        <source>ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.</source>
+        <target>ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.</target>
+      </trans-unit>
+      <trans-unit id="PJf0TvC" resname="Cette application se base sur :">
+        <source>Cette application se base sur :</source>
+        <target>Cette application se base sur :</target>
+      </trans-unit>
+      <trans-unit id="VJf50.p" resname="- La méthode d'analyse de la charge physique de travail (INRS - ED6161)">
+        <source>- La méthode d'analyse de la charge physique de travail (INRS - ED6161)</source>
+        <target>- La méthode d'analyse de la charge physique de travail (INRS - ED6161)</target>
+      </trans-unit>
+      <trans-unit id="WycJKiY" resname="- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).">
+        <source>- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).</source>
+        <target>- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).</target>
+      </trans-unit>
+      <trans-unit id="7fGLijw" resname="Pour cette situation de travail, y a-t-il des difficultés liées à :">
+        <source>Pour cette situation de travail, y a-t-il des difficultés liées à :</source>
+        <target>Pour cette situation de travail, y a-t-il des difficultés liées à :</target>
+      </trans-unit>
+      <trans-unit id="SKPN8Cp" resname="Cette situation n'est pas adaptée à l'application.">
+        <source>Cette situation n'est pas adaptée à l'application.</source>
+        <target>Cette situation n'est pas adaptée à l'application.</target>
+      </trans-unit>
+      <trans-unit id="UjlX9sL" resname="Cet outil va permettre de hiérarchiser les postes de travail.">
+        <source>Cet outil va permettre de hiérarchiser les postes de travail.</source>
+        <target>Cet outil va permettre de hiérarchiser les postes de travail.</target>
+      </trans-unit>
+      <trans-unit id="9K8JRma" resname="Cet outil va permettre d'évaluer une situation de travail.">
+        <source>Cet outil va permettre d'évaluer une situation de travail.</source>
+        <target>Cet outil va permettre d'évaluer une situation de travail.</target>
+      </trans-unit>
+      <trans-unit id="JyjfqCc" resname="Manutention Manuelle de charge - Résumé de la charge">
+        <source>Manutention Manuelle de charge - Résumé de la charge</source>
+        <target>Manutention Manuelle de charge - Résumé de la charge</target>
+      </trans-unit>
+      <trans-unit id="kY0glnf" resname="Les conditions favorables">
+        <source>Les conditions favorables</source>
+        <target>Les conditions favorables</target>
+      </trans-unit>
+      <trans-unit id="bo8xMtj" resname="Valeur">
+        <source>Valeur</source>
+        <target>Valeur</target>
+      </trans-unit>
+      <trans-unit id="SNPoFla" resname="Commentaire">
+        <source>Commentaire</source>
+        <target>Commentaire</target>
+      </trans-unit>
+      <trans-unit id="8lkzYWl" resname="Poids de la charge">
+        <source>Poids de la charge</source>
+        <target>Poids de la charge</target>
+      </trans-unit>
+      <trans-unit id="GSjHK9P" resname="Le poids de la charge est acceptable">
+        <source>Le poids de la charge est acceptable</source>
+        <target>Le poids de la charge est acceptable</target>
+      </trans-unit>
+      <trans-unit id="XItU8FY" resname="Transport de la charge">
+        <source>Transport de la charge</source>
+        <target>Transport de la charge</target>
+      </trans-unit>
+      <trans-unit id="3UFnE5w" resname="La distance est acceptable">
+        <source>La distance est acceptable</source>
+        <target>La distance est acceptable</target>
+      </trans-unit>
+      <trans-unit id="Cc8gvNJ" resname="Hauteur de prise">
+        <source>Hauteur de prise</source>
+        <target>Hauteur de prise</target>
+      </trans-unit>
+      <trans-unit id="CtUK3i4" resname="La hauteur est acceptable">
+        <source>La hauteur est acceptable</source>
+        <target>La hauteur est acceptable</target>
+      </trans-unit>
+      <trans-unit id="L.kINeY" resname="Profondeur de prise">
+        <source>Profondeur de prise</source>
+        <target>Profondeur de prise</target>
+      </trans-unit>
+      <trans-unit id="N4_7AzZ" resname="La profondeur est acceptable">
+        <source>La profondeur est acceptable</source>
+        <target>La profondeur est acceptable</target>
+      </trans-unit>
+      <trans-unit id="m4ZGC1u" resname="Hauteur de dépose">
+        <source>Hauteur de dépose</source>
+        <target>Hauteur de dépose</target>
+      </trans-unit>
+      <trans-unit id="h1DG9q2" resname="Profondeur de dépose">
+        <source>Profondeur de dépose</source>
+        <target>Profondeur de dépose</target>
+      </trans-unit>
+      <trans-unit id="O_2ma_p" resname="Contraintes d'exécution">
+        <source>Contraintes d'exécution</source>
+        <target>Contraintes d'exécution</target>
+      </trans-unit>
+      <trans-unit id="DiKGORP" resname="Aucune contrainte d'exécution de la tâche">
+        <source>Aucune contrainte d'exécution de la tâche</source>
+        <target>Aucune contrainte d'exécution de la tâche</target>
+      </trans-unit>
+      <trans-unit id="9wdfmwU" resname="Contraintes d'environnement">
+        <source>Contraintes d'environnement</source>
+        <target>Contraintes d'environnement</target>
+      </trans-unit>
+      <trans-unit id="y7iYT4S" resname="Aucune contrainte d'environnement de la tâche">
+        <source>Aucune contrainte d'environnement de la tâche</source>
+        <target>Aucune contrainte d'environnement de la tâche</target>
+      </trans-unit>
+      <trans-unit id="as7MPcf" resname="Contraintes d'organisation">
+        <source>Contraintes d'organisation</source>
+        <target>Contraintes d'organisation</target>
+      </trans-unit>
+      <trans-unit id="8j92OOv" resname="Aucune contrainte d'organisation de la tâche">
+        <source>Aucune contrainte d'organisation de la tâche</source>
+        <target>Aucune contrainte d'organisation de la tâche</target>
+      </trans-unit>
+      <trans-unit id="Ur6TWjY" resname="Le poids de la charge devrait être inférieure ou égale à">
+        <source>Le poids de la charge devrait être inférieure ou égale à</source>
+        <target>Le poids de la charge devrait être inférieure ou égale à</target>
+      </trans-unit>
+      <trans-unit id="fb9g7LS" resname="La distance devrait être inférieure ou égale à 2m.">
+        <source>La distance devrait être inférieure ou égale à 2m.</source>
+        <target>La distance devrait être inférieure ou égale à 2m.</target>
+      </trans-unit>
+      <trans-unit id="ifXbSRv" resname="La hauteur devrait être comprise entre 0,75m et 1,10m.">
+        <source>La hauteur devrait être comprise entre 0,75m et 1,10m.</source>
+        <target>La hauteur devrait être comprise entre 0,75m et 1,10m.</target>
+      </trans-unit>
+      <trans-unit id="ZkAS5.H" resname="La profondeur devrait être inférieure à 0,40 cm.">
+        <source>La profondeur devrait être inférieure à 0,40 cm.</source>
+        <target>La profondeur devrait être inférieure à 0,40 cm.</target>
+      </trans-unit>
+      <trans-unit id="S7HBv8R" resname="Sans poignées ou poignées inadaptées.">
+        <source>Sans poignées ou poignées inadaptées.</source>
+        <target>Sans poignées ou poignées inadaptées.</target>
+      </trans-unit>
+      <trans-unit id="YRlsg.d" resname="Torsion du tronc.">
+        <source>Torsion du tronc.</source>
+        <target>Torsion du tronc.</target>
+      </trans-unit>
+      <trans-unit id="22bWdMw" resname="Profondeur de prise &gt; 0.40m.">
+        <source>Profondeur de prise &gt; 0.40m.</source>
+        <target><![CDATA[Profondeur de prise > 0.40m.]]></target>
+      </trans-unit>
+      <trans-unit id="mEADn.o" resname="Hors zone d'atteinte.">
+        <source>Hors zone d'atteinte.</source>
+        <target>Hors zone d'atteinte.</target>
+      </trans-unit>
+      <trans-unit id="UsS9238" resname="Une ou plusieurs contraintes concernant la posture/position du corps.">
+        <source>Une ou plusieurs contraintes concernant la posture/position du corps.</source>
+        <target>Une ou plusieurs contraintes concernant la posture/position du corps.</target>
+      </trans-unit>
+      <trans-unit id="g.BvvpM" resname="Charge instable.">
+        <source>Charge instable.</source>
+        <target>Charge instable.</target>
+      </trans-unit>
+      <trans-unit id="SGCaJ7p" resname="Visibilité limitée.">
+        <source>Visibilité limitée.</source>
+        <target>Visibilité limitée.</target>
+      </trans-unit>
+      <trans-unit id="x4B5Un_" resname="Roulettes inadéquates.">
+        <source>Roulettes inadéquates.</source>
+        <target>Roulettes inadéquates.</target>
+      </trans-unit>
+      <trans-unit id=".2hAYdY" resname="Absence de frein.">
+        <source>Absence de frein.</source>
+        <target>Absence de frein.</target>
+      </trans-unit>
+      <trans-unit id="VnO4.tz" resname="Contraintes thermiques.">
+        <source>Contraintes thermiques.</source>
+        <target>Contraintes thermiques.</target>
+      </trans-unit>
+      <trans-unit id="I8bEFYi" resname="Contraintes acoustiques.">
+        <source>Contraintes acoustiques.</source>
+        <target>Contraintes acoustiques.</target>
+      </trans-unit>
+      <trans-unit id="hUigLSG" resname="Contraintes lumineuses.">
+        <source>Contraintes lumineuses.</source>
+        <target>Contraintes lumineuses.</target>
+      </trans-unit>
+      <trans-unit id="1e2sfUa" resname="Vibrations.">
+        <source>Vibrations.</source>
+        <target>Vibrations.</target>
+      </trans-unit>
+      <trans-unit id="Z8T.o9v" resname="Poussières.">
+        <source>Poussières.</source>
+        <target>Poussières.</target>
+      </trans-unit>
+      <trans-unit id="_OBpE18" resname="Sols dégradés.">
+        <source>Sols dégradés.</source>
+        <target>Sols dégradés.</target>
+      </trans-unit>
+      <trans-unit id="hw557wB" resname="Encombrement.">
+        <source>Encombrement.</source>
+        <target>Encombrement.</target>
+      </trans-unit>
+      <trans-unit id="QL8QyBQ" resname="Obstacles.">
+        <source>Obstacles.</source>
+        <target>Obstacles.</target>
+      </trans-unit>
+      <trans-unit id="rx6D7HC" resname="Espaces inadequats.">
+        <source>Espaces inadequats.</source>
+        <target>Espaces inadequats.</target>
+      </trans-unit>
+      <trans-unit id="tYRMWRu" resname="État du chariot.">
+        <source>État du chariot.</source>
+        <target>État du chariot.</target>
+      </trans-unit>
+      <trans-unit id="4HlyYl5" resname="Contraintes de temps.">
+        <source>Contraintes de temps.</source>
+        <target>Contraintes de temps.</target>
+      </trans-unit>
+      <trans-unit id="AKmtPHi" resname="Marge de Manoeuvre réduite.">
+        <source>Marge de Manoeuvre réduite.</source>
+        <target>Marge de Manoeuvre réduite.</target>
+      </trans-unit>
+      <trans-unit id="x0.bAN5" resname="Multiplicité des tâches.">
+        <source>Multiplicité des tâches.</source>
+        <target>Multiplicité des tâches.</target>
+      </trans-unit>
+      <trans-unit id="hzH_D2x" resname="Exigences qualité.">
+        <source>Exigences qualité.</source>
+        <target>Exigences qualité.</target>
+      </trans-unit>
+      <trans-unit id="NuZiSPB" resname="Les facteurs qui vous pénalisent le plus sont :">
+        <source>Les facteurs qui vous pénalisent le plus sont :</source>
+        <target>Les facteurs qui vous pénalisent le plus sont :</target>
+      </trans-unit>
+      <trans-unit id="RTP63a." resname="Le facteur qui vous pénalise le plus est :">
+        <source>Le facteur qui vous pénalise le plus est :</source>
+        <target>Le facteur qui vous pénalise le plus est :</target>
+      </trans-unit>
+      <trans-unit id="QuN2BLY" resname="Modifier">
+        <source>Modifier</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Supprimer</target>
       </trans-unit>
     </body>
   </file>

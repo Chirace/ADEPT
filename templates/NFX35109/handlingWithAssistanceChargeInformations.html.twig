@@ -3,64 +3,64 @@
     <div class="fixe_largeur_90">
         {{ form_start(form) }}
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1>Hiérarchiser</h1>
+            <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Évaluer</h1>
+            <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
         </div>
-        <h1>Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention</h1>
+        <h1>{% trans %}Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention{% endtrans %}</h1>
         <div class="row">
-            <p id="label_type_assistance" class="mauve">Type d'aide à la manutention</p>
+            <p id="label_type_assistance" class="mauve">{% trans %}Type d'aide à la manutention{% endtrans %}</p>
             {% if type == 1 %}
-                <p id="label_lit_hopital" class="mauve"> : Lit hôpital</p>
+                <p id="label_lit_hopital" class="mauve">{% trans %} : Lit hôpital{% endtrans %}</p>
             {% elseif type == 2 %}
-                <p id="label_transpalette" class="mauve"> : Transpalette</p>
+                <p id="label_transpalette" class="mauve">{% trans %} : Transpalette{% endtrans %}</p>
             {% elseif type == 3 %}
-                <p id="label_chariot" class="mauve">: Chariot à 4 roues</p>
+                <p id="label_chariot" class="mauve">{% trans %} : Chariot à 4 roues{% endtrans %}</p>
             {% endif %}
         </div>
         <div id="prise_charge" class="fixe_largeur_500">
             <div class="card">
                 <div class="card_header_animation card_header">
                     {% if type == 1 %}
-                        <h5>Manutention du lit</h5>
+                        <h5>{% trans %}Manutention du lit{% endtrans %}</h5>
                     {% elseif type == 2 %}
-                        <h5>Manutention du transpalette</h5>
+                        <h5>{% trans %}Manutention du transpalette{% endtrans %}</h5>
                     {% elseif type == 3 %}
-                        <h5>Manutention du chariot</h5>
+                        <h5>{% trans %}Manutention du chariot{% endtrans %}</h5>
                     {% endif %}
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <p class="text_margin_right p_black">Masse (en kg)</p>
+                        <p class="text_margin_right p_black">{% trans %}Masse (en kg){% endtrans %}</p>
                         {{ form_widget(form.poids_charge, {'attr': {'class': 'form_control_40', 'placeholder': 'Masse totale'}} ) }}
                     </div>
                     <div class="row">
-                        <p class="text_margin_right p_black">Transport de charge</p>
+                        <p class="text_margin_right p_black">{% trans %}Transport de charge{% endtrans %}</p>
                         {{ form_widget(form.transport_charge, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_transport_charge'}} ) }}
                     </div>
                     <div class="row">
-                        <p class="text_margin_right p_black">Action</p>
+                        <p class="text_margin_right p_black">{% trans %}Action{% endtrans %}</p>
                         {{ form_widget(form.PT_action, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_action_PT'}} ) }}
                     </div>
                     <div class="row">
-                        <p class="text_margin_right p_black">Distance (en m)</p>
+                        <p class="text_margin_right p_black">{% trans %}Distance (en m){% endtrans %}</p>
                         {{ form_widget(form.PT_distance, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_distance_PT'}} ) }}
                     </div>
                     <div class="row">
-                        <p class="text_margin_right p_black">Hauteur des poignées (en m)</p>
+                        <p class="text_margin_right p_black">{% trans %}Hauteur des poignées (en m){% endtrans %}</p>
                         {{ form_widget(form.PT_hauteur_poignee, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_hauteur_poignee_PT'}} ) }}
                     </div>
                     <div class="row">
-                        <p class="text_margin_right p_black">Fréquence du Pousser/Tirer</p>
+                        <p class="text_margin_right p_black">{% trans %}Fréquence du Pousser/Tirer{% endtrans %}</p>
                         {{ form_widget(form.PT_frequence, {'attr': {'class': 'custom_select form_control_40', 'id': 'input_frequence_PT'}} ) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left text_margin_top" href="{{ path('adept_NFX35109_handling_with_assistance_charge_type',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_left text_margin_top" href="{{ path('adept_NFX35109_handling_with_assistance_charge_type',  { 'id': idEvaluation }) }}" >{% trans %}Revenir en arrière{% endtrans %}</a>
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
         {{ form_end(form) }}

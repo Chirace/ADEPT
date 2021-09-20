@@ -35,6 +35,13 @@
                     <img src="/images/logo_ADEPT.png" alt="logo ADEPT" class="logo">
                 </a>
             </li>
+            <li>
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                        <a class="button_change_language" href="{{ path('change_locale', {'locale': locale}) }}">{{ locale | upper }}</a>
+                    {% endif %}
+                {% endfor %}
+            </li>
         </nav>
 
         {% block body %}{% endblock %}

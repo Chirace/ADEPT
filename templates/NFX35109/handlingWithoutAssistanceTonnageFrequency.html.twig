@@ -4,25 +4,23 @@
         {{ form_start(form) }}
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Tonnage journalier et fréquence</h1>
-            <p class="mauve">Saisie des valeurs de Tonnage et Fréquence :</p>
-            <p>Veuillez renseigner la durée de manutention et la valeur de Tonnage</p>
+            <h1>{% trans %}Manutention Manuelle de charge - Tonnage journalier et fréquence{% endtrans %}</h1>
+            <p class="mauve">{% trans %}Saisie des valeurs de Tonnage et Fréquence :{% endtrans %}</p>
+            <p>{% trans %}Veuillez renseigner la durée de manutention et la valeur de Tonnage{% endtrans %}</p>
             <!--<div class="row">
-                <p class="text_margin_right">Durée manutention (en h/j) :</p>
+                <p class="text_margin_right">{% trans %}Durée manutention (en h/j) :{% endtrans %}</p>
                 <input type="text" class="form_control_20" aria-label="frequency" aria-describedby="basic-addon2">
             </div>
             <div class="row">
-                <p class="text_margin_right">Tonnage (en T) :</p>
+                <p class="text_margin_right">{% trans %}Tonnage (en T) :{% endtrans %}</p>
                 <input type="text" class="form_control_20" aria-label="tonnage" aria-describedby="basic-addon2">
             </div>-->
-
-            
 
             <div class="row">
                 {{ form_label(form.temps_tonnage, 'Durée manutention (en h/j) :', {'label_attr': {'class': 'p text_margin_right'}} ) }}
@@ -33,11 +31,9 @@
                 {{ form_label(form.tonnage, 'Tonnage (en T) :', {'label_attr': {'class': 'p text_margin_right'}} ) }}
                 {{ form_widget(form.tonnage, {'attr': {'class': 'form_control_20'}} ) }}
             </div>
-
-            
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_without_assistance',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
             <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_without_assistance_constraints',  { 'id': idEvaluation }) }}" >Continuer</a>-->
 
             {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}

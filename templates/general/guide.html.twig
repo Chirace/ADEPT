@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
-        <p>Veuillez répondre aux questions suivantes :</p>
-        <!--<p> - Avez-vous des postes de travail présentant des problématiques de manutention de charges ?</p>-->
+        <p>{% trans %}Veuillez répondre aux questions suivantes :{% endtrans %}</p>
 
         <div class="switch" id="switch_Q1">
-            <p> - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?</p>
+            <p>{% trans %} - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?{% endtrans %}</p>
             <input type="checkbox" id="check_Q1" value="non">
             <label for="check_Q1" data-off="Non" data-on="Oui"></label>
         </div>
 
         <div class="switch" id="switch_Q2">
-            <p> - Ces charges sont-elles supérieures ou égales à 3 kg ?</p>
+            <p>{% trans %} - Ces charges sont-elles supérieures ou égales à 3 kg ?{% endtrans %}</p>
             <input type="checkbox" id="check_Q2" value="non">
             <label for="check_Q2" data-off="Non" data-on="Oui"></label>
         </div>
@@ -23,20 +22,20 @@
         </div>-->
 
         <div class="switch" id="switch_Q3">
-            <p> - Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?</p>
+            <p>{% trans %} - Voulez-vous identifier et hiérarchiser les postes de travail présentant ces problématiques ?{% endtrans %}</p>
             <input type="checkbox" id="check_Q3" value="non">
             <label for="check_Q3" data-off="Non" data-on="Oui"></label>
         </div>
 
         <div class="switch" id="switch_Q4">
-            <p> - Voulez-vous évaluer une situation de travail présentant ces problématiques ?</p>
+            <p>{% trans %} - Voulez-vous évaluer une situation de travail présentant ces problématiques ?{% endtrans %}</p>
             <input type="checkbox" id="check_Q4" value="non">
             <label for="check_Q4" data-off="Non" data-on="Oui"></label>
         </div>
 
-        <p class="mauve" id="flag_inadaptee"> -> Cette situation n'est pas adaptée à l'application.</p>
-        <p class="mauve" id="flag_ED6161"> -> Cet outil va permettre de hiérarchiser les postes de travail.</p>
-        <p class="mauve" id="flag_NFX35109"> -> Cet outil va permettre d'évaluer une situation de travail.</p>
+        <p class="mauve" id="flag_inadaptee"> -> {% trans %}Cette situation n'est pas adaptée à l'application.{% endtrans %}</p>
+        <p class="mauve" id="flag_ED6161"> -> {% trans %}Cet outil va permettre de hiérarchiser les postes de travail.{% endtrans %}</p>
+        <p class="mauve" id="flag_NFX35109"> -> {% trans %}Cet outil va permettre d'évaluer une situation de travail.{% endtrans %}</p>
 
         <script>
             document.getElementById("switch_Q2").style.display = 'none';
@@ -82,13 +81,13 @@
                             document.getElementById('flag_inadaptee').style.display = 'none';
                             document.getElementById('flag_ED6161').style.display = 'none';
                             document.getElementById('flag_NFX35109').style.display = 'block';
-                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': idEvaluateur } ) }}";
+                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_NFX35109',  { 'id': evaluation.id } ) }}";
                         } else {
                             /* Rien - Guide */
                             document.getElementById("flag_inadaptee").style.display = 'block';
                             document.getElementById('flag_ED6161').style.display = 'none';
                             document.getElementById('flag_NFX35109').style.display = 'none';
-                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";
+                            document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': evaluation.id } ) }}";
                         }
                         
                     } else {
@@ -96,14 +95,14 @@
                         document.getElementById('flag_inadaptee').style.display = 'none';
                         document.getElementById('flag_NFX35109').style.display = 'none';
                         document.getElementById('flag_ED6161').style.display = 'block';
-                        document.getElementById('button_confirm_choice').href="{{ path('adept_tool_new_ED6161',  { 'id': idEvaluateur } ) }}";
+                        document.getElementById('button_confirm_choice').href="{{ path('adept_tool_new_ED6161',  { 'id': evaluation.id } ) }}";
                     }
                 } else {
                     /* Rien - Guide */
                     document.getElementById("flag_inadaptee").style.display = 'block';
                     document.getElementById('flag_NFX35109').style.display = 'none';
                     document.getElementById('flag_ED6161').style.display = 'none';
-                    document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': idEvaluateur } ) }}";
+                    document.getElementById('button_confirm_choice').href="{{ path('adept_tool_guide',  { 'id': evaluation.id } ) }}";
                 }
             }
 
@@ -114,8 +113,8 @@
         </script>
 
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_evaluator') }}" >{% trans %}Retour{% endtrans %}</a>
-            <a class="button3_right" id="button_confirm_choice" >Continuer</a>
+            <a class="button3_left" href="{{ path('adept_evaluator_choose', { 'id': evaluation.evaluateur.id }) }}">{% trans %}Retour{% endtrans %}</a>
+            <a class="button3_right" id="button_confirm_choice">{% trans %}Continuer{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

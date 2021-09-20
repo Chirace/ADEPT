@@ -54,6 +54,16 @@ class Entreprise
      */
     private $evaluateursExterne;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=DivisionNAF::class, inversedBy="evaluateursExterne")
+     */
+    private $secteur_activite;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $effectif;
+
     public function __construct()
     {
         $this->sites = new ArrayCollection();
@@ -238,6 +248,30 @@ class Entreprise
                 $evaluateursExterne->setEntrepriseExterieure(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSecteurActivite(): ?DivisionNAF
+    {
+        return $this->secteur_activite;
+    }
+
+    public function setSecteurActivite(?DivisionNAF $secteur_activite): self
+    {
+        $this->secteur_activite = $secteur_activite;
+
+        return $this;
+    }
+
+    public function getEffectif(): ?int
+    {
+        return $this->effectif;
+    }
+
+    public function setEffectif(?int $effectif): self
+    {
+        $this->effectif = $effectif;
 
         return $this;
     }

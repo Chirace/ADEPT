@@ -2,22 +2,22 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Hiérarchiser</h1>
+            <h1 class="mauve">{% trans %}Hiérarchiser{% endtrans %}</h1>
         </div>
-        <h1>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail</h1>
-        <p>Pour cette situation de travail, avez-vous déjà observé :</p>
-        <p class="mauve">À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.</p>
+        <h1>{% trans %}Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail{% endtrans %}</h1>
+        <p>{% trans %}Pour cette situation de travail, avez-vous déjà observé :{% endtrans %}</p>
+        <p class="mauve">{% trans %}À remplir en collaboration avec le service de santé au travail, les ressources humaines et/ou le service administratif.{% endtrans %}</p>
 
         {{ form_start(form) }}
         <table class="table table-striped table-hover table-light">
             <thead>
                 <tr>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Domaines</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Questions</th>
-                    <th scope="col" class="resume_green" style="text-align:center">Non</th>
-                    <th scope="col" class="resume_red" style="text-align:center">Oui</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Domaines{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Questions{% endtrans %}</th>
+                    <th scope="col" class="resume_green" style="text-align:center">{% trans %}Non{% endtrans %}</th>
+                    <th scope="col" class="resume_red" style="text-align:center">{% trans %}Oui{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,32 +27,32 @@
                 <tr>
                     <td>{{ questionsGrille1ED6161[0].intitule }}</td>
                     {% for key, valueItem in form.value_Q1.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
                 <tr>
                     <td>{{ questionsGrille1ED6161[1].intitule }}</td>
                     {% for key, valueItem in form.value_Q2.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
                 <tr>
                     <td>{{ questionsGrille1ED6161[2].intitule }}</td>
                     {% for key, valueItem in form.value_Q3.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
                 <tr>
                     <td>{{ questionsGrille1ED6161[3].intitule }}</td>
                     {% for key, valueItem in form.value_Q4.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
@@ -62,24 +62,24 @@
                 <tr>
                     <td>{{ questionsGrille1ED6161[4].intitule }}</td>
                     {% for key, valueItem in form.value_Q5.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
                 <tr>
                     <td>{{ questionsGrille1ED6161[5].intitule }}</td>
                     {% for key, valueItem in form.value_Q6.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
                 <tr>
                     <td>{{ questionsGrille1ED6161[6].intitule }}</td>
                     {% for key, valueItem in form.value_Q7.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
                 </tr>
@@ -87,7 +87,7 @@
         </table>
         
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}">Annuler</a>
+            <a class="button3_left" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}">{% trans %}Annuler{% endtrans %}</a>
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
         {{ form_end(form) }}

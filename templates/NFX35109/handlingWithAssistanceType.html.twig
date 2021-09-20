@@ -2,15 +2,15 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1>Hiérarchiser</h1>
+            <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Évaluer</h1>
+            <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
         </div>
-        <h1>Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention</h1>
+        <h1>{% trans %}Manutention Manuelle de charge - Manutention manuelle avec aide à la manutention{% endtrans %}</h1>
         <div class="row">
-            <p id="label_type_assistance" class="mauve">Type d'aide à la manutention</p>
+            <p id="label_type_assistance" class="mauve">{% trans %}Type d'aide à la manutention{% endtrans %}</p>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
@@ -19,7 +19,7 @@
                         <img class="card-img-top icon_manutention_type" src="/images/icon_MM_lit.png" alt="icon MM lit hôpital simple">
                     </a>
                     <div class="card-body center">
-                         <p class="p_black">Manutention manuelle de lit d'hôpital simple (50 kg à vide)</p>
+                         <p class="p_black">{% trans %}Manutention manuelle de lit d'hôpital simple (50 kg à vide){% endtrans %}</p>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <img class="card-img-top icon_manutention_type" src="/images/icon_MM_transpalette.png" alt="icon MM transpalette">
                     </a>
                     <div class="card-body center">
-                        <p class="p_black">Manutention manuelle de transpalette</p>
+                        <p class="p_black">{% trans %}Manutention manuelle de transpalette{% endtrans %}</p>
                     </div>
                 </div>
             </div>
@@ -39,13 +39,13 @@
                         <img class="card-img-top icon_manutention_type" src="/images/icon_MM_chariot.png" alt="icon MM chariot 4 roues">
                     </a>
                     <div class="card-body center">
-                        <p class="p_black">Manutention manuelle de chariot à 4 roues</p>
+                        <p class="p_black">{% trans %}Manutention manuelle de chariot à 4 roues{% endtrans %}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <a class="button3_left text_margin_top" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_left text_margin_top" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

@@ -2,44 +2,44 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1>Hiérarchiser</h1>
+            <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Évaluer</h1>
+            <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
         </div>
 
         {{ form_start(form) }}
 
         <div>
-            <h1>Manutention Manuelle de charge - Situation</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Situation{% endtrans %}</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <p class="text_margin_right">Nom Évaluateur :</p>
+                        <p class="text_margin_right">{% trans %}Nom Évaluateur :{% endtrans %}</p>
                         <p>{{ evaluateur.prenom }} {{ evaluateur.nom }}</p>
 
-                        <p class="text_margin_right">Entreprise :</p>
+                        <p class="text_margin_right">{% trans %}Entreprise :{% endtrans %}</p>
                         {{ form_widget(form.entreprise.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amazon...'}} ) }}
                         
-                        <p class="text_margin_right">Site :</p>
+                        <p class="text_margin_right">{% trans %}Site :{% endtrans %}</p>
                         {{ form_widget(form.site.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Amiens...'}} ) }}
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 hr_left2">
-                        <p class="text_margin_right">Nom du secteur :</p>
+                        <p class="text_margin_right">{% trans %}Nom du secteur :{% endtrans %}</p>
                         {{ form_widget(form.secteur.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Production...'}} ) }}
                         
-                        <p class="text_margin_right">Poste de travail :</p>
+                        <p class="text_margin_right">{% trans %}Poste de travail :{% endtrans %}</p>
                         {{ form_widget(form.posteDeTravail.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Fin de chaîne...'}} ) }}
                         
-                        <p class="text_margin_right">Nom de la situation :</p>
+                        <p class="text_margin_right">{% trans %}Nom de la situation :{% endtrans %}</p>
                         {{ form_widget(form.situation_nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Dépalettisation...'}} ) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_tool_NFX35109',  { 'id': evaluateur.id }) }}" >Annuler</a>
+            <a class="button3_left" href="{{ path('adept_tool_NFX35109',  { 'id': evaluateur.id }) }}">{% trans %}Annuler{% endtrans %}</a>
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
 

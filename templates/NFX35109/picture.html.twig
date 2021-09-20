@@ -2,13 +2,13 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1>Hiérarchiser</h1>
+            <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Évaluer</h1>
+            <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
         </div>
-        <h1>Manutention Manuelle de charge - Importer une photo</h1>
+        <h1>{% trans %}Manutention Manuelle de charge - Importer une photo{% endtrans %}</h1>
 
         {{ form_start(form) }}
         <div class="form-group">
@@ -22,7 +22,7 @@
         {{ form_end(form) }}
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': idEvaluateur, 'id2' : idEvaluation }) }}" >{% trans %}Retour{% endtrans %}</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}" >Poursuivre</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}">{% trans %}Poursuivre{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

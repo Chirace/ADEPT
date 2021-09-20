@@ -4,26 +4,26 @@
     {{ form_start(form) }}
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Situation</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Situation{% endtrans %}</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <h2>Situation :</h2>
+                        <h2>{% trans %}Situation :{% endtrans %}</h2>
                         <div class="row" id="situation_nom">
-                            <p class="text_margin_right">Nom</p>
+                            <p class="text_margin_right">{% trans %}Nom{% endtrans %}</p>
                             {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                         </div>
                         <div class="row">
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Correspond à la tâche réalisée, les procédures, l'exigence qualité, ...">
                                 <img src="/images/help2.png" alt="icon help quoi" id="icon_help_quoi" class="icon_click_margin_right">
                             </span>
-                            <p class="text_margin_right">Quoi ?</p>
+                            <p class="text_margin_right">{% trans %}Quoi ?{% endtrans %}</p>
                             {{ form_widget(form.quoi, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                             <!--<input type="text" class="form_control_60" aria-label="Quoi" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
@@ -31,7 +31,7 @@
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Tout élément concernant le cycle de travail, la répartition des tâches, le cycle d'autonomie, l'enchaînement, la prise d'information, le contrôle sur le travail, ...">
                                 <img src="/images/help2.png" alt="icon help comment" id="icon_help_comment" class="icon_click_margin_right">
                             </span>
-                            <p class="text_margin_right">Comment ?</p>
+                            <p class="text_margin_right">{% trans %}Comment ?{% endtrans %}</p>
                             {{ form_widget(form.comment, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                             <!--<input type="text" class="form_control_60" aria-label="Comment" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
@@ -41,7 +41,7 @@
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Tout élément concernant le collectif de travail, l'entraide, les échanges, ...">
                                 <img src="/images/help2.png" alt="icon help avec qui" id="icon_help_avec_qui" class="icon_click_margin_right">
                             </span>
-                            <p class="text_margin_right">Avec qui ?</p>
+                            <p class="text_margin_right">{% trans %}Avec qui ?{% endtrans %}</p>
                             {{ form_widget(form.avec_qui, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                             <!--<input type="text" class="form_control_60" aria-label="Avec_qui" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
@@ -49,7 +49,7 @@
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Tout élément concernant la machine, l'outil, la technicité, la fiabilité, la matière 1ère, le réglage, l'usure, le risque machine produit, les EPI, ...">
                                 <img src="/images/help2.png" alt="icon help avec quoi" id="icon_help_avec_quoi" class="icon_click_margin_right">
                             </span>
-                            <p class="text_margin_right">Avec quoi ?</p>
+                            <p class="text_margin_right">{% trans %}Avec quoi ?{% endtrans %}</p>
                             {{ form_widget(form.avec_quoi, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                             <!--<input type="text" class="form_control_60" aria-label="Avec_quoi" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
@@ -57,13 +57,13 @@
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Tout élément concernant le délai, le rythme, la cadence, les horaires, les pauses, ...">
                                 <img src="/images/help2.png" alt="icon help dimension temporelle" id="icon_help_dimension_temporelle" class="icon_click_margin_right">
                             </span>
-                            <p class="text_margin_right">Dimension temporelle</p>
+                            <p class="text_margin_right">{% trans %}Dimension temporelle{% endtrans %}</p>
                             {{ form_widget(form.dimension_temporelle, {'attr': {'class': 'form_control_60', 'placeholder': 'Ex: Préciser...'}} ) }}
                             <!--<input type="text" class="form_control_60" aria-label="dimension_temporelle" aria-describedby="basic-addon2" placeholder="Préciser...">-->
                         </div>
                     </div>
                 </div>
-                <p class="text_margin_right">Autre :</p>
+                <p class="text_margin_right">{% trans %}Autre :{% endtrans %}</p>
                 {{ form_widget(form.autre, {'attr': {'class': 'text_area_80'}} ) }}
                 <!--<textarea class="text_area_80" aria-label="Autre"></textarea>-->
             </div>
@@ -98,8 +98,8 @@
             document.getElementById('icon_help_dimension_temporelle').addEventListener('click', displayDimensionTemporelle);
         </script>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}" >Annuler</a>
-            <button type="submit" class="button3_right" >Continuer</button>
+            <a class="button3_left" href="{{ path('adept_NFX35109_operator',  { 'id': idEvaluation }) }}" >{% trans %}Annuler{% endtrans %}</a>
+            <button type="submit" class="button3_right" >{% trans %}Continuer{% endtrans %}</button>
         </div>
         {{ form_end(form) }}
     </div>

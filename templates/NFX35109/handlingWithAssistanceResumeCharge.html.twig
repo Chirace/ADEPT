@@ -3,207 +3,207 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Résumé de la charge</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Résumé de la charge{% endtrans %}</h1>
 
             <hr>
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <h5>Les conditions favorables</h5>
+                    <h5>{% trans %}Les conditions favorables{% endtrans %}</h5>
                     <table class="table table-striped table-hover table-light">
                         <thead>
                             <tr>
-                                <th scope="col">Intitulé</th>
-                                <th scope="col">Valeur</th>
-                                <th scope="col">Commentaire</th>
+                                <th scope="col">{% trans %}Intitulé{% endtrans %}</th>
+                                <th scope="col">{% trans %}Valeur{% endtrans %}</th>
+                                <th scope="col">{% trans %}Commentaire{% endtrans %}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% if charge.forceInitiale >= charge.forceInitialeReference and charge.forceMaintien >= charge.forceMaintienReference %}
                                 <tr id="positif_poids">
-                                    <td>Poids de la charge</td>
+                                    <td>{% trans %}Poids de la charge{% endtrans %}</td>
                                     <td>{{ charge.poidsCharge }} kg</td>
-                                    <td class="resume_green">Le poids de la charge est acceptable</td>
+                                    <td class="resume_green">{% trans %}Le poids de la charge est acceptable{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if charge.PTDistance < 10 %}
                                 <tr id="positif_distance">
-                                    <td>Transport de la charge</td>
+                                    <td>{% trans %}Transport de la charge{% endtrans %}</td>
                                     <td>{{ charge.PTDistance }} m</td>
-                                    <td class="resume_green">La distance est acceptable</td>
+                                    <td class="resume_green">{% trans %}La distance est acceptable{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if charge.forceInitiale >= charge.forceInitialeReference %}
                                 <tr id="positif_force_initiale">
-                                    <td>Force initiale</td>
+                                    <td>{% trans %}Force initiale{% endtrans %}</td>
                                     <td>{{ charge.forceInitiale }}</td>
-                                    <td class="resume_green">La force initiale est acceptable car supérieure à la force initiale nécessaire : {{ charge.forceInitialeReference }}</td>
+                                    <td class="resume_green">{% trans %}La force initiale est acceptable car supérieure à la force initiale nécessaire{% endtrans %} : {{ charge.forceInitialeReference }}</td>
                                 </tr>
                             {% endif %}
                             {% if charge.forceMaintien >= charge.forceMaintienReference %}
                             <tr id="positif_force_maintien">
-                                <td>Force de maintien</td>
+                                <td>{% trans %}Force de maintien{% endtrans %}</td>
                                 <td>{{ charge.forceMaintien }}</td>
-                                <td class="resume_green">La force de maintien est acceptable car supérieure à la force de maintien nécessaire : {{ charge.forceMaintienReference }}</td>
+                                <td class="resume_green">{% trans %}La force de maintien est acceptable car supérieure à la force de maintien nécessaire{% endtrans %} : {{ charge.forceMaintienReference }}</td>
                             </tr>
                             {% endif %}
                             {% if nbContraintesExecution == 0 %}
                                 <tr id="positif_contraintes_execution">
-                                    <td>Contraintes d'exécution</td>
+                                    <td>{% trans %}Contraintes d'exécution{% endtrans %}</td>
                                     <td>0</td>
-                                    <td class="resume_green">Aucune contrainte d'exécution de la tâche</td>
+                                    <td class="resume_green">{% trans %}Aucune contrainte d'exécution de la tâche{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if nbContraintesEnvironnement == 0 %}
                                 <tr id="positif_contraintes_environnement">
-                                    <td>Contraintes d'environnement</td>
+                                    <td>{% trans %}Contraintes d'environnement{% endtrans %}</td>
                                     <td>0</td>
-                                    <td class="resume_green">Aucune contrainte d'environnement de la tâche</td>
+                                    <td class="resume_green">{% trans %}Aucune contrainte d'environnement de la tâche{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if nbContraintesOrganisation == 0 %}
                                 <tr id="positif_contraintes_organisation">
-                                    <td>Contraintes d'organisation</td>
+                                    <td>{% trans %}Contraintes d'organisation{% endtrans %}</td>
                                     <td>0</td>
-                                    <td class="resume_green">Aucune contrainte d'organisation de la tâche</td>
+                                    <td class="resume_green">{% trans %}Aucune contrainte d'organisation de la tâche{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                         </tbody>
                     </table>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <h5>Les points à améliorer</h5>
+                    <h5>{% trans %}Les points à améliorer{% endtrans %}</h5>
                     <table class="table table-striped table-hover table-light">
                         <thead>
                             <tr>
-                                <th scope="col">Intitulé</th>
-                                <th scope="col">Valeur</th>
-                                <th scope="col">Commentaire</th>
+                                <th scope="col">{% trans %}Intitulé{% endtrans %}</th>
+                                <th scope="col">{% trans %}Valeur{% endtrans %}</th>
+                                <th scope="col">{% trans %}Commentaire{% endtrans %}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% if charge.forceInitiale < charge.forceInitialeReference or charge.forceMaintien < charge.forceMaintienReference %}
                                 <tr id="negatif_poids">
-                                    <td>Poids de la charge</td>
+                                    <td>{% trans %}Poids de la charge{% endtrans %}</td>
                                     <td>{{ charge.poidsCharge }} kg</td>
-                                    <td class="resume_red">Le poids de la charge devrait être inférieure.</td>
+                                    <td class="resume_red">{% trans %}Le poids de la charge devrait être inférieure.{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if charge.PTDistance >= 10 %}
                                 <tr id="negatif_distance">
-                                    <td>Transport de la charge</td>
+                                    <td>{% trans %}Transport de la charge{% endtrans %}</td>
                                     <td>{{ charge.PTDistance }} m</td>
-                                    <td class="resume_red">La distance devrait être inférieure ou égale à 10m.</td>
+                                    <td class="resume_red">{% trans %}La distance devrait être inférieure ou égale à 10m.{% endtrans %}</td>
                                 </tr>
                             {% endif %}
                             {% if charge.forceInitiale < charge.forceInitialeReference %}
                                 <tr id="negatif_force_initiale">
-                                    <td>Force initiale</td>
+                                    <td>{% trans %}Force initiale{% endtrans %}</td>
                                     <td>{{ charge.forceInitiale }}</td>
-                                    <td class="resume_red">La force initiale devrait être supérieure ou égale à {{ charge.forceInitialeReference }}.</td>
+                                    <td class="resume_red">{% trans %}La force initiale devrait être supérieure ou égale à {% endtrans %} {{ charge.forceInitialeReference }}.</td>
                                 </tr>
                             {% endif %}
                             {% if charge.forceMaintien < charge.forceMaintienReference %}
                                 <tr id="negatif_force_maintien">
-                                    <td>Force de maintien</td>
+                                    <td>{% trans %}Force de maintien{% endtrans %}</td>
                                     <td>{{ charge.forceMaintien }}</td>
-                                    <td class="resume_red">La force de maintien devrait être inférieure ou égale à {{ charge.forceMaintienReference }}.</td>
+                                    <td class="resume_red">{% trans %}La force de maintien devrait être inférieure ou égale à {% endtrans %} {{ charge.forceMaintienReference }}.</td>
                                 </tr>
                             {% endif %}
                             {% if nbContraintesExecution > 0 %}
                                 <tr id="negatif_contraintes_execution">
-                                    <td>Contraintes d'exécution</td>
+                                    <td>{% trans %}Contraintes d'exécution{% endtrans %}</td>
                                     <td>{{ nbContraintesExecution }}</td>
                                     <td class="resume_red">
                                         {% if charge.contraintePoigneesInadaptees == true %}
-                                            Sans poignées ou poignées inadaptées.<br>
+                                            {% trans %}Sans poignées ou poignées inadaptées{% endtrans %}.<br>
                                         {% endif %}
                                         {% if charge.contrainteTorsionTronc == true %}
-                                            Torsion du tronc.<br>
+                                            {% trans %}Torsion du tronc.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteProfondeurPrise == true %}
-                                            Profondeur de prise > 0.40m.<br>
+                                            {% trans %}Profondeur de prise > 0.40m.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteHorsZoneAtteinte == true %}
-                                            Hors zone d'atteinte.<br>
+                                            {% trans %}Hors zone d'atteinte.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contraintePosture == true %}
-                                            Une ou plusieurs contraintes concernant la posture/position du corps.<br>
+                                            {% trans %}Une ou plusieurs contraintes concernant la posture/position du corps.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteChargeInstable == true %}
-                                            Charge instable.<br>
+                                            {% trans %}Charge instable.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteVisibiliteLimitee == true %}
-                                            Visibilité limitée.<br>
+                                            {% trans %}Visibilité limitée.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteRoulettesInadequates == true %}
-                                            Roulettes inadéquates.<br>
+                                            {% trans %}Roulettes inadéquates.{% endtrans %}<br>
                                         {% endif %}
                                         {% if charge.contrainteAbsenceFrein == true %}
-                                            Absence de frein.<br>
+                                            {% trans %}Absence de frein.{% endtrans %}<br>
                                         {% endif %}
                                     </td>
                                 </tr>
                             {% endif %}
                             {% if nbContraintesEnvironnement > 0 %}
                                 <tr id="negatif_contraintes_environnement">
-                                    <td>Contraintes d'environnement</td>
+                                    <td>{% trans %}Contraintes d'environnement{% endtrans %}</td>
                                     <td>{{ nbContraintesEnvironnement }}</td>
                                     <td class="resume_red">
                                         {% if evaluationNFX.contraintesThermiques == true %}
-                                            Contraintes thermiques.<br>
+                                            {% trans %}Contraintes thermiques.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contraintesAcoustiques == true %}
-                                            Contraintes acoustiques.<br>
+                                            {% trans %}Contraintes acoustiques.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contraintesLumineuses == true %}
-                                            Contraintes lumineuses.<br>
+                                            {% trans %}Contraintes lumineuses.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteVibrations == true %}
-                                            Vibrations.<br>
+                                            {% trans %}Vibrations.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contraintePoussieres == true %}
-                                            Poussières.<br>
+                                            {% trans %}Poussières.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteSolsDegrades == true %}
-                                            Sols dégradés.<br>
+                                            {% trans %}Sols dégradés.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteEncombrement == true %}
-                                            Encombrement.<br>
+                                            {% trans %}Encombrement.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteObstacles == true %}
-                                            Obstacles.<br>
+                                            {% trans %}Obstacles.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteEspacesInadequats == true %}
-                                            Espaces inadequats.<br>
+                                            {% trans %}Espaces inadequats.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteEtatChariot == true %}
-                                            État du chariot.<br>
+                                            {% trans %}État du chariot.{% endtrans %}<br>
                                         {% endif %}
                                     </td>
                                 </tr>
                             {% endif %}
                             {% if nbContraintesOrganisation > 0 %}
                                 <tr id="negatif_contraintes_organisation">
-                                    <td>Contraintes d'organisation</td>
+                                    <td>{% trans %}Contraintes d'organisation{% endtrans %}</td>
                                     <td>{{ nbContraintesOrganisation }}</td>
                                     <td class="resume_red">
                                         {% if evaluationNFX.contrainteTemps == true %}
-                                            Contraintes de temps.<br>
+                                            {% trans %}Contraintes de temps.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteMargeManoeuvreReduite == true %}
-                                            Marge de Manoeuvre réduite.<br>
+                                            {% trans %}Marge de Manoeuvre réduite.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteMultipliciteTaches == true %}
-                                            Multiplicité des tâches.<br>
+                                            {% trans %}Multiplicité des tâches.{% endtrans %}<br>
                                         {% endif %}
                                         {% if evaluationNFX.contrainteExigencesQualite == true %}
-                                            Exigences qualité.<br>
+                                            {% trans %}Exigences qualité.{% endtrans %}<br>
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -211,20 +211,20 @@
                         </tbody>
                     </table>
                     {% if charge.coefficientCorrection2 != 1 %}
-                        <p>Les facteurs qui vous pénalisent le plus sont :</p>
+                        <p>{% trans %}Les facteurs qui vous pénalisent le plus sont :{% endtrans %}</p>
                         <p class="mauve"> - {{ charge.intituleCoefficientCorrection1 }} : {{ charge.coefficientCorrection1 }}</p>
                         <p class="mauve"> - {{ charge.intituleCoefficientCorrection2 }} : {{ charge.coefficientCorrection2 }}</p>
                     {% elseif charge.coefficientCorrection1 != 1%}
-                        <p>Le facteur qui vous pénalise le plus est :</p>
+                        <p>{% trans %}Le facteur qui vous pénalise le plus est :{% endtrans %}</p>
                         <p class="mauve"> - {{ charge.intituleCoefficientCorrection1 }} : {{ charge.coefficientCorrection1 }}</p>
                     {% endif %}
                 </div>
             </div>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': type }) }}" >Modifier</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}" >Supprimer</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': type }) }}">{% trans %}Modifier{% endtrans %}</a>
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}">{% trans %}Supprimer{% endtrans %}</a>
         </div>
 
         <script>

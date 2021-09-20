@@ -47,4 +47,18 @@ class EntrepriseRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /***
+     * Rechercher les entreprises par leur nom.
+     * @return Entreprise[]
+     */
+    /*public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.nom LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }*/
 }

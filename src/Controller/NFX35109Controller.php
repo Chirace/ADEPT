@@ -22,6 +22,7 @@ use App\Form\EvaluateurType;
 use App\Form\EvaluationType;
 use App\Entity\EvaluationNFX;
 use App\Entity\PosteDeTravail;
+use App\Entity\EvaluationED6161;
 use App\Form\PosteDeTravailType;
 use App\Form\ContrainteExecutionType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,7 +41,38 @@ class NFX35109Controller extends AbstractController {
 
     public function NFX35109($id){
         return $this->render('NFX35109/home.html.twig', array(
-            'idEvaluateur' => $id));
+            'id' => $id));
+    }
+
+    public function NFX35109FromED6161(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluationED6161 = $this->getDoctrine()->getManager()->getRepository(EvaluationED6161::class)
+            ->findOneById($id);
+        $evaluationBase = $evaluationED6161->getEvaluation();
+        $situation = $this->getDoctrine()->getManager()->getRepository(Situation::class)
+            ->findOneById($id2);
+
+        $evaluation = new Evaluation();
+        $evaluationNFX = new EvaluationNFX();
+        $date = new \DateTime();
+
+        $evaluationNFX->setDateEvaluation($date);
+        $manager->persist($evaluationNFX);
+
+        $evaluation->setDateEvaluation($date);
+        $evaluation->setEvaluationED6161($evaluationED6161);
+        $evaluation->setTypeEvaluation("NF X35-109");
+        $evaluation->setSituation($situation);
+        $evaluation->setEntreprise($evaluationBase->getEntreprise());
+        $evaluation->setSite($evaluationBase->getSite());
+        $evaluation->setSecteur($evaluationED6161->getSecteur());
+        $evaluation->setPosteDeTravail($evaluationED6161->getPosteDeTravail());
+        $evaluation->setEvaluationInterne($evaluationBase->getEvaluationInterne());
+        $evaluation->setEvaluationNfx($evaluationNFX);
+        $evaluation->setEvaluateur($evaluationBase->getEvaluateur());
+        $manager->persist($evaluation);
+        $manager->flush();
+
+        return $this->render('NFX35109/home.html.twig', array('id' => $evaluation->getId()));
     }
     
     public function activity(){
@@ -149,15 +181,39 @@ class NFX35109Controller extends AbstractController {
             'idEvaluation' => $id
             /*'idEvaluateur' => $id,
             'idSituation' => $id2*/
-            ));
+            )
+        );
     }
 
-    /* incomplète */
-    public function handlingWithoutAssistanceEditCharge(Request $request, EntityManagerInterface $manager, $id){
-        $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
+    public function handlingWithoutAssistanceEditCharge(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
             ->findOneById($id);
+        $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
+            ->findOneById($id2);
 
         $evaluationNFX = $charge->getEvaluationNFX();
+
+        $form = $this->createForm(ChargeNFXType::class, $charge);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $charge->setForceInitiale(0);
+            $charge->setNombreChargeIdentique(1);
+
+            $evaluationNFX = $evaluation->getEvaluationNFX();
+            $charge->setEvaluationNfx($evaluationNFX);
+
+            $manager->persist($charge);
+            $manager->flush($charge);
+
+            return $this->redirectToRoute('adept_NFX35109_handling_without_assistance_execution_constraint', ['id' => $id, 'id2' => $id2]);
+        }
+
+        return $this->render('NFX35109/handlingWithoutAssistanceChargeInformations.html.twig', array(
+            'form' => $form->createView(),
+            'idEvaluation' => $id
+            )
+        );
     }
 
     public function handlingWithoutAssistanceDeleteCharge(Request $request, EntityManagerInterface $manager, $id, $id2){
@@ -304,11 +360,13 @@ class NFX35109Controller extends AbstractController {
                 $intitule_coef_correction1 = $intitule_tempo;
             }
 
+            /* OK */
+
             /* Conditions d'éxecution de la tâche */
             $nb_contraintes_execution = $charge->getContraintesExecution();
             if(strlen(trim($nb_contraintes_execution)) == 0) {
                 /* Aucun facteur défavorable */
-            } elseif ((strlen(trim($nb_contraintes_execution) == 1)) && ($coef_correction2 > 0.8)) {
+            } elseif ((strlen(trim($nb_contraintes_execution)) == 1) && ($coef_correction2 > 0.8)) {
                 /* Un facteur défavorable */
                 $coef_correction2 = 0.8;
                 $intitule_coef_correction2 = "Contraintes d'exécution";
@@ -425,6 +483,7 @@ class NFX35109Controller extends AbstractController {
         
         return $this->render('NFX35109/handlingWithoutAssistanceResume.html.twig', array(
             'idEvaluation' => $id,
+            'evaluation' => $evaluation,
             'charges' => $charges,
             'form' => $form->createView()
         ));
@@ -1393,6 +1452,7 @@ class NFX35109Controller extends AbstractController {
         
         return $this->render('NFX35109/handlingWithAssistanceResume.html.twig', array(
             'idEvaluation' => $id,
+            'evaluation' => $evaluation,
             'charges' => $charges,
             'form' => $form->createView()
         ));
@@ -1876,21 +1936,21 @@ class NFX35109Controller extends AbstractController {
     }
 
     public function nouvelEvaluateur(Request $request, EntityManagerInterface $manager, UserInterface $user, $id) {
-        $evaluateur = $this->getDoctrine()->getManager()->getRepository(Evaluateur::class)
+        /*$evaluateur = $this->getDoctrine()->getManager()->getRepository(Evaluateur::class)
+            ->findOneById($id);*/
+
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
             ->findOneById($id);
 
-        $evaluation = new Evaluation();
+        $evaluateur = $evaluation->getEvaluateur();
+        if($evaluation->getEvaluationED6161() != null){
+            $evaluation->setSituationNom($evaluation->getSituation()->getNom());
+        }
         
         $form = $this->createForm(EvaluationType::class, $evaluation);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $situation = new Situation();
-            $posteDeTravail = new PosteDeTravail();
-            $secteur = new Secteur();
-            $site = new Site();
-            $entreprise = new Entreprise();
-            
             $entreprise = $evaluation->getEntreprise();
             $site = $evaluation->getSite();
             $secteur = $evaluation->getSecteur();
@@ -1900,25 +1960,26 @@ class NFX35109Controller extends AbstractController {
 
             $entreprise->setEvaluateur($evaluateur);
             $manager->persist($entreprise);
-            $manager->flush();
 
             $site->setEntreprise($entreprise);
             $manager->persist($site);
-            $manager->flush();
 
             $secteur->setSite($site);
             $manager->persist($secteur);
-            $manager->flush();
 
             $posteDeTravail->setSecteur($secteur);
             $manager->persist($posteDeTravail);
-            $manager->flush();
 
             $operateur = new Operateur();
-            $situation = new Situation();
+            if($evaluation->getEvaluationED6161() != null){
+                $situation = $evaluation->getSituation();
+            } else {
+                $situation = new Situation();
+            }
+            
             $situation->setNom($form->get('situation_nom')->getData());
             $situation->setOperateur($operateur);
-            $situation->setPosteDeTravail($posteDeTravail);
+            //$situation->setPosteDeTravail($posteDeTravail);
             $manager->persist($situation);
             $manager->flush();
 
@@ -1935,12 +1996,15 @@ class NFX35109Controller extends AbstractController {
             $evaluation->setEvaluateur($evaluateur);
             $evaluation->setTypeEvaluation('NF X35-109');
             $evaluation->setEvaluationNFX($evaluationNFX);
+            $evaluation->setNom($evaluateur->getNom().'_'.$date->format('d/m/Y'));
             $evaluation->setEntreprise($entreprise);
             $evaluation->setSite($site);
             $evaluation->setSecteur($secteur);
             $evaluation->setPosteDeTravail($posteDeTravail);
             $evaluation->setSituation($situation);
             $manager->persist($evaluation);
+
+            /* Modifier nom de la situation correspondant à l'évaluation NF X35 en cours */
             $manager->flush();
             
             return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $evaluation->getId()]);
@@ -2018,6 +2082,7 @@ class NFX35109Controller extends AbstractController {
             $evaluation->setSituation($situation);
             $evaluation->setTypeEvaluation('NF X35-109');
             $evaluation->setEvaluationNFX($evaluationNFX);
+            $evaluation->setNom($evaluateur->getNom().'_'.$date->format('d/m/Y'));
             $manager->persist($evaluation);
             $manager->flush();
             

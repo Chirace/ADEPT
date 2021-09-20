@@ -2,13 +2,13 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1 class="mauve">Réperer</h1>
+            <h1 class="mauve">{% trans %}Réperer{% endtrans %}</h1>
         </div>
-        <h1>Analyse de la charge physique de travail - Phase 1 - Repérage</h1>
-        <p class="mauve">Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :</p>
-        <p>Y a-t-il des secteurs dans l'entreprise qui présentent :</p>
+        <h1>{% trans %}Analyse de la charge physique de travail - Phase 1 - Repérage{% endtrans %}</h1>
+        <p class="mauve">{% trans %}Au préalable nous vous recommandons fortement de constituer un groupe de travail (démarche participative pluridisciplinaire) :{% endtrans %}</p>
+        <p>{% trans %}Y a-t-il des secteurs dans l'entreprise qui présentent :{% endtrans %}</p>
             
-        <p class="question_ed6161"> - De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?</p>
+        <p class="question_ed6161">{% trans %} - De l'absentéisme lié à des plaintes, troubles ou pathologies (accidents ou maladies) des appareils locomoteur ou cardio-vasculaire ?{% endtrans %}</p>
         <div class="switch2 row h_margin_bottom" id="switch_Q1">
             {% if listeMotClefQ1 | length == 0 %}
                 <input type="checkbox" id="check_Q1" value="non">
@@ -22,10 +22,10 @@
                     {{ motClefQ1.secteur.nom }} - {{ motClefQ1.posteDeTravail.nom }}
                 </div>
             {% endfor %}
-            <button id="button_Q1" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ1">Préciser</button>
+            <button id="button_Q1" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ1">{% trans %}Préciser{% endtrans %}</button>
         </div>
 
-        <p class="question_ed6161"> - Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?</p>
+        <p class="question_ed6161">{% trans %} - Des objets à soulever, à transporter, du pousser/tirer manuel de charges ou postures contraignantes/inconfortables ?{% endtrans %}</p>
         <div class="switch2 row h_margin_bottom" id="switch_Q2">
             {% if listeMotClefQ2 | length == 0 %}
                 <input type="checkbox" id="check_Q2" value="non">
@@ -39,10 +39,10 @@
                     {{ motClefQ2.secteur.nom }} - {{ motClefQ2.posteDeTravail.nom }}
                 </div>
             {% endfor %}
-            <button id="button_Q2" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ2">Préciser</button>
+            <button id="button_Q2" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ2">{% trans %}Préciser{% endtrans %}</button>
         </div>
 
-        <p class="question_ed6161"> - Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?</p>
+        <p class="question_ed6161">{% trans %} - Une ou des tâches dont la cadence, le rythme, sont imposés par un autre collègue, une machine ou un flux ?{% endtrans %}</p>
         <div class="switch2 row h_margin_bottom" id="switch_Q3">
             {% if listeMotClefQ3 | length == 0 %}
                 <input type="checkbox" id="check_Q3" value="non">
@@ -56,10 +56,10 @@
                     {{ motClefQ3.secteur.nom }} - {{ motClefQ3.posteDeTravail.nom }}
                 </div>
             {% endfor %}
-            <button id="button_Q3" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ3">Préciser</button>
+            <button id="button_Q3" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ3">{% trans %}Préciser{% endtrans %}</button>
         </div>
 
-        <p class="question_ed6161"> - Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?</p>
+        <p class="question_ed6161">{% trans %} - Une ou des tâches qui présentent des difficultés liées aux outils, aux équipements de travail, aux déplacements, aux aléas fréquents ou à des objectifs de qualité, de production... ?{% endtrans %}</p>
         <div class="switch2 row h_margin_bottom" id="switch_Q4">
             {% if listeMotClefQ4 | length == 0 %}
                 <input type="checkbox" id="check_Q4" value="non">
@@ -73,7 +73,7 @@
                     {{ motClefQ4.secteur.nom }} - {{ motClefQ4.posteDeTravail.nom }}
                 </div>
             {% endfor %}
-            <button id="button_Q4" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ4">Préciser</button>
+            <button id="button_Q4" type="button" class="btn button_ed6161" data-toggle="modal" data-target="#ModalCenterQ4">{% trans %}Préciser{% endtrans %}</button>
         </div>
 
         {{ form_start(form) }}
@@ -81,24 +81,23 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header card_header_animation">
-                        <h5 class="modal-title ">Question 1 - Nouveau mot-clé</h5>
+                        <h5 class="modal-title ">{% trans %}Question 1 - Nouveau mot-clé{% endtrans %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Secteur :</p>
+                            <p class="text_margin_right p_black">{% trans %}Secteur :{% endtrans %}</p>
                             {{ form_widget(form.secteur1.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
                         </div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            <p class="text_margin_right p_black">{% trans %}Poste de Travail :{% endtrans %}</p>
                             {{ form_widget(form.posteDeTravail1.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
                         </div>
                     </div>
                     <div class="group_button modal_margin">
-                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
-                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        <button type="button" class="button3_left" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
                         {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
                     </div>
                 </div>
@@ -108,24 +107,23 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header card_header_animation">
-                        <h5 class="modal-title ">Question 2 - Nouveau mot-clé</h5>
+                        <h5 class="modal-title ">{% trans %}Question 2 - Nouveau mot-clé{% endtrans %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Secteur :</p>
+                            <p class="text_margin_right p_black">{% trans %}Secteur :{% endtrans %}</p>
                             {{ form_widget(form.secteur2.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
                         </div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            <p class="text_margin_right p_black">{% trans %}Poste de Travail :{% endtrans %}</p>
                             {{ form_widget(form.posteDeTravail2.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
                         </div>
                     </div>
                     <div class="group_button modal_margin">
-                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
-                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        <button type="button" class="button3_left" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
                         {{ form_widget(form.valider2, {'attr': {'class': 'button3_right'}} ) }}
                     </div>
                 </div>
@@ -135,24 +133,23 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header card_header_animation">
-                        <h5 class="modal-title ">Question 3 - Nouveau mot-clé</h5>
+                        <h5 class="modal-title ">{% trans %}Question 3 - Nouveau mot-clé{% endtrans %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Secteur :</p>
+                            <p class="text_margin_right p_black">{% trans %}Secteur :{% endtrans %}</p>
                             {{ form_widget(form.secteur3.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
                         </div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            <p class="text_margin_right p_black">{% trans %}Poste de Travail :{% endtrans %}</p>
                             {{ form_widget(form.posteDeTravail3.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
                         </div>
                     </div>
                     <div class="group_button modal_margin">
-                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
-                        <!--<button type="button" class="button3_right">Valider</button>-->
+                        <button type="button" class="button3_left" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
                         {{ form_widget(form.valider3, {'attr': {'class': 'button3_right'}} ) }}
                     </div>
                 </div>
@@ -162,23 +159,23 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header card_header_animation">
-                        <h5 class="modal-title ">Question 4 - Nouveau mot-clé</h5>
+                        <h5 class="modal-title ">{% trans %}Question 4 - Nouveau mot-clé{% endtrans %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Secteur :</p>
+                            <p class="text_margin_right p_black">{% trans %}Secteur :{% endtrans %}</p>
                             {{ form_widget(form.secteur4.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Secteur...'}} ) }}
                         </div>
                         <div class="row_flex modal_margin modal_label">
-                            <p class="text_margin_right p_black">Poste de Travail :</p>
+                            <p class="text_margin_right p_black">{% trans %}Poste de Travail :{% endtrans %}</p>
                             {{ form_widget(form.posteDeTravail4.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Poste de Travail...'}} ) }}
                         </div>
                     </div>
                     <div class="group_button modal_margin">
-                        <button type="button" class="button3_left" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="button3_left" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
                         {{ form_widget(form.valider4, {'attr': {'class': 'button3_right'}} ) }}
                     </div>
                 </div>
@@ -188,7 +185,7 @@
 
         <div class="group_button question_ed6161">
             <a class="button3_left" href="{{ path('adept_evaluator') }}" >{% trans %}Retour{% endtrans %}</a>
-            <a class="button3_right" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}" >Continuer</a>
+            <a class="button3_right" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}">{% trans %}Continuer{% endtrans %}</a>
         </div>
     </div>
     <script>
@@ -199,6 +196,18 @@
 
         if (check_Q1.checked){
             displayQ1();
+        }
+
+        if (check_Q2.checked){
+            displayQ2();
+        }
+
+        if (check_Q3.checked){
+            displayQ3();
+        }
+
+        if (check_Q4.checked){
+            displayQ4();
         }
 
         function displayQ1(){

@@ -3,11 +3,22 @@
     <div class="fixe_largeur_90">
         {{ form_start(form) }}
         <div>
-            <h1>Manutention Manuelle de charge - Évaluateur</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Évaluateur{% endtrans %}</h1>
             <div class="container_input">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <h2 class="h_margin_bottom">Évaluateur & Entreprise</h2>
+                        <h2 class="h_margin_bottom">{% trans %}Évaluateur & Entreprise{% endtrans %}</h2>
+
+                        <div class="top_container row" id="evaluateur">
+                            {{ form_label(form.evaluateurs, 'Choix évaluateur', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.evaluateurs, {'attr': {'class': 'form-control', 'placeholder': 'Sélection un évaluateur existant ...'} }) }}
+                            {{ form_errors(form.evaluateurs) }}
+                        </div>
+
+                        <div class="top_container row h_margin_bottom">
+                            {{ form_label(form.valider2, 'Charger', {'label_attr': {'class': 'p'}} ) }}
+                            {{ form_widget(form.valider2, {'attr': {'class': 'button3_right'}} ) }}
+                        </div>
 
                         <div class="top_container row" id="nom">
                             {{ form_label(form.nom, 'Nom :', {'label_attr': {'class': 'p'}} ) }}
@@ -39,7 +50,7 @@
                             {{ form_errors(form.site.nom) }}
                         </div>
 
-                        <p>L'évaluateur intervient dans une entreprise extérieure ?</p>
+                        <p>{% trans %}L'évaluateur intervient dans une entreprise extérieure ?{% endtrans %}</p>
 
                         <div class="switch" id="switch_entreprise">
                             <input type="checkbox" id="check_entreprise" value="non">
@@ -47,7 +58,7 @@
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" id="entreprise_externe">
-                        <h2 class="h_margin_bottom">Entreprise où se déroule la cotation :</h2>
+                        <h2 class="h_margin_bottom">{% trans %}Entreprise où se déroule la cotation :{% endtrans %}</h2>
 
                         <div class="top_container row" id="entreprise_exterieure">
                             {{ form_label(form.entreprise_exterieure.nom, 'Entreprise :', {'label_attr': {'class': 'p'}} ) }}
@@ -91,7 +102,7 @@
             document.getElementById('check_entreprise').addEventListener('change', displayEntreprise);
         </script>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_menu') }}" >Annuler</a>
+            <a class="button3_left" href="{{ path('adept_menu') }}">{% trans %}Annuler{% endtrans %}</a>
             {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>

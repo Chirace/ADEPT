@@ -3,19 +3,19 @@
     <div class="fixe_largeur_90">
         <div>
             <div class="row">
-                <h1>Repérer</h1>
+                <h1>{% trans %}Repérer{% endtrans %}</h1>
                 <h1>></h1>
-                <h1>Hiérarchiser</h1>
+                <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
                 <h1>></h1>
-                <h1 class="mauve">Évaluer</h1>
+                <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
             </div>
-            <h1>Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation</h1>
+            <h1>{% trans %}Manutention Manuelle de charge - Saisie contraintes d'environnement et d'organisation{% endtrans %}</h1>
         </div>
         <hr>
         {{ form_start(form) }}
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <h5 class="constraints">Conditions d'environnement de la tâche</h5>
+                <h5 class="constraints">{% trans %}Conditions d'environnement de la tâche{% endtrans %}</h5>
                 <div class="row constraints">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         {{ form_label(form.contraintes_thermiques, form.contraintes_thermiques.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <h5 class="constraints">Conditions d'organisation de la tâche</h5>
+                <h5 class="constraints">{% trans %}Conditions d'organisation de la tâche{% endtrans %}</h5>
                 <div class="row constraints">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         {{ form_label(form.contrainte_temps, form.contrainte_temps.vars.label, {'label_attr': {'class': 'text_white'}} ) }}
@@ -149,7 +149,7 @@
         </div>
         
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}" >Revenir en arrière</a>
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
         {{ form_end(form) }}

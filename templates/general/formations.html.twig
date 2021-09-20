@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_900">
-        <p>Nous vous invitons à visualiser les vidéos ci-dessous afin de vous former aux différents outils proposés dans cette application :</p>
+        <p>{% trans %}Nous vous invitons à visualiser les vidéos ci-dessous afin de vous former aux différents outils proposés dans cette application :{% endtrans %}</p>
 
         <!--<p>{% trans %}Nous vous invitons à vous former aux outils de cotation ergonomique en consultant les modules de 
         formation disponible sur la plateforme suivante{% endtrans %} :</p>
@@ -14,12 +14,12 @@
             <a id="button_p" class="button">{% trans %}Voir la formation{% endtrans %}</a>
         </div>-->
 
-        <h4 class="mauve center">Évaluation d'une situation de travail - NF X35-109, manutention manuelle de charge pour soulever, déplacer et pousser/tirer</h4>
-        <h5 class="center">Partie 1 - Manutention manuelle de charge sans aide à la manutention</h5>
+        <h4 class="mauve center">{% trans %}Évaluation d'une situation de travail - NF X35-109, manutention manuelle de charge pour soulever, déplacer et pousser/tirer{% endtrans %}</h4>
+        <h5 class="center">{% trans %}Partie 1 - Manutention manuelle de charge sans aide à la manutention{% endtrans %}</h5>
         <video controls width="800" poster="/images/vignette_video_2.png">
             <source src="/media/cc0-videos/flower.webm" type="video/webm">
             <source src="/videos/Tutoriel_ADEPT.mp4" type="video/mp4">
-            Désolé, votre navigateur ne supporte pas les vidéos embarquées, vous pouvez essayer avec Google Chrome sur ordinateur.
+            {% trans %}Désolé, votre navigateur ne supporte pas les vidéos embarquées, vous pouvez essayer avec Google Chrome sur ordinateur.{% endtrans %}
         </video>
 
         <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>

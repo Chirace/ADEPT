@@ -60,17 +60,30 @@ class Evaluateur
      */
     private $site;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private $evaluation_interne;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="evaluateursExterne")
+     */
     private $entreprise_exterieure;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="evaluateursExterne")
+     */
     private $site_exterieur;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=DivisionNAF::class, inversedBy="evaluateursExterne")
+     */
     private $secteur_activite;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     private $effectif;
-
-    private $evaluateurs;
 
     public function __construct()
     {
@@ -271,18 +284,6 @@ class Evaluateur
     public function setEffectif(?int $effectif): self
     {
         $this->effectif = $effectif;
-
-        return $this;
-    }
-
-    public function getEvaluateurs(): ?Evaluateur
-    {
-        return $this->evaluateurs;
-    }
-
-    public function setEvaluateurs(?Evaluateur $evaluateurs): self
-    {
-        $this->evaluateurs = $evaluateurs;
 
         return $this;
     }

@@ -1,0 +1,11 @@
+
+                    <tr id="afficher_situations_element" data-user="{{ evaluation.id }}">
+                        <td colspan="7" class="mauve_cell" style="text-align:center">
+                            <span id="afficher_situations" onclick="AfficherSituations()">{% trans %}Afficher les situations du poste :{% endtrans %} {{ evaluation.posteDeTravail.nom }}</span>
+                        </td>
+                    </tr>
+                    <tr id="masquer_situations_element" data-user="{{ evaluation.id }}">
+                        <td colspan="7" class="mauve_cell" style="text-align:center">
+                            <span id="masquer_situations" onclick="MasquerSituations()">{% trans %}Masquer les situations du poste :{% endtrans %} {{ evaluation.posteDeTravail.nom }}</span>
+                        </td>
+                    </tr>

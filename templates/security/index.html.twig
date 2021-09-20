@@ -1,14 +1,14 @@
 {% extends 'baseInconnu.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_1000">
-        <p class="text_justify">Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :</p>
-        <p class="margin_left">- Repérer et hiérarchiser des postes de travail</p>
-        <p class="margin_left">- Évaluer des situations de travail</p>
-        <p class="text_justify">ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.</p>
+        <p class="text_justify">{% trans %}Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :{% endtrans %}</p>
+        <p class="margin_left">{% trans %}- Repérer et hiérarchiser des postes de travail{% endtrans %}</p>
+        <p class="margin_left">{% trans %}- Évaluer des situations de travail{% endtrans %}</p>
+        <p class="text_justify">{% trans %}ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.{% endtrans %}</p>
 
-        <p class="text_justify">Cette application se base sur :</p>
-        <p class="margin_left text_justify">- La méthode d'analyse de la charge physique de travail (INRS - ED6161)</p>
-        <p class="margin_left text_justify">- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).</p>
+        <p class="text_justify">{% trans %}Cette application se base sur :{% endtrans %}</p>
+        <p class="margin_left text_justify">{% trans %}- La méthode d'analyse de la charge physique de travail (INRS - ED6161){% endtrans %}</p>
+        <p class="margin_left text_justify">{% trans %}- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).{% endtrans %}</p>
 
         <div>
             <a class="button" href="{{ path('adept_home') }}" >{% trans %}Se connecter{% endtrans %}</a>

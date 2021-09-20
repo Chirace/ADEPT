@@ -2,20 +2,20 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1>Hiérarchiser</h1>
+            <h1>{% trans %}Hiérarchiser{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Évaluer</h1>
+            <h1 class="mauve">{% trans %}Évaluer{% endtrans %}</h1>
         </div>
-        <h1>Manutention Manuelle de charge - Contraintes</h1>
+        <h1>{% trans %}Manutention Manuelle de charge - Contraintes{% endtrans %}</h1>
 
         <hr>
         <div class="row h_margin_bottom">
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Est considérée comme une contrainte d'exécution toute caractéristique de la réalisation de la tâche perçue ou ressentie par l'opérateur comme gênante, inconfortable ou nuisant à la bonne réalisation de celle-ci.">
                 <img src="/images/help2.png" alt="icon help dimension temporelle" id="icon_help_dimension_temporelle" class="icon_click_margin_right">
             </span>
-            <h3>Conditions d'exécution de la tâche</h3>
+            <h3>{% trans %}Conditions d'exécution de la tâche{% endtrans %}</h3>
         </div>
 
         {{ form_start(form) }}
@@ -113,8 +113,8 @@
         </div>
 
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluateur, 'type': type }) }}" >Revenir en arrière</a>
-            <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}" >Continuer</a>-->
+            <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluateur, 'type': type }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
+            <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance',  { 'id': idEvaluateur, 'id2': idSituation }) }}">Continuer</a>-->
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
         {{ form_end(form) }}

@@ -30,6 +30,12 @@ adept_search:
   path: /search
   controller: App\Controller\GeneralController::recherche
 
+adept_delete_evaluation:
+  path: /deleteEvaluation/{id}
+  controller: App\Controller\GeneralController::deleteEvaluation
+  requirements:
+    id:  \d+
+
 adept_analyze_choice:
   path: /analyze_choice
   controller: App\Controller\GeneralController::analyzeChoice
@@ -43,6 +49,12 @@ adept_tool_guide:
 adept_evaluator:
   path: /evaluator
   controller: App\Controller\GeneralController::evaluator
+
+adept_evaluator_choose:
+  path: /evaluator/{id}
+  controller: App\Controller\GeneralController::evaluatorChoose
+  requirements:
+    id:  \d+
 
 adept_ergonomics_tools_list:
   path: /tools
@@ -61,6 +73,13 @@ adept_tool_NFX35109:
   controller: App\Controller\NFX35109Controller::NFX35109
   requirements:
     id:  \d+
+
+adept_tool_NFX35109_from_ED6161:
+  path: /NFX35109/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::NFX35109FromED6161
+  requirements:
+    id:  \d+
+    id2:  \d+
 
 adept_NFX35109_activity:
   path: /NFX35109/activity/{id}

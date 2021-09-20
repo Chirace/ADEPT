@@ -81,6 +81,11 @@ class Evaluation
      */
     private $nom;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $evaluation_interne;
+
     public function __construct()
     {
         $this->evaluationED6161s = new ArrayCollection();
@@ -261,6 +266,18 @@ class Evaluation
     public function setNom(?string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getEvaluationInterne(): ?bool
+    {
+        return $this->evaluation_interne;
+    }
+
+    public function setEvaluationInterne(bool $evaluation_interne): self
+    {
+        $this->evaluation_interne = $evaluation_interne;
 
         return $this;
     }

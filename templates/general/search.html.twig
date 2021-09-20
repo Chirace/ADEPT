@@ -1,27 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_90">
-        <h1>Rechercher une évaluation</h1>
+        <h1 class="h_margin_bottom">{% trans %}Rechercher une évaluation{% endtrans %}</h1>
         {{ form_start(form) }}
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
-                    {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
-                </div>
-            </div>
+        <div class="margin_bottom row_flex col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            {{ form_widget(form.nom, {'attr': {'class': 'form_control_60', 'placeholder': 'Nom...'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
 
         <table class="table table-striped table-hover table-light">
             <thead>
                 <tr>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Ordre</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Évaluateur</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Type évaluation</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Intitulé</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Date</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">Voir</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Ordre{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Évaluateur{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Type évaluation{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Intitulé{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Date{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Voir{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Supprimer{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,7 +55,18 @@
                                 </a>
                             </td>
                         {% endif %}
+                    {% elseif evaluation.typeEvaluation == "Non défini" %}
+                        <td style="text-align:center">
+                            <a href="{{ path('adept_tool_guide', {'id':evaluation.id} ) }}">
+                                <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                            </a>
+                        </td>
                     {% endif %}
+                    <td style="text-align:center">
+                        <a href="{{ path('adept_delete_evaluation', {'id': evaluation.id} ) }}">
+                            <img src="/images/delete.png" alt="icon supprimer" id="icon_delete" class="icon_click">
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -67,7 +75,7 @@
         {{ form_end(form) }}
 
         <div>
-            <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+            <a class="button" href="{{ path('adept_menu') }}">{% trans %}Retourner au menu principal{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

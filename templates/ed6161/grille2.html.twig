@@ -2,23 +2,24 @@
 {% block body %}
     <div class="fixe_largeur_90">
         <div class="row">
-            <h1>Repérer</h1>
+            <h1>{% trans %}Repérer{% endtrans %}</h1>
             <h1>></h1>
-            <h1 class="mauve">Hiérarchiser</h1>
+            <h1 class="mauve">{% trans %}Hiérarchiser{% endtrans %}</h1>
         </div>
-        <h1>Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail</h1>
-        <p>Pour cette situation de travail, y a-t-il des difficulés liées à :</p>
-        <p class="mauve">À remplir à partir d'observations et du ressenti des salariés.</p>
+        <h1>{% trans %}Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail{% endtrans %}</h1>
+        <p>{% trans %}Pour cette situation de travail, y a-t-il des difficultés liées à :{% endtrans %}</p>
+        <p class="mauve">{% trans %}À remplir à partir d'observations et du ressenti des salariés.{% endtrans %}</p>
 
         {{ form_start(form) }}
         <table class="table table-striped table-hover table-light">
             <thead>
                 <tr>
-                    <th scope="col" class="mauve_cell" style="text-align:center; vertical-align:middle">Domaines</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center; vertical-align:middle">Questions</th>
-                    <th scope="col" class="resume_green" style="text-align:center; vertical-align:middle">Non</th>
-                    <th scope="col" class="resume_yellow" style="text-align:center; vertical-align:middle">Oui mais non critiques</th>
-                    <th scope="col" class="resume_red" style="text-align:center; vertical-align:middle">Oui</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center; vertical-align:middle">{% trans %}Domaines{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center; vertical-align:middle">{% trans %}Questions{% endtrans %}</th>
+                    <th scope="col" class="resume_green" style="text-align:center; vertical-align:middle">{% trans %}Non{% endtrans %}</th>
+                    <th scope="col" class="resume_yellow" style="text-align:center; vertical-align:middle">{% trans %}Oui mais non critiques{% endtrans %}</th>
+                    <th scope="col" class="resume_red" style="text-align:center; vertical-align:middle">{% trans %}Oui{% endtrans %}</th>
+                    <th scope="col" id="situation_col" class="resume_black" style="text-align:center; vertical-align:middle">{% trans %}Situation{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,42 +29,57 @@
                 <tr>
                     <td>{{ questionsGrille2ED6161[0].intitule }}</td>
                     {% for key, valueItem in form.value_Q1.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q1">
+                        {{ form_widget(form.situation_Q1, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[1].intitule }}</td>
                     {% for key, valueItem in form.value_Q2.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q2">
+                        {{ form_widget(form.situation_Q2, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[2].intitule }}</td>
                     {% for key, valueItem in form.value_Q3.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q3">
+                        {{ form_widget(form.situation_Q3, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[3].intitule }}</td>
                     {% for key, valueItem in form.value_Q4.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q4">
+                        {{ form_widget(form.situation_Q4, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[4].intitule }}</td>
                     {% for key, valueItem in form.value_Q5.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q5">
+                        {{ form_widget(form.situation_Q5, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="5">...</td>
@@ -74,42 +90,57 @@
                 <tr>
                     <td>{{ questionsGrille2ED6161[5].intitule }}</td>
                     {% for key, valueItem in form.value_Q6.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q6">
+                        {{ form_widget(form.situation_Q6, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[6].intitule }}</td>
                     {% for key, valueItem in form.value_Q7.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q7">
+                        {{ form_widget(form.situation_Q7, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[7].intitule }}</td>
                     {% for key, valueItem in form.value_Q8.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q8">
+                        {{ form_widget(form.situation_Q8, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[8].intitule }}</td>
                     {% for key, valueItem in form.value_Q9.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q9">
+                        {{ form_widget(form.situation_Q9, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[9].intitule }}</td>
                     {% for key, valueItem in form.value_Q10.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q10">
+                        {{ form_widget(form.situation_Q10, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="5">...</td>
@@ -120,42 +151,57 @@
                 <tr>
                     <td>{{ questionsGrille2ED6161[10].intitule }}</td>
                     {% for key, valueItem in form.value_Q11.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q11">
+                        {{ form_widget(form.situation_Q11, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[11].intitule }}</td>
                     {% for key, valueItem in form.value_Q12.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q12">
+                        {{ form_widget(form.situation_Q12, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[12].intitule }}</td>
                     {% for key, valueItem in form.value_Q13.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q13">
+                        {{ form_widget(form.situation_Q13, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[13].intitule }}</td>
                     {% for key, valueItem in form.value_Q14.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q14">
+                        {{ form_widget(form.situation_Q14, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[14].intitule }}</td>
                     {% for key, valueItem in form.value_Q15.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q15">
+                        {{ form_widget(form.situation_Q15, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="5">...</td>
@@ -166,42 +212,57 @@
                 <tr>
                     <td>{{ questionsGrille2ED6161[15].intitule }}</td>
                     {% for key, valueItem in form.value_Q16.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q16">
+                        {{ form_widget(form.situation_Q16, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[16].intitule }}</td>
                     {% for key, valueItem in form.value_Q17.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q17">
+                        {{ form_widget(form.situation_Q17, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[17].intitule }}</td>
                     {% for key, valueItem in form.value_Q18.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q18">
+                        {{ form_widget(form.situation_Q18, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[18].intitule }}</td>
                     {% for key, valueItem in form.value_Q19.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q19">
+                        {{ form_widget(form.situation_Q19, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[19].intitule }}</td>
                     {% for key, valueItem in form.value_Q20.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q20">
+                        {{ form_widget(form.situation_Q20, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="5">...</td>
@@ -212,42 +273,57 @@
                 <tr>
                     <td>{{ questionsGrille2ED6161[20].intitule }}</td>
                     {% for key, valueItem in form.value_Q21.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q21">
+                        {{ form_widget(form.situation_Q21, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[21].intitule }}</td>
                     {% for key, valueItem in form.value_Q22.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q22">
+                        {{ form_widget(form.situation_Q22, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[22].intitule }}</td>
                     {% for key, valueItem in form.value_Q23.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q23">
+                        {{ form_widget(form.situation_Q23, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[23].intitule }}</td>
                     {% for key, valueItem in form.value_Q24.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q24">
+                        {{ form_widget(form.situation_Q24, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>{{ questionsGrille2ED6161[24].intitule }}</td>
                     {% for key, valueItem in form.value_Q25.children %}
-                        <td>
-                            {{ form_widget(valueItem) }}
+                        <td style="text-align:center; vertical-align:middle">
+                            {{ form_widget(valueItem, {'attr': {'class': 'input_radio'}}) }}
                         </td>
                     {% endfor %}
+                    <td style="text-align:center; vertical-align:middle" id="situation_Q25">
+                        {{ form_widget(form.situation_Q25, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="5">...</td>
@@ -256,9 +332,43 @@
         </table>
         
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': id2 }) }}">Annuler</a>
+            <a class="button3_left" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': id2 }) }}">{% trans %}Annuler{% endtrans %}</a>
             {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
+
+        <!--<script>
+            document.getElementById("situation_col").style.visibility = "collapse";
+            document.getElementById("situation_Q1").style.visibility = "collapse";
+            document.getElementById("situation_Q2").style.visibility = "collapse";
+            document.getElementById("situation_Q3").style.visibility = "collapse";
+            document.getElementById("situation_Q4").style.visibility = "collapse";
+            document.getElementById("situation_Q5").style.visibility = "collapse";
+            document.getElementById("situation_Q6").style.visibility = "collapse";
+            document.getElementById("situation_Q7").style.visibility = "collapse";
+            document.getElementById("situation_Q8").style.visibility = "collapse";
+            document.getElementById("situation_Q9").style.visibility = "collapse";
+            document.getElementById("situation_Q10").style.visibility = "collapse";
+            document.getElementById("situation_Q11").style.visibility = "collapse";
+            document.getElementById("situation_Q12").style.visibility = "collapse";
+            document.getElementById("situation_Q13").style.visibility = "collapse";
+            document.getElementById("situation_Q14").style.visibility = "collapse";
+            document.getElementById("situation_Q15").style.visibility = "collapse";
+            document.getElementById("situation_Q16").style.visibility = "collapse";
+            document.getElementById("situation_Q17").style.visibility = "collapse";
+            document.getElementById("situation_Q18").style.visibility = "collapse";
+            document.getElementById("situation_Q19").style.visibility = "collapse";
+            document.getElementById("situation_Q20").style.visibility = "collapse";
+            document.getElementById("situation_Q21").style.visibility = "collapse";
+            document.getElementById("situation_Q22").style.visibility = "collapse";
+            document.getElementById("situation_Q23").style.visibility = "collapse";
+            document.getElementById("situation_Q24").style.visibility = "collapse";
+            document.getElementById("situation_Q25").style.visibility = "collapse";
+
+            if(form.value_Q1.value == "3"){
+                document.getElementById("situation_Q1").style.visibility = "visible";
+            }
+        </script>-->
+
         {{ form_end(form) }}
     </div>
 {% endblock %}

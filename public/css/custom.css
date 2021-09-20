@@ -378,6 +378,42 @@ body {
     padding-top: 5px;
 }
 
+.button_change_language {
+    height: auto;
+    width: auto;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 45px;
+    border:#2f3350 solid;
+    background-color: white;
+    color: #D3A87D;
+    margin-left: -200%;
+    padding-left: 35%;
+    padding-right: 35%;
+    padding-top: 40%;
+    padding-bottom: 40%;
+    font-family: Montserrat,sans-serif;
+    text-decoration: none;
+}
+
+.button_change_language:hover {
+    height: auto;
+    width: auto;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 45px;
+    border:#2f3350 solid;
+    background-color: #2f3350;
+    color: #D3A87D;
+    margin-left: -200%;
+    padding-left: 35%;
+    padding-right: 35%;
+    padding-top: 40%;
+    padding-bottom: 40%;
+    font-family: Montserrat,sans-serif;
+    text-decoration: none;
+}
+
 .button_picture {
     margin-top: 1%;
     width: 25%;
@@ -611,6 +647,22 @@ form {
 .h_margin_bottom {
     margin-bottom: 1%;
     align-items: center;
+}
+
+.input_radio {
+    width: 2em;
+}
+
+.input_text {
+    width: 100%;
+    border-color: red;
+    background-color: #474747;
+    color: #D3A87D;
+    border-radius: 0;
+}
+
+.margin_bottom {
+    margin-bottom: 1%;
 }
 
 .h_dark {
