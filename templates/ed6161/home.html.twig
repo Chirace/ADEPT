@@ -183,6 +183,11 @@
         </div>
         {{ form_end(form) }}
 
+        <div>
+            <h3>{% trans %}Bibliographie{% endtrans %}</h3>
+            <p class="margin_left">{% trans %}- ED6161, INRS (2019), Méthode d'analyse de la charge physique de travail.{% endtrans %}</p>
+        </div>
+
         <div class="group_button question_ed6161">
             <a class="button3_left" href="{{ path('adept_evaluator') }}" >{% trans %}Retour{% endtrans %}</a>
             <a class="button3_right" href="{{ path('adept_ED6161_resume',  { 'id': id }) }}">{% trans %}Continuer{% endtrans %}</a>

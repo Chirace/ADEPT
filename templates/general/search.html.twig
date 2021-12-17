@@ -18,6 +18,7 @@
                     <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Intitulé{% endtrans %}</th>
                     <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Date{% endtrans %}</th>
                     <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Voir{% endtrans %}</th>
+                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Télécharger{% endtrans %}</th>
                     <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Supprimer{% endtrans %}</th>
                 </tr>
             </thead>
@@ -62,6 +63,11 @@
                             </a>
                         </td>
                     {% endif %}
+                    <td style="text-align:center">
+                        <a href="{{ path('adept_download_evaluation', {'id': evaluation.id} ) }}">
+                            <img src="/images/download_pdf.png" alt="icon download" id="icon_download" class="icon_click">
+                        </a>
+                    </td>
                     <td style="text-align:center">
                         <a href="{{ path('adept_delete_evaluation', {'id': evaluation.id} ) }}">
                             <img src="/images/delete.png" alt="icon supprimer" id="icon_delete" class="icon_click">

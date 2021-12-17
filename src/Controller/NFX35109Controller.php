@@ -26,6 +26,7 @@ use App\Entity\EvaluationED6161;
 use App\Form\PosteDeTravailType;
 use App\Form\ContrainteExecutionType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -72,7 +73,11 @@ class NFX35109Controller extends AbstractController {
         $manager->persist($evaluation);
         $manager->flush();
 
-        return $this->render('NFX35109/home.html.twig', array('id' => $evaluation->getId()));
+        return $this->render('NFX35109/home.html.twig', array(
+            'id' => $evaluation->getId(),
+            'evaluation' => $evaluation
+            )
+        );
     }
     
     public function activity(){
@@ -798,87 +803,291 @@ class NFX35109Controller extends AbstractController {
             $type = 3;
         }
 
+        //Récupérer les contraintes d'exécution.
+        $contraintesExecution = $charge->getContraintesExecution();
+
+        $contrainte_poignees_inadaptees = false;
+        $contrainte_torsion_tronc = false;
+        $contrainte_profondeur_prise = false;
+        $contrainte_hors_zone_atteinte = false;
+        $contrainte_posture = false;
+        $contrainte_charge_instable = false;
+        $contrainte_visibilite_limitee = false;
+        $contrainte_roulettes_inadequates = false;
+        $contrainte_absence_frein = false;
+
+        /* On identifie les contraintes d'exécutions, d'environnements et d'organisations de la tâche */
+        /* On commence par les contraintes d'exécutions */
+        $contraintes = explode(",", $contraintesExecution);
+        //for($i = 0; $i <= $nbContraintesExecution; $i++) {
+        foreach($contraintes as $contrainte) {
+            switch($contrainte){
+                case 1:
+                    $contrainte_poignees_inadaptees = true;
+                    break;
+                case 2:
+                    $contrainte_torsion_tronc = true;
+                    break;
+                case 3:
+                    $contrainte_profondeur_prise = true;
+                    break;
+                case 4:
+                    $contrainte_hors_zone_atteinte = true;
+                    break;
+                case 5:
+                    $contrainte_posture = true;
+                    break;
+                case 6:
+                    $contrainte_charge_instable = true;
+                    break;
+                case 7:
+                    $contrainte_visibilite_limitee = true;
+                    break;
+                case 8:
+                    $contrainte_roulettes_inadequates = true;
+                    break;
+                case 9:
+                    $contrainte_absence_frein = true;
+                    break;
+            }
+        }
+
+        
+
+        /*if(strlen(trim($contraintesExecution)) == 0){
+            // Aucun facteur défavorable 
+        } else {
+            for($i = 0; $i < strlen(trim($contraintesExecution))/2; $i++){
+                $contrainte = substr($contraintesExecution, $i*2, 1);
+                var_dump($contrainte);
+                if($contrainte == "1"){
+                    $contrainte_poignees_inadaptees = true;
+                }
+
+                if($contrainte == "2"){
+                    $contrainte_torsion_tronc = true;
+                }
+
+                if($contrainte == "3"){
+                    $contrainte_profondeur_prise = true;
+                }
+
+                if($contrainte == "4"){
+                    $contrainte_hors_zone_atteinte = true;
+                }
+
+                if($contrainte == "5"){
+                    $contrainte_posture = true;
+                }
+
+                if($contrainte == "6"){
+                    $contrainte_charge_instable = true;
+                }
+
+                if($contrainte == "7"){
+                    $contrainte_visibilite_limitee = true;
+                }
+
+                if($contrainte == "8"){
+                    $contrainte_roulettes_inadequates = true;
+                }
+
+                if($contrainte == "9"){
+                    $contrainte_absence_frein = true;
+                }
+            }
+        }*/
+
         $form = $this->createFormBuilder($charge)
-            ->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Sans poignées ou inadaptées',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_torsion_tronc', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                ),
-                'label' => 'Torsion du tronc',
-                'label_attr' => ['class' => ' row switch2 custom-switch'],
-                'required' => true))
-            ->add('contrainte_profondeur_prise', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                ),
-                'label' => 'Profondeur de prise > 0,40m',
-                'label_attr' => ['class' => ' row switch2 custom-switch'],
-                'required' => true))
-            ->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Hors zone d\'atteinte',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_posture', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_charge_instable', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Charge instable',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_visibilite_limitee', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Visibilité limitée',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_roulettes_inadequates', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                ),
-                'label' => 'Roulettes inadéquates',
-                'label_attr' => ['class' => ' row switch2 custom-switch'],
-                'required' => true))
-            ->add('contrainte_absence_frein', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                ),
-                'label' => 'Absence de frein',
-                'label_attr' => ['class' => ' row switch2 custom-switch'],
-                'required' => true))
             ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
             ->getForm();
+
+            if ($contrainte_poignees_inadaptees == true) {
+                $form->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Sans poignées ou inadaptées',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Sans poignées ou inadaptées',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if ($contrainte_torsion_tronc == true) {
+                $form->add('contrainte_torsion_tronc', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Torsion du tronc',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_torsion_tronc', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Torsion du tronc',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if (($charge->getPriseProfondeur() > 0.4) or ($contrainte_profondeur_prise == true)) {
+                $form->add('contrainte_profondeur_prise', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Profondeur de prise > 0,40m',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_profondeur_prise', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Profondeur de prise > 0,40m',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if (($charge->getPriseHauteur() > 1.75) or ($contrainte_hors_zone_atteinte == true)) {
+                $form->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Hors zone d\'atteinte',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Hors zone d\'atteinte',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_posture == true) {
+                $form->add('contrainte_posture', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_posture', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if ($contrainte_charge_instable == true) {
+                $form->add('contrainte_charge_instable', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Charge instable',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_charge_instable', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Charge instable',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_visibilite_limitee == true) {
+                $form->add('contrainte_visibilite_limitee', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Visibilité limitée',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_visibilite_limitee', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Visibilité limitée',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_roulettes_inadequates == true) {
+                $form->add('contrainte_roulettes_inadequates', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Roulettes inadéquates',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_roulettes_inadequates', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Roulettes inadéquates',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_absence_frein == true) {
+                $form->add('contrainte_absence_frein', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Absence de frein',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_absence_frein', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Absence de frein',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+            
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contrainte1 = $form->get('contrainte_poignees_inadaptees')->getData();
             $contrainte2 = $form->get('contrainte_torsion_tronc')->getData();
-            //$contrainte3 = $form->get('contrainte_profondeur_prise')->getData();
+            $contrainte3 = $form->get('contrainte_profondeur_prise')->getData();
             $contrainte4 = $form->get('contrainte_hors_zone_atteinte')->getData();
             $contrainte5 = $form->get('contrainte_posture')->getData();
             $contrainte6 = $form->get('contrainte_charge_instable')->getData();
@@ -889,7 +1098,7 @@ class NFX35109Controller extends AbstractController {
             // Faire une boucle, mettre les contraintes dans une liste et bouclé dessus pour mettre des , où c'est nécessaire.
             $chaine_contraintes = "";
             $numero = 0;
-            $contraintes = array($contrainte1, $contrainte2, $contrainte4, $contrainte5, $contrainte6, $contrainte7, $contrainte8, $contrainte9);
+            $contraintes = array($contrainte1, $contrainte2, $contrainte3, $contrainte4, $contrainte5, $contrainte6, $contrainte7, $contrainte8, $contrainte9);
             foreach($contraintes as $contrainte) {
                 $numero += 1;
                 if ($contrainte == true){
@@ -919,9 +1128,10 @@ class NFX35109Controller extends AbstractController {
 
     /* incomplète */
     public function handlingWithAssistanceEditCharge(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id);
         $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
             ->findOneById($id2);
-
         $evaluationNFX = $charge->getEvaluationNFX();
 
         $type = 0;
@@ -933,7 +1143,71 @@ class NFX35109Controller extends AbstractController {
             $type = 3;
         }
 
-        return $this->redirectToRoute('adept_NFX35109_handling_with_assistance_charge_informations', ['id' => $id, 'type' => $type]);
+        /*return $this->redirectToRoute('adept_NFX35109_handling_with_assistance_charge_informations', ['id' => $id, 'type' => $type]);*/
+        //return $this->redirectToRoute('adept_NFX35109_handling_with_assistance_charge_informations', ['id' => $id, 'id2' => $id2, 'type' => $type]);
+
+        $form = $this->createFormBuilder($charge)
+            ->add('poids_charge')
+            ->add('transport_charge', ChoiceType::class, array(
+                'choices'  => array(
+                    'Une main' => 'Une main', 
+                    'Deux mains' => 'Deux mains'
+                ),
+            ))
+            ->add('PT_action', ChoiceType::class, array(
+                'choices'  => array(
+                    'Pousser' => 'Pousser', 
+                    'Tirer' => 'Tirer'
+                ),
+            ))
+            ->add('PT_distance')
+            ->add('PT_hauteur_poignee')
+            ->add('PT_frequence', ChoiceType::class, array(
+                'choices'  => array(
+                    '2/min' => '2/min', 
+                    '1/min' => '1/min',
+                    '1/5min' => '1/5min', 
+                    '1/h' => '1/h'
+                ),
+            ))
+            ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $charge->setPoidsCharge($form->get('poids_charge')->getData());
+            $charge->setTransportCharge($form->get('transport_charge')->getData());
+            $charge->setPTAction($form->get('PT_action')->getData());
+            $charge->setPTDistance($form->get('PT_distance')->getData());
+            $charge->setPTHauteurPoignee($form->get('PT_hauteur_poignee')->getData());
+            $charge->setPTFrequence($form->get('PT_frequence')->getData());
+            $charge->setNombreChargeIdentique(1);
+
+            if($charge->getPTFrequence() == "2/min") {
+                $charge->setForceInitiale(12);
+                $charge->setForceMaintien(6);
+            } elseif ($charge->getPTFrequence() == "1/min") {
+                $charge->setForceInitiale(16);
+                $charge->setForceMaintien(8);
+            } elseif ($charge->getPTFrequence() == "1/5min") {
+                $charge->setForceInitiale(19);
+                $charge->setForceMaintien(9);
+            } elseif ($charge->getPTFrequence() == "1/h") {
+                $charge->setForceInitiale(21);
+                $charge->setForceMaintien(10);
+            }
+
+            $manager->persist($charge);
+            $manager->flush($charge);
+
+            return $this->redirectToRoute('adept_NFX35109_handling_with_assistance_execution_constraint', ['id' => $id, 'id2' => $id2]);
+        }
+
+        return $this->render('NFX35109/handlingWithAssistanceChargeInformations.html.twig', array(
+            'form' => $form->createView(),
+            'idEvaluation' => $id,
+            'type' => $type
+        ));
     }
 
     public function handlingWithAssistanceDeleteCharge(Request $request, EntityManagerInterface $manager, $id, $id2){
@@ -967,7 +1241,7 @@ class NFX35109Controller extends AbstractController {
         $form = $this->createFormBuilder($evaluationNFX)
             ->add('temps_tonnage')
             ->add('tonnage')
-            ->add('valider', SubmitType::class, array('label'=> 'continuer'))
+            ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -1198,13 +1472,13 @@ class NFX35109Controller extends AbstractController {
             $intitule_coef_correction2 = "";
 
             /* Distance de déplacement */
-            if($charge->getDistanceTransportCharge() < 10) {
+            if($charge->getPTDistance() < 10) {
                 /* Conditions acceptables distance inférieure à 10 mètres */
-            } elseif (( 10 <= $charge->getDistanceTransportCharge()) && ($charge->getDistanceTransportCharge() < 30)) {
+            } elseif (( 10 <= $charge->getPTDistance()) && ($charge->getPTDistance() < 30)) {
                 /* Entre 10 et 30 mètres */
                 $coef_correction2 = 0.8;
                 $intitule_coef_correction2 = "Distance de déplacement";
-            } elseif (( 30 <= $charge->getDistanceTransportCharge()) && ($charge->getDistanceTransportCharge() < 60)) {
+            } elseif (( 30 <= $charge->getPTDistance()) && ($charge->getPTDistance() < 60)) {
                 /* Entre 30 et 60 mètres */
                 $coef_correction2 = 0.6;
                 $intitule_coef_correction2 = "Distance de déplacement";
@@ -1228,7 +1502,7 @@ class NFX35109Controller extends AbstractController {
             $nb_contraintes_execution = $charge->getContraintesExecution();
             if(strlen(trim($nb_contraintes_execution)) == 0) {
                 /* Aucun facteur défavorable */
-            } elseif ((strlen(trim($nb_contraintes_execution) == 1)) && ($coef_correction2 > 0.8)) {
+            } elseif ((strlen(trim($nb_contraintes_execution)) == 1) && ($coef_correction2 > 0.8)) {
                 /* Un facteur défavorable */
                 $coef_correction2 = 0.8;
                 $intitule_coef_correction2 = "Contraintes d'exécution";
@@ -1591,6 +1865,7 @@ class NFX35109Controller extends AbstractController {
 
         return $this->render('NFX35109/handlingWithAssistanceResumeCharge.html.twig', array(
             'idEvaluation' => $id,
+            'id2' => $id2,
             'charge' => $charge,
             'evaluationNFX' => $evaluationNFX,
             'nbContraintesExecution' => $nbContraintesExecution,
@@ -1632,62 +1907,97 @@ class NFX35109Controller extends AbstractController {
 
         $charge = $this->getDoctrine()->getManager()->getRepository(ChargeNFX::class)
             ->findOneById($id2);
+        
+        //Récupérer les contraintes d'exécution.
+        $contraintesExecution = $charge->getContraintesExecution();
+
+        $contrainte_poignees_inadaptees = false;
+        $contrainte_torsion_tronc = false;
+        $contrainte_profondeur_prise = false;
+        $contrainte_hors_zone_atteinte = false;
+        $contrainte_posture = false;
+        $contrainte_charge_instable = false;
+        $contrainte_visibilite_limitee = false;
+        if(strlen(trim($contraintesExecution)) == 0){
+            /* Aucun facteur défavorable */
+        } else {
+            for($i = 0; $i < strlen(trim($contraintesExecution))/2; $i++){
+                $contrainte = substr($contraintesExecution, $i*2, 1);
+                if($contrainte == "1"){
+                    $contrainte_poignees_inadaptees = true;
+                }
+
+                if($contrainte == "2"){
+                    $contrainte_torsion_tronc = true;
+                }
+
+                if($contrainte == "3"){
+                    $contrainte_profondeur_prise = true;
+                }
+
+                if($contrainte == "4"){
+                    $contrainte_hors_zone_atteinte = true;
+                }
+
+                if($contrainte == "5"){
+                    $contrainte_posture = true;
+                }
+
+                if($contrainte == "6"){
+                    $contrainte_charge_instable = true;
+                }
+
+                if($contrainte == "7"){
+                    $contrainte_visibilite_limitee = true;
+                }
+            }
+        }
 
         $form = $this->createFormBuilder($charge)
-            //->setAction($this->generateUrl('tutor_comment',array('id' => $id)))
-            //->add('contraintes_execution')
-            ->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Sans poignées ou inadaptées',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_torsion_tronc', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Torsion du tronc',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Hors zone d\'atteinte',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_posture', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_charge_instable', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Charge instable',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
-            ->add('contrainte_visibilite_limitee', ChoiceType::class, array(
-                'choices' => array(
-                    'Non' => false,
-                    'Oui' => true
-                 ),
-                 'label' => 'Visibilité limitée',
-                 'label_attr' => ['class' => ' row switch2 custom-switch'],
-                 'required' => true))
             ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
             ->getForm();
 
-            if ($charge->getPriseProfondeur() > 0.4) {
+            if ($contrainte_poignees_inadaptees == true) {
+                $form->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Sans poignées ou inadaptées',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_poignees_inadaptees', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Sans poignées ou inadaptées',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if ($contrainte_torsion_tronc == true) {
+                $form->add('contrainte_torsion_tronc', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Torsion du tronc',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_torsion_tronc', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Torsion du tronc',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if (($charge->getPriseProfondeur() > 0.4) or ($contrainte_profondeur_prise == true)) {
                 $form->add('contrainte_profondeur_prise', ChoiceType::class, array(
                     'choices' => array(
                         'Oui' => true,
@@ -1703,6 +2013,86 @@ class NFX35109Controller extends AbstractController {
                         'Oui' => true
                      ),
                      'label' => 'Profondeur de prise > 0,40m',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if (($charge->getPriseHauteur() > 1.75) or ($contrainte_hors_zone_atteinte == true)) {
+                $form->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Hors zone d\'atteinte',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_hors_zone_atteinte', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Hors zone d\'atteinte',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_posture == true) {
+                $form->add('contrainte_posture', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                    ),
+                    'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            } else {
+                $form->add('contrainte_posture', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                    ),
+                    'label' => 'Une ou plusieurs contraintes concernant la posture du corps',
+                    'label_attr' => ['class' => ' row switch2 custom-switch'],
+                    'required' => true));
+            }
+
+            if ($contrainte_charge_instable == true) {
+                $form->add('contrainte_charge_instable', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Charge instable',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_charge_instable', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Charge instable',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            }
+
+            if ($contrainte_visibilite_limitee == true) {
+                $form->add('contrainte_visibilite_limitee', ChoiceType::class, array(
+                    'choices' => array(
+                        'Oui' => true,
+                        'Non' => false
+                     ),
+                     'label' => 'Visibilité limitée',
+                     'label_attr' => ['class' => ' row switch2 custom-switch'],
+                     'required' => true));
+            } else {
+                $form->add('contrainte_visibilite_limitee', ChoiceType::class, array(
+                    'choices' => array(
+                        'Non' => false,
+                        'Oui' => true
+                     ),
+                     'label' => 'Visibilité limitée',
                      'label_attr' => ['class' => ' row switch2 custom-switch'],
                      'required' => true));
             }
@@ -1767,7 +2157,352 @@ class NFX35109Controller extends AbstractController {
             ->findOneById($id);
         $evaluationNFX = $evaluation->getEvaluationNFX();
 
+        //Récupérer les contraintes d'environnement et d'organisation.
+        $contraintesEnvironnement = $evaluationNFX->getContraintesEnvironnement();
+        $contraintesOrganisation = $evaluationNFX->getContraintesOrganisation();
+
+        $contraintes_thermiques = false;
+        $contraintes_acoustiques = false;
+        $contraintes_lumineuses = false;
+        $contrainte_vibrations = false;
+        $contrainte_poussieres = false;
+        $contrainte_sols_degrades = false;
+        $contrainte_encombrement = false;
+        $contrainte_obstacles = false;
+        $contrainte_espaces_inadequats = false;
+        //$contrainte_etat_chariot = false;
+
+        $contrainte_temps = false;
+        $contrainte_marge_manoeuvre_reduite = false;
+        $contrainte_multiplicite_taches = false;
+        $contrainte_exigences_qualite = false;
+
+        /* On identifie les contraintes d'environnements et d'organisations de la tâche */
+        /* On commence par les contraintes d'environnement */
+        $contraintes = explode(",", $contraintesEnvironnement);
+        foreach($contraintes as $contrainte) {
+            switch($contrainte){
+                case 10:
+                    $contraintes_thermiques =true;
+                    break;
+                case 11:
+                    $contraintes_acoustiques = true;
+                    break;
+                case 12:
+                    $contraintes_lumineuses = true;
+                    break;
+                case 13:
+                    $contrainte_vibrations = true;
+                    break;
+                case 14:
+                    $contrainte_poussieres = true;
+                    break;
+                case 15:
+                    $contrainte_sols_degrades = true;
+                    break;
+                case 16:
+                    $contrainte_encombrement = true;
+                    break;
+                case 17:
+                    $contrainte_obstacles = true;
+                    break;
+                case 18:
+                    $contrainte_espaces_inadequats = true;
+                    break;
+                /*case 19:
+                    $contrainte_etat_chariot = true;
+                    break;*/
+            }
+        }
+
+        /* On poursuit par les contraintes d'organisation */
+        $contraintes = explode(",", $contraintesOrganisation);
+        foreach($contraintes as $contrainte) {
+            switch($contrainte){
+                case 20:
+                    $contrainte_temps = true;
+                    break;
+                case 21:
+                    $contrainte_marge_manoeuvre_reduite = true;
+                    break;
+                case 22:
+                    $contrainte_multiplicite_taches = true;
+                    break;
+                case 23:
+                    $contrainte_exigences_qualite = true;
+                    break;
+            }
+        }
+
         $form = $this->createFormBuilder($evaluationNFX)
+            ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
+            ->getForm();
+
+        // Contraintes d'environnement.
+        if ($contraintes_thermiques == true) {
+            $form->add('contraintes_thermiques', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Contraintes thermiques',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contraintes_thermiques', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Contraintes thermiques',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contraintes_acoustiques == true) {
+            $form->add('contraintes_acoustiques', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Contraintes acoustiques',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contraintes_acoustiques', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Contraintes acoustiques',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contraintes_lumineuses == true) {
+            $form->add('contraintes_lumineuses', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Contraintes lumineuses',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contraintes_lumineuses', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Contraintes lumineuses',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_vibrations == true) {
+            $form->add('contrainte_vibrations', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Vibrations',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_vibrations', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Vibrations',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+        
+        if ($contrainte_poussieres == true) {
+            $form->add('contrainte_poussieres', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Poussières',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_poussieres', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Poussières',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_sols_degrades == true) {
+            $form->add('contrainte_sols_degrades', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Sols dégradés',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_sols_degrades', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Sols dégradés',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_encombrement == true) {
+            $form->add('contrainte_encombrement', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Encombrement',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_encombrement', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Encombrement',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_obstacles == true) {
+            $form->add('contrainte_obstacles', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Obstacles',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_obstacles', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Obstacles',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_espaces_inadequats == true) {
+            $form->add('contrainte_espaces_inadequats', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Espaces inadéquats pour manœuvrer',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_espaces_inadequats', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Espaces inadéquats pour manœuvrer',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        // Contraintes d'organisation.
+        if ($contrainte_temps == true) {
+            $form->add('contrainte_temps', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Contraintes de temps',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_temps', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Contraintes de temps',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_marge_manoeuvre_reduite == true) {
+            $form->add('contrainte_marge_manoeuvre_reduite', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Marge de manoeuvre réduite',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_marge_manoeuvre_reduite', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Marge de manoeuvre réduite',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_multiplicite_taches == true) {
+            $form->add('contrainte_multiplicite_taches', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Multiplicité des tâches',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_multiplicite_taches', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Multiplicité des tâches',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        if ($contrainte_exigences_qualite == true) {
+            $form->add('contrainte_exigences_qualite', ChoiceType::class, array(
+                'choices' => array(
+                    'Oui' => true,
+                    'Non' => false
+                ),
+                'label' => 'Exigences qualité',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        } else {
+            $form->add('contrainte_exigences_qualite', ChoiceType::class, array(
+                'choices' => array(
+                    'Non' => false,
+                    'Oui' => true
+                ),
+                'label' => 'Exigences qualité',
+                'label_attr' => ['class' => ' row switch2 custom-switch'],
+                'required' => true));
+        }
+
+        //Formulaire.
+
+        /*$form = $this->createFormBuilder($evaluationNFX)
         ->add('contraintes_thermiques', ChoiceType::class, array(
             'choices' => array(
                 'Non' => false,
@@ -1873,7 +2608,7 @@ class NFX35109Controller extends AbstractController {
             'label_attr' => ['class' => ' row switch2 custom-switch'],
             'required' => true))
         ->add('valider', SubmitType::class, array('label'=> 'Continuer'))
-        ->getForm();
+        ->getForm();*/
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -2125,10 +2860,23 @@ class NFX35109Controller extends AbstractController {
     }
 
     public function picture(Request $request, EntityManagerInterface $manager, $id){
-        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+        $evaluationNFX = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
             ->findOneById($id);
         
+            $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findOneById($id);
+
         $idEvaluateur = $evaluation->getEvaluateur()->getId();
+
+        /*$evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+            ->findByEvaluation_nfx($evaluationNFX);
+         */
+        
+
+        $situation = $evaluation->getSituation();
+
+        $fichierExistant = $this->getDoctrine()->getManager()->getRepository(Fichier::class)
+            ->findOneBySituation($situation);
 
         $fichier = new Fichier();
         $form = $this->createForm(FichierType::class, $fichier);
@@ -2148,18 +2896,25 @@ class NFX35109Controller extends AbstractController {
                 $fileType = "fichier";
             }
 
-            $fileName = $nomFichier.'.'.$file->guessExtension();
+            $fileName = $situation->getNom().'_'.$nomFichier.'.'.$file->guessExtension();
 
             //$fileName = "photo_".'.'.$file->guessExtension();
             
             $date = date('Y-m-d H:i:s');
+
+            //Rechercher le nombre d'éléments existants en base pour adapter le nom.
+            //$numero = 1;
+
+            /*if(isset($fichier)){
+                $numero++;
+            }*/
 
             $file->move($this->getParameter('upload_directory'), $fileName);
 
             $fichier->setNomFichier($fileName);
             $fichier->setTypeFichier($fileType);
             $fichier->setDateFichier($date);
-            //$fichier->setSituation($evaluation);
+            $fichier->setSituation($situation);
 
             $manager->persist($fichier);
             $manager->flush();
@@ -2173,13 +2928,43 @@ class NFX35109Controller extends AbstractController {
         return $this->render('NFX35109/picture.html.twig', array(
             'form' => $form->createView(),
             'idEvaluation' => $id,
+            'fichier' => $fichierExistant,
             'idEvaluateur' => $idEvaluateur/*,
             'id2' => $id2*/
         ));
     }
 
+    public function deletePicture(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluationNFX = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
+            ->findOneById($id);
+
+        $fichier = $this->getDoctrine()->getManager()->getRepository(Fichier::class)
+            ->findOneById($id2);
+
+        $situation = $fichier->getSituation();
+
+        $fileName = $fichier->getNomFichier();
+        //echo($fileName);
+
+        $filesystem = new Filesystem();
+
+        //$filesystem->remove($this->getParameter('upload_directory'), $fileName);
+        //$fs->remove(array('symlink', '/path/to/directory', 'activity.log'));
+        //$filesystem->remove('upload_directory', $fileName);
+
+        $path = 'upload_directory'.$fileName;
+        $filesystem->remove($path);
+
+        $manager->remove($fichier);
+        $manager->flush($fichier);
+
+        //$id2 = $evaluateur->getId();
+
+        return $this->redirectToRoute('adept_NFX35109_picture', ['id' => $id]);        
+    }
+
     public function picture2 (Request $request, EntityManagerInterface $manager, $id, $id2){
-        $evaluation = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)
+        $evaluation = $this->getDoctrine()->getManager()->getRepository(EvaluationNFX::class)
             ->findOneById($id);
 
         $fichier2 = $this->getDoctrine()->getManager()->getRepository(Fichier::class)

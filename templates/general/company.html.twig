@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {{ form_start(form) }}
     <div class="fixe_largeur_90">
         <h1>{% trans %}Bilan d'entreprise{% endtrans %}</h1>
         <div class="container">
-            <div class="row">
+            <div class="row h1_margin_top">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Rechercher..." aria-label="Mot-cle" aria-describedby="basic-addon2">
@@ -14,7 +15,11 @@
                 </div>
                 <hr>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <p>{% trans %}Sélectionner l'entreprise :{% endtrans %}</p>
+                    <div class="top_container row" id="entreprise">
+                        {{ form_label(form.entreprises, 'Sélectionner l\'entreprise :', {'label_attr': {'class': 'p'}} ) }}
+                        {{ form_widget(form.entreprises, {'attr': {'class': 'form-control', 'placeholder': 'Sélection une entreprise existante ...'} }) }}
+                        {{ form_errors(form.entreprises) }}
+                    </div>
                     <div class="input-group mb-3">
                         <p class="text_margin_right">{% trans %}Nouvelle entreprise :{% endtrans %}</p>
                         <input type="text" class="form-control" aria-label="Nouvelle entreprise" aria-describedby="basic-addon2">
@@ -25,8 +30,10 @@
                 </div>
             </div>
         </div>
-        <div>
-            <a class="button" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_menu') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+            {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
         </div>
 
         <!--<div class="sidebar-search">
@@ -42,5 +49,5 @@
             </li>
         </ul>
     </div>-->
-    
+    {{ form_end(form) }}
 {% endblock %}

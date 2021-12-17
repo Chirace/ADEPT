@@ -58,6 +58,11 @@ class Utilisateur implements UserInterface
      */
     private $bilanEntreprises;
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles = [];
+
     public function __construct()
     {
         $this->evaluateurs = new ArrayCollection();
@@ -122,7 +127,15 @@ class Utilisateur implements UserInterface
     public function getSalt() {}
 
     public function getRoles() {
-        return ['ROLE_USER'];
+        //return ['ROLE_USER'];
+        return $this->roles;
+    }
+
+    public function setRoles(?array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     /**

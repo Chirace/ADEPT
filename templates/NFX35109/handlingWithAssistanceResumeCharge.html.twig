@@ -223,10 +223,11 @@
         </div>
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>
-            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': type }) }}">{% trans %}Modifier{% endtrans %}</a>
+            <!--<a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluation, 'type': type }) }}">{% trans %}Modifier{% endtrans %}</a>-->
+            <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_edit_charge',  { 'id': idEvaluation, 'id2': id2, 'type': type }) }}">{% trans %}Modifier{% endtrans %}</a>
             <a class="button3_right" href="{{ path('adept_NFX35109_handling_with_assistance_resume',  { 'id': idEvaluation }) }}">{% trans %}Supprimer{% endtrans %}</a>
         </div>
-
+    
         <script>
             document.getElementById("positif_poids").style.visibility = "collapse";
             document.getElementById("positif_distance").style.visibility = "collapse";

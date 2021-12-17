@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_900">
+        <p>{% trans %}En tant qu'administrateur vous pouvez exporter la base de données sous forme de fichier excel.{% endtrans %}</p>
+        <div>
+            <a class="button" href="{{ path('adept_download_excel') }}">{% trans %}Exporter les données sous Excel{% endtrans %}</a>
+        </div>
+        <div>
+            <a class="button" href="{{ path('adept_menu') }}">{% trans %}Retourner au menu principal{% endtrans %}</a>
+        </div>
+    </div>
+{% endblock %}

@@ -6,8 +6,8 @@
             <h1>></h1>
             <h1 class="mauve">{% trans %}Hiérarchiser{% endtrans %}</h1>
         </div>
-        <h1>{% trans %}Analyse de la charge physique de travail - Phase 1 - Hiérarchiser les situations de travail{% endtrans %}</h1>
-        <p>{% trans %}Pour cette situation de travail, y a-t-il des difficultés liées à :{% endtrans %}</p>
+        <h1>{% trans %}Analyse de la charge physique de travail - Phase 1 - Hiérarchiser{% endtrans %}</h1>
+        <p>{% trans %}Pour ce poste de travail, y a-t-il des difficultés liées à :{% endtrans %}</p>
         <p class="mauve">{% trans %}À remplir à partir d'observations et du ressenti des salariés.{% endtrans %}</p>
 
         {{ form_start(form) }}
@@ -19,7 +19,7 @@
                     <th scope="col" class="resume_green" style="text-align:center; vertical-align:middle">{% trans %}Non{% endtrans %}</th>
                     <th scope="col" class="resume_yellow" style="text-align:center; vertical-align:middle">{% trans %}Oui mais non critiques{% endtrans %}</th>
                     <th scope="col" class="resume_red" style="text-align:center; vertical-align:middle">{% trans %}Oui{% endtrans %}</th>
-                    <th scope="col" id="situation_col" class="resume_black" style="text-align:center; vertical-align:middle">{% trans %}Situation{% endtrans %}</th>
+                    <th scope="col" id="situation_col" class="resume_black" style="text-align:center; vertical-align:middle">{% trans %}Commentaire{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q1">
-                        {{ form_widget(form.situation_Q1, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q1, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +45,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q2">
-                        {{ form_widget(form.situation_Q2, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q2, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q3">
-                        {{ form_widget(form.situation_Q3, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q3, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q4">
-                        {{ form_widget(form.situation_Q4, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q4, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -78,7 +78,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q5">
-                        {{ form_widget(form.situation_Q5, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q5, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -95,7 +95,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q6">
-                        {{ form_widget(form.situation_Q6, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q6, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -106,7 +106,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q7">
-                        {{ form_widget(form.situation_Q7, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q7, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -117,7 +117,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q8">
-                        {{ form_widget(form.situation_Q8, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q8, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q9">
-                        {{ form_widget(form.situation_Q9, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q9, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -139,7 +139,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q10">
-                        {{ form_widget(form.situation_Q10, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q10, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -156,7 +156,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q11">
-                        {{ form_widget(form.situation_Q11, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q11, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -167,7 +167,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q12">
-                        {{ form_widget(form.situation_Q12, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q12, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -178,7 +178,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q13">
-                        {{ form_widget(form.situation_Q13, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q13, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -189,7 +189,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q14">
-                        {{ form_widget(form.situation_Q14, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q14, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -200,7 +200,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q15">
-                        {{ form_widget(form.situation_Q15, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q15, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -217,7 +217,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q16">
-                        {{ form_widget(form.situation_Q16, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q16, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -228,7 +228,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q17">
-                        {{ form_widget(form.situation_Q17, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q17, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -239,7 +239,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q18">
-                        {{ form_widget(form.situation_Q18, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q18, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -250,7 +250,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q19">
-                        {{ form_widget(form.situation_Q19, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q19, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -261,7 +261,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q20">
-                        {{ form_widget(form.situation_Q20, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q20, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -278,7 +278,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q21">
-                        {{ form_widget(form.situation_Q21, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q21, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -289,7 +289,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q22">
-                        {{ form_widget(form.situation_Q22, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q22, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -300,7 +300,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q23">
-                        {{ form_widget(form.situation_Q23, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q23, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -311,7 +311,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q24">
-                        {{ form_widget(form.situation_Q24, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q24, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>
@@ -322,7 +322,7 @@
                         </td>
                     {% endfor %}
                     <td style="text-align:center; vertical-align:middle" id="situation_Q25">
-                        {{ form_widget(form.situation_Q25, {'attr': {'class': 'input_text', 'placeholder': 'Si oui précisez'}}) }}
+                        {{ form_widget(form.situation_Q25, {'attr': {'class': 'input_text', 'placeholder': 'Commentaire'}}) }}
                     </td>
                 </tr>
                 <tr>

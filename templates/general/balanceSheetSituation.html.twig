@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <h1>{% trans %}Bilan d'entreprise{% endtrans %} : {{ entreprise.nom }}</h1>
+        <div class="container">
+            {% set sites = [] %}
+            {% set secteurs = [] %}
+            {% set postes = [] %}
+            {% set situations = [] %}
+            {% for site in form.sites %}
+                {% if site.entreprise.id == entreprise.id %}
+                    {% set sites = sites|merge([site]) %}
+                {% endif %}
+            {% endfor %}
+
+            <div class="top_container row" id="site">
+                {{ form_label(form.sites, 'Sélectionner le site :', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.sites, {'attr': {'class': 'form-control', 'placeholder': 'Sélection d\'un site existant ...'} }) }}
+                {{ form_errors(form.sites) }}
+            </div>
+            <div class="top_container row" id="secteur">
+                {{ form_label(form.secteurs, 'Sélectionner le secteur :', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.secteurs, {'attr': {'class': 'form-control', 'placeholder': 'Sélection d\'un secteur existant ...'} }) }}
+                {{ form_errors(form.secteurs) }}
+            </div>
+            <div class="top_container row" id="posteDeTravail">
+                {{ form_label(form.posteDeTravails, 'Sélectionner le poste :', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.posteDeTravails, {'attr': {'class': 'form-control', 'placeholder': 'Sélection d\'un poste de travail existant ...'} }) }}
+                {{ form_errors(form.posteDeTravails) }}
+            </div>
+            <div class="top_container row" id="situation">
+                {{ form_label(form.situations, 'Sélectionner la situation :', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.situations, {'attr': {'class': 'form-control', 'placeholder': 'Sélection d\'une situation existante ...'} }) }}
+                {{ form_errors(form.situations) }}
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_company_balance_sheet') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+            {{ form_label(form.valider, 'Continuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+    </div>
+{% endblock %}

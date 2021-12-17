@@ -33,7 +33,7 @@ class Fichier
     private $date_fichier;
 
     /**
-     * @ORM\OneToOne(targetEntity=Situation::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Situation::class)
      */
     private $situation;
 

@@ -85,6 +85,9 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "ezyang/htmlpurifier": {
+        "version": "v4.13.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
@@ -97,11 +100,26 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
     },
+    "maennchen/zipstream-php": {
+        "version": "2.1.0"
+    },
+    "markbaker/complex": {
+        "version": "2.0.3"
+    },
+    "markbaker/matrix": {
+        "version": "2.1.3"
+    },
     "monolog/monolog": {
         "version": "1.26.0"
     },
+    "myclabs/php-enum": {
+        "version": "1.8.3"
+    },
     "nikic/php-parser": {
         "version": "v4.10.4"
+    },
+    "phpoffice/phpspreadsheet": {
+        "version": "1.18.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -109,8 +127,20 @@
     "psr/container": {
         "version": "1.1.1"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "psr/simple-cache": {
+        "version": "1.0.1"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.7"
@@ -293,6 +323,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.22.1"
     },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
+    },
     "symfony/profiler-pack": {
         "version": "v1.0.5"
     },
@@ -301,6 +334,15 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v4.4.20"
+    },
+    "symfony/requirements-checker": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "02c6e4b9b117c39e8a23eab7f3840ef6e62293b9"
+        }
     },
     "symfony/routing": {
         "version": "4.2",

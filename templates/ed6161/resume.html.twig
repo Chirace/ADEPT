@@ -19,7 +19,7 @@
                     <th scope="col" class="resume_green" style="text-align:center">{% trans %}Non{% endtrans %}</th>
                     <th scope="col" class="resume_yellow" style="text-align:center">{% trans %}Oui, mais non critique{% endtrans %}</th>
                     <th scope="col" class="resume_red" style="text-align:center">{% trans %}Oui et critique{% endtrans %}</th>
-                    <th scope="col" class="mauve_cell" style="text-align:center">{% trans %}Action{% endtrans %}</th>
+                    <th scope="col" colspan="2" class="mauve_cell" style="text-align:center">{% trans %}Action{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                         <td style="text-align:center">{{ evaluation.Q2OuiNonCritique }}</td>
                         <td style="text-align:center">{{ evaluation.Q2OuiCritique }}</td>
                         {% if (evaluation.Q2Non == null) and (evaluation.Q2OuiNonCritique == null) and (evaluation.Q2OuiCritique == null) %}
-                            <td class="gray_cell" style="text-align:center">
+                            <td class="gray_cell" style="text-align:center" colspan="2">
                                 <a class="text_white" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': evaluation.id }) }}">
                                     Coter le poste de travail
                                 </a>
@@ -46,6 +46,11 @@
                             <td style="text-align:center">
                                 <a class="navbar-brand" href="{{ path('adept_ED6161_grille_1',  { 'id': id, 'id2': evaluation.id }) }}">
                                     <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                                </a>
+                            </td>
+                            <td style="text-align:center">
+                                <a class="navbar-brand" href="{{ path('adept_ED6161_delete_poste',  { 'id': evaluation.posteDeTravail.id, 'id2': evaluation.id }) }}">
+                                    <img src="/images/delete.png" alt="icon delete" id="icon_edit" class="icon_click">
                                 </a>
                             </td>
                         {% endif %}
@@ -59,7 +64,7 @@
                                     {% set ordreEnfant = 1 %}
                                 {% endif %}
                                 
-                                <th scope="row" style="text-align:center">{{ ordreParent }}.{{ ordreEnfant }}</th>
+                                <th scope="row" style="text-align:right">{{ ordreParent }}.{{ ordreEnfant }}</th>
                                 <td style="text-align:center">{{ evaluation.secteur.nom }}</td>
                                 <td style="text-align:center">{{ evaluation.posteDeTravail.nom }}</td>
                                 <td colspan="3" style="text-align:center">
@@ -70,13 +75,23 @@
                                         <img src="/images/right_arrow.png" alt="icon evaluer" id="icon_edit" class="icon_click">
                                     </a>
                                 </td>
+                                <td style="text-align:center">
+                                    <a class="navbar-brand" href="{{ path('adept_ED6161_delete_situation',  { 'id': evaluation.id, 'id2': situation.id }) }}">
+                                        <img src="/images/delete.png" alt="icon delete" id="icon_edit" class="icon_click">
+                                    </a>
+                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}
+                    <tr>
+                        <td colspan="8" class="mauve_cell" style="text-align:center">
+                            <a class="a_adept_ocre"  href="{{ path('adept_tool_ED6161_new_situation',  { 'id': evaluation.id }) }}">{% trans %}Évaluer une nouvelle situation NF X35-109{% endtrans %}</a>
+                        </td>
+                    </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="7" class="mauve_cell" style="text-align:center">
-                        <a class="a_adept_ocre"  href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">{% trans %}Nouvelle situation{% endtrans %}</a>
+                    <td colspan="8" class="mauve_cell" style="text-align:center">
+                        <a class="a_adept_ocre"  href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">{% trans %}Ajouter un poste de travail{% endtrans %}</a>
                     </td>
                 </tr>
             </tbody>
@@ -128,7 +143,7 @@
         {{ form_end(form) }}
 
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">{% trans %}Annuler{% endtrans %}</a>
+            <a class="button3_left" href="{{ path('adept_tool_ED6161',  { 'id': id }) }}">{% trans %}Retour{% endtrans %}</a>
             <button id="button_Terminer" type="button" class="button3_center" data-toggle="modal" data-target="#ModalCenterTerminer">{% trans %}Terminer{% endtrans %}</button>
             {% if nombreEvaluationHierarchisable < 2 %}
                 <a class="button3_right button_adept_inactif">{% trans %}Suggestion de hiérarchisation{% endtrans %}</a>

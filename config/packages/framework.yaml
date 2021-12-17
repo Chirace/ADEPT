@@ -18,3 +18,5 @@ framework:
     
     #assets:
         #base_path: '/images'
+    #assets:
+        #base_path: '/public'

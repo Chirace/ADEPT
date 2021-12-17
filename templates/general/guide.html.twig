@@ -4,7 +4,7 @@
         <p>{% trans %}Veuillez répondre aux questions suivantes :{% endtrans %}</p>
 
         <div class="switch" id="switch_Q1">
-            <p>{% trans %} - Votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?{% endtrans %}</p>
+            <p>{% trans %} - Dans le cadre de votre entreprise, votre activité présente t-elle de la manutention de charge avec ou sans déplacement de l'opérateur ?{% endtrans %}</p>
             <input type="checkbox" id="check_Q1" value="non">
             <label for="check_Q1" data-off="Non" data-on="Oui"></label>
         </div>
@@ -35,9 +35,12 @@
 
         <p class="mauve" id="flag_inadaptee"> -> {% trans %}Cette situation n'est pas adaptée à l'application.{% endtrans %}</p>
         <p class="mauve" id="flag_ED6161"> -> {% trans %}Cet outil va permettre de hiérarchiser les postes de travail.{% endtrans %}</p>
-        <p class="mauve" id="flag_NFX35109"> -> {% trans %}Cet outil va permettre d'évaluer une situation de travail.{% endtrans %}</p>
+        <!--<p class="mauve" id="flag_NFX35109"> -> {% trans %}Cet outil va permettre d'évaluer une situation de travail.{% endtrans %}</p>-->
+        <p class="mauve" id="flag_NFX35109"> -> {% trans %}Vous allez procéder à l'évaluation d'une situation de travail selon l'outil NF X35-109.{% endtrans %}</p>
 
         <script>
+            document.getElementById("switch_Q1").style.display = 'block';
+            document.getElementById("check_Q1").checked = false;
             document.getElementById("switch_Q2").style.display = 'none';
             document.getElementById("switch_Q3").style.display = 'none';
             document.getElementById("switch_Q4").style.display = 'none';

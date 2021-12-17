@@ -59,7 +59,7 @@ class ED6161Controller extends AbstractController
         
         $listeMotClefQ1 = $this->getDoctrine()->getRepository(EvaluationED6161::class)->findBy(
             array('evaluation' => $evaluation->getId(),
-            'reperage_Q' => 1),
+            'reperage_Q' => 1)
         );
 
         $listeMotClefQ2 = $this->getDoctrine()->getRepository(EvaluationED6161::class)->findBy(
@@ -207,6 +207,54 @@ class ED6161Controller extends AbstractController
             'situations' => $listeSituations,
             'form' => $form->createView()
         ));
+    }
+
+    public function ED6161DeleteSituation(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $evaluationED6161 = $this->getDoctrine()->getManager()->getRepository(EvaluationED6161::class)->findOneById($id);
+        $situation = $this->getDoctrine()->getRepository(Situation::class)->findOneById($id2);
+        $evaluation2 = $this->getDoctrine()->getManager()->getRepository(Evaluation::class)->findOneBySituation($situation);
+        if($evaluation2 != null){
+            $evaluationNFX = $evaluation2->getEvaluationNFX();
+            $manager->remove($evaluationNFX);
+            $manager->remove($evaluation2);
+        }
+        
+        $manager->remove($situation);
+        $manager->flush();
+
+        return $this->redirectToRoute('adept_ED6161_resume', ['id' => $evaluationED6161->getEvaluation()->getId()]);
+    }
+
+    public function ED6161DeletePoste(Request $request, EntityManagerInterface $manager, $id, $id2){
+        $poste = $this->getDoctrine()->getManager()->getRepository(PosteDeTravail::class)->findOneById($id);
+        $evaluationED6161 = $this->getDoctrine()->getManager()->getRepository(EvaluationED6161::class)->findOneById($id2);
+        $grille1 = $this->getDoctrine()->getManager()->getRepository(Grille1ED6161::class)->findByEvaluationED6161($evaluationED6161);
+        $grille2 = $this->getDoctrine()->getManager()->getRepository(Grille2ED6161::class)->findByEvaluationED6161($evaluationED6161);
+        $situations = $poste->getSituations();
+
+        foreach($situations as $situation){
+            $manager->remove($situation);
+        }
+        $manager->remove($grille1);
+        $manager->remove($grille2);
+        $manager->remove($evaluationED6161);
+
+        $manager->remove($poste);
+        $manager->flush();
+
+        return $this->redirectToRoute('adept_ED6161_resume', ['id' => $evaluationED6161->getEvaluation()->getId()]);
+    }
+
+    public function ED6161NewSituation(Request $request, EntityManagerInterface $manager, $id){
+        $evaluationED6161 = $this->getDoctrine()->getManager()->getRepository(EvaluationED6161::class)->findOneById($id);
+
+        $situation = new Situation();
+        $situation->setNom("Ma situation");
+        $situation->setPosteDeTravail($evaluationED6161->getPosteDeTravail());
+        $manager->persist($situation);
+        $manager->flush();
+
+        return $this->redirectToRoute('adept_tool_NFX35109_from_ED6161', ['id' => $evaluationED6161->getId(), 'id2' => $situation->getId()]);
     }
 
     public function ED6161Grille1(Request $request, EntityManagerInterface $manager, $id, $id2) {

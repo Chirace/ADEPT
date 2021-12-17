@@ -19,6 +19,15 @@
             {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
             {{ form_widget(form.valider, {'attr': {'class': 'button_picture'}} ) }}
         </div>
+        {% if fichier != null %}
+            <h3>Liste des éléments :</h3>
+            <a class="navbar-brand" href="{{ path('adept_NFX35109_picture_download', { 'id': fichier.id }) }}">
+                {{ fichier.nomFichier }}
+            </a>
+            <a class="navbar-brand" href="{{ path('adept_NFX35109_delete_picture', { 'id': idEvaluation, 'id2': fichier.id }) }}">
+                <img src="/images/delete.png" alt="icon supprimer" id="icon_delete" class="icon_click">
+            </a>
+        {% endif %}
         {{ form_end(form) }}
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_activity',  { 'id': idEvaluateur, 'id2' : idEvaluation }) }}" >{% trans %}Retour{% endtrans %}</a>

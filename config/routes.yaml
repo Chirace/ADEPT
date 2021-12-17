@@ -18,6 +18,14 @@ adept_logout:
   path: /deconnexion
   controller: App\Controller\SecurityController::logout
 
+adept_administration:
+  path: /administration
+  controller: App\Controller\SecurityController::administration
+
+adept_download_excel:
+  path: /administration/excel
+  controller: App\Controller\SecurityController::downloadXLSFiles
+
 adept_menu:
   path: /menu
   controller: App\Controller\GeneralController::menu
@@ -29,6 +37,12 @@ adept_formations:
 adept_search:
   path: /search
   controller: App\Controller\GeneralController::recherche
+
+adept_download_evaluation:
+  path: /downloadEvaluation/{id}
+  controller: App\Controller\GeneralController::downloadEvaluation
+  requirements:
+    id:  \d+
 
 adept_delete_evaluation:
   path: /deleteEvaluation/{id}
@@ -63,6 +77,54 @@ adept_ergonomics_tools_list:
 adept_company_balance_sheet:
   path: /company
   controller: App\Controller\GeneralController::company
+
+adept_new_company_balance_sheet:
+  path: /company/newBalance/{id}
+  controller: App\Controller\GeneralController::nouveauBilan
+  requirements:
+    id:  \d+
+
+adept_new_company_balance_sheet_site:
+  path: /company/newBalanceSite/{id}
+  #path: /company/newBalance/{id}/{id2}
+  controller: App\Controller\GeneralController::nouveauBilanSite
+  requirements:
+    id:  \d+
+    #id2: \d+
+
+adept_new_company_balance_sheet_secteur:
+  path: /company/newBalance/{id}/{id2}
+  #path: /company/newBalance/{id}/{id2}/{id3}
+  controller: App\Controller\GeneralController::nouveauBilanSecteur
+  requirements:
+    id:  \d+
+    id2: \d+
+    #id3: \d+
+
+adept_new_company_balance_sheet_poste:
+  path: /company/newBalance/{id}/{id2}/{id3}/{id4}
+  controller: App\Controller\GeneralController::nouveauBilanPoste
+  requirements:
+    id:  \d+
+    id2: \d+
+    id3: \d+
+    id4: \d+
+
+adept_new_company_balance_sheet_situation:
+  path: /company/newBalance/{id}/{id2}/{id3}/{id4}/{id5}
+  controller: App\Controller\GeneralController::nouveauBilanSituation
+  requirements:
+    id:  \d+
+    id2: \d+
+    id3: \d+
+    id4: \d+
+    id5: \d+
+
+adept_see_company_balance_sheet:
+  path: /company/balance/{id}
+  controller: App\Controller\GeneralController::voirBilan
+  requirements:
+    id:  \d+
 
 adept_settings:
   path: /settings
@@ -113,6 +175,13 @@ adept_NFX35109_picture_download:
   controller: App\Controller\NFX35109Controller::seePicture
   requirements:
     id:  \d+
+
+adept_NFX35109_delete_picture:
+  path: /NFX35109/picture/delete/{id}/{id2}
+  controller: App\Controller\NFX35109Controller::deletePicture
+  requirements:
+    id:  \d+
+    id2: \d+
 
 adept_NFX35109_operator:
   path: /NFX35109/operator/{id}
@@ -237,11 +306,12 @@ adept_NFX35109_handling_with_assistance_execution_constraint:
     id2: \d+
 
 adept_NFX35109_handling_with_assistance_edit_charge:
-  path: /NFX35109/handling_with_assistance/edit_charge/{id}/{id2}
+  path: /NFX35109/handling_with_assistance/edit_charge/{id}/{id2}/{type}
   controller: App\Controller\NFX35109Controller::handlingWithAssistanceEditCharge
   requirements:
     id:  \d+
     id2: \d+
+    type: \d+
 
 adept_NFX35109_handling_with_assistance_delete_charge:
   path: /NFX35109/handling_with_assistance/delete_charge/{id}/{id2}
@@ -323,6 +393,26 @@ adept_ED6161_grille_2:
   requirements:
     id:  \d+
     id2:  \d+
+
+adept_ED6161_delete_poste:
+  path: /ED6161/delete/{id}/{id2}
+  controller: App\Controller\ED6161Controller::ED6161DeletePoste
+  requirements:
+    id:  \d+
+    id2: \d+
+
+adept_ED6161_delete_situation:
+  path: /ED6161/delete/{id}/{id2}
+  controller: App\Controller\ED6161Controller::ED6161DeleteSituation
+  requirements:
+    id:  \d+
+    id2:  \d+
+
+adept_tool_ED6161_new_situation:
+  path: /ED6161/new/{id}
+  controller: App\Controller\ED6161Controller::ED6161NewSituation
+  requirements:
+    id:  \d+
 
 adept_tool_NIOSH:
   path: /NIOSH

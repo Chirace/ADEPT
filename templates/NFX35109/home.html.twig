@@ -25,7 +25,7 @@
                     <p>{% trans %}
                     - A l'activité de manutention de charges (soulever, transporter, pousser/tirer, avec déplacement de la 
                         charge) avec ou sans utilisation d'aide à la manutention, par une personne. {% endtrans %}<br> <br>
-                        {% trans %}- Pour une population adulte (18 à 65 ans) sans restriction d'aptitude.{% endtrans %}<br> <br>
+                        {% trans %}- Pour une <strong>population adulte (18 à 65 ans)</strong> sans restriction d'aptitude.{% endtrans %}<br> <br>
                         {% trans %}- Aux engins équipés de roues pour les forces de pousser/tirer.{% endtrans %}<br>
                     </p>
                 </div>
@@ -46,7 +46,16 @@
             <p class="margin_left">{% trans %}- NF X35-109 (2011), Ergonomie - Manutention manuelle de charge pour soulever, déplacer et pousser/tirer. Méthodologie d'analyse et valeurs seuils.{% endtrans %}</p>
         </div>
         <div class="group_button">
-            <a class="button3_left" href="{{ path('adept_menu') }}">{% trans %}Retour au menu principal{% endtrans %}</a>
+            {% if evaluation is defined %}
+                {% if evaluation.evaluationED6161 != null %}
+                    <a class="button3_left" href="{{ path('adept_ED6161_resume',  { 'id': evaluation.evaluationED6161.evaluation.id }) }}">{% trans %}Retour à la hiérarchisation{% endtrans %}</a>
+                {% elseif evaluation != null %}
+                    <a class="button3_left" href="{{ path('adept_menu') }}">{% trans %}Retour au menu principal{% endtrans %}</a>
+                {% endif %}
+            {% else %}
+                <a class="button3_left" href="{{ path('adept_menu') }}">{% trans %}Retour au menu principal{% endtrans %}</a>
+            {% endif %}
+            
             <a class="button3_right" href="{{ path('adept_NFX35109_activity',  { 'id': id }) }}">{% trans %}Poursuivre{% endtrans %}</a>
         </div>
     </div>

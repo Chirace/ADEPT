@@ -16,6 +16,17 @@ class SiteType extends AbstractType
         ;
     }
 
+    /*public function findAllSitesByCompany(Entreprise $entreprise): array
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('p.entreprise  :entreprise')
+            ->setParameter('entreprise', $entreprise);
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }*/
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

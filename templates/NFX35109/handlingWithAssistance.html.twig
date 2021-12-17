@@ -44,7 +44,14 @@
                             {{ charge.PTFrequence }}
                         </td>
                         <td>
-                            <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_with_assistance_edit_charge', { 'id': idEvaluation, 'id2': charge.id }) }}">
+                            {% if charge.PTManutentionType == "lit" %}
+                                {% set type = 1 %}
+                            {% elseif charge.PTManutentionType == "transpalette" %}
+                                {% set type = 2 %}
+                            {% else %}
+                                {% set type = 3 %}
+                            {% endif %}
+                            <a class="navbar-brand" href="{{ path('adept_NFX35109_handling_with_assistance_edit_charge', { 'id': idEvaluation, 'id2': charge.id, 'type': type }) }}">
                                 <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
                             </a>
                         </td>

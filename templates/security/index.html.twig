@@ -1,17 +1,42 @@
 {% extends 'baseInconnu.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_1000">
-        <p class="text_justify">{% trans %}Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail), elle vous permettra de :{% endtrans %}</p>
-        <p class="margin_left">{% trans %}- Repérer et hiérarchiser des postes de travail{% endtrans %}</p>
-        <p class="margin_left">{% trans %}- Évaluer des situations de travail{% endtrans %}</p>
-        <p class="text_justify">{% trans %}ADEPT a pour objectif d'améliorer la prévention des risques de Troubles Neuro-Musculosquelettique (TNMS) au sein d'une entreprise.{% endtrans %}</p>
+        <p class="text_justify">{% trans %}Vous êtes sur l'application ADEPT (Application Dédiée à l'Ergonomie des Postes de Travail). ADEPT a été réalisée par l'Institut d'Ingénierie de la Santé dans le cadre du projet Interreg NOMADe.{% endtrans %}</p>
+        <p class="text_justify">{% trans %}Cette application a pour objectif, au poste de travail, de vous aider à repérer, hiérarchiser et évaluer la charge physique des situations de travail.{% endtrans %}</p>
 
         <p class="text_justify">{% trans %}Cette application se base sur :{% endtrans %}</p>
         <p class="margin_left text_justify">{% trans %}- La méthode d'analyse de la charge physique de travail (INRS - ED6161){% endtrans %}</p>
         <p class="margin_left text_justify">{% trans %}- La norme d'ergonomie concernant la manutention manuelle de charge pour soulever, déplacer et pousser/tirer (AFNOR - NF X35-109).{% endtrans %}</p>
 
+        <!--<div>
+            <a class="button" href="{{ path('adept_home') }}">{% trans %}Se connecter{% endtrans %}</a>
+        </div>-->
+
         <div>
-            <a class="button" href="{{ path('adept_home') }}" >{% trans %}Se connecter{% endtrans %}</a>
+            <a class="button" data-toggle="modal" data-target="#ModalCenterCGU">{% trans %}Se connecter{% endtrans %}</a>
+        </div>
+
+        <div class="modal fade" id="ModalCenterCGU" tabindex="-1" role="dialog" aria-labelledby="CGU" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">                        
+                    <div class="modal-header">
+                        <h5 class="modal-title p_black">{% trans %}Conditions Générales d'Utilisation{% endtrans %}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="p_black">{% trans %}En utilisant l'application ADEPT, les données et analyses que vous allez saisir seront anonymisées et permettront d'alimenter la base de données de l'Institut d'Ingienierie de la Santé d'Amiens - UFR Médecine, Université de Picardie Jules Verne.
+                        <br>
+                        <br>
+                        En utilisant ADEPT, vous autorisez l'utilisation de vos données et analyses à des fins pédagogiques, d'études et de recherches pour l'amélioration des conditions de travail. Aucune utilisation commerciale de vos données ne pourra être réalisée.{% endtrans %}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Refuser</button>
+                        <a type="button" class="btn btn-primary" href="{{ path('adept_home') }}">Accepter</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

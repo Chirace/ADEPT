@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="fixe_largeur_900">
-        <p>{% trans %}L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
-        pour réduire les risques de lombalgies liés à la charge physique de travail.{% endtrans %}</p>
+        <p>{% trans %}L'application ADEPT a pour objectif de vous aider à procéder à l'évaluation de la charge physique de vos postes
+         de travail dans votre entreprise et particulièrement celles liées aux manutentions manuelles de charge. 
+        (NF X35-109 - 2011){% endtrans %}</p>
+        <!--<p>{% trans %}L'objectif de cette application est d'améliorer la prévention des Troubles Neuro-musculosquelettiques (TNMS) 
+        pour réduire les risques de lombalgies liés à la charge physique de travail.{% endtrans %}</p>-->
 
         <div>
             <a class="button" href="{{ path('adept_formations') }}" >{% trans %}Tutoriel{% endtrans %}</a>
@@ -16,6 +19,13 @@
         <div>
             <a class="button" href="{{ path('adept_search') }}" >{% trans %}Rechercher une évaluation{% endtrans %}</a>
         </div>
+        {% for role in utilisateur.roles %}
+            {% if role == "ROLE_ADMIN" %}
+                <div>
+                    <a class="button" href="{{ path('adept_administration') }}" >{% trans %}Administration{% endtrans %}</a>
+                </div>
+            {% endif %}
+        {% endfor %}
         <div>
             <a class="button" href="{{ path('security_logout') }}" >{% trans %}Se déconnecter{% endtrans %}</a>
         </div>

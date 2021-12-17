@@ -86,9 +86,15 @@ class Evaluation
      */
     private $evaluation_interne;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BilanEvaluation::class, mappedBy="evaluation")
+     */
+    private $bilanEvaluations;
+
     public function __construct()
     {
         $this->evaluationED6161s = new ArrayCollection();
+        $this->bilanEvaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -278,6 +284,36 @@ class Evaluation
     public function setEvaluationInterne(bool $evaluation_interne): self
     {
         $this->evaluation_interne = $evaluation_interne;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BilanEvaluation[]
+     */
+    public function getBilanEvaluations(): Collection
+    {
+        return $this->bilanEvaluations;
+    }
+
+    public function addBilanEvaluation(BilanEvaluation $bilanEvaluation): self
+    {
+        if (!$this->bilanEvaluations->contains($bilanEvaluation)) {
+            $this->bilanEvaluations[] = $bilanEvaluation;
+            $bilanEvaluation->setEvaluation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBilanEvaluation(BilanEvaluation $bilanEvaluation): self
+    {
+        if ($this->bilanEvaluations->removeElement($bilanEvaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($bilanEvaluation->getEvaluation() === $this) {
+                $bilanEvaluation->setEvaluation(null);
+            }
+        }
 
         return $this;
     }

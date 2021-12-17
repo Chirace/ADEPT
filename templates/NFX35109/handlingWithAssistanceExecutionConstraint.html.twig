@@ -28,7 +28,7 @@
                     {{ form_errors(form.contrainte_poignees_inadaptees) }}
                 </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                <div id="button_help" class="button5" onclick="helpConstraint()">Définir</div>
+                <button id="button_definir" type="button" class="button5" data-toggle="modal" data-target="#ModalDefinir">{% trans %}Définir{% endtrans %}</button>
             </div>
         </div>
 
@@ -111,6 +111,129 @@
                 {{ form_errors(form.contrainte_absence_frein) }}
             </div>
         </div>
+
+        <div class="modal fade bd-example-modal-lg" id="ModalDefinir" tabindex="-1" role="dialog" aria-labelledby="Definir" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">                        
+                    <div class="modal-header modal_font">
+                        <h5 class="modal-title">{% trans %}Les poignées sont-elles adaptées ?{% endtrans %}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row_flex modal_margin modal_label">
+                            <p class="text_margin_right p_black">{% trans %}Veuillez cocher la case si la proposition correspond à votre situation :{% endtrans %}</p>
+                        </div>
+                        <div class="switch" id="switch_Q1">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}La position des poignées est adaptée au centre de gravité de l'objet et au type d'activité exécutée ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q1" value="non">
+                            <label for="check_Q1" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <div class="switch" id="switch_Q2">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}Lorsque la manutention est horizontale alors elle est assurée par une machine ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q2" value="non">
+                            <label for="check_Q2" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <div class="switch" id="switch_Q3">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}Les poignées présentent-elles des arêtes vives ou un risque de compression pour les doigts ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q3" value="non">
+                            <label for="check_Q3" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <div class="switch" id="switch_Q4">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}La forme des poignées permet-elle une prise en crochet ou une prise à pleine main dans la position main-bras neutre ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q4" value="non">
+                            <label for="check_Q4" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <div class="switch" id="switch_Q5">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}Le diamètre de la poignée est compris entre 2 cm et 4 cm ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q5" value="non">
+                            <label for="check_Q5" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <div class="switch" id="switch_Q6">
+                            <p class="text_margin_right p_black modal_text_70">{% trans %}La longueur de la poignée est supérieure à 12,5 cm et présente un espace libre de 7 cm au-dessus des doigts ?{% endtrans %}</p>
+                            <input type="checkbox" id="check_Q6" value="non">
+                            <label for="check_Q6" data-off="Non" data-on="Oui"></label>
+                        </div>
+                        <br>
+                        <p class="mauve" id="flag_inadaptee"> -> {% trans %}Les poignées de la charge ne semblent pas adaptées.{% endtrans %}</p>
+                        <p class="mauve" id="flag_adaptee"> -> {% trans %}Les poignées de la charge semblent adaptées.{% endtrans %}</p>
+                        <br>
+                        <div class="row">
+                            <p class="p_black" style="text-decoration: underline">Informations complémentaires</p>
+                            <p class="p_black"> : Une poignée de forme cylindrique ou elliptique est a privilégier</p>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="p_black" style="text-decoration: underline">Référence</p>
+                            <p class="p_black"> : NF EN 1005-2:2003, page 8</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("switch_Q1").style.display = 'block';
+            document.getElementById("switch_Q2").style.display = 'block';
+            document.getElementById("switch_Q3").style.display = 'block';
+            document.getElementById("switch_Q4").style.display = 'block';
+            document.getElementById("switch_Q5").style.display = 'block';
+            document.getElementById("switch_Q6").style.display = 'block';
+            document.getElementById("check_Q1").checked = false;
+            document.getElementById("check_Q2").checked = false;
+            document.getElementById("check_Q3").checked = false;
+            document.getElementById("check_Q4").checked = false;
+            document.getElementById("check_Q5").checked = false;
+            document.getElementById("check_Q6").checked = false;
+
+            document.getElementById("flag_inadaptee").style.display = 'block';
+            document.getElementById("flag_adaptee").style.display = 'none';
+
+            function updateDisplay(){
+                if (document.getElementById('check_Q1').checked){
+                    if (document.getElementById('check_Q2').checked){
+                        if (document.getElementById('check_Q3').checked == false){
+                            if (document.getElementById('check_Q4').checked){
+                                if (document.getElementById('check_Q5').checked){
+                                    if (document.getElementById('check_Q6').checked){
+                                        document.getElementById("flag_inadaptee").style.display = 'none';
+                                        document.getElementById("flag_adaptee").style.display = 'block';
+                                    } else {
+                                        document.getElementById("flag_inadaptee").style.display = 'block';
+                                        document.getElementById("flag_adaptee").style.display = 'none';
+                                    }
+                                } else {
+                                    document.getElementById("flag_inadaptee").style.display = 'block';
+                                    document.getElementById("flag_adaptee").style.display = 'none';
+                                }
+                            } else {
+                                document.getElementById("flag_inadaptee").style.display = 'block';
+                                document.getElementById("flag_adaptee").style.display = 'none';
+                            }
+                        } else {
+                            document.getElementById("flag_inadaptee").style.display = 'block';
+                            document.getElementById("flag_adaptee").style.display = 'none';
+                        }
+                    } else {
+                        document.getElementById("flag_inadaptee").style.display = 'block';
+                        document.getElementById("flag_adaptee").style.display = 'none';
+                    }
+                } else {
+                    document.getElementById("flag_inadaptee").style.display = 'block';
+                    document.getElementById("flag_adaptee").style.display = 'none';
+                }
+            }
+
+            document.getElementById('check_Q1').addEventListener('change', updateDisplay);
+            document.getElementById('check_Q2').addEventListener('change', updateDisplay);
+            document.getElementById('check_Q3').addEventListener('change', updateDisplay);
+            document.getElementById('check_Q4').addEventListener('change', updateDisplay);
+            document.getElementById('check_Q5').addEventListener('change', updateDisplay);
+            document.getElementById('check_Q6').addEventListener('change', updateDisplay);
+        </script>
 
         <div class="group_button">
             <a class="button3_left" href="{{ path('adept_NFX35109_handling_with_assistance_charge_informations',  { 'id': idEvaluateur, 'type': type }) }}">{% trans %}Revenir en arrière{% endtrans %}</a>

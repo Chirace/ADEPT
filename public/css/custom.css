@@ -45,6 +45,10 @@ body {
     text-decoration: none;
 }
 
+.anim_charge {
+    position: absolute;
+}
+
 .button {
     margin-top: 4%;
     width: 60%;
@@ -394,6 +398,7 @@ body {
     padding-bottom: 40%;
     font-family: Montserrat,sans-serif;
     text-decoration: none;
+    transition-duration: 500ms;
 }
 
 .button_change_language:hover {
@@ -412,6 +417,8 @@ body {
     padding-bottom: 40%;
     font-family: Montserrat,sans-serif;
     text-decoration: none;
+    /*transition-delay:250ms;*/
+    transition-duration: 250ms;
 }
 
 .button_picture {
@@ -841,6 +848,11 @@ li {
     border: none;
 }
 
+.modal_font {
+    background-color:#2f3350;
+    color:white;
+}
+
 .modal_label {
     margin-left: 2%;
 }
@@ -864,6 +876,10 @@ li {
 
 .modal_text{
     color:black;
+}
+
+.modal_text_70 {
+    font-size: 70%;
 }
 
 /*#logo_nomade {

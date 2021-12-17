@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="fixe_largeur_90">
+        <h1>{% trans %}Bilan d'entreprise{% endtrans %} : {{ entreprise.nom }}</h1>
+        <div class="container">
+            {% set sites = [] %}
+            {% for site in form.sites %}
+                {% if site.entreprise.id == entreprise.id %}
+                    {% set sites = sites|merge([site]) %}
+                {% endif %}
+            {% endfor %}
+
+            <!--<label for="pet-select" class="p_white">Choisir un site:</label>
+            <select name="pets" id="pet-select">
+                <option value="">--Sélectionner un site--</option>
+                {% for site in sites %}
+                    <option value={{ site.id }}>{{ site.nom }}</option>
+                {% endfor %}
+            </select>-->
+            <div class="top_container row" id="site">
+                {{ form_label(form.sites, 'Sélectionner le site :', {'label_attr': {'class': 'p'}} ) }}
+                {{ form_widget(form.sites, {'attr': {'class': 'form-control', 'placeholder': 'Sélection d\'un site existant ...'} }) }}
+                {{ form_errors(form.sites) }}
+            </div>
+        </div>
+        <div class="group_button">
+            <a class="button3_left" href="{{ path('adept_company_balance_sheet') }}" >{% trans %}Retourner au menu principal{% endtrans %}</a>
+            {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3_center'}} ) }}
+            {{ form_label(form.ajouter, 'Ajouterj', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.ajouter, {'attr': {'class': 'button3_right'}} ) }}
+        </div>
+    </div>
+{% endblock %}

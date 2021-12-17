@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+    RewriteBase /
+    RewriteEngine On
+    RewriteRule index\.html index.php [NC,R]
+</IfModule>
